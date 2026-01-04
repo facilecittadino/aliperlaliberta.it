@@ -73,7 +73,7 @@
 "call.hoursLabel": {
   it: "Orari: Lun–Ven 08:30–13:30 · 16:30–19:30",
   en: "Hours: Mon–Fri 08:30–13:30 · 16:30–19:30",
-  pa: "ਸਮਾਂ: ਸੋਮ–ਸ਼ੁਕਰ 08:30–13:30 · 16:30–19:30",
+  pa: "ਸਮਾਂ: ਸੋਮ–ਸ਼ੁਕਰ 08:30–13:30 · 16:30–19:30",
   hi: "समय: सोमवार–शुक्रवार 08:30–13:30 · 16:30–19:30",
   "hi-Latn": "Samay: Som–Shukr 08:30–13:30 · 16:30–19:30"
 },
@@ -117,12 +117,12 @@
       pa: "CAF (ਟੈਕਸ ਸਹਾਇਤਾ ਕੇਂਦਰ)",
       "hi-Latn": "CAF (Tax Sahayata Kendra)"
     },
-    "services.caf.desc": {
-      it: "Ti aiutiamo con tutte le pratiche fiscali come dichiarazione dei redditi, ISEE, modelli 730, e altre procedure tributarie, in modo semplice e veloce.",
-      en: "We help with income tax returns, ISEE, 730 forms, and other tax procedures—simply and quickly.",
-      hi: "आयकर रिटर्न, ISEE, 730 फॉर्म और अन्य कर संबंधी प्रक्रियाओं में हम सरल और तेज़ मदद करते हैं।",
-      pa: "ਆਮਦਨੀ ਕਰ ਰਿਟਰਨ, ISEE, 730 ਫਾਰਮ ਅਤੇ ਹੋਰ ਕਰੀ ਪ੍ਰਕਿਰਿਆਵਾਂ ਵਿੱਚ ਅਸੀਂ ਸਧਾਰੇ ਤੇ ਤੇਜ਼ ਤਰੀਕੇ ਨਾਲ ਮਦਦ ਕਰਦੇ ਹਾਂ।",
-      "hi-Latn": "Income tax return, ISEE, 730 form aur anya tax processes me hum simple aur fast madad karte hain."
+    "caf.desc": {
+      it: "Il CAF Ali Per La Liberta a Lecce offre assistenza fiscale per stranieri e cittadini italiani, inclusi ISEE, Modello 730, F24, RED e bonus, con supporto multilingua.",
+      en: "CAF Ali Per La Liberta in Lecce provides tax assistance for foreign and Italian citizens, including ISEE, Model 730, F24, RED, and tax bonuses, with multilingual support.",
+      hi: "लेच्चे में CAF Ali Per La Liberta विदेशी और इतालवी नागरिकों के लिए कर सहायता प्रदान करता है, जिसमें ISEE, मॉडल 730, F24, RED और बोनस शामिल हैं, बहुभाषी समर्थन के साथ।",
+      pa: "ਲੇੱਚੇ ਵਿੱਚ CAF Ali Per La Liberta ਵਿਦੇਸ਼ੀ ਅਤੇ ਇਤਾਲਵੀ ਨਾਗਰਿਕਾਂ ਲਈ ਟੈਕਸ ਸਹਾਇਤਾ ਦਿੰਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ISEE, ਮਾਡਲ 730, F24, RED ਅਤੇ ਬੋਨਸ ਸ਼ਾਮਲ ਹਨ, ਬਹੁਭਾਸ਼ੀ ਸਹਾਇਤਾ ਨਾਲ।",
+      "hi-Latn": "Lecce me CAF Ali Per La Liberta videshi aur Italian nagrikon ke liye tax assistance deta hai, jisme ISEE, Model 730, F24, RED aur bonus shamil hain, multilingual support ke sath."
     },
 
     "services.patronato.title": {
@@ -267,7 +267,7 @@
       it: "Orari: Lun–Ven 08:30–13:30 · 16:30–19:30",
       en: "Hours: Mon–Fri 08:30–13:30 · 16:30–19:30",
       hi: "समय: सोमवार–शुक्रवार 08:30–13:30 · 16:30–19:30",
-      pa: "ਸਮਾਂ: ਸੋਮ–ਸ਼ੁਕਰ 08:30–13:30 · 16:30–19:30",
+      pa: "ਸਮਾਂ: ਸੋਮ–ਸ਼ੁਕਰ 08:30–13:30 · 16:30–19:30",
       "hi-Latn": "Samay: Som–Shukr 08:30–13:30 · 16:30–19:30"
     },
     "footer.openwith": {
@@ -295,7 +295,7 @@
       it: "Termini di Servizio",
       en: "Terms of Service",
       hi: "सेवा की शर्तें",
-      pa: "ਸੇਵਾ ਦੀਆਂ ਸ਼ਰਤਾਂ",
+      pa: "ਸੇਵਾ ਦੀਆਂ ਸ਼ਰਤਾਂ",
       "hi-Latn": "Service ki Shartein"
     },
     "footer.cookies": {
@@ -328,13 +328,6 @@
   hi: "CAF (कर सहायता केंद्र)",
   pa: "CAF (ਟੈਕਸ ਸਹਾਇਤਾ ਕੇਂਦਰ)",
   "hi-Latn": "CAF (Kar Sahayata Kendra)"
-},
-"caf.desc": {
-  it: "Assistenza semplice e veloce per le tue pratiche fiscali.",
-  en: "Simple and fast assistance for your tax procedures.",
-  hi: "आपकी टैक्स प्रक्रियाओं के लिए सरल और तेज़ सहायता।",
-  pa: "ਤੁਹਾਡੇ ਟੈਕਸ ਮਾਮਲਿਆਂ ਲਈ ਸੌਖੀ ਤੇ ਤੇਜ਼ ਸਹਾਇਤਾ।",
-  "hi-Latn": "Aapki tax prakriya ke liye saral aur tez sahayata."
 },
 "caf.services.isee": {
   it: "Compilazione e invio della Dichiarazione Sostitutiva Unica.",
@@ -395,11 +388,11 @@
   "hi-Latn": "Patronato"
 },
 "patronato.subtitle": {
-  it: "Supporto completo per pensioni, indennità e assistenza sociale.",
-  en: "Complete support for pensions, benefits, and social assistance.",
-  hi: "पेंशन, भत्ते और सामाजिक सहायता के लिए पूर्ण समर्थन।",
-  pa: "ਪੈਨਸ਼ਨ, ਭੱਤੇ ਅਤੇ ਸਮਾਜਿਕ ਸਹਾਇਤਾ ਲਈ ਪੂਰਾ ਸਮਰਥਨ।",
-  "hi-Latn": "Pension, bhatte aur samajik sahayata ke liye poora support."
+  it: "Il Patronato Ali Per La Liberta a Lecce offre supporto per pensioni, NASpI, invalidità, maternità, infortuni sul lavoro e servizi di assistenza sociale, anche per cittadini stranieri.",
+  en: "Ali Per La Liberta Patronato in Lecce provides support for pensions, NASpI, disability, maternity, workplace injuries, and social assistance services, including for foreign citizens.",
+  hi: "लेच्चे में अली पर ला लिबर्टा पैट्रोनेटो पेंशन, NASpI, विकलांगता, मातृत्व, कार्यस्थल दुर्घटनाओं और सामाजिक सहायता सेवाओं के लिए सहायता प्रदान करता है, विदेशी नागरिकों के लिए भी।",
+  pa: "ਲੇੱਚੇ ਵਿੱਚ Ali Per La Liberta Patronato ਪੈਨਸ਼ਨ, NASpI, ਅਪਾਹਜਤਾ, ਮਾਤৃত্ব, ਕੰਮ ਦੌਰਾਨ ਹਾਦਸਿਆਂ ਅਤੇ ਸਮਾਜਿਕ ਸਹਾਇਤਾ ਸੇਵਾਵਾਂ ਲਈ ਸਹਾਇਤਾ ਦਿੰਦਾ ਹੈ, ਵਿਦੇਸ਼ੀ ਨਾਗਰਿਕਾਂ ਲਈ ਵੀ।",
+  "hi-Latn": "Lecce me Ali Per La Liberta Patronato pension, NASpI, disability, maternity, workplace injuries aur social assistance services ke liye support deta hai, foreign citizens ke liye bhi."
 },
 
 "patronato.service.pensione": {
@@ -481,6 +474,13 @@
   hi: "कानूनी प्रक्रियाओं और विदेशी दस्तावेज़ों के लिए पूर्ण सहायता।",
   pa: "ਕਾਨੂੰਨੀ ਪ੍ਰਕਿਰਿਆਵਾਂ ਅਤੇ ਵਿਦੇਸ਼ੀ ਦਸਤਾਵੇਜ਼ਾਂ ਲਈ ਪੂਰੀ ਸਹਾਇਤਾ।",
   "hi-Latn": "Kanooni prakriyaon aur videshi dastavezon ke liye poori sahayata."
+},
+"legal.seo": {
+  "it": "L’Assistenza Legale Ali Per La Liberta a Lecce offre supporto per permesso di soggiorno, cittadinanza italiana, ricongiungimento familiare, invio PEC e pratiche legali dedicate anche ai cittadini stranieri.",
+  "en": "Ali Per La Liberta provides legal assistance in Lecce for residence permits, Italian citizenship, family reunification, PEC services and legal documentation.",
+  "hi": "अली पर ला लिबर्टा लेच्चे में निवास परमिट, नागरिकता, पारिवारिक पुनर्मिलन और कानूनी दस्तावेज़ों के लिए कानूनी सहायता प्रदान करता है।",
+  "pa": "ਅਲੀ ਪਰ ਲਾ ਲਿਬਰਤਾ ਲੇੱਚੇ ਵਿੱਚ ਰਿਹਾਇਸ਼ ਪਰਮਿਟ, ਨਾਗਰਿਕਤਾ, ਪਰਿਵਾਰਕ ਮਿਲਾਪ ਅਤੇ ਕਾਨੂੰਨੀ ਦਸਤਾਵੇਜ਼ਾਂ ਲਈ ਸਹਾਇਤਾ ਦਿੰਦਾ ਹੈ।",
+  "hi-Latn": "Ali Per La Liberta Lecce me residence permit, citizenship, family reunification aur legal documents ke liye legal support deta hai."
 },
 
 "legal.services.ricongiungimento": {
