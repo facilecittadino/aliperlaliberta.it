@@ -474,7 +474,7 @@
   "hi": "लेच्चे में विदेशियों के लिए कानूनी सहायता: परमेसो दी सोजोर्नो, इतालवी नागरिकता, परिवार पुनर्मिलन और प्रीफेक्चुरा व क्वेस्टुरा से जुड़ी प्रक्रियाएँ, बहुभाषी सहायता के साथ।",
   "pa": "ਲੇੱਚੇ ਵਿੱਚ ਵਿਦੇਸ਼ੀਆਂ ਲਈ ਕਾਨੂੰਨੀ ਸਹਾਇਤਾ: ਰਿਹਾਇਸ਼ ਪਰਮਿਟ, ਇਟਾਲੀਅਨ ਨਾਗਰਿਕਤਾ, ਪਰਿਵਾਰਕ ਮੁੜ ਮਿਲਾਪ ਅਤੇ ਪ੍ਰੀਫੈਕਚੁਰਾ ਤੇ ਕਵੇਸਟੂਰਾ ਦੀਆਂ ਪ੍ਰਕਿਰਿਆਵਾਂ, ਬਹੁਭਾਸ਼ੀ ਸਹਾਇਤਾ ਨਾਲ।",
   "hi-Latn": "Lecce me videshiyon ke liye legal assistance: permesso di soggiorno, Italian citizenship, family reunification aur Prefettura aur Questura ki procedures, multilingual support ke saath."
-}
+},
 "legal.seo": {
   "it": "L’Assistenza Legale Ali Per La Liberta a Lecce offre supporto per permesso di soggiorno, cittadinanza italiana, ricongiungimento familiare, invio PEC e pratiche legali dedicate anche ai cittadini stranieri.",
   "en": "Ali Per La Liberta provides legal assistance in Lecce for residence permits, Italian citizenship, family reunification, PEC services and legal documentation.",
@@ -546,6 +546,150 @@
   hi: "अभी बुक करें",
   pa: "ਹੁਣੇ ਬੁੱਕ ਕਰੋ",
   "hi-Latn": "Abhi book karo"
+},
+"patronato.otherServices.title": {
+  it: "Altri servizi utili presso Ali Per La Liberta",
+  en: "Other useful services at Ali Per La Liberta",
+  hi: "Ali Per La Liberta में उपलब्ध अन्य उपयोगी सेवाएं",
+  pa: "Ali Per La Liberta 'ਚ ਉਪਲਬਧ ਹੋਰ ਲਾਭਦਾਇਕ ਸੇਵਾਵਾਂ",
+  "hi-Latn": "Ali Per La Liberta me available anya useful services"
+},
+
+"patronato.otherServices.part1": {
+  it: "Oltre ai servizi di Patronato a Lecce, offriamo anche",
+  en: "In addition to Patronato services in Lecce, we also offer",
+  hi: "लेच्चे में Patronato सेवाओं के अलावा, हम यह भी प्रदान करते हैं",
+  pa: "ਲੇੱਚੇ ਵਿੱਚ Patronato ਸੇਵਾਵਾਂ ਤੋਂ ਇਲਾਵਾ, ਅਸੀਂ ਇਹ ਵੀ ਪ੍ਰਦਾਨ ਕਰਦੇ ਹਾਂ",
+  "hi-Latn": "Lecce me Patronato services ke alawa, hum ye bhi provide karte hain"
+},
+
+"patronato.otherServices.linkCaf": {
+  it: "assistenza CAF",
+  en: "CAF assistance",
+  hi: "CAF सहायता",
+  pa: "CAF ਸਹਾਇਤਾ",
+  "hi-Latn": "CAF sahayata"
+},
+
+"patronato.otherServices.part2": {
+  it: "per ISEE, Modello 730 e pratiche fiscali, e",
+  en: "for ISEE, 730 forms and tax procedures, and",
+  hi: "ISEE, 730 और कर प्रक्रियाओं के लिए, और",
+  pa: "ISEE, 730 ਅਤੇ ਟੈਕਸ ਕਾਰਵਾਈਆਂ ਲਈ, ਅਤੇ",
+  "hi-Latn": "ISEE, 730 aur tax procedures ke liye, aur"
+},
+
+"patronato.otherServices.linkLegal": {
+  it: "assistenza legale per stranieri",
+  en: "legal assistance for foreigners",
+  hi: "विदेशियों के लिए कानूनी सहायता",
+  pa: "ਵਿਦੇਸ਼ੀਆਂ ਲਈ ਕਾਨੂੰਨੀ ਸਹਾਇਤਾ",
+  "hi-Latn": "foreigners ke liye legal assistance"
+},
+
+"patronato.otherServices.part3": {
+  it: "per permessi di soggiorno, cittadinanza e pratiche Prefettura.",
+  en: "for residence permits, citizenship and Prefecture procedures.",
+  hi: "निवास परमिट, नागरिकता और प्रीफेक्चर प्रक्रियाओं के लिए।",
+  pa: "ਰਹਾਇਸ਼ ਪਰਮਿਟ, ਨਾਗਰਿਕਤਾ ਅਤੇ ਪ੍ਰੀਫੈਕਚਰ ਕਾਰਵਾਈਆਂ ਲਈ।",
+  "hi-Latn": "residence permit, citizenship aur Prefettura procedures ke liye."
+},
+
+"legal.otherServices.title": {
+  it: "Altri servizi disponibili presso Ali Per La Liberta",
+  en: "Other services available at Ali Per La Liberta",
+  hi: "Ali Per La Liberta में उपलब्ध अन्य सेवाएं",
+  pa: "Ali Per La Liberta 'ਚ ਉਪਲਬਧ ਹੋਰ ਸੇਵਾਵਾਂ",
+  "hi-Latn": "Ali Per La Liberta me available anya services"
+},
+
+"legal.otherServices.part1": {
+  it: "Oltre all’assistenza legale per stranieri a Lecce, Ali Per La Liberta offre",
+  en: "In addition to legal assistance for foreigners in Lecce, Ali Per La Liberta offers",
+  hi: "लेच्चे में विदेशियों के लिए कानूनी सहायता के अलावा, Ali Per La Liberta प्रदान करता है",
+  pa: "ਲੇੱਚੇ ਵਿੱਚ ਵਿਦੇਸ਼ੀਆਂ ਲਈ ਕਾਨੂੰਨੀ ਸਹਾਇਤਾ ਤੋਂ ਇਲਾਵਾ, Ali Per La Liberta ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ",
+  "hi-Latn": "Lecce me foreigners ke liye legal assistance ke alawa, Ali Per La Liberta offer karta hai"
+},
+
+"legal.otherServices.linkCaf": {
+  it: "servizi CAF",
+  en: "CAF services",
+  hi: "CAF सेवाएं",
+  pa: "CAF ਸੇਵਾਵਾਂ",
+  "hi-Latn": "CAF services"
+},
+
+"legal.otherServices.part2": {
+  it: "per pratiche fiscali come ISEE e Modello 730, e",
+  en: "for tax procedures such as ISEE and Form 730, and",
+  hi: "ISEE और 730 जैसे कर कार्यों के लिए, और",
+  pa: "ISEE ਅਤੇ 730 ਵਰਗੀਆਂ ਟੈਕਸ ਕਾਰਵਾਈਆਂ ਲਈ, ਅਤੇ",
+  "hi-Latn": "ISEE aur Modello 730 jaise tax kaamon ke liye, aur"
+},
+
+"legal.otherServices.linkPatronato": {
+  it: "servizi di Patronato",
+  en: "Patronato services",
+  hi: "Patronato सेवाएं",
+  pa: "Patronato ਸੇਵਾਵਾਂ",
+  "hi-Latn": "Patronato services"
+},
+
+"legal.otherServices.part3": {
+  it: "per pensioni, NASpI e assistenza sociale.",
+  en: "for pensions, NASpI and social assistance.",
+  hi: "पेंशन, NASpI और सामाजिक सहायता के लिए।",
+  pa: "ਪੈਨਸ਼ਨ, NASpI ਅਤੇ ਸਮਾਜਿਕ ਸਹਾਇਤਾ ਲਈ।",
+  "hi-Latn": "pension, NASpI aur social assistance ke liye."
+},
+
+
+"caf.otherServices.title": {
+  it: "Altri servizi disponibili presso Ali Per La Liberta",
+  en: "Other services available at Ali Per La Liberta",
+  hi: "Ali Per La Liberta में उपलब्ध अन्य सेवाएं",
+  pa: "Ali Per La Liberta 'ਚ ਉਪਲਬਧ ਹੋਰ ਸੇਵਾਵਾਂ",
+  "hi-Latn": "Ali Per La Liberta me available anya services"
+},
+
+"caf.otherServices.part1": {
+  it: "Oltre ai servizi CAF a Lecce, Ali Per La Liberta offre anche",
+  en: "In addition to CAF services in Lecce, Ali Per La Liberta also offers",
+  hi: "लेच्चे में CAF सेवाओं के अलावा, Ali Per La Liberta प्रदान करता है",
+  pa: "ਲੇੱਚੇ ਵਿੱਚ CAF ਸੇਵਾਵਾਂ ਤੋਂ ਇਲਾਵਾ, Ali Per La Liberta ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ",
+  "hi-Latn": "Lecce me CAF services ke alawa, Ali Per La Liberta offer karta hai"
+},
+
+"caf.otherServices.linkPatronato": {
+  it: "servizi di Patronato",
+  en: "Patronato services",
+  hi: "Patronato सेवाएं",
+  pa: "Patronato ਸੇਵਾਵਾਂ",
+  "hi-Latn": "Patronato services"
+},
+
+"caf.otherServices.part2": {
+  it: "per pensioni, NASpI e assistenza sociale, e",
+  en: "for pensions, NASpI and social assistance, and",
+  hi: "पेंशन, NASpI और सामाजिक सहायता के लिए, और",
+  pa: "ਪੈਨਸ਼ਨ, NASpI ਅਤੇ ਸਮਾਜਿਕ ਸਹਾਇਤਾ ਲਈ, ਅਤੇ",
+  "hi-Latn": "pension, NASpI aur social assistance ke liye, aur"
+},
+
+"caf.otherServices.linkLegal": {
+  it: "assistenza legale per stranieri",
+  en: "legal assistance for foreigners",
+  hi: "विदेशियों के लिए कानूनी सहायता",
+  pa: "ਵਿਦੇਸ਼ੀਆਂ ਲਈ ਕਾਨੂੰਨੀ ਸਹਾਇਤਾ",
+  "hi-Latn": "foreigners ke liye legal assistance"
+},
+
+"caf.otherServices.part3": {
+  it: "per permessi di soggiorno, cittadinanza e ricongiungimento familiare.",
+  en: "for residence permits, citizenship and family reunification.",
+  hi: "निवास परमिट, नागरिकता और पारिवारिक पुनर्मिलन के लिए।",
+  pa: "ਰਿਹਾਇਸ਼ ਪਰਮਿਟ, ਨਾਗਰਿਕਤਾ ਅਤੇ ਪਰਿਵਾਰਕ ਮਿਲਾਪ ਲਈ।",
+  "hi-Latn": "residence permit, citizenship aur family reunification ke liye."
 }
 
   };
