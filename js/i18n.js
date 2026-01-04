@@ -469,12 +469,12 @@
   "hi-Latn": "Kanooni Sahayata"
 },
 "legal.desc": {
-  it: "Supporto completo per pratiche legali e documentazione per stranieri.",
-  en: "Comprehensive support for legal procedures and foreign documentation.",
-  hi: "कानूनी प्रक्रियाओं और विदेशी दस्तावेज़ों के लिए पूर्ण सहायता।",
-  pa: "ਕਾਨੂੰਨੀ ਪ੍ਰਕਿਰਿਆਵਾਂ ਅਤੇ ਵਿਦੇਸ਼ੀ ਦਸਤਾਵੇਜ਼ਾਂ ਲਈ ਪੂਰੀ ਸਹਾਇਤਾ।",
-  "hi-Latn": "Kanooni prakriyaon aur videshi dastavezon ke liye poori sahayata."
-},
+  "it": "Assistenza legale per stranieri a Lecce: permesso di soggiorno, cittadinanza italiana, ricongiungimento familiare e pratiche Prefettura e Questura con supporto multilingua.",
+  "en": "Legal assistance for foreigners in Lecce: residence permits, Italian citizenship, family reunification, and Prefecture and Police Headquarters procedures with multilingual support.",
+  "hi": "लेच्चे में विदेशियों के लिए कानूनी सहायता: परमेसो दी सोजोर्नो, इतालवी नागरिकता, परिवार पुनर्मिलन और प्रीफेक्चुरा व क्वेस्टुरा से जुड़ी प्रक्रियाएँ, बहुभाषी सहायता के साथ।",
+  "pa": "ਲੇੱਚੇ ਵਿੱਚ ਵਿਦੇਸ਼ੀਆਂ ਲਈ ਕਾਨੂੰਨੀ ਸਹਾਇਤਾ: ਰਿਹਾਇਸ਼ ਪਰਮਿਟ, ਇਟਾਲੀਅਨ ਨਾਗਰਿਕਤਾ, ਪਰਿਵਾਰਕ ਮੁੜ ਮਿਲਾਪ ਅਤੇ ਪ੍ਰੀਫੈਕਚੁਰਾ ਤੇ ਕਵੇਸਟੂਰਾ ਦੀਆਂ ਪ੍ਰਕਿਰਿਆਵਾਂ, ਬਹੁਭਾਸ਼ੀ ਸਹਾਇਤਾ ਨਾਲ।",
+  "hi-Latn": "Lecce me videshiyon ke liye legal assistance: permesso di soggiorno, Italian citizenship, family reunification aur Prefettura aur Questura ki procedures, multilingual support ke saath."
+}
 "legal.seo": {
   "it": "L’Assistenza Legale Ali Per La Liberta a Lecce offre supporto per permesso di soggiorno, cittadinanza italiana, ricongiungimento familiare, invio PEC e pratiche legali dedicate anche ai cittadini stranieri.",
   "en": "Ali Per La Liberta provides legal assistance in Lecce for residence permits, Italian citizenship, family reunification, PEC services and legal documentation.",
