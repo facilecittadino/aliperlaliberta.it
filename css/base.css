@@ -125,3 +125,13 @@ select{ background:#fff; }
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
 }
+
+.seo-intro{
+  max-width: 900px;
+  margin: 12px auto 0;
+  padding: 0 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
