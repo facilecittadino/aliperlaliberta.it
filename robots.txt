@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aliperlaliber.it/sitemap.xml
+https://aliperlaliberta.it/robots.txt
