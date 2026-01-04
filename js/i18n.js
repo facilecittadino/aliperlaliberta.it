@@ -109,6 +109,14 @@
       "hi-Latn": "Menu band karein"
     },
 
+    "services.caf.desc": {
+  it: "Ti aiutiamo con tutte le pratiche fiscali come dichiarazione dei redditi, ISEE, Modello 730 e altre procedure tributarie, in modo semplice e veloce.",
+  en: "We help you with all tax procedures such as income tax returns, ISEE, Form 730 and other tax-related processes, in a simple and fast way.",
+  hi: "हम आयकर रिटर्न, ISEE, मॉडल 730 और अन्य कर संबंधी प्रक्रियाओं में सरल और तेज़ सहायता प्रदान करते हैं।",
+  pa: "ਅਸੀਂ ਆਮਦਨੀ ਕਰ ਰਿਟਰਨ, ISEE, ਮਾਡਲ 730 ਅਤੇ ਹੋਰ ਕਰ ਸੰਬੰਧੀ ਕਾਰਵਾਈਆਂ ਵਿੱਚ ਸੌਖੀ ਅਤੇ ਤੇਜ਼ ਮਦਦ ਕਰਦੇ ਹਾਂ।",
+  "hi-Latn": "Hum income tax return, ISEE, Model 730 aur anya tax related processes me simple aur fast madad karte hain."
+},
+
     // Services (6)
     "services.caf.title": {
       it: "CAF (Centro di Assistenza Fiscale)",
