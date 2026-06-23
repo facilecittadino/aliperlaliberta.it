@@ -10,11 +10,11 @@
 
   // Public languages (also reused by welcome.js if needed)
   const LANGS = Object.freeze({
-    it: "Italiano",
-    en: "English",
-    pa: "ਪੰਜਾਬੀ",
-    hi: "हिन्दी",
-    "hi-Latn": "Hinglish"
+    it: "🇮🇹 Italiano",
+    en: "🇬🇧 English",
+    pa: "🇮🇳 ਪੰਜਾਬੀ",
+    hi: "🇮🇳 हिन्दी",
+    "hi-Latn": "🇮🇳 Hinglish"
   });
 
   // ---------------------------
@@ -107,6 +107,138 @@
       pa: "ਮੇਨੂ ਬੰਦ ਕਰੋ",
       hi: "मेन्यू बंद करें",
       "hi-Latn": "Menu band karein"
+    },
+
+    // Homepage istituzionale
+    "home.eyebrow": {
+      it: "Associazione a Lecce", en: "Organization in Lecce",
+      pa: "ਲੇੱਚੇ ਵਿੱਚ ਸੰਸਥਾ", hi: "लेच्चे में संगठन",
+      "hi-Latn": "Lecce mein organization"
+    },
+    "home.title": {
+      it: "Ogni persona merita di sentirsi ascoltata, orientata e libera.",
+      en: "Everyone deserves to feel heard, guided and free.",
+      pa: "ਹਰ ਵਿਅਕਤੀ ਸੁਣੇ ਜਾਣ, ਸਹੀ ਰਾਹ ਪਾਉਣ ਅਤੇ ਆਜ਼ਾਦ ਮਹਿਸੂਸ ਕਰਨ ਦਾ ਹੱਕਦਾਰ ਹੈ।",
+      hi: "हर व्यक्ति सुने जाने, सही मार्ग पाने और स्वतंत्र महसूस करने का हकदार है।",
+      "hi-Latn": "Har vyakti sune jaane, sahi raasta paane aur azaad mehsoos karne ka haqdar hai."
+    },
+    "home.lead": {
+      it: "Ali Per La Libertà è un punto di riferimento per cittadini italiani e stranieri. Aiutiamo le persone a comprendere documenti, diritti e opportunità, offrendo un sostegno concreto e accessibile.",
+      en: "Ali Per La Libertà supports Italian and foreign citizens. We help people understand documents, rights and opportunities through practical, accessible guidance.",
+      pa: "Ali Per La Libertà ਇਤਾਲਵੀ ਅਤੇ ਵਿਦੇਸ਼ੀ ਨਾਗਰਿਕਾਂ ਲਈ ਇੱਕ ਸਹਾਰਾ ਹੈ। ਅਸੀਂ ਦਸਤਾਵੇਜ਼ਾਂ, ਹੱਕਾਂ ਅਤੇ ਮੌਕਿਆਂ ਨੂੰ ਸਮਝਣ ਵਿੱਚ ਸੌਖੀ ਅਤੇ ਅਮਲੀ ਮਦਦ ਕਰਦੇ ਹਾਂ।",
+      hi: "Ali Per La Libertà इतालवी और विदेशी नागरिकों के लिए एक सहारा है। हम दस्तावेज़, अधिकार और अवसर समझने में सरल और व्यावहारिक सहायता देते हैं।",
+      "hi-Latn": "Ali Per La Libertà Italian aur videshi nagrikon ke liye ek sahara hai. Hum documents, rights aur opportunities samajhne mein simple aur practical madad dete hain."
+    },
+    "home.cta.about": {
+      it: "Conosci l’associazione", en: "Meet the organization",
+      pa: "ਸੰਸਥਾ ਬਾਰੇ ਜਾਣੋ", hi: "संगठन के बारे में जानें",
+      "hi-Latn": "Organization ko janiye"
+    },
+    "home.cta.services": {
+      it: "Scopri come possiamo aiutarti", en: "See how we can help",
+      pa: "ਵੇਖੋ ਅਸੀਂ ਕਿਵੇਂ ਮਦਦ ਕਰ ਸਕਦੇ ਹਾਂ", hi: "जानें हम कैसे मदद कर सकते हैं",
+      "hi-Latn": "Dekhein hum kaise madad kar sakte hain"
+    },
+    "home.mission.eyebrow": {
+      it: "La nostra missione", en: "Our mission",
+      pa: "ਸਾਡਾ ਮਕਸਦ", hi: "हमारा उद्देश्य", "hi-Latn": "Hamara mission"
+    },
+    "home.mission.title": {
+      it: "Ridurre le distanze tra le persone e i loro diritti.",
+      en: "Bringing people closer to their rights.",
+      pa: "ਲੋਕਾਂ ਅਤੇ ਉਨ੍ਹਾਂ ਦੇ ਹੱਕਾਂ ਵਿਚਲੀ ਦੂਰੀ ਘਟਾਉਣਾ।",
+      hi: "लोगों और उनके अधिकारों के बीच की दूरी कम करना।",
+      "hi-Latn": "Logon aur unke rights ke beech ki doori kam karna."
+    },
+    "home.mission.text": {
+      it: "La burocrazia, la lingua o la mancanza di informazioni non dovrebbero lasciare nessuno indietro. Per questo rendiamo semplici anche i percorsi più complessi.",
+      en: "Bureaucracy, language or lack of information should leave no one behind. That is why we make even complex processes easier to understand.",
+      pa: "ਕਾਗਜ਼ੀ ਕਾਰਵਾਈ, ਭਾਸ਼ਾ ਜਾਂ ਜਾਣਕਾਰੀ ਦੀ ਘਾਟ ਕਿਸੇ ਨੂੰ ਪਿੱਛੇ ਨਹੀਂ ਛੱਡਣੀ ਚਾਹੀਦੀ। ਇਸ ਲਈ ਅਸੀਂ ਔਖੀਆਂ ਪ੍ਰਕਿਰਿਆਵਾਂ ਨੂੰ ਵੀ ਸੌਖਾ ਬਣਾਉਂਦੇ ਹਾਂ।",
+      hi: "कागज़ी प्रक्रिया, भाषा या जानकारी की कमी किसी को पीछे नहीं छोड़नी चाहिए। इसलिए हम जटिल प्रक्रियाओं को भी आसान बनाते हैं।",
+      "hi-Latn": "Bureaucracy, language ya information ki kami kisi ko peeche nahi chhodni chahiye. Isliye hum mushkil processes ko bhi simple banate hain."
+    },
+    "home.value.listen.title": {
+      it: "Ascolto", en: "Listening", pa: "ਸੁਣਨਾ", hi: "सुनना", "hi-Latn": "Sunna"
+    },
+    "home.value.listen.text": {
+      it: "Partiamo dalla storia e dalle necessità reali di ogni persona, senza giudizio e con rispetto.",
+      en: "We begin with each person’s story and real needs, with respect and without judgment.",
+      pa: "ਅਸੀਂ ਹਰ ਵਿਅਕਤੀ ਦੀ ਕਹਾਣੀ ਅਤੇ ਅਸਲ ਲੋੜਾਂ ਤੋਂ, ਬਿਨਾਂ ਕਿਸੇ ਫੈਸਲੇ ਅਤੇ ਆਦਰ ਨਾਲ ਸ਼ੁਰੂ ਕਰਦੇ ਹਾਂ।",
+      hi: "हम हर व्यक्ति की कहानी और वास्तविक जरूरतों से, सम्मान और बिना किसी निर्णय के शुरुआत करते हैं।",
+      "hi-Latn": "Hum har vyakti ki kahani aur asli zarooraton se, bina judgment aur respect ke saath shuru karte hain."
+    },
+    "home.value.clarity.title": {
+      it: "Chiarezza", en: "Clarity", pa: "ਸਪਸ਼ਟਤਾ", hi: "स्पष्टता", "hi-Latn": "Saaf jaankari"
+    },
+    "home.value.clarity.text": {
+      it: "Spieghiamo procedure e possibilità con parole comprensibili, anche in più lingue.",
+      en: "We explain procedures and options in clear language, including multilingual support.",
+      pa: "ਅਸੀਂ ਪ੍ਰਕਿਰਿਆਵਾਂ ਅਤੇ ਵਿਕਲਪਾਂ ਨੂੰ ਸੌਖੇ ਸ਼ਬਦਾਂ ਅਤੇ ਕਈ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਸਮਝਾਉਂਦੇ ਹਾਂ।",
+      hi: "हम प्रक्रियाओं और विकल्पों को आसान शब्दों और कई भाषाओं में समझाते हैं।",
+      "hi-Latn": "Hum procedures aur options ko simple words aur kai languages mein samjhate hain."
+    },
+    "home.value.action.title": {
+      it: "Sostegno concreto", en: "Practical support",
+      pa: "ਅਮਲੀ ਸਹਾਇਤਾ", hi: "व्यावहारिक सहायता", "hi-Latn": "Practical support"
+    },
+    "home.value.action.text": {
+      it: "Accompagniamo le persone nei passaggi necessari, dalla prima domanda fino alla soluzione.",
+      en: "We guide people through every necessary step, from the first question to the solution.",
+      pa: "ਅਸੀਂ ਪਹਿਲੇ ਸਵਾਲ ਤੋਂ ਹੱਲ ਤੱਕ ਹਰ ਲੋੜੀਂਦੇ ਕਦਮ ਵਿੱਚ ਲੋਕਾਂ ਦਾ ਸਾਥ ਦਿੰਦੇ ਹਾਂ।",
+      hi: "हम पहले सवाल से समाधान तक हर जरूरी कदम में लोगों का साथ देते हैं।",
+      "hi-Latn": "Hum pehle sawal se solution tak har zaroori step mein logon ka saath dete hain."
+    },
+    "home.story.title": {
+      it: "Un luogo vicino alle persone, aperto alle differenze.",
+      en: "A place close to people and open to differences.",
+      pa: "ਲੋਕਾਂ ਦੇ ਨੇੜੇ ਅਤੇ ਵੱਖਰਪਨ ਲਈ ਖੁੱਲ੍ਹੀ ਥਾਂ।",
+      hi: "लोगों के करीब और विविधता के लिए खुली जगह।",
+      "hi-Latn": "Logon ke kareeb aur differences ke liye open jagah."
+    },
+    "home.story.text": {
+      it: "Ali Per La Libertà nasce per creare autonomia, inclusione e fiducia. Mettiamo in relazione persone, servizi e competenze, affinché ciascuno possa partecipare pienamente alla vita sociale e costruire il proprio futuro con maggiore serenità.",
+      en: "Ali Per La Libertà exists to build independence, inclusion and trust. We connect people with services and expertise so everyone can participate fully in society and build their future with greater confidence.",
+      pa: "Ali Per La Libertà ਖੁਦਮੁਖਤਿਆਰੀ, ਸ਼ਮੂਲੀਅਤ ਅਤੇ ਭਰੋਸਾ ਬਣਾਉਣ ਲਈ ਕੰਮ ਕਰਦੀ ਹੈ। ਅਸੀਂ ਲੋਕਾਂ ਨੂੰ ਸੇਵਾਵਾਂ ਅਤੇ ਮਾਹਿਰਤਾ ਨਾਲ ਜੋੜਦੇ ਹਾਂ ਤਾਂ ਜੋ ਹਰ ਕੋਈ ਸਮਾਜ ਵਿੱਚ ਪੂਰੀ ਤਰ੍ਹਾਂ ਸ਼ਾਮਲ ਹੋ ਸਕੇ।",
+      hi: "Ali Per La Libertà आत्मनिर्भरता, समावेश और विश्वास बनाने के लिए काम करता है। हम लोगों को सेवाओं और विशेषज्ञता से जोड़ते हैं ताकि हर कोई समाज में पूरी तरह भाग ले सके।",
+      "hi-Latn": "Ali Per La Libertà independence, inclusion aur trust banane ke liye kaam karta hai. Hum logon ko services aur expertise se jodte hain."
+    },
+    "home.services.eyebrow": {
+      it: "Come ti aiutiamo", en: "How we help",
+      pa: "ਅਸੀਂ ਕਿਵੇਂ ਮਦਦ ਕਰਦੇ ਹਾਂ", hi: "हम कैसे मदद करते हैं", "hi-Latn": "Hum kaise madad karte hain"
+    },
+    "home.services.title": {
+      it: "Orientamento e assistenza, quando servono davvero.",
+      en: "Guidance and assistance when they truly matter.",
+      pa: "ਸਹੀ ਸਮੇਂ ਮਾਰਗਦਰਸ਼ਨ ਅਤੇ ਸਹਾਇਤਾ।",
+      hi: "सही समय पर मार्गदर्शन और सहायता।",
+      "hi-Latn": "Sahi samay par guidance aur assistance."
+    },
+    "home.services.text": {
+      it: "Il nostro lavoro comprende assistenza fiscale, previdenziale e legale. Ti aiutiamo a capire qual è il percorso più adatto alla tua situazione.",
+      en: "Our work includes tax, welfare and legal assistance. We help you understand the best path for your situation.",
+      pa: "ਸਾਡੇ ਕੰਮ ਵਿੱਚ ਟੈਕਸ, ਸਮਾਜਿਕ ਸੁਰੱਖਿਆ ਅਤੇ ਕਾਨੂੰਨੀ ਸਹਾਇਤਾ ਸ਼ਾਮਲ ਹੈ। ਅਸੀਂ ਤੁਹਾਡੀ ਸਥਿਤੀ ਲਈ ਸਹੀ ਰਾਹ ਸਮਝਣ ਵਿੱਚ ਮਦਦ ਕਰਦੇ ਹਾਂ।",
+      hi: "हमारा काम कर, सामाजिक सुरक्षा और कानूनी सहायता को शामिल करता है। हम आपकी स्थिति के लिए सही रास्ता समझने में मदद करते हैं।",
+      "hi-Latn": "Hamare kaam mein tax, welfare aur legal assistance shamil hai. Hum aapki situation ke liye sahi raasta samajhne mein madad karte hain."
+    },
+    "home.services.link": {
+      it: "Approfondisci →", en: "Learn more →",
+      pa: "ਹੋਰ ਜਾਣੋ →", hi: "और जानें →", "hi-Latn": "Aur janiye →"
+    },
+    "home.contact.title": {
+      it: "Non sai da dove iniziare?", en: "Not sure where to begin?",
+      pa: "ਪਤਾ ਨਹੀਂ ਕਿੱਥੋਂ ਸ਼ੁਰੂ ਕਰਨਾ ਹੈ?", hi: "समझ नहीं आ रहा कहाँ से शुरू करें?",
+      "hi-Latn": "Samajh nahi aa raha kahan se shuru karein?"
+    },
+    "home.contact.text": {
+      it: "Raccontaci brevemente la tua necessità. Ti ascolteremo e ti indicheremo il servizio o il percorso più adatto.",
+      en: "Tell us briefly what you need. We will listen and point you toward the most suitable service or path.",
+      pa: "ਸਾਨੂੰ ਸੰਖੇਪ ਵਿੱਚ ਆਪਣੀ ਲੋੜ ਦੱਸੋ। ਅਸੀਂ ਸੁਣਾਂਗੇ ਅਤੇ ਤੁਹਾਨੂੰ ਸਭ ਤੋਂ ਢੁਕਵੀਂ ਸੇਵਾ ਜਾਂ ਰਾਹ ਦੱਸਾਂਗੇ।",
+      hi: "हमें संक्षेप में अपनी जरूरत बताएं। हम सुनेंगे और आपको सबसे उपयुक्त सेवा या रास्ता बताएंगे।",
+      "hi-Latn": "Humein short mein apni zaroorat batayein. Hum sunenge aur sabse suitable service ya raasta batayenge."
+    },
+    "home.contact.cta": {
+      it: "Parla con noi", en: "Talk to us",
+      pa: "ਸਾਡੇ ਨਾਲ ਗੱਲ ਕਰੋ", hi: "हमसे बात करें", "hi-Latn": "Humse baat karein"
     },
 
     "services.caf.desc": {
@@ -278,12 +410,39 @@
       pa: "ਸਮਾਂ: ਸੋਮ–ਸ਼ੁਕਰ 08:30–13:30 · 16:30–19:30",
       "hi-Latn": "Samay: Som–Shukr 08:30–13:30 · 16:30–19:30"
     },
+    "footer.hours.label": {
+      it: "Orari:", en: "Hours:", hi: "समय:", pa: "ਸਮਾਂ:", "hi-Latn": "Samay:"
+    },
+    "footer.hours.value": {
+      it: "Lun–Ven 08:30–13:30 · 16:30–19:30",
+      en: "Mon–Fri 08:30–13:30 · 16:30–19:30",
+      hi: "सोमवार–शुक्रवार 08:30–13:30 · 16:30–19:30",
+      pa: "ਸੋਮ–ਸ਼ੁਕਰ 08:30–13:30 · 16:30–19:30",
+      "hi-Latn": "Som–Shukr 08:30–13:30 · 16:30–19:30"
+    },
     "footer.openwith": {
       it: "Apri con",
       en: "Open with",
       hi: "इसके साथ खोलें",
       pa: "ਇਸ ਨਾਲ ਖੋਲ੍ਹੋ",
       "hi-Latn": "Iske sath kholo"
+    },
+    "footer.maps.openwith": {
+      it: "Apri con…", en: "Open with…", hi: "इसके साथ खोलें…",
+      pa: "ਇਸ ਨਾਲ ਖੋਲ੍ਹੋ…", "hi-Latn": "Iske sath kholo…"
+    },
+    "footer.maps.google": {
+      it: "Google Maps", en: "Google Maps", hi: "Google Maps",
+      pa: "Google Maps", "hi-Latn": "Google Maps"
+    },
+    "footer.maps.apple": {
+      it: "Apple Maps", en: "Apple Maps", hi: "Apple Maps",
+      pa: "Apple Maps", "hi-Latn": "Apple Maps"
+    },
+    "footer.maps.remember": {
+      it: "Ricorda la scelta", en: "Remember my choice",
+      hi: "मेरी पसंद याद रखें", pa: "ਮੇਰੀ ਚੋਣ ਯਾਦ ਰੱਖੋ",
+      "hi-Latn": "Meri choice yaad rakhein"
     },
     "footer.title.legal": {
       it: "Legale",
@@ -326,6 +485,18 @@
       hi: "© 2025 AliPerLaLiberta — सर्वाधिकार सुरक्षित.",
       pa: "© 2025 AliPerLaLiberta — ਸਾਰੇ ਹੱਕ ਰਾਖਵੇਂ ਹਨ।",
       "hi-Latn": "© 2025 AliPerLaLiberta — Sabhi Adhikaar Surakshit."
+    },
+    "footer.copyright": {
+      it: "© 2026 Ali Per La Libertà — Tutti i diritti riservati.",
+      en: "© 2026 Ali Per La Libertà — All rights reserved.",
+      hi: "© 2026 Ali Per La Libertà — सर्वाधिकार सुरक्षित।",
+      pa: "© 2026 Ali Per La Libertà — ਸਾਰੇ ਹੱਕ ਰਾਖਵੇਂ ਹਨ।",
+      "hi-Latn": "© 2026 Ali Per La Libertà — Sabhi adhikaar surakshit."
+    },
+    "footer.piva": {
+      it: "C.F: 93173080750", en: "Tax code: 93173080750",
+      hi: "टैक्स कोड: 93173080750", pa: "ਟੈਕਸ ਕੋਡ: 93173080750",
+      "hi-Latn": "Tax code: 93173080750"
     },
     // ================================
 // CAF Page — i18n dictionary block

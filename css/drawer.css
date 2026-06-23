@@ -75,11 +75,14 @@
 
 /* ===== Language selector inside drawer ===== */
 .lang-mobile{
-  padding: 8px 10px;
-  border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.12);
-  font-weight: 600;
-  background: #fff;
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 40px 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(10,46,92,.16);
+  color: var(--primary-ink);
+  font-weight: 700;
+  background-color: #f5f9fe;
 }
 
 /* ===== Motion preference ===== */
