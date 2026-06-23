@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- TITLE -->
-  <title>Ali Per La Liberta (APLL) — CAF & Patronato a Lecce</title>
+  <title>Ali Per La Libertà — Associazione e servizi per le persone a Lecce</title>
 
   <!-- DESCRIPTION -->
   <meta
     name="description"
-    content="Ali Per La Liberta (APLL) is a CAF & Patronato service center in Lecce, Italy. We provide CAF tax assistance, Patronato support, legal assistance, training courses, website creation, and tickets & E-Visa support."
+    content="Ali Per La Libertà è un’associazione a Lecce che orienta e sostiene cittadini italiani e stranieri nell’accesso a diritti, documenti e servizi."
   />
 
   <!-- KEYWORDS -->
@@ -46,10 +46,10 @@
         <meta name="theme-color" content="#0b3c5d">
           <!-- OPEN GRAPH -->
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="APLL CAF & Patronato Lecce — Ali Per La Liberta" />
+          <meta property="og:title" content="Ali Per La Libertà — Vicini alle persone, aperti alle differenze" />
           <meta
             property="og:description"
-            content="Official APLL CAF & Patronato services in Lecce, Italy."
+            content="Orientamento e sostegno concreto per cittadini italiani e stranieri a Lecce."
           />
   <meta property="og:url" content="https://aliperlaliberta.it/" />
   <meta property="og:image" content="/512x512.jpg" />
@@ -58,10 +58,10 @@
 
   <!-- TWITTER -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="APLL CAF & Patronato Lecce" />
+  <meta name="twitter:title" content="Ali Per La Libertà — Associazione a Lecce" />
   <meta
     name="twitter:description"
-    content="Ali Per La Liberta offers CAF & Patronato services in Lecce."
+    content="Aiutiamo le persone a comprendere documenti, diritti e opportunità."
   />
   <meta name="twitter:image" content="/512x512.jpg" />
 
@@ -181,6 +181,12 @@
 
         <!-- Right: Hamburger (hidden ≥ 992px via CSS) -->
         <div class="nav-right" style="display:flex; align-items:center; gap:10px;">
+          <label for="langSelectTopMobile" class="sr-only">Seleziona lingua</label>
+          <select
+            id="langSelectTopMobile"
+            class="lang-select lang-top-mobile"
+            aria-label="Seleziona lingua">
+          </select>
           <button class="menu-toggle" id="menuToggle"
                   aria-label="Open menu" aria-controls="mobileDrawer"
                   aria-expanded="false">
@@ -248,148 +254,100 @@
     </aside>
 
     <!-- Main Content -->
-    <main id="main" class="content" role="main">
-      <p class="seo-intro">
-  Ali Per La Liberta (APLL) is a CAF & Patronato service center in Lecce, Italy.
-</p>
-
-      <!-- Hero 1 — CAF -->
-      <section class="hero">
-        <div class="hero-card">
-          <h1 data-i18n="services.caf.title">CAF (Centro di Assistenza Fiscale)</h1>
-          <p data-i18n="services.caf.desc">
-            Ti aiutiamo con tutte le pratiche fiscali come dichiarazione dei redditi, ISEE, modelli 730, e altre procedure tributarie, in modo semplice e veloce.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="caf/" data-i18n="hero.cta.discover">Scopri il servizio</a>
-            <a class="btn btn-outline"
-               href="#"
-               data-share
-               data-share-url="caf/"
-               data-share-title="CAF (Centro di Assistenza Fiscale)"
-               data-share-text="Ti aiutiamo con tutte le pratiche fiscali in modo semplice e veloce."
-               data-i18n="hero.cta.share">
-              Condividi
-            </a>
+    <main id="main" class="content home-content" role="main">
+      <div class="home-shell">
+        <section class="home-intro" aria-labelledby="homeTitle">
+          <div>
+            <span class="home-eyebrow" data-i18n="home.eyebrow">Associazione a Lecce</span>
+            <h1 id="homeTitle" data-i18n="home.title">Ogni persona merita di sentirsi ascoltata, orientata e libera.</h1>
+            <p class="home-lead" data-i18n="home.lead">
+              Ali Per La Libertà è un punto di riferimento per cittadini italiani e stranieri. Aiutiamo le persone a comprendere documenti, diritti e opportunità, offrendo un sostegno concreto e accessibile.
+            </p>
+            <div class="home-intro-actions">
+              <a class="btn btn-primary" href="#chi-siamo" data-i18n="home.cta.about">Conosci l’associazione</a>
+              <a class="btn btn-outline" href="#servizi" data-i18n="home.cta.services">Scopri come possiamo aiutarti</a>
+            </div>
           </div>
-        </div>
-      </section>
-
-      <!-- Hero 2 — Patronato -->
-      <section class="hero">
-        <div class="hero-card">
-          <h2 data-i18n="services.patronato.title">Patronato</h2>
-          <p data-i18n="services.patronato.desc">
-            Offriamo supporto per pensioni, indennità, disoccupazione e altre pratiche previdenziali o assistenziali con consulenza personalizzata.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="patronato/" data-i18n="hero.cta.discover">Scopri il servizio</a>
-            <a class="btn btn-outline"
-               href="#"
-               data-share
-               data-share-url="patronato/"
-               data-share-title="Patronato"
-               data-share-text="Supporto per pensioni, indennità e pratiche assistenziali con consulenza personalizzata."
-               data-i18n="hero.cta.share">
-              Condividi
-            </a>
+          <div class="home-mark" aria-hidden="true">
+            <img src="logo.png" alt="" />
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Hero 3 — Assistenza Legale -->
-      <section class="hero">
-        <div class="hero-card">
-          <h3 data-i18n="services.legal.title">Assistenza Legale / Supporto</h3>
-          <p data-i18n="services.legal.desc">
-            Un aiuto legale chiaro e accessibile per contratti, documenti, vertenze o problemi legati ai diritti del lavoro e civili.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="legalassistance/" data-i18n="hero.cta.discover">Scopri il servizio</a>
-            <a class="btn btn-outline"
-               href="#"
-               data-share
-               data-share-url="legalassistance/"
-               data-share-title="Assistenza Legale / Supporto"
-               data-share-text="Aiuto legale chiaro e accessibile per contratti e diritti del lavoro."
-               data-i18n="hero.cta.share">
-              Condividi
-            </a>
+        <section class="home-section" id="chi-siamo" aria-labelledby="missionTitle">
+          <div class="home-section-heading">
+            <span class="home-eyebrow" data-i18n="home.mission.eyebrow">La nostra missione</span>
+            <h2 id="missionTitle" data-i18n="home.mission.title">Ridurre le distanze tra le persone e i loro diritti.</h2>
+            <p data-i18n="home.mission.text">
+              La burocrazia, la lingua o la mancanza di informazioni non dovrebbero lasciare nessuno indietro. Per questo rendiamo semplici anche i percorsi più complessi.
+            </p>
           </div>
-        </div>
-      </section>
 
-      <!-- Hero 4 — Corsi di Formazione -->
-      <section class="hero">
-        <div class="hero-card">
-          <h4 data-i18n="services.corsi.title">Corsi di Formazione</h4>
-          <p data-i18n="services.corsi.desc">
-            Corsi professionali e aggiornamenti formativi per migliorare le competenze e trovare nuove opportunità di lavoro.
-          </p>
-          <div class="hero-actions">
-            <!-- <a class="btn btn-primary" href="corsiformazione/" data-i18n="hero.cta.discover">Scopri il servizio</a> -->
-            <button class="btn btn-caf-primary js-reservation-btn" data-service="Training Courses" data-i18n="hero.cta.discover">Prenota ora</button>
-            <a class="btn btn-outline"
-               href="#"
-               data-share
-               data-share-url="https://aliperlaliberta.it"
-               data-share-title="Corsi di Formazione"
-               data-share-text="Corsi professionali e aggiornamenti per nuove opportunità di lavoro."
-               data-i18n="hero.cta.share">
-              Condividi
-            </a>
+          <div class="home-values">
+            <article class="home-value">
+              <span class="home-value-number">01</span>
+              <h3 data-i18n="home.value.listen.title">Ascolto</h3>
+              <p data-i18n="home.value.listen.text">Partiamo dalla storia e dalle necessità reali di ogni persona, senza giudizio e con rispetto.</p>
+            </article>
+            <article class="home-value">
+              <span class="home-value-number">02</span>
+              <h3 data-i18n="home.value.clarity.title">Chiarezza</h3>
+              <p data-i18n="home.value.clarity.text">Spieghiamo procedure e possibilità con parole comprensibili, anche in più lingue.</p>
+            </article>
+            <article class="home-value">
+              <span class="home-value-number">03</span>
+              <h3 data-i18n="home.value.action.title">Sostegno concreto</h3>
+              <p data-i18n="home.value.action.text">Accompagniamo le persone nei passaggi necessari, dalla prima domanda fino alla soluzione.</p>
+            </article>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Hero 5 — Creazione Siti Web -->
-      <section class="hero">
-        <div class="hero-card">
-          <h5 data-i18n="services.web.title">Creazione Siti Web</h5>
-          <p data-i18n="services.web.desc">
-            Realizziamo siti web professionali e moderni per aziende, freelance o piccoli business, curando design e funzionalità.
-          </p>
-          <div class="hero-actions">
-            <!-- <a class="btn btn-primary" href="creazionesiti/" data-i18n="hero.cta.discover">Scopri il servizio</a> -->
-            <button class="btn btn-caf-primary js-reservation-btn" data-service="Website Creation" data-i18n="hero.cta.discover">Prenota ora</button>
-            
-            <a class="btn btn-outline"
-               href="#"
-               data-share
-               
-               data-share-url="https://aliperlaliberta.it/"
-               data-share-title="Creazione Siti Web"
-               data-share-text="Realizziamo siti web moderni per aziende e professionisti."
-               data-i18n="hero.cta.share">
-              Condividi
-            </a>
+        <section class="home-section" aria-labelledby="storyTitle">
+          <div class="home-story">
+            <h2 id="storyTitle" data-i18n="home.story.title">Un luogo vicino alle persone, aperto alle differenze.</h2>
+            <p data-i18n="home.story.text">
+              Ali Per La Libertà nasce per creare autonomia, inclusione e fiducia. Mettiamo in relazione persone, servizi e competenze, affinché ciascuno possa partecipare pienamente alla vita sociale e costruire il proprio futuro con maggiore serenità.
+            </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Hero 6 — Biglietti & E-Visa -->
-      <section class="hero">
-        <div class="hero-card">
-          <h6 data-i18n="services.biglietti.title">Biglietti & E-Visa Supporto</h6>
-          <p data-i18n="services.biglietti.desc">
-            Prenotazioni per treni, autobus e aerei. Aiuto anche per ottenere eVisa per chi viaggia all’estero in modo rapido e sicuro.
-          </p>
-          <div class="hero-actions">
-            <!-- <a class="btn btn-primary" href="biglietti/" data-i18n="hero.cta.discover">Scopri il servizio</a> -->
-            <button class="btn btn-caf-primary js-reservation-btn" data-service="Tickets & E-Visa Support" data-i18n="hero.cta.discover">Prenota ora</button>
-            <a class="btn btn-outline"
-               href="#"
-               data-share
-               data-share-url="https://aliperlaliberta.it"
-               data-share-title="Biglietti & E-Visa Supporto"
-               data-share-text="Prenotazioni per treni, bus, aerei e assistenza per eVisa internazionali."
-               data-i18n="hero.cta.share">
-              Condividi
-            </a>
+        <section class="home-section" id="servizi" aria-labelledby="servicesTitle">
+          <div class="home-section-heading">
+            <span class="home-eyebrow" data-i18n="home.services.eyebrow">Come ti aiutiamo</span>
+            <h2 id="servicesTitle" data-i18n="home.services.title">Orientamento e assistenza, quando servono davvero.</h2>
+            <p data-i18n="home.services.text">
+              Il nostro lavoro comprende assistenza fiscale, previdenziale e legale. Ti aiutiamo a capire qual è il percorso più adatto alla tua situazione.
+            </p>
           </div>
-        </div>
-      </section>
 
+          <div class="home-services">
+            <article class="home-service">
+              <h3 data-i18n="services.caf.title">CAF</h3>
+              <p data-i18n="services.caf.desc">Assistenza per ISEE, dichiarazioni dei redditi e pratiche fiscali.</p>
+              <a href="/caf/" data-i18n="home.services.link">Approfondisci →</a>
+            </article>
+            <article class="home-service">
+              <h3 data-i18n="services.patronato.title">Patronato</h3>
+              <p data-i18n="services.patronato.desc">Supporto per pensioni, indennità, disoccupazione e pratiche assistenziali.</p>
+              <a href="/patronato/" data-i18n="home.services.link">Approfondisci →</a>
+            </article>
+            <article class="home-service">
+              <h3 data-i18n="services.legal.title">Assistenza legale</h3>
+              <p data-i18n="services.legal.desc">Aiuto accessibile per documenti, immigrazione e tutela dei diritti.</p>
+              <a href="/legalassistance/" data-i18n="home.services.link">Approfondisci →</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="home-section" aria-labelledby="contactTitle">
+          <div class="home-contact">
+            <div>
+              <h2 id="contactTitle" data-i18n="home.contact.title">Non sai da dove iniziare?</h2>
+              <p data-i18n="home.contact.text">Raccontaci brevemente la tua necessità. Ti ascolteremo e ti indicheremo il servizio o il percorso più adatto.</p>
+            </div>
+            <a class="btn btn-primary" href="mailto:apll.lecce@gmail.com" data-i18n="home.contact.cta">Parla con noi</a>
+          </div>
+        </section>
+      </div>
     </main>
 
     <!-- ===== Site Footer (Contacts + Legal) ===== -->

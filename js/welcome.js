@@ -6,11 +6,11 @@
   const EXPIRY_MS   = (window.APP_CONFIG?.EXPIRY_MS) ?? (60 * 60 * 1000);
 
   const FALLBACK_LANGS = {
-    it: "Italiano",
-    en: "English",
-    pa: "ਪੰਜਾਬੀ",
-    hi: "हिन्दी",
-    "hi-Latn": "Hinglish"
+    it: "🇮🇹 Italiano",
+    en: "🇬🇧 English",
+    pa: "🇮🇳 ਪੰਜਾਬੀ",
+    hi: "🇮🇳 हिन्दी",
+    "hi-Latn": "🇮🇳 Hinglish"
   };
 
   // -------- storage (expiry-aware) --------
@@ -56,12 +56,6 @@
     selectEl.dataset.populated = "true";
   }
 
-  function guessBrowserLang(langs) {
-    const nav = (navigator.language || "it").toLowerCase();
-    const codes = Object.keys(langs);
-    return codes.find(c => nav === c || nav.startsWith(c + "-")) || "it";
-  }
-
   function syncAllSelectors(lang) {
     document.querySelectorAll("select.lang-select").forEach(sel => {
       if (!sel.dataset.populated) populateSelect(sel, getLangs());
@@ -98,29 +92,17 @@
       return;
     }
 
-    const LANGS = getLangs();
-    populateSelect(selectEl, LANGS);
-    const initial = guessBrowserLang(LANGS);
-    selectEl.value = initial;
+    // New visitors enter directly in Italian. The language can always
+    // be changed from the selector in the top navigation.
+    const initial = "it";
+    setLangWithExpiry(initial, EXPIRY_MS);
+    hideOverlayNow(overlay);
 
-    showOverlay(overlay);
-    syncAllSelectors(initial);
-
-    btn.setAttribute("type", "button");
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const chosen = selectEl.value || "it";
-      setLangWithExpiry(chosen, EXPIRY_MS);
-
-      // apply immediately via LanguageSelector if present
-      if (window.LanguageSelector && typeof window.LanguageSelector.set === "function") {
-        window.LanguageSelector.set(chosen, EXPIRY_MS);
-      } else {
-        document.dispatchEvent(new CustomEvent("language:change", { detail: { lang: chosen } }));
-      }
-
-      hideOverlayNow(overlay);
-    }, { once: true });
+    if (window.LanguageSelector && typeof window.LanguageSelector.set === "function") {
+      window.LanguageSelector.set(initial, EXPIRY_MS);
+    } else {
+      document.dispatchEvent(new CustomEvent("language:change", { detail: { lang: initial } }));
+    }
   }
 
   if (document.readyState === "loading") {

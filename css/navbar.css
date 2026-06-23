@@ -80,11 +80,20 @@
 
 /* Language selector styling (shared) */
 .lang-select{
-  padding: 8px 10px;
-  border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.12);
-  font-weight: 600;
-  background: #fff;
+  min-height: 42px;
+  padding: 8px 36px 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(10,46,92,.16);
+  color: var(--primary-ink);
+  font-weight: 700;
+  background-color: #f5f9fe;
+  box-shadow: 0 4px 14px rgba(10,46,92,.07);
+  cursor: pointer;
+  transition: border-color .15s ease, background-color .15s ease, box-shadow .15s ease;
+}
+.lang-select:hover{
+  border-color: rgba(11,94,215,.35);
+  background-color: #fff;
 }
 .lang-select:focus-visible{
   outline: 2px solid var(--ring);
@@ -94,6 +103,13 @@
 /* Visibility control for selectors */
 .lang-desktop{ display: none; }   /* mobile: hide navbar selector */
 .lang-mobile { display: block; }  /* mobile: show drawer selector */
+.lang-top-mobile{
+  display: block;
+  width: 58px;
+  max-width: 58px;
+  padding: 8px 18px 8px 8px;
+  font-size: 16px;
+}
 
 /* Hamburger button (mobile) */
 .menu-toggle{
@@ -180,4 +196,5 @@
   /* Language selector only in navbar on desktop */
   .lang-desktop{ display: inline-block; }
   .lang-mobile { display: none; }
+  .lang-top-mobile{ display: none; }
 }
