@@ -147,3 +147,29 @@
 .btn-caf-primary:active {
   transform: translateY(1px);
 }
+
+.caf-seo-content {
+  text-align: left;
+}
+
+.caf-seo-content h2 + details,
+.caf-seo-content details + details {
+  margin-top: 12px;
+}
+
+.caf-seo-content details {
+  border: 1px solid rgba(10, 46, 92, .1);
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,.82);
+}
+
+.caf-seo-content summary {
+  cursor: pointer;
+  color: var(--primary-ink);
+  font-weight: 800;
+}
+
+.caf-seo-content details p {
+  margin: 10px 0 0;
+}

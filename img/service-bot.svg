@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Assistente Ali Per La Libertà</title>
+  <desc id="desc">Icona simpatica di un piccolo bot blu con ali.</desc>
+  <defs>
+    <linearGradient id="body" x1="32" y1="20" x2="130" y2="146" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4bb8ff"/>
+      <stop offset="1" stop-color="#0b5ed7"/>
+    </linearGradient>
+    <linearGradient id="wing" x1="12" y1="52" x2="59" y2="110" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#d8edff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#0a2e5c" flood-opacity=".22"/>
+    </filter>
+  </defs>
+  <circle cx="80" cy="80" r="72" fill="#edf7ff"/>
+  <path d="M54 82c-18-2-31 7-39 23 20 2 35-5 44-20l-5-3Z" fill="url(#wing)"/>
+  <path d="M106 82c18-2 31 7 39 23-20 2-35-5-44-20l5-3Z" fill="url(#wing)"/>
+  <path d="M48 64c0-19 14-34 32-34s32 15 32 34v31c0 21-14 36-32 36s-32-15-32-36V64Z" fill="url(#body)" filter="url(#shadow)"/>
+  <path d="M66 26c2-8 8-13 14-13s12 5 14 13" fill="none" stroke="#0b5ed7" stroke-width="7" stroke-linecap="round"/>
+  <rect x="60" y="58" width="40" height="28" rx="14" fill="#fff"/>
+  <circle cx="72" cy="72" r="5" fill="#092b54"/>
+  <circle cx="88" cy="72" r="5" fill="#092b54"/>
+  <path d="M71 96c5 5 13 5 18 0" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="52" cy="98" r="7" fill="#ffffff" opacity=".9"/>
+  <circle cx="108" cy="98" r="7" fill="#ffffff" opacity=".9"/>
+</svg>

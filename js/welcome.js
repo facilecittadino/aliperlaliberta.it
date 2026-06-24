@@ -7,6 +7,7 @@
 
   const FALLBACK_LANGS = {
     it: "🇮🇹 Italiano",
+    sq: "🇦🇱 Shqip",
     en: "🇬🇧 English",
     pa: "🇮🇳 ਪੰਜਾਬੀ",
     hi: "🇮🇳 हिन्दी",
