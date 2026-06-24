@@ -11,6 +11,7 @@
   // Public languages (also reused by welcome.js if needed)
   const LANGS = Object.freeze({
     it: "🇮🇹 Italiano",
+    sq: "🇦🇱 Shqip",
     en: "🇬🇧 English",
     pa: "🇮🇳 ਪੰਜਾਬੀ",
     hi: "🇮🇳 हिन्दी",
@@ -240,6 +241,47 @@
       it: "Parla con noi", en: "Talk to us",
       pa: "ਸਾਡੇ ਨਾਲ ਗੱਲ ਕਰੋ", hi: "हमसे बात करें", "hi-Latn": "Humse baat karein"
     },
+    "serviceBot.eyebrow": {
+      it: "Assistente WhatsApp", en: "WhatsApp assistant",
+      pa: "WhatsApp ਸਹਾਇਕ", hi: "WhatsApp सहायक", "hi-Latn": "WhatsApp assistant"
+    },
+    "serviceBot.launcher": {
+      it: "Hai bisogno?", en: "Need help?",
+      pa: "ਮਦਦ ਚਾਹੀਦੀ?", hi: "मदद चाहिए?", "hi-Latn": "Madad chahiye?"
+    },
+    "serviceBot.close": {
+      it: "Chiudi chat", en: "Close chat",
+      pa: "ਚੈਟ ਬੰਦ ਕਰੋ", hi: "चैट बंद करें", "hi-Latn": "Chat band karein"
+    },
+    "serviceBot.title": {
+      it: "Non sai quale servizio scegliere?", en: "Not sure which service to choose?",
+      pa: "ਪਤਾ ਨਹੀਂ ਕਿਹੜੀ ਸੇਵਾ ਚੁਣਨੀ ਹੈ?", hi: "समझ नहीं आ रहा कौन सी सेवा चुनें?",
+      "hi-Latn": "Samajh nahi aa raha kaunsi service chunni hai?"
+    },
+    "serviceBot.text": {
+      it: "Rispondi a poche domande: prepariamo un messaggio ordinato da inviare su WhatsApp dal tuo numero.",
+      en: "Answer a few questions: we prepare a clear message to send on WhatsApp from your number.",
+      pa: "ਕੁਝ ਸਵਾਲਾਂ ਦੇ ਜਵਾਬ ਦਿਓ: ਅਸੀਂ ਤੁਹਾਡੇ ਨੰਬਰ ਤੋਂ WhatsApp ਤੇ ਭੇਜਣ ਲਈ ਸੁਥਰਾ ਮੈਸੇਜ ਤਿਆਰ ਕਰਾਂਗੇ।",
+      hi: "कुछ सवालों के जवाब दें: हम आपके नंबर से WhatsApp पर भेजने के लिए साफ संदेश तैयार करेंगे।",
+      "hi-Latn": "Kuch sawalon ke jawab dein: hum aapke number se WhatsApp par bhejne ke liye clear message taiyar karenge."
+    },
+    "serviceBot.next": {
+      it: "Continua", en: "Continue", pa: "ਜਾਰੀ ਰੱਖੋ", hi: "जारी रखें", "hi-Latn": "Continue"
+    },
+    "serviceBot.restart": {
+      it: "Ricomincia", en: "Restart", pa: "ਮੁੜ ਸ਼ੁਰੂ ਕਰੋ", hi: "फिर से शुरू करें", "hi-Latn": "Dobara shuru karein"
+    },
+    "serviceBot.whatsapp": {
+      it: "Invia su WhatsApp", en: "Send on WhatsApp",
+      pa: "WhatsApp ਤੇ ਭੇਜੋ", hi: "WhatsApp पर भेजें", "hi-Latn": "WhatsApp par bhejein"
+    },
+    "serviceBot.note": {
+      it: "Il sito non invia nulla automaticamente: WhatsApp si apre e sarai tu a premere “Invia”.",
+      en: "The site does not send anything automatically: WhatsApp opens and you press “Send”.",
+      pa: "ਸਾਈਟ ਕੁਝ ਵੀ ਆਪਣੇ ਆਪ ਨਹੀਂ ਭੇਜਦੀ: WhatsApp ਖੁੱਲੇਗਾ ਅਤੇ ਤੁਸੀਂ “Send” ਦਬਾਓਗੇ।",
+      hi: "साइट अपने आप कुछ नहीं भेजती: WhatsApp खुलेगा और आप “Send” दबाएँगे।",
+      "hi-Latn": "Site automatic kuch nahi bhejti: WhatsApp khulega aur aap “Send” dabayenge."
+    },
 
     "services.caf.desc": {
   it: "Ti aiutiamo con tutte le pratiche fiscali come dichiarazione dei redditi, ISEE, Modello 730 e altre procedure tributarie, in modo semplice e veloce.",
@@ -258,11 +300,11 @@
       "hi-Latn": "CAF (Tax Sahayata Kendra)"
     },
     "caf.desc": {
-      it: "Il CAF Ali Per La Liberta a Lecce offre assistenza fiscale per stranieri e cittadini italiani, inclusi ISEE, Modello 730, F24, RED e bonus, con supporto multilingua.",
-      en: "CAF Ali Per La Liberta in Lecce provides tax assistance for foreign and Italian citizens, including ISEE, Model 730, F24, RED, and tax bonuses, with multilingual support.",
-      hi: "लेच्चे में CAF Ali Per La Liberta विदेशी और इतालवी नागरिकों के लिए कर सहायता प्रदान करता है, जिसमें ISEE, मॉडल 730, F24, RED और बोनस शामिल हैं, बहुभाषी समर्थन के साथ।",
-      pa: "ਲੇੱਚੇ ਵਿੱਚ CAF Ali Per La Liberta ਵਿਦੇਸ਼ੀ ਅਤੇ ਇਤਾਲਵੀ ਨਾਗਰਿਕਾਂ ਲਈ ਟੈਕਸ ਸਹਾਇਤਾ ਦਿੰਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ISEE, ਮਾਡਲ 730, F24, RED ਅਤੇ ਬੋਨਸ ਸ਼ਾਮਲ ਹਨ, ਬਹੁਭਾਸ਼ੀ ਸਹਾਇਤਾ ਨਾਲ।",
-      "hi-Latn": "Lecce me CAF Ali Per La Liberta videshi aur Italian nagrikon ke liye tax assistance deta hai, jisme ISEE, Model 730, F24, RED aur bonus shamil hain, multilingual support ke sath."
+      it: "Il CAF Ali Per La Liberta offre assistenza fiscale online e in Italia per stranieri e cittadini italiani, inclusi ISEE, Modello 730, F24, RED e bonus, con supporto multilingua.",
+      en: "CAF Ali Per La Liberta provides online tax assistance in Italy for foreign and Italian citizens, including ISEE, Model 730, F24, RED, and tax bonuses, with multilingual support.",
+      hi: "CAF Ali Per La Liberta इटली में विदेशी और इतालवी नागरिकों के लिए ऑनलाइन कर सहायता प्रदान करता है, जिसमें ISEE, मॉडल 730, F24, RED और बोनस शामिल हैं, बहुभाषी समर्थन के साथ।",
+      pa: "CAF Ali Per La Liberta ਇਟਲੀ ਵਿੱਚ ਵਿਦੇਸ਼ੀ ਅਤੇ ਇਤਾਲਵੀ ਨਾਗਰਿਕਾਂ ਲਈ ਆਨਲਾਈਨ ਟੈਕਸ ਸਹਾਇਤਾ ਦਿੰਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ISEE, ਮਾਡਲ 730, F24, RED ਅਤੇ ਬੋਨਸ ਸ਼ਾਮਲ ਹਨ, ਬਹੁਭਾਸ਼ੀ ਸਹਾਇਤਾ ਨਾਲ।",
+      "hi-Latn": "CAF Ali Per La Liberta Italy me videshi aur Italian nagrikon ke liye online tax assistance deta hai, jisme ISEE, Model 730, F24, RED aur bonus shamil hain, multilingual support ke sath."
     },
 
     "services.patronato.title": {
@@ -832,11 +874,11 @@
 },
 
 "caf.otherServices.part1": {
-  it: "Oltre ai servizi CAF a Lecce, Ali Per La Liberta offre anche",
-  en: "In addition to CAF services in Lecce, Ali Per La Liberta also offers",
-  hi: "लेच्चे में CAF सेवाओं के अलावा, Ali Per La Liberta प्रदान करता है",
-  pa: "ਲੇੱਚੇ ਵਿੱਚ CAF ਸੇਵਾਵਾਂ ਤੋਂ ਇਲਾਵਾ, Ali Per La Liberta ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ",
-  "hi-Latn": "Lecce me CAF services ke alawa, Ali Per La Liberta offer karta hai"
+  it: "Oltre ai servizi CAF online in Italia, Ali Per La Liberta offre anche",
+  en: "In addition to online CAF services in Italy, Ali Per La Liberta also offers",
+  hi: "इटली में ऑनलाइन CAF सेवाओं के अलावा, Ali Per La Liberta प्रदान करता है",
+  pa: "ਇਟਲੀ ਵਿੱਚ ਆਨਲਾਈਨ CAF ਸੇਵਾਵਾਂ ਤੋਂ ਇਲਾਵਾ, Ali Per La Liberta ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ",
+  "hi-Latn": "Italy me online CAF services ke alawa, Ali Per La Liberta offer karta hai"
 },
 
 "caf.otherServices.linkPatronato": {
@@ -873,6 +915,101 @@
 
   };
 
+  const SQ = {
+    "nav.brand": "AliPerLaLiberta",
+    "nav.home": "Kreu",
+    "nav.call": "Telefono",
+    "call.hoursLabel": "Orari: Hën–Prem 08:30–13:30 · 16:30–19:30",
+    "nav.email": "Email",
+    "nav.pec": "PEC",
+    "nav.youtube": "YouTube",
+    "drawer.close": "Mbyll menunë",
+
+    "home.eyebrow": "Shoqatë në Lecce",
+    "home.title": "Çdo person meriton të ndihet i dëgjuar, i orientuar dhe i lirë.",
+    "home.lead": "Ali Per La Libertà është një pikë referimi për qytetarët italianë dhe të huaj. Ne i ndihmojmë njerëzit të kuptojnë dokumentet, të drejtat dhe mundësitë, duke ofruar mbështetje konkrete dhe të arritshme.",
+    "home.cta.about": "Njih shoqatën",
+    "home.cta.services": "Shiko si mund të të ndihmojmë",
+    "home.mission.eyebrow": "Misioni ynë",
+    "home.mission.title": "Të zvogëlojmë distancën mes njerëzve dhe të drejtave të tyre.",
+    "home.mission.text": "Burokracia, gjuha ose mungesa e informacionit nuk duhet të lënë askënd pas. Prandaj ne i bëjmë të kuptueshme edhe proceset më të ndërlikuara.",
+    "home.value.listen.title": "Dëgjim",
+    "home.value.listen.text": "Nisim nga historia dhe nevojat reale të çdo personi, pa gjykim dhe me respekt.",
+    "home.value.clarity.title": "Qartësi",
+    "home.value.clarity.text": "Shpjegojmë procedurat dhe mundësitë me fjalë të kuptueshme, edhe në disa gjuhë.",
+    "home.value.action.title": "Mbështetje konkrete",
+    "home.value.action.text": "I shoqërojmë njerëzit në hapat e nevojshëm, nga pyetja e parë deri te zgjidhja.",
+    "home.story.title": "Një vend pranë njerëzve, i hapur ndaj dallimeve.",
+    "home.story.text": "Ali Per La Libertà ka lindur për të krijuar autonomi, përfshirje dhe besim. Ne lidhim njerëzit me shërbime dhe kompetenca, që secili të marrë pjesë plotësisht në jetën shoqërore dhe të ndërtojë të ardhmen me më shumë qetësi.",
+    "home.services.eyebrow": "Si të ndihmojmë",
+    "home.services.title": "Orientim dhe asistencë kur duhen vërtet.",
+    "home.services.text": "Puna jonë përfshin asistencë fiskale, sociale dhe ligjore. Të ndihmojmë të kuptosh rrugën më të përshtatshme për situatën tënde.",
+    "home.services.link": "Mëso më shumë →",
+    "home.contact.title": "Nuk di nga të fillosh?",
+    "home.contact.text": "Na trego shkurt nevojën tënde. Do të të dëgjojmë dhe do të të tregojmë shërbimin ose rrugën më të përshtatshme.",
+    "home.contact.cta": "Fol me ne",
+    "serviceBot.eyebrow": "Asistent WhatsApp",
+    "serviceBot.launcher": "Ke nevojë?",
+    "serviceBot.close": "Mbyll chat-in",
+    "serviceBot.title": "Nuk di cilin shërbim të zgjedhësh?",
+    "serviceBot.text": "Përgjigju disa pyetjeve: ne përgatisim një mesazh të rregullt për ta dërguar në WhatsApp nga numri yt.",
+    "serviceBot.next": "Vazhdo",
+    "serviceBot.restart": "Rifillo",
+    "serviceBot.whatsapp": "Dërgo në WhatsApp",
+    "serviceBot.note": "Faqja nuk dërgon asgjë automatikisht: WhatsApp hapet dhe ti shtyp “Dërgo”.",
+
+    "services.caf.title": "CAF (Qendra e Asistencës Fiskale)",
+    "services.caf.desc": "Të ndihmojmë me praktikat fiskale si deklarata e të ardhurave, ISEE, Modeli 730 dhe procedura të tjera tatimore, në mënyrë të thjeshtë dhe të shpejtë.",
+    "caf.desc": "CAF Ali Per La Libertà ofron asistencë fiskale online dhe në Itali për qytetarë të huaj dhe italianë, përfshirë ISEE, Modelin 730, F24, RED dhe bonuse, me mbështetje shumëgjuhëshe.",
+    "services.patronato.title": "Patronato",
+    "services.patronato.desc": "Ofrojmë mbështetje për pensione, ndihma, papunësi dhe praktika të tjera sociale ose asistenciale me këshillim të personalizuar.",
+    "services.legal.title": "Asistencë ligjore / Mbështetje",
+    "services.legal.desc": "Ndihmë ligjore e qartë dhe e arritshme për kontrata, dokumente, mosmarrëveshje ose probleme që lidhen me të drejtat e punës dhe civile.",
+    "services.corsi.title": "Kurse formimi",
+    "services.corsi.desc": "Kurse profesionale dhe përditësime formuese për të përmirësuar aftësitë dhe për të gjetur mundësi të reja pune.",
+    "services.web.title": "Krijim faqesh web",
+    "services.web.desc": "Realizojmë faqe web profesionale dhe moderne për kompani, profesionistë të lirë ose biznese të vogla, duke u kujdesur për dizajnin dhe funksionalitetin.",
+    "services.biglietti.title": "Bileta & mbështetje E-Visa",
+    "services.biglietti.desc": "Rezervime për trena, autobusë dhe avionë. Ndihmojmë edhe për marrjen e eVisa për udhëtime jashtë vendit në mënyrë të shpejtë dhe të sigurt.",
+    "hero.cta.discover": "Shiko shërbimin",
+    "hero.cta.share": "Shpërndaj",
+    "detail.cta.request": "Kërko asistencë",
+    "detail.cta.share": "Shpërndaj",
+
+    "footer.title.contacts": "Kontakte & orare",
+    "footer.phone": "Telefon / WhatsApp",
+    "footer.email": "Email",
+    "footer.address.label": "Adresa",
+    "footer.hours": "Orari: Hën–Prem 08:30–13:30 · 16:30–19:30",
+    "footer.hours.label": "Orari:",
+    "footer.hours.value": "Hën–Prem 08:30–13:30 · 16:30–19:30",
+    "footer.openwith": "Hap me",
+    "footer.maps.openwith": "Hap me…",
+    "footer.maps.google": "Google Maps",
+    "footer.maps.apple": "Apple Maps",
+    "footer.maps.remember": "Mbaje mend zgjedhjen",
+    "footer.title.legal": "Ligjore",
+    "footer.privacy": "Politika e privatësisë",
+    "footer.terms": "Kushtet e shërbimit",
+    "footer.cookies": "Politika e cookies",
+    "footer.legalnotes": "Shënime ligjore",
+    "footer.rights": "© 2025 AliPerLaLiberta — Të gjitha të drejtat të rezervuara.",
+    "footer.copyright": "© 2026 Ali Per La Libertà — Të gjitha të drejtat të rezervuara.",
+    "footer.piva": "Kodi fiskal: 93173080750",
+
+    "caf.title": "CAF (Qendra e Asistencës Fiskale)",
+    "caf.services.isee": "Përgatitja dhe dërgimi i deklaratës ISEE.",
+    "caf.services.730": "Deklarata e të ardhurave me asistencë profesionale.",
+    "caf.otherServices.part1": "Ofrojmë edhe",
+    "caf.otherServices.part2": "asistencë ligjore për të huaj",
+    "caf.otherServices.part3": "për leje qëndrimi, shtetësi dhe bashkim familjar."
+  };
+
+  Object.entries(SQ).forEach(([key, value]) => {
+    if (!T[key]) T[key] = {};
+    T[key].sq = value;
+  });
+
   // ---------------------------
   // Apply translations (+ Safari repaint nudge)
   // ---------------------------
@@ -883,7 +1020,7 @@
     // Text nodes
     root.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
-      const txt = T[key]?.[lang];
+      const txt = T[key]?.[lang] ?? T[key]?.it;
       if (typeof txt === "string") el.textContent = txt;
     });
 
@@ -893,7 +1030,7 @@
       if (!spec) return;
       spec.split(",").forEach((pair) => {
         const [attr, key] = pair.split(":").map((s) => s.trim());
-        const val = T[key]?.[lang];
+        const val = T[key]?.[lang] ?? T[key]?.it;
         if (attr && typeof val === "string") el.setAttribute(attr, val);
       });
     });

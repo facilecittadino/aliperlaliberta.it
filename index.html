@@ -24,6 +24,7 @@
 
       <!-- CANONICAL -->
       <link rel="alternate" hreflang="it" href="https://aliperlaliberta.it/" />
+    <link rel="alternate" hreflang="sq" href="https://aliperlaliberta.it/" />
     <link rel="alternate" hreflang="en" href="https://aliperlaliberta.it/" />
     <link rel="alternate" hreflang="hi" href="https://aliperlaliberta.it/" />
     <link rel="alternate" hreflang="pa" href="https://aliperlaliberta.it/" />
@@ -41,8 +42,7 @@
         <!-- Apple Touch Icon -->
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-        <!-- Android / PWA -->
-        <link rel="manifest" href="/site.webmanifest">
+        <!-- App install is disabled until the app is available to users. -->
         <meta name="theme-color" content="#0b3c5d">
           <!-- OPEN GRAPH -->
           <meta property="og:type" content="website" />
@@ -163,7 +163,7 @@
 
     <!-- 5) YouTube -->
     <li>
-      <a href="https://www.youtube.com/@Ramkulhari73100"
+      <a href="https://www.youtube.com/channel/UChZgeTEkWXKcBr7U57BK5MQ"
          target="_blank" rel="noopener"
          data-i18n="nav.youtube">
         YouTube
@@ -243,7 +243,7 @@
 
   <!-- 5) YouTube -->
   <li>
-    <a href="https://www.youtube.com/@Ramkulhari73100"
+    <a href="https://www.youtube.com/channel/UChZgeTEkWXKcBr7U57BK5MQ"
        target="_blank" rel="noopener"
        data-i18n="nav.youtube">
       YouTube
@@ -349,6 +349,61 @@
         </section>
       </div>
     </main>
+
+    <aside class="service-bot" id="serviceBot" aria-labelledby="serviceBotTitle">
+      <button
+        class="service-bot__launcher"
+        id="serviceBotLauncher"
+        type="button"
+        aria-expanded="false"
+        aria-controls="serviceBotPanel"
+      >
+        <img src="/img/service-bot.svg" alt="" aria-hidden="true">
+        <span data-i18n="serviceBot.launcher">Hai bisogno?</span>
+      </button>
+
+      <div class="service-bot__panel" id="serviceBotPanel" hidden>
+        <div class="service-bot__header">
+          <img src="/img/service-bot.svg" alt="" aria-hidden="true">
+          <div>
+            <span data-i18n="serviceBot.eyebrow">Assistente WhatsApp</span>
+            <h2 id="serviceBotTitle" data-i18n="serviceBot.title">Non sai quale servizio scegliere?</h2>
+          </div>
+          <button
+            class="service-bot__close"
+            id="serviceBotClose"
+            type="button"
+            aria-label="Chiudi chat"
+            data-i18n-attr="aria-label:serviceBot.close"
+          >×</button>
+        </div>
+
+        <p class="service-bot__text" data-i18n="serviceBot.text">
+          Rispondi a poche domande: prepariamo un messaggio ordinato da inviare su WhatsApp dal tuo numero.
+        </p>
+
+        <div class="service-bot__chat" aria-live="polite">
+          <div class="service-bot__bubble service-bot__bubble--bot" id="serviceBotQuestion">
+            Ti aiuto io. Che tipo di supporto ti serve?
+          </div>
+          <div class="service-bot__answers" id="serviceBotAnswers"></div>
+          <form class="service-bot__form" id="serviceBotForm" hidden>
+            <label class="sr-only" for="serviceBotInput">Risposta</label>
+            <textarea id="serviceBotInput" rows="3" placeholder="Scrivi qui la tua risposta"></textarea>
+            <button class="btn btn-primary" type="submit" data-i18n="serviceBot.next">Continua</button>
+          </form>
+          <div class="service-bot__actions" id="serviceBotActions" hidden>
+            <button class="btn btn-outline" type="button" id="serviceBotRestart" data-i18n="serviceBot.restart">Ricomincia</button>
+            <a class="btn btn-primary" id="serviceBotWhatsApp" target="_blank" rel="noopener" data-i18n="serviceBot.whatsapp">
+              Invia su WhatsApp
+            </a>
+          </div>
+          <p class="service-bot__note" data-i18n="serviceBot.note">
+            Il sito non invia nulla automaticamente: WhatsApp si apre e sarai tu a premere “Invia”.
+          </p>
+        </div>
+      </div>
+    </aside>
 
     <!-- ===== Site Footer (Contacts + Legal) ===== -->
     <footer class="site-footer" role="contentinfo">
@@ -585,6 +640,7 @@
 <script src="/js/loadForm.js" defer></script>
 
 <script src="/js/welcome.js" defer></script>
+<script src="/js/serviceBot.js" defer></script>
 <script src="/js/share.js" defer></script>
 <script src="/js/reload.js" defer></script>
 
