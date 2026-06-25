@@ -1,0 +1,24 @@
+[Unit]
+Description=Ali Per La Liberta Calendar API
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/apll/calendar-api
+EnvironmentFile=/etc/apll/calendar-api.env
+ExecStart=/usr/bin/node src/server.js
+Restart=always
+RestartSec=5
+User=apll
+Group=apll
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/apll/calendar-api
+CapabilityBoundingSet=
+LockPersonality=true
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target

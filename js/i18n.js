@@ -225,6 +225,10 @@
       it: "Approfondisci →", en: "Learn more →",
       pa: "ਹੋਰ ਜਾਣੋ →", hi: "और जानें →", "hi-Latn": "Aur janiye →"
     },
+    "home.services.book": {
+      it: "Prenota appuntamento", en: "Book an appointment",
+      pa: "ਮੁਲਾਕਾਤ ਬੁੱਕ ਕਰੋ", hi: "अपॉइंटमेंट बुक करें", "hi-Latn": "Appointment book karein"
+    },
     "home.contact.title": {
       it: "Non sai da dove iniziare?", en: "Not sure where to begin?",
       pa: "ਪਤਾ ਨਹੀਂ ਕਿੱਥੋਂ ਸ਼ੁਰੂ ਕਰਨਾ ਹੈ?", hi: "समझ नहीं आ रहा कहाँ से शुरू करें?",
@@ -350,6 +354,20 @@
       hi: "कौशल बढ़ाने और नई नौकरी के अवसर पाने के लिए व्यावसायिक कोर्स और अपस्किलिंग।",
       pa: "ਕੁਸ਼ਲਤਾਵਾਂ ਵਧਾਉਣ ਅਤੇ ਨਵੀਆਂ ਨੌਕਰੀ ਦੇ ਮੌਕਿਆਂ ਲਈ ਪੇਸ਼ਾਵਰ ਕੋਰਸ ਅਤੇ ਅੱਪਸਕਿਲਿੰਗ।",
       "hi-Latn": "Professional courses aur upskilling se skills improve karo aur naye job opportunities pao."
+    },
+    "services.italianCourse.title": {
+      it: "Corso di lingua italiana A1 e A2",
+      en: "Italian language course A1 and A2",
+      hi: "इतालवी भाषा कोर्स A1 और A2",
+      pa: "ਇਤਾਲਵੀ ਭਾਸ਼ਾ ਕੋਰਸ A1 ਅਤੇ A2",
+      "hi-Latn": "Italian language course A1 aur A2"
+    },
+    "services.italianCourse.desc": {
+      it: "Percorsi base di italiano per comunicare meglio, prepararsi ai documenti e vivere con più autonomia.",
+      en: "Basic Italian courses to communicate better, prepare documents and live with more independence.",
+      hi: "बेहतर संवाद, दस्तावेज़ों की तैयारी और अधिक आत्मनिर्भर जीवन के लिए बेसिक इतालवी कोर्स।",
+      pa: "ਵਧੀਆ ਸੰਚਾਰ, ਦਸਤਾਵੇਜ਼ਾਂ ਦੀ ਤਿਆਰੀ ਅਤੇ ਹੋਰ ਖੁਦਮੁਖਤਿਆਰੀ ਲਈ ਬੇਸਿਕ ਇਤਾਲਵੀ ਕੋਰਸ।",
+      "hi-Latn": "Better communication, documents ki tayari aur zyada independence ke liye basic Italian courses."
     },
 
     "services.web.title": {
@@ -945,6 +963,7 @@
     "home.services.title": "Orientim dhe asistencë kur duhen vërtet.",
     "home.services.text": "Puna jonë përfshin asistencë fiskale, sociale dhe ligjore. Të ndihmojmë të kuptosh rrugën më të përshtatshme për situatën tënde.",
     "home.services.link": "Mëso më shumë →",
+    "home.services.book": "Rezervo takim",
     "home.contact.title": "Nuk di nga të fillosh?",
     "home.contact.text": "Na trego shkurt nevojën tënde. Do të të dëgjojmë dhe do të të tregojmë shërbimin ose rrugën më të përshtatshme.",
     "home.contact.cta": "Fol me ne",
@@ -967,6 +986,8 @@
     "services.legal.desc": "Ndihmë ligjore e qartë dhe e arritshme për kontrata, dokumente, mosmarrëveshje ose probleme që lidhen me të drejtat e punës dhe civile.",
     "services.corsi.title": "Kurse formimi",
     "services.corsi.desc": "Kurse profesionale dhe përditësime formuese për të përmirësuar aftësitë dhe për të gjetur mundësi të reja pune.",
+    "services.italianCourse.title": "Kurs i gjuhës italiane A1 dhe A2",
+    "services.italianCourse.desc": "Kurse bazë të italishtes për të komunikuar më mirë, për t’u përgatitur për dokumentet dhe për të jetuar me më shumë autonomi.",
     "services.web.title": "Krijim faqesh web",
     "services.web.desc": "Realizojmë faqe web profesionale dhe moderne për kompani, profesionistë të lirë ose biznese të vogla, duke u kujdesur për dizajnin dhe funksionalitetin.",
     "services.biglietti.title": "Bileta & mbështetje E-Visa",

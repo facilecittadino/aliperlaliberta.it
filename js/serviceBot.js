@@ -15,7 +15,7 @@
         details: "Aggiungi qualche dettaglio utile per capire meglio la situazione."
       },
       options: {
-        service: ["CAF / tasse / ISEE", "Patronato / pensioni / disoccupazione", "Assistenza legale / documenti", "Non lo so, ho bisogno di orientamento"],
+        service: ["CAF / tasse / ISEE", "Patronato / pensioni / disoccupazione", "Assistenza legale / documenti", "Corso italiano A1/A2", "Non lo so, ho bisogno di orientamento"],
         topic: ["Documenti o pratica da capire", "Appuntamento o richiesta urgente", "Controllare requisiti e possibilità", "Altro"],
         urgency: ["Oggi / appena possibile", "Questa settimana", "Non è urgente"]
       },
@@ -46,7 +46,7 @@ Messaggio preparato dal chatbot del sito.`,
         details: "Shto disa detaje të dobishme për të kuptuar më mirë situatën."
       },
       options: {
-        service: ["CAF / taksa / ISEE", "Patronato / pensione / papunësi", "Asistencë ligjore / dokumente", "Nuk e di, kam nevojë për orientim"],
+        service: ["CAF / taksa / ISEE", "Patronato / pensione / papunësi", "Asistencë ligjore / dokumente", "Kurs italisht A1/A2", "Nuk e di, kam nevojë për orientim"],
         topic: ["Dokumente ose praktikë për të kuptuar", "Takim ose kërkesë urgjente", "Të kontrolloj kërkesat dhe mundësitë", "Tjetër"],
         urgency: ["Sot / sa më shpejt", "Këtë javë", "Nuk është urgjente"]
       },
@@ -77,7 +77,7 @@ Mesazh i përgatitur nga chatboti i faqes.`,
         details: "Add a few useful details so we can understand the situation better."
       },
       options: {
-        service: ["CAF / taxes / ISEE", "Patronato / pensions / unemployment", "Legal assistance / documents", "I’m not sure, I need guidance"],
+        service: ["CAF / taxes / ISEE", "Patronato / pensions / unemployment", "Legal assistance / documents", "Italian course A1/A2", "I’m not sure, I need guidance"],
         topic: ["Understand documents or a procedure", "Appointment or urgent request", "Check requirements and options", "Other"],
         urgency: ["Today / as soon as possible", "This week", "Not urgent"]
       },

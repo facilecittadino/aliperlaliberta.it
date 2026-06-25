@@ -54,6 +54,45 @@ function resolveServiceName(button) {
   return getPageService();
 }
 
+// Helper: optional Google Calendar appointment schedule.
+// Security note: only public Google appointment schedule URLs are accepted.
+function isSafeGoogleAppointmentUrl(url) {
+  if (!url) return false;
+  try {
+    const parsed = new URL(url);
+    return (
+      parsed.protocol === "https:" &&
+      parsed.hostname === "calendar.google.com" &&
+      parsed.pathname.includes("/calendar/appointments/schedules/")
+    );
+  } catch {
+    return false;
+  }
+}
+
+function resolveGoogleCalendarBookingUrl(button) {
+  const fromButton = (button.getAttribute("data-calendar-url") || "").trim();
+  const kind = (button.getAttribute("data-calendar-kind") || "practices").trim();
+  const urls = window.APP_CONFIG?.GOOGLE_CALENDAR_BOOKING_URLS || {};
+  const fromConfig = kind === "italian-course" ? urls.ITALIAN_COURSE : urls.PRACTICES;
+  const candidate = fromButton || fromConfig || "";
+
+  if (!candidate) return "";
+  if (isSafeGoogleAppointmentUrl(candidate)) return candidate;
+
+  console.warn("[loadForm] Ignored unsafe or private Google Calendar URL:", candidate);
+  return "";
+}
+
+function shouldUseSecureCalendarBackend() {
+  return Boolean(
+    window.APP_CONFIG?.CALENDAR_BOOKING?.ENABLED &&
+    window.APP_CONFIG?.CALENDAR_BOOKING?.API_BASE_URL &&
+    window.apllCalendarBooking &&
+    typeof window.apllCalendarBooking.open === "function"
+  );
+}
+
 // Load script only once
 function loadExternalScriptOnce(url, type) {
   return new Promise((resolve, reject) => {
@@ -86,6 +125,19 @@ document.addEventListener("click", evt => {
   if (!btn) return;
 
   const serviceName = resolveServiceName(btn);
+  const calendarKind = (btn.getAttribute("data-calendar-kind") || "practices").trim();
+
+  if (shouldUseSecureCalendarBackend()) {
+    window.apllCalendarBooking.open({ serviceName, calendarKind });
+    return;
+  }
+
+  const googleCalendarUrl = resolveGoogleCalendarBookingUrl(btn);
+
+  if (googleCalendarUrl) {
+    window.open(googleCalendarUrl, "_blank", "noopener");
+    return;
+  }
 
   const stateGetter = window.getApllServerState;
   const currentState = typeof stateGetter === "function" ? stateGetter() : "unknown";

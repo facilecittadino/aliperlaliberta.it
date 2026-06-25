@@ -323,17 +323,57 @@
             <article class="home-service">
               <h3 data-i18n="services.caf.title">CAF</h3>
               <p data-i18n="services.caf.desc">Assistenza per ISEE, dichiarazioni dei redditi e pratiche fiscali.</p>
-              <a href="/caf/" data-i18n="home.services.link">Approfondisci →</a>
+              <div class="home-service-actions">
+                <a href="/caf/" data-i18n="home.services.link">Approfondisci →</a>
+                <button
+                  class="btn btn-primary home-service-book js-reservation-btn"
+                  type="button"
+                  data-service="Servizio CAF"
+                  data-calendar-kind="practices"
+                  data-i18n="home.services.book"
+                >Prenota appuntamento</button>
+              </div>
             </article>
             <article class="home-service">
               <h3 data-i18n="services.patronato.title">Patronato</h3>
               <p data-i18n="services.patronato.desc">Supporto per pensioni, indennità, disoccupazione e pratiche assistenziali.</p>
-              <a href="/patronato/" data-i18n="home.services.link">Approfondisci →</a>
+              <div class="home-service-actions">
+                <a href="/patronato/" data-i18n="home.services.link">Approfondisci →</a>
+                <button
+                  class="btn btn-primary home-service-book js-reservation-btn"
+                  type="button"
+                  data-service="Patronato"
+                  data-calendar-kind="practices"
+                  data-i18n="home.services.book"
+                >Prenota appuntamento</button>
+              </div>
             </article>
             <article class="home-service">
               <h3 data-i18n="services.legal.title">Assistenza legale</h3>
               <p data-i18n="services.legal.desc">Aiuto accessibile per documenti, immigrazione e tutela dei diritti.</p>
-              <a href="/legalassistance/" data-i18n="home.services.link">Approfondisci →</a>
+              <div class="home-service-actions">
+                <a href="/legalassistance/" data-i18n="home.services.link">Approfondisci →</a>
+                <button
+                  class="btn btn-primary home-service-book js-reservation-btn"
+                  type="button"
+                  data-service="Assistenza legale"
+                  data-calendar-kind="practices"
+                  data-i18n="home.services.book"
+                >Prenota appuntamento</button>
+              </div>
+            </article>
+            <article class="home-service">
+              <h3 data-i18n="services.italianCourse.title">Corso di lingua italiana A1 e A2</h3>
+              <p data-i18n="services.italianCourse.desc">Percorsi base di italiano per comunicare meglio, prepararsi ai documenti e vivere con più autonomia.</p>
+              <div class="home-service-actions">
+                <button
+                  class="btn btn-primary home-service-book js-reservation-btn"
+                  type="button"
+                  data-service="Corso di lingua italiana A1/A2"
+                  data-calendar-kind="italian-course"
+                  data-i18n="home.services.book"
+                >Prenota appuntamento</button>
+              </div>
             </article>
           </div>
         </section>
@@ -640,6 +680,7 @@
 <script src="/js/loadForm.js" defer></script>
 
 <script src="/js/welcome.js" defer></script>
+<script src="/js/calendarBooking.js" defer></script>
 <script src="/js/serviceBot.js" defer></script>
 <script src="/js/share.js" defer></script>
 <script src="/js/reload.js" defer></script>
