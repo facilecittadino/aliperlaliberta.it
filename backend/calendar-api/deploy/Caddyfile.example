@@ -1,0 +1,12 @@
+app.apll.it {
+  encode zstd gzip
+
+  @calendar_api path /api/calendar/* /health
+  reverse_proxy @calendar_api 127.0.0.1:8787
+
+  header {
+    Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    X-Content-Type-Options "nosniff"
+    Referrer-Policy "strict-origin-when-cross-origin"
+  }
+}

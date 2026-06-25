@@ -191,11 +191,22 @@
   flex-direction: column;
 }
 
-.home-service a {
+.home-service-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   align-self: flex-start;
   margin-top: 22px;
+}
+
+.home-service-actions a {
+  align-self: center;
   color: var(--primary);
   font-weight: 800;
+}
+
+.home-service .home-service-book {
+  padding: 11px 16px;
 }
 
 .home-contact {
@@ -459,6 +470,20 @@
 
   .home-intro-actions .btn {
     width: 100%;
+    text-align: center;
+  }
+
+  .home-service-actions,
+  .home-service .home-service-book {
+    width: 100%;
+  }
+
+  .home-service-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .home-service-actions a {
     text-align: center;
   }
 
