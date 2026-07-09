@@ -25,15 +25,15 @@ window.APP_CONFIG = Object.freeze({
   }),
 
   // ---------------------------
-  // Google Calendar public appointment schedules.
+  // Google Calendar public appointment pages.
   // Paste ONLY public booking URLs when ready.
-  // Example: https://calendar.google.com/calendar/appointments/schedules/...
+  // Example: https://calendar.google.com/calendar/appointments/...
   // Do not use private Calendar dashboard URLs such as /calendar/u/2/r.
   // Until these are set, booking buttons keep using the current form fallback.
   // ---------------------------
   GOOGLE_CALENDAR_BOOKING_URLS: Object.freeze({
-    PRACTICES: "",
-    ITALIAN_COURSE: ""
+    PRACTICES: "https://calendar.google.com/calendar/appointments/AcZssZ0LoGIBYbkMUStTFJnxKM847ncXM2KBwzro1lU%3D",
+    ITALIAN_COURSE: "https://calendar.google.com/calendar/appointments/AcZssZ0LoGIBYbkMUStTFJnxKM847ncXM2KBwzro1lU%3D"
   }),
 
   // ---------------------------

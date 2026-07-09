@@ -59,15 +59,19 @@ function resolveServiceName(button) {
 }
 
 // Helper: optional Google Calendar appointment schedule.
-// Security note: only public Google appointment schedule URLs are accepted.
+// Security note: only public Google appointment page URLs are accepted.
 function isSafeGoogleAppointmentUrl(url) {
   if (!url) return false;
   try {
     const parsed = new URL(url);
+    const isGoogleAppointmentPath =
+      parsed.pathname.includes("/calendar/appointments/schedules/") ||
+      parsed.pathname.includes("/calendar/appointments/");
+
     return (
       parsed.protocol === "https:" &&
       parsed.hostname === "calendar.google.com" &&
-      parsed.pathname.includes("/calendar/appointments/schedules/")
+      isGoogleAppointmentPath
     );
   } catch {
     return false;
