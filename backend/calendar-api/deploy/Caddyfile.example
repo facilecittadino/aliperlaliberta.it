@@ -1,4 +1,4 @@
-app.apll.it {
+api.aliperlaliberta.it {
   encode zstd gzip
 
   @calendar_api path /api/calendar/* /health

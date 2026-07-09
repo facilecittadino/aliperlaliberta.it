@@ -45,6 +45,6 @@ Only after `/health`, `/api/calendar/availability`, and `/api/calendar/book` wor
 ```js
 CALENDAR_BOOKING: {
   ENABLED: true,
-  API_BASE_URL: "https://app.apll.it"
+  API_BASE_URL: "https://api.aliperlaliberta.it"
 }
 ```

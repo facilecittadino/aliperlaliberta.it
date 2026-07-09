@@ -49,14 +49,14 @@ npm start
 
 Recommended public base URL:
 
-`https://app.apll.it`
+`https://api.aliperlaliberta.it`
 
 Then set frontend config:
 
 ```js
 CALENDAR_BOOKING: {
   ENABLED: true,
-  API_BASE_URL: "https://app.apll.it",
+  API_BASE_URL: "https://api.aliperlaliberta.it",
   ...
 }
 ```
@@ -98,7 +98,7 @@ Returns only:
 ## Safer production flow
 
 1. Deploy API on `127.0.0.1:8787`.
-2. Put Caddy/Nginx in front with HTTPS on `app.apll.it`.
+2. Put Caddy/Nginx in front with HTTPS on `api.aliperlaliberta.it`.
 3. Confirm `/health` works.
 4. Confirm availability works from `https://aliperlaliberta.it`.
 5. Confirm test booking lands in the correct Google Calendar.
@@ -107,7 +107,7 @@ Returns only:
 ```js
 CALENDAR_BOOKING: {
   ENABLED: true,
-  API_BASE_URL: "https://app.apll.it"
+  API_BASE_URL: "https://api.aliperlaliberta.it"
 }
 ```
 

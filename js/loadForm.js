@@ -2,11 +2,15 @@
 // loadForm.js — AUTO-DETECT FORM VERSION (FINAL)
 // ==============================
 
+(function () {
+  "use strict";
+
 // ---------- ENVIRONMENT DETECTION ----------
 const HOST = window.location.hostname;
+const FORM_SERVER = window.APP_CONFIG?.FORM_SERVER || {};
 
 // Advanced form ALWAYS loads from your Caddy server
-const ADVANCED_FORM_URL = "https://app.apll.it/js/advancedForm.js";
+const ADVANCED_FORM_URL = FORM_SERVER.ADVANCED_FORM_URL || "";
 
 // Decide fallback form based on location
 let FALLBACK_FORM_URL;
@@ -25,11 +29,11 @@ if (isLocalEnv) {
   FALLBACK_FORM_URL = "/js/fallbackForm.js";
 } else {
   // ANY public IP or ANY domain → use GitHub fallback
-  FALLBACK_FORM_URL = "https://itsnowonline.github.io/js/fallbackForm.js";
+  FALLBACK_FORM_URL = "/js/fallbackForm.js";
 }
 
 console.log("[loadForm] HOST =", HOST);
-console.log("[loadForm] ADVANCED =", ADVANCED_FORM_URL);
+console.log("[loadForm] ADVANCED =", ADVANCED_FORM_URL || "disabled");
 console.log("[loadForm] FALLBACK =", FALLBACK_FORM_URL);
 
 // ---------- INTERNAL FLAGS ----------
@@ -142,7 +146,7 @@ document.addEventListener("click", evt => {
   const stateGetter = window.getApllServerState;
   const currentState = typeof stateGetter === "function" ? stateGetter() : "unknown";
 
-  const useAdvanced = currentState === "online";
+  const useAdvanced = Boolean(FORM_SERVER.ENABLED && ADVANCED_FORM_URL && currentState === "online");
   const url = useAdvanced ? ADVANCED_FORM_URL : FALLBACK_FORM_URL;
   const type = useAdvanced ? "advanced" : "fallback";
 
@@ -161,3 +165,4 @@ document.addEventListener("click", evt => {
       alert("Form could not be loaded. Please try again later.");
     });
 });
+})();

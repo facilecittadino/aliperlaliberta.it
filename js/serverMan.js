@@ -3,7 +3,9 @@
 // ==============================
 
 // ---------- CONFIG ----------
-const STATUS_URL = "https://app.apll.it/status";
+const FORM_SERVER = window.APP_CONFIG?.FORM_SERVER || {};
+const STATUS_URL = FORM_SERVER.STATUS_URL || "";
+const STATUS_ENABLED = Boolean(FORM_SERVER.ENABLED && STATUS_URL);
 const TIMEOUT_MS = 2000;
 const CHECK_INTERVAL_MS = 15000;
 
@@ -24,6 +26,10 @@ window.getApllServerState = function () {
 
 // ---------- CHECK ----------
 function checkStatusOnce() {
+  if (!STATUS_ENABLED) {
+    return Promise.resolve({ ok: false, raw: "disabled" });
+  }
+
   return new Promise(resolve => {
     let finished = false;
 
@@ -103,6 +109,22 @@ async function updateServerStatus() {
 
 // ---------- INIT ----------
 (function () {
+  if (!STATUS_ENABLED) {
+    window.apllServerStatus = {
+      state: "offline",
+      lastChecked: Date.now(),
+      raw: "disabled"
+    };
+
+    if (typeof window.updateStatusBall === "function") {
+      window.updateStatusBall(false);
+    }
+
+    window.dispatchEvent(new Event("apllStatusUpdated"));
+    console.log("[serverMan] Form server disabled; using local fallback form");
+    return;
+  }
+
   updateServerStatus();
   setInterval(updateServerStatus, CHECK_INTERVAL_MS);
 })();

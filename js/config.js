@@ -37,6 +37,17 @@ window.APP_CONFIG = Object.freeze({
   }),
 
   // ---------------------------
+  // Optional advanced form server.
+  // The old https://app.apll.it server is no longer reachable, so the site
+  // uses the local WhatsApp fallback form until a new VPS is online.
+  // ---------------------------
+  FORM_SERVER: Object.freeze({
+    ENABLED: false,
+    STATUS_URL: "",
+    ADVANCED_FORM_URL: ""
+  }),
+
+  // ---------------------------
   // Secure backend calendar booking.
   // Keep ENABLED=false until backend/calendar-api is deployed and configured.
   // The browser calls only these public API endpoints; Google credentials stay
@@ -44,7 +55,7 @@ window.APP_CONFIG = Object.freeze({
   // ---------------------------
   CALENDAR_BOOKING: Object.freeze({
     ENABLED: false,
-    API_BASE_URL: "https://app.apll.it",
+    API_BASE_URL: "https://api.aliperlaliberta.it",
     ENDPOINTS: Object.freeze({
       AVAILABILITY: "/api/calendar/availability",
       BOOK: "/api/calendar/book"
