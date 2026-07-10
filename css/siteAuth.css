@@ -1,7 +1,8 @@
 /* Global client auth and public request modals */
 
 .apll-auth-overlay,
-.apll-request-overlay{
+.apll-request-overlay,
+.apll-requests-overlay{
   position:fixed;
   inset:0;
   z-index:150;
@@ -13,12 +14,15 @@
 }
 
 .apll-auth-overlay[hidden],
-.apll-request-overlay[hidden]{
+.apll-request-overlay[hidden],
+.apll-requests-overlay[hidden],
+.apll-client-requests-item[hidden]{
   display:none;
 }
 
 .apll-auth-dialog,
-.apll-request-dialog{
+.apll-request-dialog,
+.apll-requests-dialog{
   position:relative;
   width:min(520px, 100%);
   max-height:min(760px, calc(100vh - 36px));
@@ -37,8 +41,13 @@
   width:min(640px, 100%);
 }
 
+.apll-requests-dialog{
+  width:min(760px, 100%);
+}
+
 .apll-auth-close,
-.apll-request-close{
+.apll-request-close,
+.apll-requests-close{
   position:absolute;
   top:12px;
   right:12px;
@@ -56,7 +65,8 @@
 }
 
 .apll-auth-close:hover,
-.apll-request-close:hover{
+.apll-request-close:hover,
+.apll-requests-close:hover{
   background:#f2f7ff;
 }
 
@@ -224,18 +234,234 @@
   text-underline-offset:3px;
 }
 
+.apll-client-requests-link{
+  cursor:pointer;
+  font:inherit;
+}
+
+.nav-icon-link.apll-client-requests-link{
+  width:auto;
+  min-width:44px;
+  grid-auto-flow:column;
+  gap:8px;
+  padding:0 12px;
+}
+
+.apll-client-requests-label{
+  max-width:128px;
+  overflow:hidden;
+  color:var(--primary-ink);
+  font-size:13px;
+  font-weight:900;
+  line-height:1;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.drawer-links .apll-client-requests-link{
+  width:100%;
+  min-height:58px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:8px;
+  padding:8px;
+  color:var(--primary-ink);
+  background:#fff;
+}
+
+.drawer-links .apll-client-requests-link svg{
+  width:23px;
+  height:23px;
+}
+
+.drawer-links .apll-client-requests-label{
+  margin-top:4px;
+  font-size:11px;
+  white-space:normal;
+}
+
+.apll-requests-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:14px;
+  padding-right:38px;
+  margin-bottom:16px;
+}
+
+.apll-requests-head h2{
+  margin:12px 0 8px;
+  color:var(--primary-ink);
+  font-size:clamp(26px, 5vw, 34px);
+  line-height:1.08;
+}
+
+.apll-requests-head p{
+  margin:0;
+  color:#526278;
+  font-weight:650;
+}
+
+.apll-requests-refresh{
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  width:40px;
+  height:40px;
+  margin-top:6px;
+  border:1px solid rgba(10,46,92,.12);
+  border-radius:8px;
+  color:var(--primary-ink);
+  background:#fff;
+  cursor:pointer;
+}
+
+.apll-requests-refresh:hover,
+.apll-requests-refresh:focus-visible{
+  background:#edf5ff;
+  outline:none;
+}
+
+.apll-requests-refresh svg{
+  width:19px;
+  height:19px;
+}
+
+.apll-my-requests-list{
+  display:grid;
+  gap:12px;
+  margin:8px 0 16px;
+}
+
+.apll-my-requests-empty,
+.apll-my-request-card{
+  border:1px solid rgba(10,46,92,.12);
+  border-radius:8px;
+  background:#fff;
+  padding:16px;
+  box-shadow:0 8px 22px rgba(10,46,92,.06);
+}
+
+.apll-my-requests-empty h3,
+.apll-my-request-card h3{
+  margin:0;
+  color:#172033;
+  font-size:19px;
+  line-height:1.2;
+}
+
+.apll-my-requests-empty p{
+  margin:8px 0 0;
+  color:#526278;
+  font-weight:650;
+}
+
+.apll-my-request-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:10px;
+}
+
+.apll-my-request-service{
+  margin:0 0 5px;
+  color:#0b5ed7;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+.apll-my-request-status{
+  flex:0 0 auto;
+  padding:6px 9px;
+  border-radius:999px;
+  color:#0a2e5c;
+  background:#e9f2ff;
+  font-size:12px;
+  font-weight:900;
+}
+
+.apll-status-done{
+  color:#067647;
+  background:#ecfdf3;
+}
+
+.apll-status-cancelled{
+  color:#b42318;
+  background:#fef3f2;
+}
+
+.apll-status-in_progress,
+.apll-status-waiting_client{
+  color:#8a4b00;
+  background:#fff4df;
+}
+
+.apll-my-request-text,
+.apll-my-request-note{
+  margin:0 0 12px;
+  color:#354154;
+  font-weight:650;
+  line-height:1.55;
+  overflow-wrap:anywhere;
+}
+
+.apll-my-request-note{
+  padding:10px 12px;
+  border-radius:8px;
+  background:#f6f9fd;
+}
+
+.apll-my-request-meta{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0, 1fr));
+  gap:8px;
+}
+
+.apll-my-request-meta-item{
+  min-width:0;
+  padding:9px 10px;
+  border-radius:8px;
+  background:#f8fafc;
+}
+
+.apll-my-request-meta-item span{
+  display:block;
+  color:#6b778a;
+  font-size:11px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.apll-my-request-meta-item strong{
+  display:block;
+  margin-top:3px;
+  color:#172033;
+  font-size:13px;
+  overflow-wrap:anywhere;
+}
+
 @media (max-width: 560px){
   .apll-auth-dialog,
-  .apll-request-dialog{
+  .apll-request-dialog,
+  .apll-requests-dialog{
     padding:20px;
   }
 
   .apll-auth-providers,
-  .apll-request-two{
+  .apll-request-two,
+  .apll-my-request-meta{
     grid-template-columns:1fr;
   }
 
   .apll-request-actions{
+    display:grid;
+  }
+
+  .apll-my-request-head{
     display:grid;
   }
 }

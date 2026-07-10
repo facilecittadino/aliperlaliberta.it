@@ -8,11 +8,21 @@
   const SERVICE_PARAM = "apllService";
   const KIND_PARAM = "apllKind";
 
+  const statusLabels = {
+    new: "Nuova",
+    in_progress: "In lavorazione",
+    waiting_client: "In attesa cliente",
+    done: "Chiusa",
+    cancelled: "Annullata"
+  };
+
   let currentUser = null;
   let authOverlay = null;
   let requestOverlay = null;
+  let requestsOverlay = null;
   let lastFocused = null;
   let pendingAction = null;
+  let clientActionNodes = [];
   let readyDone = false;
   let readyResolve;
 
@@ -66,6 +76,7 @@
   function setUser(user) {
     currentUser = user || null;
     document.documentElement.classList.toggle("apll-client-authenticated", isClient());
+    updateClientActions();
     document.dispatchEvent(new CustomEvent("apll:auth-change", {
       detail: { user: currentUser }
     }));
@@ -96,6 +107,89 @@
       url.searchParams.set(KIND_PARAM, options.calendarKind || "practices");
     }
     return `${url.pathname}${url.search}${url.hash}`;
+  }
+
+  function el(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  function renderDynamicIcons() {
+    if (!window.lucide || typeof window.lucide.createIcons !== "function") return;
+    window.lucide.createIcons({
+      attrs: {
+        "stroke-width": 2.2,
+        "aria-hidden": "true"
+      }
+    });
+  }
+
+  function formatDate(value) {
+    if (!value) return "-";
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return value;
+    return new Intl.DateTimeFormat("it-IT", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit"
+    }).format(date);
+  }
+
+  function metaItem(label, value) {
+    const item = el("div", "apll-my-request-meta-item");
+    item.append(el("span", "", label));
+    item.append(el("strong", "", value || "-"));
+    return item;
+  }
+
+  function ensureClientActions() {
+    if (clientActionNodes.length) return;
+
+    document.querySelectorAll("[data-auth-link]").forEach((authLink) => {
+      const item = authLink.closest("li");
+      if (!item || !item.parentElement) return;
+      if (item.nextElementSibling?.dataset?.clientRequestsItem === "true") return;
+
+      const requestsItem = document.createElement("li");
+      requestsItem.className = "apll-client-requests-item";
+      requestsItem.dataset.clientRequestsItem = "true";
+      requestsItem.hidden = true;
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = authLink.classList.contains("nav-icon-link")
+        ? "nav-icon-link apll-client-requests-link"
+        : "apll-client-requests-link apll-client-requests-link--drawer";
+      button.setAttribute("aria-label", "Le tue richieste");
+      button.setAttribute("title", "Le tue richieste");
+      button.innerHTML = `
+        <i data-lucide="clipboard-list"></i>
+        <span class="apll-client-requests-label">Le tue richieste</span>
+      `;
+      button.addEventListener("click", () => {
+        window.Navbar?.closeDrawer?.();
+        openMyRequests();
+      });
+
+      requestsItem.append(button);
+      item.insertAdjacentElement("afterend", requestsItem);
+      clientActionNodes.push(requestsItem);
+    });
+
+    renderDynamicIcons();
+  }
+
+  function updateClientActions() {
+    ensureClientActions();
+    const show = isClient();
+    clientActionNodes.forEach((node) => {
+      node.hidden = !show;
+    });
+    if (show) renderDynamicIcons();
   }
 
   function ensureAuthOverlay() {
@@ -464,6 +558,125 @@
     }
   }
 
+  function ensureRequestsOverlay() {
+    if (requestsOverlay) return requestsOverlay;
+
+    requestsOverlay = document.createElement("div");
+    requestsOverlay.className = "apll-requests-overlay";
+    requestsOverlay.hidden = true;
+    requestsOverlay.innerHTML = `
+      <section class="apll-requests-dialog" role="dialog" aria-modal="true" aria-labelledby="apllRequestsTitle">
+        <button class="apll-requests-close" type="button" aria-label="Chiudi">&times;</button>
+        <div class="apll-requests-head">
+          <div>
+            <span class="apll-auth-kicker">Area cliente</span>
+            <h2 id="apllRequestsTitle">Le tue richieste</h2>
+            <p>Qui vedi solo le pratiche collegate al tuo account.</p>
+          </div>
+          <button class="apll-requests-refresh" id="apllRequestsRefresh" type="button" aria-label="Aggiorna richieste" title="Aggiorna">
+            <i data-lucide="refresh-cw"></i>
+          </button>
+        </div>
+        <div id="apllRequestsMessage" class="apll-auth-message" role="status"></div>
+        <div id="apllRequestsList" class="apll-my-requests-list"></div>
+        <a class="apll-request-area-link" href="/cliente/">Apri area cliente completa</a>
+      </section>
+    `;
+
+    document.body.appendChild(requestsOverlay);
+
+    requestsOverlay.querySelector(".apll-requests-close").addEventListener("click", closeMyRequests);
+    requestsOverlay.querySelector("#apllRequestsRefresh").addEventListener("click", loadMyRequests);
+    requestsOverlay.addEventListener("click", (event) => {
+      if (event.target === requestsOverlay) closeMyRequests();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && requestsOverlay && !requestsOverlay.hidden) closeMyRequests();
+    });
+
+    renderDynamicIcons();
+    return requestsOverlay;
+  }
+
+  function renderMyRequests(requests) {
+    const list = requestsOverlay.querySelector("#apllRequestsList");
+    list.replaceChildren();
+
+    if (!requests.length) {
+      const empty = el("div", "apll-my-requests-empty");
+      empty.append(el("h3", "", "Nessuna richiesta aperta"));
+      empty.append(el("p", "", "Quando prenoti un servizio dal sito, la richiesta comparira qui."));
+      list.append(empty);
+      return;
+    }
+
+    requests.forEach((request) => {
+      const card = el("article", "apll-my-request-card");
+      const head = el("div", "apll-my-request-head");
+      const title = el("div");
+      title.append(el("p", "apll-my-request-service", request.service || "Servizio"));
+      title.append(el("h3", "", request.subject || "Richiesta"));
+      head.append(title);
+      head.append(el("span", `apll-my-request-status apll-status-${request.status || "new"}`, statusLabels[request.status] || request.status || "Nuova"));
+
+      const details = el("div", "apll-my-request-meta");
+      details.append(metaItem("Data preferita", request.preferredDate));
+      details.append(metaItem("Ora", request.preferredTime));
+      details.append(metaItem("Telefono", request.phone));
+      details.append(metaItem("Aggiornata", formatDate(request.updatedAt)));
+
+      card.append(head);
+      card.append(el("p", "apll-my-request-text", request.message || ""));
+      if (request.adminNote) {
+        const note = el("p", "apll-my-request-note", request.adminNote);
+        note.prepend(el("strong", "", "Nota admin: "));
+        card.append(note);
+      }
+      card.append(details);
+      list.append(card);
+    });
+  }
+
+  async function loadMyRequests() {
+    if (!requestsOverlay) return;
+    const message = requestsOverlay.querySelector("#apllRequestsMessage");
+    const list = requestsOverlay.querySelector("#apllRequestsList");
+    setMessage(message, "Caricamento richieste...");
+    list.replaceChildren();
+
+    try {
+      const data = await api("/requests");
+      renderMyRequests(Array.isArray(data.requests) ? data.requests : []);
+      setMessage(message, "");
+    } catch (error) {
+      setMessage(message, error.message, "error");
+    }
+  }
+
+  async function openMyRequests() {
+    if (!isClient()) {
+      await requireClient({
+        reason: "Accedi per vedere le tue richieste.",
+        afterLogin: () => openMyRequests()
+      });
+      return;
+    }
+
+    ensureRequestsOverlay();
+    lastFocused = document.activeElement;
+    requestsOverlay.hidden = false;
+    lockPage(true);
+    loadMyRequests();
+  }
+
+  function closeMyRequests() {
+    if (!requestsOverlay || requestsOverlay.hidden) return;
+    requestsOverlay.hidden = true;
+    lockPage(Boolean(authOverlay && !authOverlay.hidden) || Boolean(requestOverlay && !requestOverlay.hidden));
+    lastFocused?.focus?.({ preventScroll: true });
+  }
+
   async function refresh() {
     try {
       const data = await api("/auth/me");
@@ -527,7 +740,8 @@
     open: openAuth,
     close: closeAuth,
     openRequest,
-    openRequestForm
+    openRequestForm,
+    openMyRequests
   };
 
   wireLinks();
