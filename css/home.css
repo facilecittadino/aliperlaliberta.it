@@ -16,16 +16,14 @@
   gap: clamp(28px, 5vw, 72px);
   align-items: center;
   padding: clamp(32px, 6vw, 76px);
-  border: 1px solid rgba(255, 255, 255, .72);
-  border-radius: 28px;
-  background:
-    radial-gradient(circle at 90% 10%, rgba(73, 166, 255, .25), transparent 36%),
-    linear-gradient(135deg, rgba(255,255,255,.94), rgba(238,247,255,.88));
-  box-shadow: 0 24px 70px rgba(10, 46, 92, .14);
+  border: 1px solid rgba(148, 163, 184, .28);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 18px 50px rgba(10, 46, 92, .10);
 }
 
 .home-intro::after {
-  content: "";
+  content: none;
   position: absolute;
   width: 280px;
   height: 280px;
@@ -60,7 +58,7 @@
   color: var(--primary-ink);
   font-size: clamp(2.25rem, 6vw, 4.8rem);
   line-height: 1.02;
-  letter-spacing: -.045em;
+  letter-spacing: 0;
 }
 
 .home-lead {
@@ -129,9 +127,9 @@
 .home-service {
   padding: 28px;
   border: 1px solid rgba(10, 46, 92, .09);
-  border-radius: 20px;
-  background: rgba(255,255,255,.86);
-  box-shadow: 0 10px 30px rgba(10, 46, 92, .08);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(10, 46, 92, .08);
 }
 
 .home-value-number {
@@ -140,7 +138,7 @@
   width: 44px;
   height: 44px;
   margin-bottom: 22px;
-  border-radius: 14px;
+  border-radius: 8px;
   color: #fff;
   background: var(--primary);
   font-weight: 800;
@@ -166,9 +164,9 @@
   gap: clamp(30px, 6vw, 80px);
   align-items: center;
   padding: clamp(30px, 5vw, 56px);
-  border-radius: 24px;
+  border-radius: 8px;
   color: #fff;
-  background: linear-gradient(135deg, #092b54, #0b5ed7);
+  background: #0a2e5c;
   box-shadow: 0 22px 54px rgba(10, 46, 92, .2);
 }
 
@@ -215,7 +213,7 @@
   gap: 28px;
   align-items: center;
   padding: clamp(30px, 5vw, 52px);
-  border-radius: 24px;
+  border-radius: 8px;
   background: #f1f7fd;
 }
 

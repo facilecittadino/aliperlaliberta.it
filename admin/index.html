@@ -8,28 +8,35 @@
   <meta name="description" content="Portale admin Ali Per La Liberta." />
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/main.css" />
+  <script src="/js/tailwindConfig.js?v=20260710-tw1"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <div class="page portal-page">
-    <header class="portal-header">
+<body class="min-h-screen bg-[#f5f8fb] text-slate-900">
+  <div class="page portal-page min-h-screen bg-[linear-gradient(180deg,#f8fbff_0%,#eef5fb_48%,#f7fafc_100%)]">
+    <header class="portal-header border-b border-slate-200/80 bg-white/95 shadow-sm backdrop-blur">
       <a class="portal-brand" href="/" aria-label="Ali Per La Liberta Home">
         <img src="/logo.png" alt="" decoding="async" />
         <span>Ali Per La Liberta</span>
       </a>
-      <nav class="portal-nav" aria-label="Admin">
+      <nav class="portal-nav rounded-full border border-slate-200 bg-slate-50/80 px-2 py-1" aria-label="Admin">
         <a href="/">Sito</a>
         <a href="/cliente/">Area clienti</a>
       </nav>
     </header>
 
-    <main class="portal-main">
-      <section class="portal-hero" aria-labelledby="adminTitle">
-        <p class="portal-eyebrow">Portale admin</p>
-        <h1 id="adminTitle">Gestione pratiche</h1>
-        <p>Accesso separato per controllare tutte le pratiche, gli stati e gli utenti.</p>
+    <main class="portal-main max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <section class="portal-hero grid gap-5 rounded-[8px] border border-slate-200 bg-white p-6 shadow-soft lg:grid-cols-[minmax(0,1fr)_300px] lg:items-center lg:p-8" aria-labelledby="adminTitle">
+        <div>
+          <p class="portal-eyebrow">Portale admin</p>
+          <h1 id="adminTitle" class="text-balance">Gestione pratiche</h1>
+          <p>Accesso separato per controllare tutte le pratiche, gli stati e gli utenti.</p>
+        </div>
+        <div class="rounded-[8px] border border-amber-200 bg-amber-50 p-4 text-sm font-semibold text-slate-700">
+          Area riservata: nessuna creazione admin e nessuna operazione senza login.
+        </div>
       </section>
 
-      <section id="authPanel" class="portal-panel portal-form" aria-label="Login admin">
+      <section id="authPanel" class="portal-panel portal-form shadow-soft" aria-label="Login admin">
         <h2>Login admin</h2>
         <form id="loginForm" autocomplete="on">
           <label>
@@ -46,7 +53,7 @@
       </section>
 
       <section id="dashboardPanel" class="portal-dashboard" hidden>
-        <div class="portal-dashboard-head">
+        <div class="portal-dashboard-head rounded-[8px] border border-slate-200 bg-white p-5 shadow-soft">
           <div>
             <p class="portal-eyebrow">Admin</p>
             <h2>Controllo completo</h2>

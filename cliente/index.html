@@ -8,27 +8,48 @@
   <meta name="description" content="Area riservata Ali Per La Liberta." />
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/main.css" />
+  <script src="/js/tailwindConfig.js?v=20260710-tw1"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <div class="page portal-page">
-    <header class="portal-header">
+<body class="min-h-screen bg-[#f5f8fb] text-slate-900">
+  <div class="page portal-page min-h-screen bg-[linear-gradient(180deg,#f8fbff_0%,#eef5fb_48%,#f7fafc_100%)]">
+    <header class="portal-header border-b border-slate-200/80 bg-white/95 shadow-sm backdrop-blur">
       <a class="portal-brand" href="/" aria-label="Ali Per La Liberta Home">
         <img src="/logo.png" alt="" decoding="async" />
         <span>Ali Per La Liberta</span>
       </a>
-      <nav class="portal-nav" aria-label="Area riservata">
+      <nav class="portal-nav rounded-full border border-slate-200 bg-slate-50/80 px-2 py-1" aria-label="Area riservata">
         <a href="/">Sito</a>
       </nav>
     </header>
 
-    <main class="portal-main">
-      <section class="portal-hero" aria-labelledby="portalTitle">
-        <p class="portal-eyebrow">Area riservata</p>
-        <h1 id="portalTitle">Servizi e pratiche</h1>
-        <p>Accedi per prenotare un servizio, controllare le tue pratiche e seguire ogni avanzamento.</p>
+    <main class="portal-main max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <section class="portal-hero grid gap-5 rounded-[8px] border border-slate-200 bg-white p-6 shadow-soft lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center lg:p-8" aria-labelledby="portalTitle">
+        <div>
+          <p class="portal-eyebrow">Area riservata cliente</p>
+          <h1 id="portalTitle" class="text-balance">Servizi e pratiche</h1>
+          <p>Accedi per prenotare un servizio, controllare lo stato delle tue pratiche e seguire ogni avanzamento in modo semplice.</p>
+        </div>
+        <div class="grid gap-3 rounded-[8px] border border-blue-100 bg-blue-50 p-4 text-sm text-slate-700">
+          <div class="flex items-start gap-3">
+            <span class="mt-1 h-2.5 w-2.5 rounded-full bg-apll-mint"></span>
+            <p class="m-0"><strong class="text-apll-ink">Percorso guidato:</strong> prenota, apri la pratica e ricevi aggiornamenti.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="mt-1 h-2.5 w-2.5 rounded-full bg-apll-blue"></span>
+            <p class="m-0"><strong class="text-apll-ink">Area personale:</strong> tutte le richieste restano consultabili dopo il login.</p>
+          </div>
+        </div>
       </section>
 
-      <section id="authPanel" class="portal-auth" aria-label="Accesso clienti">
+      <section id="authPanel" class="portal-auth grid gap-5 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)]" aria-label="Accesso clienti">
+        <div class="rounded-[8px] border border-slate-200 bg-white p-5 shadow-soft">
+          <p class="portal-eyebrow">Identificazione</p>
+          <h2 class="m-0 text-2xl font-extrabold text-apll-ink">Entra nella tua area</h2>
+          <p class="mt-2 text-sm font-semibold text-slate-600">Ogni operazione parte da un account cliente. Se e il primo accesso, crea la tua utenza in pochi passaggi.</p>
+        </div>
+
+        <div>
         <div class="portal-tabs" role="tablist" aria-label="Accesso o registrazione">
           <button type="button" class="portal-tab is-active" data-auth-tab="login">Login</button>
           <button type="button" class="portal-tab" data-auth-tab="register">Primo accesso</button>
@@ -85,10 +106,11 @@
           <button class="btn btn-primary portal-submit" type="submit">Crea account</button>
           <p id="registerMessage" class="portal-message" role="status"></p>
         </form>
+        </div>
       </section>
 
       <section id="dashboardPanel" class="portal-dashboard" hidden>
-        <div class="portal-dashboard-head">
+        <div class="portal-dashboard-head rounded-[8px] border border-slate-200 bg-white p-5 shadow-soft">
           <div>
             <p id="roleLabel" class="portal-eyebrow">Area personale</p>
             <h2 id="clientName">Area clienti</h2>

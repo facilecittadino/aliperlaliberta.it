@@ -6,7 +6,7 @@
 #patronatoMain.patronato-section {
   min-height: calc(100svh - var(--nav-h));
   padding: 16px 16px max(24px, var(--safe-bottom)); /* FIXED — no extra top gap */
-  background: #fff;
+  background: #f6f8fb;
 }
 
 /* Hero section (CAF ke same spacing) */
@@ -17,11 +17,11 @@
 }
 
 .patronato-hero-card {
-  background: rgba(255,255,255,0.6);
-  border: 1px solid rgba(255,255,255,0.45);
-  border-radius: var(--radius);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  backdrop-filter: blur(4px) saturate(130%);
+  background: #fff;
+  border: 1px solid rgba(148, 163, 184, .28);
+  border-radius: 8px;
+  box-shadow: 0 18px 50px rgba(10, 46, 92, .10);
+  backdrop-filter: none;
   padding: clamp(20px, 3vw, 36px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -50,9 +50,10 @@
 
 .patronato-service-card {
   background: #fff;
-  border-radius: 12px;
-  padding: 14px 16px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(148, 163, 184, .24);
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 12px 32px rgba(10, 46, 92, .08);
   transition: transform 0.2s ease;
 }
 .patronato-service-card:hover {
@@ -77,7 +78,7 @@
   background: #0b5ed7;
   color: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 2px 8px rgba(11,94,215,.25);
   transition: filter 0.2s ease, transform 0.2s ease;
 }
