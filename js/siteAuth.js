@@ -20,9 +20,11 @@
   let authOverlay = null;
   let requestOverlay = null;
   let requestsOverlay = null;
+  let usersOverlay = null;
   let lastFocused = null;
   let pendingAction = null;
   let clientActionNodes = [];
+  let adminActionNodes = [];
   let readyDone = false;
   let readyResolve;
 
@@ -67,6 +69,10 @@
     return currentUser?.role === "client";
   }
 
+  function isAdmin() {
+    return currentUser?.role === "admin";
+  }
+
   function setMessage(node, text, kind = "") {
     if (!node) return;
     node.textContent = text || "";
@@ -76,7 +82,9 @@
   function setUser(user) {
     currentUser = user || null;
     document.documentElement.classList.toggle("apll-client-authenticated", isClient());
+    document.documentElement.classList.toggle("apll-admin-authenticated", isAdmin());
     updateClientActions();
+    updateAdminActions();
     document.dispatchEvent(new CustomEvent("apll:auth-change", {
       detail: { user: currentUser }
     }));
@@ -84,6 +92,10 @@
 
   function lockPage(lock) {
     document.body.classList.toggle("overlay-lock", Boolean(lock));
+  }
+
+  function hasOpenOverlay() {
+    return [authOverlay, requestOverlay, requestsOverlay, usersOverlay].some((overlay) => overlay && !overlay.hidden);
   }
 
   function cleanOauthUrl() {
@@ -192,6 +204,52 @@
     if (show) renderDynamicIcons();
   }
 
+  function ensureAdminActions() {
+    if (adminActionNodes.length) return;
+
+    document.querySelectorAll("[data-auth-link]").forEach((authLink) => {
+      const item = authLink.closest("li");
+      if (!item || !item.parentElement) return;
+      if (item.nextElementSibling?.dataset?.adminUsersItem === "true") return;
+
+      const usersItem = document.createElement("li");
+      usersItem.className = "apll-admin-users-item";
+      usersItem.dataset.adminUsersItem = "true";
+      usersItem.hidden = true;
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = authLink.classList.contains("nav-icon-link")
+        ? "nav-icon-link apll-admin-users-link"
+        : "apll-admin-users-link apll-admin-users-link--drawer";
+      button.setAttribute("aria-label", "Lista utenti");
+      button.setAttribute("title", "Lista utenti");
+      button.innerHTML = `
+        <i data-lucide="users"></i>
+        <span class="apll-admin-users-label">Utenti</span>
+      `;
+      button.addEventListener("click", () => {
+        window.Navbar?.closeDrawer?.();
+        openUsersList();
+      });
+
+      usersItem.append(button);
+      item.insertAdjacentElement("afterend", usersItem);
+      adminActionNodes.push(usersItem);
+    });
+
+    renderDynamicIcons();
+  }
+
+  function updateAdminActions() {
+    ensureAdminActions();
+    const show = isAdmin();
+    adminActionNodes.forEach((node) => {
+      node.hidden = !show;
+    });
+    if (show) renderDynamicIcons();
+  }
+
   function ensureAuthOverlay() {
     if (authOverlay) return authOverlay;
 
@@ -282,7 +340,9 @@
           body: JSON.stringify(formData(loginForm))
         });
         if (data.user?.role === "admin") {
-          window.location.href = "/admin/";
+          loginForm.reset();
+          setMessage(loginMessage, "");
+          completeAuth(data.user, () => openUsersList());
           return;
         }
         if (data.user?.role !== "client") throw new Error("Account cliente richiesto");
@@ -372,14 +432,14 @@
   function closeAuth() {
     if (!authOverlay || authOverlay.hidden) return;
     authOverlay.hidden = true;
-    lockPage(Boolean(requestOverlay && !requestOverlay.hidden));
+    lockPage(hasOpenOverlay());
     pendingAction = null;
     lastFocused?.focus?.({ preventScroll: true });
   }
 
-  function completeAuth(user) {
+  function completeAuth(user, nextAction) {
     setUser(user);
-    const action = pendingAction?.run;
+    const action = typeof nextAction === "function" ? nextAction : pendingAction?.run;
     pendingAction = null;
     if (authOverlay) authOverlay.hidden = true;
     lockPage(false);
@@ -397,8 +457,8 @@
       options.afterLogin?.(currentUser);
       return currentUser;
     }
-    if (currentUser?.role === "admin" && options.adminRedirect !== false) {
-      window.location.href = "/admin/";
+    if (isAdmin()) {
+      openUsersList();
       return null;
     }
     openAuth(options);
@@ -519,7 +579,7 @@
   function closeRequest() {
     if (!requestOverlay || requestOverlay.hidden) return;
     requestOverlay.hidden = true;
-    lockPage(Boolean(authOverlay && !authOverlay.hidden));
+    lockPage(hasOpenOverlay());
     lastFocused?.focus?.({ preventScroll: true });
   }
 
@@ -664,7 +724,129 @@
   function closeMyRequests() {
     if (!requestsOverlay || requestsOverlay.hidden) return;
     requestsOverlay.hidden = true;
-    lockPage(Boolean(authOverlay && !authOverlay.hidden) || Boolean(requestOverlay && !requestOverlay.hidden));
+    lockPage(hasOpenOverlay());
+    lastFocused?.focus?.({ preventScroll: true });
+  }
+
+  function ensureUsersOverlay() {
+    if (usersOverlay) return usersOverlay;
+
+    usersOverlay = document.createElement("div");
+    usersOverlay.className = "apll-users-overlay";
+    usersOverlay.hidden = true;
+    usersOverlay.innerHTML = `
+      <section class="apll-users-dialog" role="dialog" aria-modal="true" aria-labelledby="apllUsersTitle">
+        <button class="apll-users-close" type="button" aria-label="Chiudi">&times;</button>
+        <h2 id="apllUsersTitle" class="sr-only">Lista utenti</h2>
+        <div id="apllUsersList" class="apll-users-list"></div>
+      </section>
+    `;
+
+    document.body.appendChild(usersOverlay);
+
+    usersOverlay.querySelector(".apll-users-close").addEventListener("click", closeUsersList);
+    usersOverlay.addEventListener("click", (event) => {
+      if (event.target === usersOverlay) closeUsersList();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && usersOverlay && !usersOverlay.hidden) closeUsersList();
+    });
+
+    renderDynamicIcons();
+    return usersOverlay;
+  }
+
+  function userMeta(label, value) {
+    const item = el("div", "apll-user-list-meta-item");
+    item.append(el("span", "", label));
+    item.append(el("strong", "", value || "-"));
+    return item;
+  }
+
+  function roleLabel(role) {
+    return role === "admin" ? "Admin" : "Cliente";
+  }
+
+  function renderUsersList(users) {
+    const list = usersOverlay.querySelector("#apllUsersList");
+    list.replaceChildren();
+
+    if (!users.length) {
+      const empty = el("div", "apll-users-empty");
+      empty.append(el("h3", "", "Nessun utente registrato"));
+      list.append(empty);
+      return;
+    }
+
+    users.forEach((user) => {
+      const card = el("article", "apll-user-list-card");
+      const head = el("div", "apll-user-list-head");
+      const title = el("div");
+      title.append(el("h3", "", user.name || user.username || user.email || "Utente"));
+      title.append(el("p", "", user.email || "-"));
+      head.append(title);
+      head.append(el("span", `apll-user-role apll-user-role-${user.role || "client"}`, roleLabel(user.role)));
+
+      const permissions = Array.isArray(user.permissions) && user.permissions.length
+        ? user.permissions.join(", ")
+        : "-";
+      const providers = Array.isArray(user.providers) && user.providers.length
+        ? user.providers.join(", ")
+        : "manuale";
+
+      const meta = el("div", "apll-user-list-meta");
+      meta.append(userMeta("Username", user.username));
+      meta.append(userMeta("Telefono", user.phone));
+      meta.append(userMeta("Permessi", permissions));
+      meta.append(userMeta("Accesso", providers));
+      meta.append(userMeta("Creato", formatDate(user.createdAt)));
+
+      card.append(head);
+      card.append(meta);
+      list.append(card);
+    });
+  }
+
+  async function loadUsersList() {
+    if (!usersOverlay) return;
+    const list = usersOverlay.querySelector("#apllUsersList");
+    list.replaceChildren();
+    const loading = el("div", "apll-users-empty");
+    loading.append(el("p", "", "Caricamento utenti..."));
+    list.append(loading);
+
+    try {
+      const data = await api("/users");
+      renderUsersList(Array.isArray(data.users) ? data.users : []);
+    } catch (error) {
+      list.replaceChildren();
+      const errorBox = el("div", "apll-users-empty apll-users-empty--error");
+      errorBox.append(el("p", "", error.message));
+      list.append(errorBox);
+    }
+  }
+
+  async function openUsersList() {
+    if (!isAdmin()) {
+      await openAuth({
+        reason: "Accedi con le credenziali admin per vedere la lista utenti.",
+        afterLogin: () => openUsersList()
+      });
+      return;
+    }
+
+    ensureUsersOverlay();
+    lastFocused = document.activeElement;
+    usersOverlay.hidden = false;
+    lockPage(true);
+    loadUsersList();
+  }
+
+  function closeUsersList() {
+    if (!usersOverlay || usersOverlay.hidden) return;
+    usersOverlay.hidden = true;
+    lockPage(hasOpenOverlay());
     lastFocused?.focus?.({ preventScroll: true });
   }
 
@@ -727,12 +909,14 @@
     refresh,
     getUser: () => currentUser,
     isClient,
+    isAdmin,
     requireClient,
     open: openAuth,
     close: closeAuth,
     openRequest,
     openRequestForm,
-    openMyRequests
+    openMyRequests,
+    openUsersList
   };
 
   wireLinks();

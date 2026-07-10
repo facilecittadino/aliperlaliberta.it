@@ -2,7 +2,8 @@
 
 .apll-auth-overlay,
 .apll-request-overlay,
-.apll-requests-overlay{
+.apll-requests-overlay,
+.apll-users-overlay{
   position:fixed;
   inset:0;
   z-index:150;
@@ -16,13 +17,16 @@
 .apll-auth-overlay[hidden],
 .apll-request-overlay[hidden],
 .apll-requests-overlay[hidden],
-.apll-client-requests-item[hidden]{
+.apll-users-overlay[hidden],
+.apll-client-requests-item[hidden],
+.apll-admin-users-item[hidden]{
   display:none;
 }
 
 .apll-auth-dialog,
 .apll-request-dialog,
-.apll-requests-dialog{
+.apll-requests-dialog,
+.apll-users-dialog{
   position:relative;
   width:min(520px, 100%);
   max-height:min(760px, calc(100vh - 36px));
@@ -41,14 +45,16 @@
   width:min(640px, 100%);
 }
 
-.apll-requests-dialog{
+.apll-requests-dialog,
+.apll-users-dialog{
   width:min(760px, 100%);
   padding-top:58px;
 }
 
 .apll-auth-close,
 .apll-request-close,
-.apll-requests-close{
+.apll-requests-close,
+.apll-users-close{
   position:absolute;
   top:12px;
   right:12px;
@@ -67,7 +73,8 @@
 
 .apll-auth-close:hover,
 .apll-request-close:hover,
-.apll-requests-close:hover{
+.apll-requests-close:hover,
+.apll-users-close:hover{
   background:#f2f7ff;
 }
 
@@ -235,12 +242,14 @@
   text-underline-offset:3px;
 }
 
-.apll-client-requests-link{
+.apll-client-requests-link,
+.apll-admin-users-link{
   cursor:pointer;
   font:inherit;
 }
 
-.nav-icon-link.apll-client-requests-link{
+.nav-icon-link.apll-client-requests-link,
+.nav-icon-link.apll-admin-users-link{
   width:auto;
   min-width:44px;
   grid-auto-flow:column;
@@ -248,7 +257,8 @@
   padding:0 12px;
 }
 
-.apll-client-requests-label{
+.apll-client-requests-label,
+.apll-admin-users-label{
   max-width:128px;
   overflow:hidden;
   color:var(--primary-ink);
@@ -259,7 +269,8 @@
   white-space:nowrap;
 }
 
-.drawer-links .apll-client-requests-link{
+.drawer-links .apll-client-requests-link,
+.drawer-links .apll-admin-users-link{
   width:100%;
   min-height:58px;
   display:grid;
@@ -271,25 +282,30 @@
   background:#fff;
 }
 
-.drawer-links .apll-client-requests-link svg{
+.drawer-links .apll-client-requests-link svg,
+.drawer-links .apll-admin-users-link svg{
   width:23px;
   height:23px;
 }
 
-.drawer-links .apll-client-requests-label{
+.drawer-links .apll-client-requests-label,
+.drawer-links .apll-admin-users-label{
   margin-top:4px;
   font-size:11px;
   white-space:normal;
 }
 
-.apll-my-requests-list{
+.apll-my-requests-list,
+.apll-users-list{
   display:grid;
   gap:12px;
   margin:0;
 }
 
 .apll-my-requests-empty,
-.apll-my-request-card{
+.apll-my-request-card,
+.apll-users-empty,
+.apll-user-list-card{
   border:1px solid rgba(10,46,92,.12);
   border-radius:8px;
   background:#fff;
@@ -298,24 +314,29 @@
 }
 
 .apll-my-requests-empty h3,
-.apll-my-request-card h3{
+.apll-my-request-card h3,
+.apll-users-empty h3,
+.apll-user-list-card h3{
   margin:0;
   color:#172033;
   font-size:19px;
   line-height:1.2;
 }
 
-.apll-my-requests-empty p{
+.apll-my-requests-empty p,
+.apll-users-empty p{
   margin:0;
   color:#526278;
   font-weight:650;
 }
 
-.apll-my-requests-empty--error p{
+.apll-my-requests-empty--error p,
+.apll-users-empty--error p{
   color:#b42318;
 }
 
-.apll-my-request-head{
+.apll-my-request-head,
+.apll-user-list-head{
   display:flex;
   align-items:flex-start;
   justify-content:space-between;
@@ -340,6 +361,29 @@
   background:#e9f2ff;
   font-size:12px;
   font-weight:900;
+}
+
+.apll-user-list-head p{
+  margin:5px 0 0;
+  color:#526278;
+  font-size:14px;
+  font-weight:750;
+  overflow-wrap:anywhere;
+}
+
+.apll-user-role{
+  flex:0 0 auto;
+  padding:6px 9px;
+  border-radius:999px;
+  color:#0a2e5c;
+  background:#e9f2ff;
+  font-size:12px;
+  font-weight:900;
+}
+
+.apll-user-role-admin{
+  color:#067647;
+  background:#ecfdf3;
 }
 
 .apll-status-done{
@@ -373,20 +417,23 @@
   background:#f6f9fd;
 }
 
-.apll-my-request-meta{
+.apll-my-request-meta,
+.apll-user-list-meta{
   display:grid;
   grid-template-columns:repeat(4, minmax(0, 1fr));
   gap:8px;
 }
 
-.apll-my-request-meta-item{
+.apll-my-request-meta-item,
+.apll-user-list-meta-item{
   min-width:0;
   padding:9px 10px;
   border-radius:8px;
   background:#f8fafc;
 }
 
-.apll-my-request-meta-item span{
+.apll-my-request-meta-item span,
+.apll-user-list-meta-item span{
   display:block;
   color:#6b778a;
   font-size:11px;
@@ -394,7 +441,8 @@
   text-transform:uppercase;
 }
 
-.apll-my-request-meta-item strong{
+.apll-my-request-meta-item strong,
+.apll-user-list-meta-item strong{
   display:block;
   margin-top:3px;
   color:#172033;
@@ -405,13 +453,15 @@
 @media (max-width: 560px){
   .apll-auth-dialog,
   .apll-request-dialog,
-  .apll-requests-dialog{
+  .apll-requests-dialog,
+  .apll-users-dialog{
     padding:20px;
   }
 
   .apll-auth-providers,
   .apll-request-two,
-  .apll-my-request-meta{
+  .apll-my-request-meta,
+  .apll-user-list-meta{
     grid-template-columns:1fr;
   }
 
@@ -419,7 +469,8 @@
     display:grid;
   }
 
-  .apll-my-request-head{
+  .apll-my-request-head,
+  .apll-user-list-head{
     display:grid;
   }
 }
