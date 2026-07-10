@@ -164,7 +164,7 @@
 
         const now = new Date();
         if (isWithinOpeningHours(now)) {
-          const phone = link.getAttribute("data-phone") || "+393318358086";
+          const phone = link.getAttribute("data-phone") || "+393513657045";
           // Trigger real call
           window.location.href = "tel:" + phone;
         } else {

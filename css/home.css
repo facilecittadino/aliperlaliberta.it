@@ -270,6 +270,10 @@
   transform: scale(.96);
 }
 
+.service-bot.is-attention .service-bot__launcher {
+  animation: serviceBotPulse 1.8s ease-in-out 3;
+}
+
 .service-bot__panel {
   position: absolute;
   right: 0;
@@ -340,6 +344,12 @@
   margin-top: 14px;
 }
 
+.service-bot__log {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
 .service-bot__bubble {
   width: fit-content;
   max-width: 100%;
@@ -355,6 +365,13 @@
   color: var(--primary-ink);
   background: #edf5ff;
   border-bottom-left-radius: 6px;
+}
+
+.service-bot__bubble--user {
+  justify-self: end;
+  color: #fff;
+  background: #0b5ed7;
+  border-bottom-right-radius: 6px;
 }
 
 .service-bot__answers {
@@ -389,7 +406,7 @@
 .service-bot__form textarea {
   width: 100%;
   resize: vertical;
-  min-height: 94px;
+  min-height: 74px;
   border: 1px solid rgba(10, 46, 92, .16);
   border-radius: 16px;
   padding: 14px 15px;
@@ -397,6 +414,17 @@
   font: inherit;
   line-height: 1.5;
   background: #fff;
+}
+
+@keyframes serviceBotPulse {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 18px 40px rgba(10, 46, 92, .28);
+  }
+  45% {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 54px rgba(10, 46, 92, .38);
+  }
 }
 
 .service-bot__form textarea:focus {

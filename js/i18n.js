@@ -277,8 +277,8 @@
       "hi-Latn": "Samajh nahi aa raha kaunsi service chunni hai?"
     },
     "serviceBot.text": {
-      it: "Rispondi a poche domande: prepariamo un messaggio ordinato da inviare su WhatsApp dal tuo numero.",
-      en: "Answer a few questions: we prepare a clear message to send on WhatsApp from your number.",
+      it: "Scrivi la tua domanda o scegli un servizio: ti guidiamo sui documenti e possiamo creare una richiesta nella tua area cliente.",
+      en: "Write your question or choose a service: we guide you on documents and can create a request in your client area.",
       pa: "ਕੁਝ ਸਵਾਲਾਂ ਦੇ ਜਵਾਬ ਦਿਓ: ਅਸੀਂ ਤੁਹਾਡੇ ਨੰਬਰ ਤੋਂ WhatsApp ਤੇ ਭੇਜਣ ਲਈ ਸੁਥਰਾ ਮੈਸੇਜ ਤਿਆਰ ਕਰਾਂਗੇ।",
       hi: "कुछ सवालों के जवाब दें: हम आपके नंबर से WhatsApp पर भेजने के लिए साफ संदेश तैयार करेंगे।",
       "hi-Latn": "Kuch sawalon ke jawab dein: hum aapke number se WhatsApp par bhejne ke liye clear message taiyar karenge."
@@ -985,7 +985,7 @@
     "serviceBot.launcher": "Ke nevojë?",
     "serviceBot.close": "Mbyll chat-in",
     "serviceBot.title": "Nuk di cilin shërbim të zgjedhësh?",
-    "serviceBot.text": "Përgjigju disa pyetjeve: ne përgatisim një mesazh të rregullt për ta dërguar në WhatsApp nga numri yt.",
+    "serviceBot.text": "Shkruaj pyetjen ose zgjidh nje sherbim: te udhezojme per dokumentet dhe mund te krijojme nje kerkese ne zonen tende.",
     "serviceBot.next": "Vazhdo",
     "serviceBot.restart": "Rifillo",
     "serviceBot.whatsapp": "Dërgo në WhatsApp",

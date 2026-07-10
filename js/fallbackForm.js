@@ -98,7 +98,7 @@ console.log("[fallbackForm] Loaded (OFFLINE PREMIUM VERSION)");
   `;
   document.body.appendChild(countrySheet);
 
-  const WHATSAPP = "393318358086";
+  const WHATSAPP = "393513657045";
 
   const TIME_SLOTS = [
     "09:00","09:30","10:00","10:30",
