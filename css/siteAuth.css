@@ -20,6 +20,7 @@
 .apll-requests-overlay[hidden],
 .apll-users-overlay[hidden],
 .apll-admin-requests-overlay[hidden],
+.apll-account-menu[hidden],
 .apll-client-requests-item[hidden],
 .apll-admin-users-item[hidden],
 .apll-admin-requests-item[hidden]{
@@ -253,6 +254,56 @@
   text-underline-offset:3px;
 }
 
+.apll-account-menu-host{
+  position:relative;
+}
+
+.apll-account-menu{
+  position:absolute;
+  top:calc(100% + 8px);
+  right:0;
+  z-index:90;
+  min-width:152px;
+  border:1px solid rgba(10,46,92,.14);
+  border-radius:8px;
+  padding:6px;
+  background:#fff;
+  box-shadow:0 16px 42px rgba(5,20,42,.18);
+}
+
+.apll-account-logout{
+  width:100%;
+  min-height:42px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  border:0;
+  border-radius:7px;
+  padding:9px 11px;
+  color:#b42318;
+  background:transparent;
+  cursor:pointer;
+  font:inherit;
+  font-weight:900;
+  text-align:left;
+}
+
+.apll-account-logout:hover,
+.apll-account-logout:focus-visible{
+  background:#fef3f2;
+  outline:none;
+}
+
+.apll-account-logout svg{
+  width:18px;
+  height:18px;
+}
+
+[data-auth-link].is-authenticated{
+  border-color:rgba(6,118,71,.28);
+  background:#f0fdf4;
+}
+
 .apll-client-requests-link,
 .apll-admin-users-link,
 .apll-admin-requests-link{
@@ -310,6 +361,13 @@
   margin-top:4px;
   font-size:11px;
   white-space:normal;
+}
+
+.drawer-links .apll-account-menu{
+  top:calc(100% + 6px);
+  left:0;
+  right:auto;
+  min-width:148px;
 }
 
 .apll-my-requests-list,

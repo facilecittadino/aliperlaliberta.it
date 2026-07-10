@@ -26,6 +26,7 @@
   let pendingAction = null;
   let clientActionNodes = [];
   let adminActionNodes = [];
+  let accountMenuNodes = [];
   let adminRequests = [];
   let readyDone = false;
   let readyResolve;
@@ -87,6 +88,7 @@
     document.documentElement.classList.toggle("apll-admin-authenticated", isAdmin());
     updateClientActions();
     updateAdminActions();
+    updateAccountMenus();
     document.dispatchEvent(new CustomEvent("apll:auth-change", {
       detail: { user: currentUser }
     }));
@@ -137,6 +139,84 @@
         "stroke-width": 2.2,
         "aria-hidden": "true"
       }
+    });
+  }
+
+  function closeAccountMenus() {
+    accountMenuNodes.forEach(({ link, menu }) => {
+      menu.hidden = true;
+      link.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  async function logout() {
+    closeAccountMenus();
+    window.Navbar?.closeDrawer?.();
+    await api("/auth/logout", { method: "POST", body: "{}" }).catch(() => {});
+    setUser(null);
+    [authOverlay, requestOverlay, requestsOverlay, usersOverlay, adminRequestsOverlay].forEach((overlay) => {
+      if (overlay) overlay.hidden = true;
+    });
+    lockPage(false);
+  }
+
+  function toggleAccountMenu(targetNode) {
+    const shouldOpen = targetNode.menu.hidden;
+    closeAccountMenus();
+    targetNode.menu.hidden = !shouldOpen;
+    targetNode.link.setAttribute("aria-expanded", String(shouldOpen));
+    if (shouldOpen) renderDynamicIcons();
+  }
+
+  function ensureAccountMenus() {
+    if (accountMenuNodes.length) return;
+
+    document.querySelectorAll("[data-auth-link]").forEach((authLink, index) => {
+      const host = authLink.closest("li") || authLink.parentElement;
+      if (!host || host.querySelector(":scope > .apll-account-menu")) return;
+
+      host.classList.add("apll-account-menu-host");
+      authLink.setAttribute("aria-haspopup", "menu");
+      authLink.setAttribute("aria-expanded", "false");
+
+      const menu = document.createElement("div");
+      menu.className = "apll-account-menu";
+      menu.id = `apllAccountMenu${index + 1}`;
+      menu.hidden = true;
+      menu.setAttribute("role", "menu");
+      menu.innerHTML = `
+        <button type="button" class="apll-account-logout" role="menuitem">
+          <i data-lucide="log-out"></i>
+          <span>Logout</span>
+        </button>
+      `;
+
+      host.append(menu);
+
+      const node = { link: authLink, menu };
+      accountMenuNodes.push(node);
+      authLink.setAttribute("aria-controls", menu.id);
+
+      authLink.addEventListener("click", (event) => {
+        if (!currentUser) return;
+        event.preventDefault();
+        event.stopPropagation();
+        toggleAccountMenu(node);
+      });
+
+      menu.querySelector(".apll-account-logout").addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        logout();
+      });
+    });
+  }
+
+  function updateAccountMenus() {
+    ensureAccountMenus();
+    if (!currentUser) closeAccountMenus();
+    accountMenuNodes.forEach(({ link }) => {
+      link.classList.toggle("is-authenticated", Boolean(currentUser));
     });
   }
 
@@ -1092,6 +1172,7 @@
 
   function wireLinks() {
     document.addEventListener("click", (event) => {
+      if (!event.target.closest?.(".apll-account-menu-host")) closeAccountMenus();
       const link = event.target.closest?.("[data-auth-link]");
       if (!link) return;
       if (isClient()) return;
@@ -1103,6 +1184,10 @@
           window.location.href = link.href;
         }
       });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeAccountMenus();
     });
   }
 
@@ -1145,7 +1230,8 @@
     openRequestForm,
     openMyRequests,
     openAdminRequests,
-    openUsersList
+    openUsersList,
+    logout
   };
 
   wireLinks();
