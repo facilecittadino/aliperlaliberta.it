@@ -119,6 +119,44 @@
   display: block;
 }
 
+.nav-icon-link[href*="youtube.com"],
+.drawer-links a[href*="youtube.com"]{
+  color: #ff0033;
+  border-color: rgba(255,0,51,.24);
+}
+
+.nav-icon-link[href*="youtube.com"]:hover,
+.nav-icon-link[href*="youtube.com"]:focus-visible,
+.drawer-links a[href*="youtube.com"]:hover,
+.drawer-links a[href*="youtube.com"]:focus-visible{
+  background: #fff1f4;
+  border-color: rgba(255,0,51,.38);
+}
+
+.apll-youtube-fallback,
+i[data-lucide="youtube"]{
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 17px;
+  border-radius: 5px;
+  background: #ff0033;
+  box-shadow: 0 1px 3px rgba(255,0,51,.22);
+}
+
+.apll-youtube-fallback::before,
+i[data-lucide="youtube"]::before{
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 4px;
+  width: 0;
+  height: 0;
+  border-top: 4.5px solid transparent;
+  border-bottom: 4.5px solid transparent;
+  border-left: 7px solid #fff;
+}
+
 .nav-icon-link:hover,
 .nav-icon-link:focus-visible,
 .portal-nav .nav-icon-link:hover,
