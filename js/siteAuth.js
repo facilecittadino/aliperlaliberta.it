@@ -567,26 +567,14 @@
     requestsOverlay.innerHTML = `
       <section class="apll-requests-dialog" role="dialog" aria-modal="true" aria-labelledby="apllRequestsTitle">
         <button class="apll-requests-close" type="button" aria-label="Chiudi">&times;</button>
-        <div class="apll-requests-head">
-          <div>
-            <span class="apll-auth-kicker">Area cliente</span>
-            <h2 id="apllRequestsTitle">Le tue richieste</h2>
-            <p>Qui vedi solo le pratiche collegate al tuo account.</p>
-          </div>
-          <button class="apll-requests-refresh" id="apllRequestsRefresh" type="button" aria-label="Aggiorna richieste" title="Aggiorna">
-            <i data-lucide="refresh-cw"></i>
-          </button>
-        </div>
-        <div id="apllRequestsMessage" class="apll-auth-message" role="status"></div>
+        <h2 id="apllRequestsTitle" class="sr-only">Le tue richieste</h2>
         <div id="apllRequestsList" class="apll-my-requests-list"></div>
-        <a class="apll-request-area-link" href="/cliente/">Apri area cliente completa</a>
       </section>
     `;
 
     document.body.appendChild(requestsOverlay);
 
     requestsOverlay.querySelector(".apll-requests-close").addEventListener("click", closeMyRequests);
-    requestsOverlay.querySelector("#apllRequestsRefresh").addEventListener("click", loadMyRequests);
     requestsOverlay.addEventListener("click", (event) => {
       if (event.target === requestsOverlay) closeMyRequests();
     });
@@ -640,17 +628,20 @@
 
   async function loadMyRequests() {
     if (!requestsOverlay) return;
-    const message = requestsOverlay.querySelector("#apllRequestsMessage");
     const list = requestsOverlay.querySelector("#apllRequestsList");
-    setMessage(message, "Caricamento richieste...");
     list.replaceChildren();
+    const loading = el("div", "apll-my-requests-empty");
+    loading.append(el("p", "", "Caricamento richieste..."));
+    list.append(loading);
 
     try {
       const data = await api("/requests");
       renderMyRequests(Array.isArray(data.requests) ? data.requests : []);
-      setMessage(message, "");
     } catch (error) {
-      setMessage(message, error.message, "error");
+      list.replaceChildren();
+      const errorBox = el("div", "apll-my-requests-empty apll-my-requests-empty--error");
+      errorBox.append(el("p", "", error.message));
+      list.append(errorBox);
     }
   }
 
