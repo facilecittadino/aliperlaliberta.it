@@ -7,9 +7,11 @@
   <title>Portale admin - Ali Per La Liberta</title>
   <meta name="description" content="Portale admin Ali Per La Liberta." />
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/main.css?v=20260710-icons1" />
   <script src="/js/tailwindConfig.js?v=20260710-tw1"></script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="/js/icons.js?v=20260710-icons1" defer></script>
 </head>
 <body class="min-h-screen bg-[#f5f8fb] text-slate-900">
   <div class="page portal-page min-h-screen bg-[linear-gradient(180deg,#f8fbff_0%,#eef5fb_48%,#f7fafc_100%)]">
@@ -19,8 +21,14 @@
         <span>Ali Per La Liberta</span>
       </a>
       <nav class="portal-nav rounded-full border border-slate-200 bg-slate-50/80 px-2 py-1" aria-label="Admin">
-        <a href="/">Sito</a>
-        <a href="/cliente/">Area clienti</a>
+        <a class="nav-icon-link" href="/" aria-label="Sito" title="Sito">
+          <i data-lucide="home"></i>
+          <span class="sr-only">Sito</span>
+        </a>
+        <a class="nav-icon-link" href="/cliente/" aria-label="Area clienti" title="Area clienti" data-i18n-attr="aria-label:nav.client,title:nav.client">
+          <i data-lucide="user-round"></i>
+          <span class="sr-only" data-i18n="nav.client">Area clienti</span>
+        </a>
       </nav>
     </header>
 

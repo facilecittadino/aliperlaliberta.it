@@ -25,9 +25,11 @@
 <!-- App install is disabled until the app is available to users. -->
 <meta name="theme-color" content="#0b3c5d">
   <!-- Styles: main.css imports base / navbar / drawer / hero / welcome (+ footer.css already imported by you) -->
-  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/main.css?v=20260710-icons1" />
   <script src="/js/tailwindConfig.js?v=20260710-tw1"></script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="/js/icons.js?v=20260710-icons1" defer></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -91,14 +93,16 @@
   <ul class="nav-links" aria-label="Primary links">
     <!-- 1) Home -->
     <li>
-      <a href="https://aliperlaliberta.it/" data-i18n="nav.home">
-        Home
+      <a class="nav-icon-link" href="https://aliperlaliberta.it/" aria-label="Home" title="Home" data-i18n-attr="aria-label:nav.home,title:nav.home">
+        <i data-lucide="home"></i>
+        <span class="sr-only" data-i18n="nav.home">Home</span>
       </a>
     </li>
 
     <li>
-      <a href="/cliente/">
-        Area clienti
+      <a class="nav-icon-link" href="/cliente/" aria-label="Area clienti" title="Area clienti" data-i18n-attr="aria-label:nav.client,title:nav.client">
+        <i data-lucide="user-round"></i>
+        <span class="sr-only" data-i18n="nav.client">Area clienti</span>
       </a>
     </li>
 
@@ -106,26 +110,32 @@
      <li>
   <a
     href="#"
-    data-i18n="nav.call"
+    class="nav-icon-link"
+    aria-label="Chiama"
+    title="Chiama"
+    data-i18n-attr="aria-label:nav.call,title:nav.call"
     data-call-link
     data-phone="+393318358086"
   >
-    Chiama
+    <i data-lucide="phone"></i>
+    <span class="sr-only" data-i18n="nav.call">Chiama</span>
   </a>
 </li>
 
 
     <!-- 3) Email -->
     <li>
-      <a href="mailto:apll.lecce@gmail.com" data-i18n="nav.email">
-        Email
+      <a class="nav-icon-link" href="mailto:apll.lecce@gmail.com" aria-label="Email" title="Email" data-i18n-attr="aria-label:nav.email,title:nav.email">
+        <i data-lucide="mail"></i>
+        <span class="sr-only" data-i18n="nav.email">Email</span>
       </a>
     </li>
 
     <!-- 4) PEC -->
     <li>
-      <a href="mailto:info@pec.apll.it" data-i18n="nav.pec">
-        PEC
+      <a class="nav-icon-link" href="mailto:info@pec.apll.it" aria-label="PEC" title="PEC" data-i18n-attr="aria-label:nav.pec,title:nav.pec">
+        <i data-lucide="shield-check"></i>
+        <span class="sr-only" data-i18n="nav.pec">PEC</span>
       </a>
     </li>
 
@@ -133,15 +143,22 @@
     <li>
       <a href="https://www.youtube.com/channel/UChZgeTEkWXKcBr7U57BK5MQ"
          target="_blank" rel="noopener"
-         data-i18n="nav.youtube">
-        YouTube
+         class="nav-icon-link"
+         aria-label="YouTube"
+         title="YouTube"
+         data-i18n-attr="aria-label:nav.youtube,title:nav.youtube">
+        <i data-lucide="youtube"></i>
+        <span class="sr-only" data-i18n="nav.youtube">YouTube</span>
       </a>
     </li>
 
     <!-- Language selector same as before -->
     <li>
       <label for="langSelectDesktop" class="sr-only">Select language</label>
-      <select id="langSelectDesktop" class="lang-select lang-desktop" aria-label="Select language"></select>
+      <span class="lang-icon-wrap" title="Lingua" data-i18n-attr="title:nav.language">
+        <i data-lucide="languages"></i>
+        <select id="langSelectDesktop" class="lang-select lang-desktop" aria-label="Lingua" data-i18n-attr="aria-label:nav.language"></select>
+      </span>
     </li>
   </ul>
 </div>
@@ -170,14 +187,16 @@
       <ul class="drawer-links">
   <!-- 1) Home -->
   <li>
-    <a href="https://aliperlaliberta.it/" data-i18n="nav.home">
-      Home
+    <a href="https://aliperlaliberta.it/" aria-label="Home" title="Home" data-i18n-attr="aria-label:nav.home,title:nav.home">
+      <i data-lucide="home"></i>
+      <span class="sr-only" data-i18n="nav.home">Home</span>
     </a>
   </li>
 
   <li>
-    <a href="/cliente/">
-      Area clienti
+    <a href="/cliente/" aria-label="Area clienti" title="Area clienti" data-i18n-attr="aria-label:nav.client,title:nav.client">
+      <i data-lucide="user-round"></i>
+      <span class="sr-only" data-i18n="nav.client">Area clienti</span>
     </a>
   </li>
 
@@ -186,36 +205,44 @@
 <li>
   <a
     href="#"
-    data-i18n="nav.call"
+    aria-label="Chiama"
+    title="Chiama"
+    data-i18n-attr="aria-label:nav.call,title:nav.call"
     data-call-link
     data-phone="+393318358086"
   >
-    Chiama
+    <i data-lucide="phone"></i>
+    <span class="sr-only" data-i18n="nav.call">Chiama</span>
   </a>
 </li>
 
 
   <!-- 3) Email -->
   <li>
-    <a href="mailto:apll.lecce@gmail.com" data-i18n="nav.email">
-      Email
+    <a href="mailto:apll.lecce@gmail.com" aria-label="Email" title="Email" data-i18n-attr="aria-label:nav.email,title:nav.email">
+      <i data-lucide="mail"></i>
+      <span class="sr-only" data-i18n="nav.email">Email</span>
     </a>
   </li>
 
   <!-- 4) PEC -->
   <li>
-    <a href="mailto:info@pec.apll.it" data-i18n="nav.pec">
-      PEC
+    <a href="mailto:info@pec.apll.it" aria-label="PEC" title="PEC" data-i18n-attr="aria-label:nav.pec,title:nav.pec">
+      <i data-lucide="shield-check"></i>
+      <span class="sr-only" data-i18n="nav.pec">PEC</span>
     </a>
   </li>
 
   <!-- 5) YouTube -->
   <li>
-    <a href="https://www.youtube.com/channel/UChZgeTEkWXKcBr7U57BK5MQ"
-       target="_blank" rel="noopener"
-       data-i18n="nav.youtube">
-      YouTube
-    </a>
+  <a href="https://www.youtube.com/channel/UChZgeTEkWXKcBr7U57BK5MQ"
+     target="_blank" rel="noopener"
+     aria-label="YouTube"
+     title="YouTube"
+     data-i18n-attr="aria-label:nav.youtube,title:nav.youtube">
+    <i data-lucide="youtube"></i>
+    <span class="sr-only" data-i18n="nav.youtube">YouTube</span>
+  </a>
   </li>
 </ul>
 

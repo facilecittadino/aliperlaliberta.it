@@ -64,6 +64,20 @@
       hi: "होम",
       "hi-Latn": "Home"
     },
+    "nav.client": {
+      it: "Area clienti",
+      en: "Client area",
+      pa: "Client area",
+      hi: "Client area",
+      "hi-Latn": "Client area"
+    },
+    "nav.language": {
+      it: "Lingua",
+      en: "Language",
+      pa: "Language",
+      hi: "Language",
+      "hi-Latn": "Language"
+    },
     "nav.call": {
   it: "Chiama",
   en: "Call",
