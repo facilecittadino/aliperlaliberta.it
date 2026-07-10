@@ -15,6 +15,14 @@
   const appleAccess = document.getElementById("appleAccess");
   const requestsList = document.getElementById("requestsList");
   const clientName = document.getElementById("clientName");
+  const roleLabel = document.getElementById("roleLabel");
+  const dashboardIntro = document.getElementById("dashboardIntro");
+
+  const stats = {
+    open: document.getElementById("statOpen"),
+    working: document.getElementById("statWorking"),
+    done: document.getElementById("statDone")
+  };
 
   const messages = {
     login: document.getElementById("loginMessage"),
@@ -30,6 +38,10 @@
     done: "Chiusa",
     cancelled: "Annullata"
   };
+
+  const statusFlow = ["new", "in_progress", "waiting_client", "done"];
+  let currentUser = null;
+  let myRequests = [];
 
   function formData(form) {
     return Object.fromEntries(new FormData(form).entries());
@@ -50,22 +62,68 @@
     return data;
   }
 
+  function hasPermission(permission) {
+    return Boolean(currentUser?.permissions?.includes(permission));
+  }
+
   function setMessage(target, text, kind = "") {
     if (!target) return;
     target.textContent = text || "";
     target.dataset.kind = kind;
   }
 
+  function el(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  function meta(label, value) {
+    const item = el("div", "portal-meta-item");
+    item.append(el("span", "", label));
+    item.append(el("strong", "", value || "-"));
+    return item;
+  }
+
+  function formatDate(value) {
+    if (!value) return "-";
+    return new Intl.DateTimeFormat("it-IT", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit"
+    }).format(new Date(value));
+  }
+
   function showAuth() {
+    currentUser = null;
     authPanel.hidden = false;
     dashboardPanel.hidden = true;
   }
 
   function showDashboard(user) {
+    currentUser = user;
     authPanel.hidden = true;
     dashboardPanel.hidden = false;
+
     const username = user?.username ? ` (@${user.username})` : "";
-    clientName.textContent = user?.name ? `Ciao, ${user.name}${username}` : "Area clienti";
+    clientName.textContent = user?.name ? `Ciao, ${user.name}${username}` : "Area riservata";
+    roleLabel.textContent = "Area personale";
+    dashboardIntro.textContent = "Prenota un servizio, apri una pratica e segui ogni avanzamento.";
+    switchView("servicesView");
+  }
+
+  function switchView(viewId) {
+    const target = document.getElementById(viewId);
+    if (!target) return;
+    document.querySelectorAll(".portal-view").forEach((view) => {
+      view.hidden = view.id !== viewId;
+    });
+    document.querySelectorAll("[data-view]").forEach((button) => {
+      button.classList.toggle("is-active", button.dataset.view === viewId);
+    });
   }
 
   function setProviderLink(link, enabled, provider) {
@@ -109,7 +167,7 @@
     }
   }
 
-  function switchTab(tab) {
+  function switchAuthTab(tab) {
     document.querySelectorAll("[data-auth-tab]").forEach((button) => {
       button.classList.toggle("is-active", button.dataset.authTab === tab);
     });
@@ -117,28 +175,40 @@
     registerForm.hidden = tab !== "register";
   }
 
-  function el(tag, className, text) {
-    const node = document.createElement(tag);
-    if (className) node.className = className;
-    if (text != null) node.textContent = text;
-    return node;
+  function renderStats() {
+    const open = myRequests.filter((request) => request.status === "new").length;
+    const working = myRequests.filter((request) => ["in_progress", "waiting_client"].includes(request.status)).length;
+    const done = myRequests.filter((request) => ["done", "cancelled"].includes(request.status)).length;
+    stats.open.textContent = String(open);
+    stats.working.textContent = String(working);
+    stats.done.textContent = String(done);
   }
 
-  function meta(label, value) {
-    const item = el("div", "portal-meta-item");
-    item.append(el("span", "", label));
-    item.append(el("strong", "", value || "-"));
-    return item;
+  function statusTrack(status) {
+    const track = el("div", "portal-status-track");
+    if (status === "cancelled") {
+      track.append(el("span", "is-done", "Creata"));
+      track.append(el("span", "is-cancelled", "Annullata"));
+      return track;
+    }
+
+    const currentIndex = Math.max(0, statusFlow.indexOf(status));
+    statusFlow.forEach((item, index) => {
+      const step = el("span", index <= currentIndex ? "is-done" : "", statusLabels[item]);
+      if (item === status) step.classList.add("is-current");
+      track.append(step);
+    });
+    return track;
   }
 
-  function renderRequests(requests) {
+  function renderRequests() {
     requestsList.replaceChildren();
-    if (!requests.length) {
-      requestsList.append(el("p", "portal-empty", "Non hai ancora inviato richieste."));
+    if (!myRequests.length) {
+      requestsList.append(el("p", "portal-empty", "Non hai ancora pratiche aperte."));
       return;
     }
 
-    requests.forEach((request) => {
+    myRequests.forEach((request) => {
       const card = el("article", "portal-request-card");
       const head = el("div", "portal-request-head");
       const title = el("div");
@@ -154,6 +224,7 @@
       metaRow.append(meta("Aggiornata", formatDate(request.updatedAt)));
 
       card.append(head);
+      card.append(statusTrack(request.status));
       card.append(el("p", "portal-request-text", request.message));
       if (request.adminNote) {
         const note = el("p", "portal-admin-note", request.adminNote);
@@ -165,25 +236,20 @@
     });
   }
 
-  function formatDate(value) {
-    if (!value) return "-";
-    return new Intl.DateTimeFormat("it-IT", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit"
-    }).format(new Date(value));
-  }
-
   async function loadRequests() {
     const data = await api("/requests");
-    renderRequests(data.requests || []);
+    myRequests = data.requests || [];
+    renderRequests();
+    renderStats();
   }
 
   async function loadMe() {
     try {
       const data = await api("/auth/me");
+      if (data.user?.role === "admin") {
+        window.location.replace("/admin/");
+        return;
+      }
       if (data.user?.role === "client") {
         showDashboard(data.user);
         await loadRequests();
@@ -195,8 +261,29 @@
     }
   }
 
+  function startService(service) {
+    if (!hasPermission("requests:create")) return;
+    const serviceSelect = requestForm.elements.service;
+    const subjectInput = requestForm.elements.subject;
+    const messageInput = requestForm.elements.message;
+    serviceSelect.value = service;
+    subjectInput.value = `Prenotazione servizio ${service}`;
+    if (!messageInput.value) messageInput.value = `Vorrei prenotare un appuntamento per ${service}.`;
+    setMessage(messages.request, "");
+    switchView("newPracticeView");
+    messageInput.focus({ preventScroll: true });
+  }
+
   document.querySelectorAll("[data-auth-tab]").forEach((button) => {
-    button.addEventListener("click", () => switchTab(button.dataset.authTab));
+    button.addEventListener("click", () => switchAuthTab(button.dataset.authTab));
+  });
+
+  document.querySelectorAll("[data-view]").forEach((button) => {
+    button.addEventListener("click", () => switchView(button.dataset.view));
+  });
+
+  document.querySelectorAll("[data-start-service]").forEach((button) => {
+    button.addEventListener("click", () => startService(button.dataset.startService));
   });
 
   loginForm?.addEventListener("submit", async (event) => {
@@ -207,11 +294,15 @@
         method: "POST",
         body: JSON.stringify(formData(loginForm))
       });
-      if (data.user?.role !== "client") throw new Error("Questo account non e cliente");
+      if (data.user?.role === "admin") {
+        window.location.replace("/admin/");
+        return;
+      }
+      if (data.user?.role !== "client") throw new Error("Account non abilitato all'area clienti");
       loginForm.reset();
+      setMessage(messages.login, "");
       showDashboard(data.user);
       await loadRequests();
-      setMessage(messages.login, "");
     } catch (error) {
       setMessage(messages.login, error.message, "error");
     }
@@ -226,9 +317,9 @@
         body: JSON.stringify(formData(registerForm))
       });
       registerForm.reset();
+      setMessage(messages.register, "");
       showDashboard(data.user);
       await loadRequests();
-      setMessage(messages.register, "");
     } catch (error) {
       setMessage(messages.register, error.message, "error");
     }
@@ -236,15 +327,16 @@
 
   requestForm?.addEventListener("submit", async (event) => {
     event.preventDefault();
-    setMessage(messages.request, "Invio richiesta...");
+    setMessage(messages.request, "Apertura pratica...");
     try {
       await api("/requests", {
         method: "POST",
         body: JSON.stringify(formData(requestForm))
       });
       requestForm.reset();
-      setMessage(messages.request, "Richiesta inviata.", "success");
+      setMessage(messages.request, "Pratica aperta. Puoi seguirla nella sezione Le mie pratiche.", "success");
       await loadRequests();
+      switchView("myPracticesView");
     } catch (error) {
       setMessage(messages.request, error.message, "error");
     }

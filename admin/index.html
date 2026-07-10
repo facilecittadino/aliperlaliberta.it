@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Admin - Ali Per La Liberta</title>
-  <meta name="description" content="Area admin Ali Per La Liberta." />
+  <title>Portale admin - Ali Per La Liberta</title>
+  <meta name="description" content="Portale admin Ali Per La Liberta." />
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/main.css" />
 </head>
@@ -24,9 +24,9 @@
 
     <main class="portal-main">
       <section class="portal-hero" aria-labelledby="adminTitle">
-        <p class="portal-eyebrow">Admin</p>
-        <h1 id="adminTitle">Richieste clienti</h1>
-        <p>Accedi per vedere e aggiornare le richieste ricevute.</p>
+        <p class="portal-eyebrow">Portale admin</p>
+        <h1 id="adminTitle">Gestione pratiche</h1>
+        <p>Accesso separato per controllare tutte le pratiche, gli stati e gli utenti.</p>
       </section>
 
       <section id="setupPanel" class="portal-panel portal-form" hidden>
@@ -58,8 +58,8 @@
       </section>
 
       <section id="authPanel" class="portal-panel portal-form" aria-label="Login admin">
-          <h2>Login admin</h2>
-          <form id="loginForm" autocomplete="on">
+        <h2>Login admin</h2>
+        <form id="loginForm" autocomplete="on">
           <label>
             Username o email
             <input name="identifier" type="text" autocomplete="username" required />
@@ -76,36 +76,79 @@
       <section id="dashboardPanel" class="portal-dashboard" hidden>
         <div class="portal-dashboard-head">
           <div>
-            <p class="portal-eyebrow">Pannello</p>
-            <h2>Richieste ricevute</h2>
+            <p class="portal-eyebrow">Admin</p>
+            <h2>Controllo completo</h2>
+            <p class="portal-dashboard-intro">Qui vedi tutte le pratiche cliente, puoi aggiornare lo stato e controllare utenti e permessi.</p>
           </div>
           <div class="portal-actions">
-            <select id="statusFilter" aria-label="Filtra stato">
-              <option value="">Tutti</option>
-              <option value="new">Nuove</option>
-              <option value="in_progress">In lavorazione</option>
-              <option value="waiting_client">In attesa cliente</option>
-              <option value="done">Chiuse</option>
-              <option value="cancelled">Annullate</option>
-            </select>
             <button id="refreshRequests" class="btn btn-outline" type="button">Aggiorna</button>
             <button id="logoutButton" class="btn btn-outline" type="button">Esci</button>
           </div>
         </div>
-        <div id="requestsList" class="portal-admin-list"></div>
 
-        <section class="portal-panel portal-users-panel" aria-labelledby="usersTitle">
-          <div class="portal-list-head">
-            <h2 id="usersTitle">Utenti e permessi</h2>
-            <button id="refreshUsers" class="portal-icon-button" type="button" aria-label="Aggiorna utenti">&#8635;</button>
+        <div class="portal-stats" aria-label="Riepilogo pratiche admin">
+          <div class="portal-stat">
+            <span>Nuove</span>
+            <strong id="adminStatNew">0</strong>
           </div>
-          <div id="usersList" class="portal-users-list"></div>
-        </section>
+          <div class="portal-stat">
+            <span>In lavorazione</span>
+            <strong id="adminStatWorking">0</strong>
+          </div>
+          <div class="portal-stat">
+            <span>Chiuse</span>
+            <strong id="adminStatDone">0</strong>
+          </div>
+        </div>
+
+        <div class="portal-shell">
+          <aside class="portal-side" aria-label="Sezioni admin">
+            <button type="button" class="portal-side-link is-active" data-admin-view="adminPracticesView">Tutte le pratiche</button>
+            <button type="button" class="portal-side-link" data-admin-view="adminUsersView">Utenti e permessi</button>
+          </aside>
+
+          <div class="portal-workspace">
+            <section id="adminPracticesView" class="portal-view">
+              <section class="portal-panel portal-list-panel" aria-labelledby="requestsTitle">
+                <div class="portal-list-head">
+                  <div>
+                    <p class="portal-eyebrow">Pratiche</p>
+                    <h2 id="requestsTitle">Tutte le pratiche</h2>
+                  </div>
+                  <div class="portal-actions">
+                    <select id="statusFilter" aria-label="Filtra stato">
+                      <option value="">Tutti</option>
+                      <option value="new">Nuove</option>
+                      <option value="in_progress">In lavorazione</option>
+                      <option value="waiting_client">In attesa cliente</option>
+                      <option value="done">Chiuse</option>
+                      <option value="cancelled">Annullate</option>
+                    </select>
+                  </div>
+                </div>
+                <div id="requestsList" class="portal-admin-list"></div>
+              </section>
+            </section>
+
+            <section id="adminUsersView" class="portal-view" hidden>
+              <section class="portal-panel portal-users-panel" aria-labelledby="usersTitle">
+                <div class="portal-list-head">
+                  <div>
+                    <p class="portal-eyebrow">Accessi</p>
+                    <h2 id="usersTitle">Utenti e permessi</h2>
+                  </div>
+                  <button id="refreshUsers" class="portal-icon-button" type="button" aria-label="Aggiorna utenti">&#8635;</button>
+                </div>
+                <div id="usersList" class="portal-users-list"></div>
+              </section>
+            </section>
+          </div>
+        </div>
       </section>
     </main>
   </div>
 
-  <script src="/js/config.js?v=20260710-portal1"></script>
-  <script src="/js/portalAdmin.js?v=20260710-portal1" defer></script>
+  <script src="/js/config.js?v=20260710-portal2"></script>
+  <script src="/js/portalAdmin.js?v=20260710-portal2" defer></script>
 </body>
 </html>

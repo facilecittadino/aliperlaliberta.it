@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Area clienti - Ali Per La Liberta</title>
-  <meta name="description" content="Area clienti Ali Per La Liberta." />
+  <title>Area riservata - Ali Per La Liberta</title>
+  <meta name="description" content="Area riservata Ali Per La Liberta." />
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/main.css" />
 </head>
@@ -18,15 +18,14 @@
       </a>
       <nav class="portal-nav" aria-label="Area riservata">
         <a href="/">Sito</a>
-        <a href="/admin/" rel="nofollow">Admin</a>
       </nav>
     </header>
 
     <main class="portal-main">
       <section class="portal-hero" aria-labelledby="portalTitle">
-        <p class="portal-eyebrow">Area clienti</p>
-        <h1 id="portalTitle">Le tue richieste</h1>
-        <p>Accedi per inviare una richiesta e seguire lo stato delle pratiche.</p>
+        <p class="portal-eyebrow">Area riservata</p>
+        <h1 id="portalTitle">Servizi e pratiche</h1>
+        <p>Accedi per prenotare un servizio, controllare le tue pratiche e seguire ogni avanzamento.</p>
       </section>
 
       <section id="authPanel" class="portal-auth" aria-label="Accesso clienti">
@@ -48,7 +47,7 @@
         </div>
 
         <form id="loginForm" class="portal-panel portal-form" autocomplete="on">
-          <h2>Login cliente</h2>
+          <h2>Accedi alla tua area</h2>
           <label>
             Username o email
             <input name="identifier" type="text" autocomplete="username" required />
@@ -91,64 +90,135 @@
       <section id="dashboardPanel" class="portal-dashboard" hidden>
         <div class="portal-dashboard-head">
           <div>
-            <p class="portal-eyebrow">Cliente</p>
+            <p id="roleLabel" class="portal-eyebrow">Area personale</p>
             <h2 id="clientName">Area clienti</h2>
+            <p id="dashboardIntro" class="portal-dashboard-intro">Scegli un servizio o controlla lo stato delle pratiche.</p>
           </div>
           <button id="logoutButton" class="btn btn-outline" type="button">Esci</button>
         </div>
 
-        <div class="portal-grid">
-          <form id="requestForm" class="portal-panel portal-form">
-            <h2>Nuova richiesta</h2>
-            <label>
-              Servizio
-              <select name="service" required>
-                <option value="CAF">CAF</option>
-                <option value="Patronato">Patronato</option>
-                <option value="Assistenza legale">Assistenza legale</option>
-                <option value="Corso italiano">Corso italiano</option>
-                <option value="Altro">Altro</option>
-              </select>
-            </label>
-            <label>
-              Oggetto
-              <input name="subject" type="text" maxlength="160" required />
-            </label>
-            <label>
-              Messaggio
-              <textarea name="message" rows="6" maxlength="3000" required></textarea>
-            </label>
-            <div class="portal-two">
-              <label>
-                Data preferita
-                <input name="preferredDate" type="date" />
-              </label>
-              <label>
-                Ora preferita
-                <input name="preferredTime" type="time" />
-              </label>
-            </div>
-            <label>
-              Telefono per questa richiesta
-              <input name="phone" type="tel" autocomplete="tel" />
-            </label>
-            <button class="btn btn-primary portal-submit" type="submit">Invia richiesta</button>
-            <p id="requestMessage" class="portal-message" role="status"></p>
-          </form>
+        <div class="portal-shell">
+          <aside class="portal-side" aria-label="Sezioni area riservata">
+            <button type="button" class="portal-side-link is-active" data-view="servicesView">Servizi</button>
+            <button type="button" class="portal-side-link" data-view="myPracticesView">Le mie pratiche</button>
+            <button type="button" class="portal-side-link" data-view="newPracticeView">Nuova pratica</button>
+          </aside>
 
-          <section class="portal-panel portal-list-panel" aria-labelledby="requestsTitle">
-            <div class="portal-list-head">
-              <h2 id="requestsTitle">Richieste inviate</h2>
-              <button id="refreshRequests" class="portal-icon-button" type="button" aria-label="Aggiorna">&#8635;</button>
+          <div class="portal-workspace">
+            <section id="servicesView" class="portal-view">
+              <div class="portal-stats" aria-label="Riepilogo pratiche">
+                <div class="portal-stat">
+                  <span>Aperte</span>
+                  <strong id="statOpen">0</strong>
+                </div>
+                <div class="portal-stat">
+                  <span>In lavorazione</span>
+                  <strong id="statWorking">0</strong>
+                </div>
+                <div class="portal-stat">
+                  <span>Chiuse</span>
+                  <strong id="statDone">0</strong>
+                </div>
+              </div>
+
+              <section class="portal-panel portal-services-panel" aria-labelledby="servicesTitle">
+                <div class="portal-list-head">
+                  <div>
+                    <p class="portal-eyebrow">Prenotazione</p>
+                    <h2 id="servicesTitle">Scegli un servizio</h2>
+                  </div>
+                </div>
+                <div class="portal-service-grid">
+                  <article class="portal-service-card" data-service-card="CAF">
+                    <span>CAF</span>
+                    <h3>CAF e dichiarazioni</h3>
+                    <p>ISEE, 730, F24, bonus e pratiche fiscali.</p>
+                    <button type="button" class="btn btn-primary" data-start-service="CAF">Prenota servizio</button>
+                  </article>
+                  <article class="portal-service-card" data-service-card="Patronato">
+                    <span>Patronato</span>
+                    <h3>Patronato</h3>
+                    <p>Pensioni, NASpI, invalidita, maternita e welfare.</p>
+                    <button type="button" class="btn btn-primary" data-start-service="Patronato">Prenota servizio</button>
+                  </article>
+                  <article class="portal-service-card" data-service-card="Assistenza legale">
+                    <span>Legale</span>
+                    <h3>Assistenza legale</h3>
+                    <p>Permessi, cittadinanza, ricongiungimento e PEC.</p>
+                    <button type="button" class="btn btn-primary" data-start-service="Assistenza legale">Prenota servizio</button>
+                  </article>
+                  <article class="portal-service-card" data-service-card="Corso italiano">
+                    <span>Formazione</span>
+                    <h3>Corso italiano</h3>
+                    <p>Iscrizione e informazioni per il corso di lingua italiana.</p>
+                    <button type="button" class="btn btn-primary" data-start-service="Corso italiano">Prenota servizio</button>
+                  </article>
+                </div>
+              </section>
+            </section>
+
+            <section id="newPracticeView" class="portal-view" hidden>
+              <form id="requestForm" class="portal-panel portal-form portal-wide-form">
+                <p class="portal-eyebrow">Nuova pratica</p>
+                <h2>Prenota un servizio</h2>
+                <label>
+                  Servizio
+                  <select name="service" required>
+                    <option value="CAF">CAF</option>
+                    <option value="Patronato">Patronato</option>
+                    <option value="Assistenza legale">Assistenza legale</option>
+                    <option value="Corso italiano">Corso italiano</option>
+                    <option value="Altro">Altro</option>
+                  </select>
+                </label>
+                <label>
+                  Oggetto pratica
+                  <input name="subject" type="text" maxlength="160" required />
+                </label>
+                <label>
+                  Cosa ti serve
+                  <textarea name="message" rows="6" maxlength="3000" required></textarea>
+                </label>
+                <div class="portal-two">
+                  <label>
+                    Data preferita
+                    <input name="preferredDate" type="date" />
+                  </label>
+                  <label>
+                    Ora preferita
+                    <input name="preferredTime" type="time" />
+                  </label>
+                </div>
+                <label>
+                  Telefono per questa pratica
+                  <input name="phone" type="tel" autocomplete="tel" />
+                </label>
+                <button class="btn btn-primary portal-submit" type="submit">Apri pratica</button>
+                <p id="requestMessage" class="portal-message" role="status"></p>
+              </form>
+            </section>
+
+            <section id="myPracticesView" class="portal-view" hidden>
+              <section class="portal-panel portal-list-panel" aria-labelledby="requestsTitle">
+                <div class="portal-list-head">
+                  <div>
+                    <p class="portal-eyebrow">Stato pratiche</p>
+                    <h2 id="requestsTitle">Le mie pratiche</h2>
+                  </div>
+                  <button id="refreshRequests" class="portal-icon-button" type="button" aria-label="Aggiorna">&#8635;</button>
+                </div>
+                <div id="requestsList" class="portal-list"></div>
+              </section>
+            </section>
+
             </div>
-            <div id="requestsList" class="portal-list"></div>
-          </section>
+          </div>
         </div>
       </section>
     </main>
   </div>
 
-  <script src="/js/config.js?v=20260710-portal1"></script>
-  <script src="/js/portalClient.js?v=20260710-portal1" defer></script>
+  <script src="/js/config.js?v=20260710-portal2"></script>
+  <script src="/js/portalClient.js?v=20260710-portal2" defer></script>
 </body>
 </html>

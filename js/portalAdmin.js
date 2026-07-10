@@ -15,6 +15,9 @@
   const statusFilter = document.getElementById("statusFilter");
   const requestsList = document.getElementById("requestsList");
   const usersList = document.getElementById("usersList");
+  const statNew = document.getElementById("adminStatNew");
+  const statWorking = document.getElementById("adminStatWorking");
+  const statDone = document.getElementById("adminStatDone");
 
   const setupMessage = document.getElementById("setupMessage");
   const loginMessage = document.getElementById("loginMessage");
@@ -28,6 +31,7 @@
     done: "Chiusa",
     cancelled: "Annullata"
   };
+  const statusFlow = ["new", "in_progress", "waiting_client", "done"];
 
   function formData(form) {
     return Object.fromEntries(new FormData(form).entries());
@@ -63,6 +67,18 @@
     authPanel.hidden = true;
     setupPanel.hidden = true;
     dashboardPanel.hidden = false;
+    switchView("adminPracticesView");
+  }
+
+  function switchView(viewId) {
+    const target = document.getElementById(viewId);
+    if (!target) return;
+    document.querySelectorAll(".portal-view").forEach((view) => {
+      view.hidden = view.id !== viewId;
+    });
+    document.querySelectorAll("[data-admin-view]").forEach((button) => {
+      button.classList.toggle("is-active", button.dataset.adminView === viewId);
+    });
   }
 
   function el(tag, className, text) {
@@ -88,6 +104,29 @@
       hour: "2-digit",
       minute: "2-digit"
     }).format(new Date(value));
+  }
+
+  function renderStats() {
+    statNew.textContent = String(allRequests.filter((request) => request.status === "new").length);
+    statWorking.textContent = String(allRequests.filter((request) => ["in_progress", "waiting_client"].includes(request.status)).length);
+    statDone.textContent = String(allRequests.filter((request) => ["done", "cancelled"].includes(request.status)).length);
+  }
+
+  function statusTrack(status) {
+    const track = el("div", "portal-status-track");
+    if (status === "cancelled") {
+      track.append(el("span", "is-done", "Creata"));
+      track.append(el("span", "is-cancelled", "Annullata"));
+      return track;
+    }
+
+    const currentIndex = Math.max(0, statusFlow.indexOf(status));
+    statusFlow.forEach((item, index) => {
+      const step = el("span", index <= currentIndex ? "is-done" : "", statusLabels[item]);
+      if (item === status) step.classList.add("is-current");
+      track.append(step);
+    });
+    return track;
   }
 
   function renderRequests() {
@@ -147,6 +186,7 @@
       controls.append(statusLabel, noteLabel, button);
 
       card.append(head);
+      card.append(statusTrack(request.status));
       card.append(el("p", "portal-request-text", request.message));
       card.append(meta);
       card.append(controls);
@@ -181,6 +221,7 @@
   async function loadRequests() {
     const data = await api("/requests");
     allRequests = data.requests || [];
+    renderStats();
     renderRequests();
   }
 
@@ -277,6 +318,10 @@
   });
 
   statusFilter?.addEventListener("change", renderRequests);
+
+  document.querySelectorAll("[data-admin-view]").forEach((button) => {
+    button.addEventListener("click", () => switchView(button.dataset.adminView));
+  });
 
   Promise.all([loadSetupStatus(), loadMe()]).catch(() => showAuth());
 })();
