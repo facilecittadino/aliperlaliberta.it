@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Portale admin - Ali Per La Liberta</title>
+  <title>Admin richieste - Ali Per La Liberta</title>
   <meta name="description" content="Portale admin Ali Per La Liberta." />
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="/css/main.css?v=20260710-adminusers1" />
+  <link rel="stylesheet" href="/css/main.css?v=20260710-adminrequests1" />
   <script src="/js/tailwindConfig.js?v=20260710-tw1"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest" defer></script>
@@ -36,8 +36,8 @@
       <section class="portal-hero grid gap-5 rounded-[8px] border border-slate-200 bg-white p-6 shadow-soft lg:grid-cols-[minmax(0,1fr)_300px] lg:items-center lg:p-8" aria-labelledby="adminTitle">
         <div>
           <p class="portal-eyebrow">Portale admin</p>
-          <h1 id="adminTitle" class="text-balance">Gestione pratiche</h1>
-          <p>Accesso separato per controllare tutte le pratiche, gli stati e gli utenti.</p>
+          <h1 id="adminTitle" class="text-balance">Gestione richieste</h1>
+          <p>Accesso separato per controllare tutte le richieste, gli stati e gli utenti.</p>
         </div>
         <div class="rounded-[8px] border border-amber-200 bg-amber-50 p-4 text-sm font-semibold text-slate-700">
           Area riservata: nessuna creazione admin e nessuna operazione senza login.
@@ -65,7 +65,7 @@
           <div>
             <p class="portal-eyebrow">Admin</p>
             <h2>Controllo completo</h2>
-            <p class="portal-dashboard-intro">Qui vedi tutte le pratiche cliente, puoi aggiornare lo stato e controllare utenti e permessi.</p>
+            <p class="portal-dashboard-intro">Qui vedi tutte le richieste cliente, puoi aggiornare lo stato e controllare utenti e permessi.</p>
           </div>
           <div class="portal-actions">
             <button id="refreshRequests" class="btn btn-outline" type="button">Aggiorna</button>
@@ -73,7 +73,7 @@
           </div>
         </div>
 
-        <div class="portal-stats" aria-label="Riepilogo pratiche admin">
+        <div class="portal-stats" aria-label="Riepilogo richieste admin">
           <div class="portal-stat">
             <span>Nuove</span>
             <strong id="adminStatNew">0</strong>
@@ -90,8 +90,8 @@
 
         <div class="portal-shell">
           <aside class="portal-side" aria-label="Sezioni admin">
-            <button type="button" class="portal-side-link is-active" data-admin-view="adminPracticesView">Tutte le pratiche</button>
-            <button type="button" class="portal-side-link" data-admin-view="adminUsersView">Utenti e permessi</button>
+            <button type="button" class="portal-side-link is-active" data-admin-view="adminPracticesView">Richieste</button>
+            <button type="button" class="portal-side-link" data-admin-view="adminUsersView">Utenti</button>
           </aside>
 
           <div class="portal-workspace">
@@ -99,8 +99,8 @@
               <section class="portal-panel portal-list-panel" aria-labelledby="requestsTitle">
                 <div class="portal-list-head">
                   <div>
-                    <p class="portal-eyebrow">Pratiche</p>
-                    <h2 id="requestsTitle">Tutte le pratiche</h2>
+                    <p class="portal-eyebrow">Richieste</p>
+                    <h2 id="requestsTitle">Tutte le richieste</h2>
                   </div>
                   <div class="portal-actions">
                     <select id="statusFilter" aria-label="Filtra stato">

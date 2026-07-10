@@ -3,7 +3,8 @@
 .apll-auth-overlay,
 .apll-request-overlay,
 .apll-requests-overlay,
-.apll-users-overlay{
+.apll-users-overlay,
+.apll-admin-requests-overlay{
   position:fixed;
   inset:0;
   z-index:150;
@@ -18,15 +19,18 @@
 .apll-request-overlay[hidden],
 .apll-requests-overlay[hidden],
 .apll-users-overlay[hidden],
+.apll-admin-requests-overlay[hidden],
 .apll-client-requests-item[hidden],
-.apll-admin-users-item[hidden]{
+.apll-admin-users-item[hidden],
+.apll-admin-requests-item[hidden]{
   display:none;
 }
 
 .apll-auth-dialog,
 .apll-request-dialog,
 .apll-requests-dialog,
-.apll-users-dialog{
+.apll-users-dialog,
+.apll-admin-requests-dialog{
   position:relative;
   width:min(520px, 100%);
   max-height:min(760px, calc(100vh - 36px));
@@ -51,10 +55,16 @@
   padding-top:58px;
 }
 
+.apll-admin-requests-dialog{
+  width:min(980px, 100%);
+  padding-top:58px;
+}
+
 .apll-auth-close,
 .apll-request-close,
 .apll-requests-close,
-.apll-users-close{
+.apll-users-close,
+.apll-admin-requests-close{
   position:absolute;
   top:12px;
   right:12px;
@@ -74,7 +84,8 @@
 .apll-auth-close:hover,
 .apll-request-close:hover,
 .apll-requests-close:hover,
-.apll-users-close:hover{
+.apll-users-close:hover,
+.apll-admin-requests-close:hover{
   background:#f2f7ff;
 }
 
@@ -243,13 +254,15 @@
 }
 
 .apll-client-requests-link,
-.apll-admin-users-link{
+.apll-admin-users-link,
+.apll-admin-requests-link{
   cursor:pointer;
   font:inherit;
 }
 
 .nav-icon-link.apll-client-requests-link,
-.nav-icon-link.apll-admin-users-link{
+.nav-icon-link.apll-admin-users-link,
+.nav-icon-link.apll-admin-requests-link{
   width:auto;
   min-width:44px;
   grid-auto-flow:column;
@@ -258,7 +271,8 @@
 }
 
 .apll-client-requests-label,
-.apll-admin-users-label{
+.apll-admin-users-label,
+.apll-admin-requests-label{
   max-width:128px;
   overflow:hidden;
   color:var(--primary-ink);
@@ -270,7 +284,8 @@
 }
 
 .drawer-links .apll-client-requests-link,
-.drawer-links .apll-admin-users-link{
+.drawer-links .apll-admin-users-link,
+.drawer-links .apll-admin-requests-link{
   width:100%;
   min-height:58px;
   display:grid;
@@ -283,20 +298,23 @@
 }
 
 .drawer-links .apll-client-requests-link svg,
-.drawer-links .apll-admin-users-link svg{
+.drawer-links .apll-admin-users-link svg,
+.drawer-links .apll-admin-requests-link svg{
   width:23px;
   height:23px;
 }
 
 .drawer-links .apll-client-requests-label,
-.drawer-links .apll-admin-users-label{
+.drawer-links .apll-admin-users-label,
+.drawer-links .apll-admin-requests-label{
   margin-top:4px;
   font-size:11px;
   white-space:normal;
 }
 
 .apll-my-requests-list,
-.apll-users-list{
+.apll-users-list,
+.apll-admin-requests-list{
   display:grid;
   gap:12px;
   margin:0;
@@ -305,7 +323,9 @@
 .apll-my-requests-empty,
 .apll-my-request-card,
 .apll-users-empty,
-.apll-user-list-card{
+.apll-user-list-card,
+.apll-admin-requests-empty,
+.apll-admin-request-card{
   border:1px solid rgba(10,46,92,.12);
   border-radius:8px;
   background:#fff;
@@ -316,7 +336,9 @@
 .apll-my-requests-empty h3,
 .apll-my-request-card h3,
 .apll-users-empty h3,
-.apll-user-list-card h3{
+.apll-user-list-card h3,
+.apll-admin-requests-empty h3,
+.apll-admin-request-card h3{
   margin:0;
   color:#172033;
   font-size:19px;
@@ -324,19 +346,22 @@
 }
 
 .apll-my-requests-empty p,
-.apll-users-empty p{
+.apll-users-empty p,
+.apll-admin-requests-empty p{
   margin:0;
   color:#526278;
   font-weight:650;
 }
 
 .apll-my-requests-empty--error p,
-.apll-users-empty--error p{
+.apll-users-empty--error p,
+.apll-admin-requests-empty--error p{
   color:#b42318;
 }
 
 .apll-my-request-head,
-.apll-user-list-head{
+.apll-user-list-head,
+.apll-admin-request-head{
   display:flex;
   align-items:flex-start;
   justify-content:space-between;
@@ -386,6 +411,45 @@
   background:#ecfdf3;
 }
 
+.apll-admin-requests-toolbar{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:14px;
+  padding-right:42px;
+}
+
+.apll-admin-requests-toolbar h2{
+  margin:10px 0 0;
+  color:#172033;
+  font-size:clamp(25px, 4vw, 32px);
+  line-height:1.1;
+}
+
+.apll-admin-requests-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.apll-admin-requests-actions select,
+.apll-admin-request-form select,
+.apll-admin-request-form textarea{
+  width:100%;
+  border:1px solid rgba(10,46,92,.18);
+  border-radius:8px;
+  color:#172033;
+  background:#fff;
+}
+
+.apll-admin-requests-actions select,
+.apll-admin-request-form select{
+  min-height:42px;
+  padding:8px 10px;
+  font-weight:800;
+}
+
 .apll-status-done{
   color:#067647;
   background:#ecfdf3;
@@ -411,6 +475,39 @@
   overflow-wrap:anywhere;
 }
 
+.apll-admin-request-form{
+  display:grid;
+  grid-template-columns:minmax(160px, 220px) minmax(0, 1fr) auto;
+  align-items:end;
+  gap:10px;
+  margin-top:14px;
+}
+
+.apll-admin-request-form label{
+  display:grid;
+  gap:6px;
+  color:#223044;
+  font-size:13px;
+  font-weight:850;
+}
+
+.apll-admin-request-form textarea{
+  min-height:72px;
+  padding:9px 10px;
+  resize:vertical;
+  line-height:1.45;
+}
+
+.apll-admin-request-save{
+  min-height:42px;
+  white-space:nowrap;
+}
+
+.apll-admin-request-message{
+  grid-column:1 / -1;
+  min-height:20px;
+}
+
 .apll-my-request-note{
   padding:10px 12px;
   border-radius:8px;
@@ -418,14 +515,16 @@
 }
 
 .apll-my-request-meta,
-.apll-user-list-meta{
+.apll-user-list-meta,
+.apll-admin-request-meta{
   display:grid;
   grid-template-columns:repeat(4, minmax(0, 1fr));
   gap:8px;
 }
 
 .apll-my-request-meta-item,
-.apll-user-list-meta-item{
+.apll-user-list-meta-item,
+.apll-admin-request-meta-item{
   min-width:0;
   padding:9px 10px;
   border-radius:8px;
@@ -433,7 +532,8 @@
 }
 
 .apll-my-request-meta-item span,
-.apll-user-list-meta-item span{
+.apll-user-list-meta-item span,
+.apll-admin-request-meta-item span{
   display:block;
   color:#6b778a;
   font-size:11px;
@@ -442,7 +542,8 @@
 }
 
 .apll-my-request-meta-item strong,
-.apll-user-list-meta-item strong{
+.apll-user-list-meta-item strong,
+.apll-admin-request-meta-item strong{
   display:block;
   margin-top:3px;
   color:#172033;
@@ -454,23 +555,32 @@
   .apll-auth-dialog,
   .apll-request-dialog,
   .apll-requests-dialog,
-  .apll-users-dialog{
+  .apll-users-dialog,
+  .apll-admin-requests-dialog{
     padding:20px;
   }
 
   .apll-auth-providers,
   .apll-request-two,
   .apll-my-request-meta,
-  .apll-user-list-meta{
+  .apll-user-list-meta,
+  .apll-admin-request-meta{
     grid-template-columns:1fr;
   }
 
+  .apll-admin-requests-toolbar,
+  .apll-admin-requests-actions,
   .apll-request-actions{
     display:grid;
   }
 
+  .apll-admin-request-form{
+    grid-template-columns:1fr;
+  }
+
   .apll-my-request-head,
-  .apll-user-list-head{
+  .apll-user-list-head,
+  .apll-admin-request-head{
     display:grid;
   }
 }

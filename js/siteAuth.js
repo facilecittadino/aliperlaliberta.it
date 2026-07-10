@@ -21,10 +21,12 @@
   let requestOverlay = null;
   let requestsOverlay = null;
   let usersOverlay = null;
+  let adminRequestsOverlay = null;
   let lastFocused = null;
   let pendingAction = null;
   let clientActionNodes = [];
   let adminActionNodes = [];
+  let adminRequests = [];
   let readyDone = false;
   let readyResolve;
 
@@ -95,7 +97,7 @@
   }
 
   function hasOpenOverlay() {
-    return [authOverlay, requestOverlay, requestsOverlay, usersOverlay].some((overlay) => overlay && !overlay.hidden);
+    return [authOverlay, requestOverlay, requestsOverlay, usersOverlay, adminRequestsOverlay].some((overlay) => overlay && !overlay.hidden);
   }
 
   function cleanOauthUrl() {
@@ -210,32 +212,58 @@
     document.querySelectorAll("[data-auth-link]").forEach((authLink) => {
       const item = authLink.closest("li");
       if (!item || !item.parentElement) return;
-      if (item.nextElementSibling?.dataset?.adminUsersItem === "true") return;
 
-      const usersItem = document.createElement("li");
-      usersItem.className = "apll-admin-users-item";
-      usersItem.dataset.adminUsersItem = "true";
-      usersItem.hidden = true;
+      const actions = [
+        {
+          className: "apll-admin-requests-item",
+          dataKey: "adminRequestsItem",
+          linkClass: "apll-admin-requests-link",
+          labelClass: "apll-admin-requests-label",
+          icon: "inbox",
+          label: "Richieste",
+          open: openAdminRequests
+        },
+        {
+          className: "apll-admin-users-item",
+          dataKey: "adminUsersItem",
+          linkClass: "apll-admin-users-link",
+          labelClass: "apll-admin-users-label",
+          icon: "users",
+          label: "Utenti",
+          open: openUsersList
+        }
+      ];
 
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = authLink.classList.contains("nav-icon-link")
-        ? "nav-icon-link apll-admin-users-link"
-        : "apll-admin-users-link apll-admin-users-link--drawer";
-      button.setAttribute("aria-label", "Lista utenti");
-      button.setAttribute("title", "Lista utenti");
-      button.innerHTML = `
-        <i data-lucide="users"></i>
-        <span class="apll-admin-users-label">Utenti</span>
-      `;
-      button.addEventListener("click", () => {
-        window.Navbar?.closeDrawer?.();
-        openUsersList();
+      let insertAfter = item;
+      actions.forEach((action) => {
+        if (item.parentElement.querySelector(`[data-${action.dataKey.replace(/[A-Z]/g, "-$&").toLowerCase()}="true"]`)) return;
+
+        const actionItem = document.createElement("li");
+        actionItem.className = action.className;
+        actionItem.dataset[action.dataKey] = "true";
+        actionItem.hidden = true;
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = authLink.classList.contains("nav-icon-link")
+          ? `nav-icon-link ${action.linkClass}`
+          : `${action.linkClass} ${action.linkClass}--drawer`;
+        button.setAttribute("aria-label", action.label);
+        button.setAttribute("title", action.label);
+        button.innerHTML = `
+          <i data-lucide="${action.icon}"></i>
+          <span class="${action.labelClass}">${action.label}</span>
+        `;
+        button.addEventListener("click", () => {
+          window.Navbar?.closeDrawer?.();
+          action.open();
+        });
+
+        actionItem.append(button);
+        insertAfter.insertAdjacentElement("afterend", actionItem);
+        insertAfter = actionItem;
+        adminActionNodes.push(actionItem);
       });
-
-      usersItem.append(button);
-      item.insertAdjacentElement("afterend", usersItem);
-      adminActionNodes.push(usersItem);
     });
 
     renderDynamicIcons();
@@ -728,6 +756,205 @@
     lastFocused?.focus?.({ preventScroll: true });
   }
 
+  function adminRequestMeta(label, value) {
+    const item = el("div", "apll-admin-request-meta-item");
+    item.append(el("span", "", label));
+    item.append(el("strong", "", value || "-"));
+    return item;
+  }
+
+  function ensureAdminRequestsOverlay() {
+    if (adminRequestsOverlay) return adminRequestsOverlay;
+
+    adminRequestsOverlay = document.createElement("div");
+    adminRequestsOverlay.className = "apll-admin-requests-overlay";
+    adminRequestsOverlay.hidden = true;
+    adminRequestsOverlay.innerHTML = `
+      <section class="apll-admin-requests-dialog" role="dialog" aria-modal="true" aria-labelledby="apllAdminRequestsTitle">
+        <button class="apll-admin-requests-close" type="button" aria-label="Chiudi">&times;</button>
+        <div class="apll-admin-requests-toolbar">
+          <div>
+            <p class="apll-auth-kicker">Admin</p>
+            <h2 id="apllAdminRequestsTitle">Richieste clienti</h2>
+          </div>
+          <div class="apll-admin-requests-actions">
+            <select id="apllAdminRequestsFilter" aria-label="Filtra richieste">
+              <option value="">Tutte</option>
+              <option value="new">Nuove</option>
+              <option value="in_progress">In lavorazione</option>
+              <option value="waiting_client">In attesa cliente</option>
+              <option value="done">Chiuse</option>
+              <option value="cancelled">Annullate</option>
+            </select>
+            <button id="apllAdminRequestsRefresh" class="btn btn-outline" type="button">Aggiorna</button>
+          </div>
+        </div>
+        <div id="apllAdminRequestsList" class="apll-admin-requests-list"></div>
+      </section>
+    `;
+
+    document.body.appendChild(adminRequestsOverlay);
+
+    adminRequestsOverlay.querySelector(".apll-admin-requests-close").addEventListener("click", closeAdminRequests);
+    adminRequestsOverlay.querySelector("#apllAdminRequestsRefresh").addEventListener("click", () => {
+      loadAdminRequests().catch((error) => showAdminRequestsError(error.message));
+    });
+    adminRequestsOverlay.querySelector("#apllAdminRequestsFilter").addEventListener("change", renderAdminRequests);
+    adminRequestsOverlay.addEventListener("click", (event) => {
+      if (event.target === adminRequestsOverlay) closeAdminRequests();
+    });
+    adminRequestsOverlay.addEventListener("submit", submitAdminRequestUpdate);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && adminRequestsOverlay && !adminRequestsOverlay.hidden) closeAdminRequests();
+    });
+
+    renderDynamicIcons();
+    return adminRequestsOverlay;
+  }
+
+  function showAdminRequestsError(message) {
+    const list = adminRequestsOverlay?.querySelector("#apllAdminRequestsList");
+    if (!list) return;
+    list.replaceChildren();
+    const errorBox = el("div", "apll-admin-requests-empty apll-admin-requests-empty--error");
+    errorBox.append(el("p", "", message || "Operazione non riuscita"));
+    list.append(errorBox);
+  }
+
+  function renderAdminRequests() {
+    if (!adminRequestsOverlay) return;
+    const list = adminRequestsOverlay.querySelector("#apllAdminRequestsList");
+    const filter = adminRequestsOverlay.querySelector("#apllAdminRequestsFilter")?.value || "";
+    const requests = filter ? adminRequests.filter((request) => request.status === filter) : adminRequests;
+    list.replaceChildren();
+
+    if (!requests.length) {
+      const empty = el("div", "apll-admin-requests-empty");
+      empty.append(el("h3", "", "Nessuna richiesta trovata"));
+      empty.append(el("p", "", "Le richieste dei clienti compariranno qui."));
+      list.append(empty);
+      return;
+    }
+
+    requests.forEach((request) => {
+      const card = el("article", "apll-admin-request-card");
+      const head = el("div", "apll-admin-request-head");
+      const title = el("div");
+      title.append(el("p", "apll-my-request-service", request.service || "Servizio"));
+      title.append(el("h3", "", request.subject || "Richiesta"));
+      head.append(title);
+      head.append(el("span", `apll-my-request-status apll-status-${request.status || "new"}`, statusLabels[request.status] || request.status || "Nuova"));
+
+      const customer = request.customer || {};
+      const meta = el("div", "apll-admin-request-meta");
+      meta.append(adminRequestMeta("Cliente", customer.name));
+      meta.append(adminRequestMeta("Username", customer.username ? `@${customer.username}` : ""));
+      meta.append(adminRequestMeta("Email", customer.email));
+      meta.append(adminRequestMeta("Telefono", request.phone || customer.phone));
+      meta.append(adminRequestMeta("Data", request.preferredDate));
+      meta.append(adminRequestMeta("Ora", request.preferredTime));
+      meta.append(adminRequestMeta("Creata", formatDate(request.createdAt)));
+
+      const form = el("form", "apll-admin-request-form");
+      form.dataset.requestId = request.id;
+
+      const statusLabel = el("label");
+      statusLabel.append(el("span", "", "Stato"));
+      const select = el("select");
+      select.name = "status";
+      Object.entries(statusLabels).forEach(([value, label]) => {
+        const option = el("option", "", label);
+        option.value = value;
+        option.selected = value === request.status;
+        select.append(option);
+      });
+      statusLabel.append(select);
+
+      const noteLabel = el("label");
+      noteLabel.append(el("span", "", "Nota admin"));
+      const note = el("textarea");
+      note.name = "adminNote";
+      note.rows = 3;
+      note.value = request.adminNote || "";
+      noteLabel.append(note);
+
+      const message = el("p", "apll-auth-message apll-admin-request-message");
+      message.setAttribute("role", "status");
+      const button = el("button", "btn btn-primary apll-admin-request-save", "Salva");
+      button.type = "submit";
+      form.append(statusLabel, noteLabel, button, message);
+
+      card.append(head);
+      card.append(el("p", "apll-my-request-text", request.message || ""));
+      card.append(meta);
+      card.append(form);
+      list.append(card);
+    });
+  }
+
+  async function loadAdminRequests() {
+    if (!adminRequestsOverlay) return;
+    const list = adminRequestsOverlay.querySelector("#apllAdminRequestsList");
+    list.replaceChildren();
+    const loading = el("div", "apll-admin-requests-empty");
+    loading.append(el("p", "", "Caricamento richieste..."));
+    list.append(loading);
+
+    const data = await api("/requests");
+    adminRequests = Array.isArray(data.requests) ? data.requests : [];
+    renderAdminRequests();
+  }
+
+  async function submitAdminRequestUpdate(event) {
+    const form = event.target;
+    if (!(form instanceof HTMLFormElement) || !form.classList.contains("apll-admin-request-form")) return;
+    event.preventDefault();
+
+    const button = form.querySelector("button[type='submit']");
+    const message = form.querySelector(".apll-admin-request-message");
+    button.disabled = true;
+    setMessage(message, "Salvataggio...");
+
+    try {
+      const data = await api(`/requests/${encodeURIComponent(form.dataset.requestId)}`, {
+        method: "PATCH",
+        body: JSON.stringify(formData(form))
+      });
+      adminRequests = adminRequests.map((request) => request.id === data.request?.id ? data.request : request);
+      setMessage(message, "Stato aggiornato.", "success");
+      renderAdminRequests();
+    } catch (error) {
+      setMessage(message, error.message, "error");
+    } finally {
+      button.disabled = false;
+    }
+  }
+
+  async function openAdminRequests() {
+    if (!isAdmin()) {
+      await openAuth({
+        reason: "Accedi con le credenziali admin per vedere tutte le richieste.",
+        afterLogin: () => openAdminRequests()
+      });
+      return;
+    }
+
+    ensureAdminRequestsOverlay();
+    if (usersOverlay) usersOverlay.hidden = true;
+    lastFocused = document.activeElement;
+    adminRequestsOverlay.hidden = false;
+    lockPage(true);
+    loadAdminRequests().catch((error) => showAdminRequestsError(error.message));
+  }
+
+  function closeAdminRequests() {
+    if (!adminRequestsOverlay || adminRequestsOverlay.hidden) return;
+    adminRequestsOverlay.hidden = true;
+    lockPage(hasOpenOverlay());
+    lastFocused?.focus?.({ preventScroll: true });
+  }
+
   function ensureUsersOverlay() {
     if (usersOverlay) return usersOverlay;
 
@@ -837,6 +1064,7 @@
     }
 
     ensureUsersOverlay();
+    if (adminRequestsOverlay) adminRequestsOverlay.hidden = true;
     lastFocused = document.activeElement;
     usersOverlay.hidden = false;
     lockPage(true);
@@ -916,6 +1144,7 @@
     openRequest,
     openRequestForm,
     openMyRequests,
+    openAdminRequests,
     openUsersList
   };
 
