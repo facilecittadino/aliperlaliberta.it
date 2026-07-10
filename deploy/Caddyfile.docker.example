@@ -1,0 +1,45 @@
+(static_site) {
+  root * /srv/site
+  encode zstd gzip
+
+  try_files {path} {path}/ /404.html
+  file_server
+
+  header {
+    Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    X-Content-Type-Options "nosniff"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  }
+}
+
+http://212.237.3.63 {
+  import static_site
+}
+
+aliperlaliberta.it, www.aliperlaliberta.it {
+  import static_site
+}
+
+aliperlaliberta.com, www.aliperlaliberta.com {
+  redir https://aliperlaliberta.it{uri} permanent
+}
+
+api.aliperlaliberta.it {
+  encode zstd gzip
+
+  handle /api/portal/* {
+    reverse_proxy apll-portal-api:8790
+  }
+
+  handle /status {
+    respond "offline" 200
+  }
+
+  handle /health {
+    header Content-Type application/json
+    respond "{\"ok\":true}" 200
+  }
+
+  respond "Calendar API is not configured yet" 503
+}

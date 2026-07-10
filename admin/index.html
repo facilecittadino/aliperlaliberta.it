@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin - Ali Per La Liberta</title>
+  <meta name="description" content="Area admin Ali Per La Liberta." />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <div class="page portal-page">
+    <header class="portal-header">
+      <a class="portal-brand" href="/" aria-label="Ali Per La Liberta Home">
+        <img src="/logo.png" alt="" decoding="async" />
+        <span>Ali Per La Liberta</span>
+      </a>
+      <nav class="portal-nav" aria-label="Admin">
+        <a href="/">Sito</a>
+        <a href="/cliente/">Area clienti</a>
+      </nav>
+    </header>
+
+    <main class="portal-main">
+      <section class="portal-hero" aria-labelledby="adminTitle">
+        <p class="portal-eyebrow">Admin</p>
+        <h1 id="adminTitle">Richieste clienti</h1>
+        <p>Accedi per vedere e aggiornare le richieste ricevute.</p>
+      </section>
+
+      <section id="setupPanel" class="portal-panel portal-form" hidden>
+        <h2>Crea primo admin</h2>
+        <form id="setupForm" autocomplete="off">
+          <label>
+            Token setup
+            <input name="setupToken" type="password" autocomplete="one-time-code" required />
+          </label>
+          <label>
+            Nome
+            <input name="name" type="text" value="Admin" required />
+          </label>
+          <label>
+            Username admin
+            <input name="username" type="text" value="admin" autocomplete="username" minlength="3" maxlength="40" pattern="[A-Za-z0-9._-]+" required />
+          </label>
+          <label>
+            Email admin
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+          <label>
+            Password admin
+            <input name="password" type="password" autocomplete="new-password" minlength="10" required />
+          </label>
+          <button class="btn btn-primary portal-submit" type="submit">Crea admin</button>
+          <p id="setupMessage" class="portal-message" role="status"></p>
+        </form>
+      </section>
+
+      <section id="authPanel" class="portal-panel portal-form" aria-label="Login admin">
+          <h2>Login admin</h2>
+          <form id="loginForm" autocomplete="on">
+          <label>
+            Username o email
+            <input name="identifier" type="text" autocomplete="username" required />
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" autocomplete="current-password" required />
+          </label>
+          <button class="btn btn-primary portal-submit" type="submit">Entra</button>
+          <p id="loginMessage" class="portal-message" role="status"></p>
+        </form>
+      </section>
+
+      <section id="dashboardPanel" class="portal-dashboard" hidden>
+        <div class="portal-dashboard-head">
+          <div>
+            <p class="portal-eyebrow">Pannello</p>
+            <h2>Richieste ricevute</h2>
+          </div>
+          <div class="portal-actions">
+            <select id="statusFilter" aria-label="Filtra stato">
+              <option value="">Tutti</option>
+              <option value="new">Nuove</option>
+              <option value="in_progress">In lavorazione</option>
+              <option value="waiting_client">In attesa cliente</option>
+              <option value="done">Chiuse</option>
+              <option value="cancelled">Annullate</option>
+            </select>
+            <button id="refreshRequests" class="btn btn-outline" type="button">Aggiorna</button>
+            <button id="logoutButton" class="btn btn-outline" type="button">Esci</button>
+          </div>
+        </div>
+        <div id="requestsList" class="portal-admin-list"></div>
+
+        <section class="portal-panel portal-users-panel" aria-labelledby="usersTitle">
+          <div class="portal-list-head">
+            <h2 id="usersTitle">Utenti e permessi</h2>
+            <button id="refreshUsers" class="portal-icon-button" type="button" aria-label="Aggiorna utenti">&#8635;</button>
+          </div>
+          <div id="usersList" class="portal-users-list"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="/js/config.js?v=20260710-portal1"></script>
+  <script src="/js/portalAdmin.js?v=20260710-portal1" defer></script>
+</body>
+</html>

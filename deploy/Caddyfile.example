@@ -16,6 +16,9 @@ aliperlaliberta.it, www.aliperlaliberta.it {
 api.aliperlaliberta.it {
   encode zstd gzip
 
+  @portal_api path /api/portal/*
+  reverse_proxy @portal_api apll-portal-api:8790
+
   @calendar_api path /api/calendar/* /health
   reverse_proxy @calendar_api 127.0.0.1:8787
 

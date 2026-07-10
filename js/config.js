@@ -60,5 +60,12 @@ window.APP_CONFIG = Object.freeze({
       AVAILABILITY: "/api/calendar/availability",
       BOOK: "/api/calendar/book"
     })
+  }),
+
+  // ---------------------------
+  // Customer/admin portal API.
+  // ---------------------------
+  PORTAL_API: Object.freeze({
+    API_BASE_URL: "https://api.aliperlaliberta.it/api/portal"
   })
 });

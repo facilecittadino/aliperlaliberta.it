@@ -6,12 +6,15 @@ Questo setup sostituisce il vecchio server non raggiungibile `app.apll.it`.
 
 - Servire il sito statico su `https://aliperlaliberta.it`.
 - Servire l'API calendario su `https://api.aliperlaliberta.it`.
+- Servire l'area clienti/admin su `https://api.aliperlaliberta.it/api/portal`.
 - Lasciare attivo il form WhatsApp locale finche l'API calendario non e pronta.
 
 ## File principali
 
 - `deploy/Caddyfile.example`: reverse proxy HTTPS e static file server.
+- `deploy/Caddyfile.docker.example`: Caddyfile usato quando Caddy gira in Docker.
 - `backend/calendar-api`: API Node per disponibilita e prenotazioni Google Calendar.
+- `backend/portal-api`: API Node per login clienti/admin e richieste.
 - `backend/calendar-api/deploy/calendar-api.service.example`: servizio systemd.
 - `deploy/DNS_ARUBA.md`: record DNS da impostare nel pannello Aruba.
 
@@ -37,7 +40,29 @@ npm install --omit=dev
 ```bash
 curl https://api.aliperlaliberta.it/health
 curl https://api.aliperlaliberta.it/status
+curl https://api.aliperlaliberta.it/api/portal/health
 ```
+
+## Attivare area clienti/admin
+
+1. Copia `backend/portal-api` in `/opt/apll/portal-api`.
+2. Crea `/etc/apll/portal-api.env` partendo da `backend/portal-api/.env.example`.
+3. Imposta un `ADMIN_SETUP_TOKEN` lungo e casuale.
+4. Avvia il container:
+
+```bash
+docker network create apll-net
+docker network connect apll-net aliperlaliberta-caddy
+docker build -t apll-portal-api /opt/apll/portal-api
+docker run -d --name apll-portal-api \
+  --restart unless-stopped \
+  --network apll-net \
+  --env-file /etc/apll/portal-api.env \
+  -v /srv/aliperlaliberta/portal-data:/data \
+  apll-portal-api
+```
+
+5. Apri `https://aliperlaliberta.it/admin/` e crea il primo admin usando il token di setup.
 
 ## Attivare prenotazione calendario
 
