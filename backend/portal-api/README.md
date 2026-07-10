@@ -5,8 +5,6 @@ Backend per area clienti e area admin.
 ## Endpoint principali
 
 - `GET /api/portal/health`
-- `GET /api/portal/setup-status`
-- `POST /api/portal/setup-admin`
 - `GET /api/portal/auth/providers`
 - `GET /api/portal/oauth/google/start`
 - `GET /api/portal/oauth/apple/start`
@@ -31,7 +29,8 @@ docker run -d --name apll-portal-api \
   apll-portal-api
 ```
 
-Il primo admin si crea da `/admin/` usando `ADMIN_SETUP_TOKEN`.
+Gli admin non si creano dal sito o da endpoint pubblici. Gli account admin
+devono essere provisionati offline sul server da un operatore autorizzato.
 
 ## Credenziali OAuth
 

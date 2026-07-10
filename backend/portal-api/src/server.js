@@ -31,7 +31,6 @@ const oauthStateCookie = process.env.OAUTH_STATE_COOKIE || "apll_portal_oauth_st
 const cookieDomain = process.env.COOKIE_DOMAIN || "";
 const cookieSecure = process.env.COOKIE_SECURE !== "false";
 const sessionDays = Number(process.env.SESSION_DAYS || 7);
-const adminSetupToken = process.env.ADMIN_SETUP_TOKEN || "";
 const siteOrigin = process.env.SITE_ORIGIN || "https://aliperlaliberta.it";
 const publicApiOrigin = process.env.PUBLIC_API_ORIGIN || "https://api.aliperlaliberta.it";
 
@@ -103,14 +102,6 @@ const loginSchema = z.object({
 })).refine((value) => value.identifier.length >= 3, {
   message: "Username o email richiesto",
   path: ["identifier"]
-});
-
-const setupAdminSchema = z.object({
-  setupToken: z.string().min(20).max(256),
-  name: safeText(120).default("Admin"),
-  username: usernameSchema,
-  email: emailSchema,
-  password: passwordSchema
 });
 
 const requestSchema = z.object({
@@ -646,61 +637,6 @@ app.get("/api/portal/oauth/:provider/callback", authLimiter, (req, res, next) =>
 
 app.post("/api/portal/oauth/apple/callback", authLimiter, (req, res, next) => {
   return finishOAuthCallback("apple", req, res, next);
-});
-
-app.get("/api/portal/setup-status", async (req, res, next) => {
-  try {
-    const users = await readJson(files.users, []);
-    res.json({
-      adminExists: users.some((user) => user.role === "admin"),
-      setupEnabled: Boolean(adminSetupToken)
-    });
-  } catch (error) {
-    next(error);
-  }
-});
-
-app.post("/api/portal/setup-admin", authLimiter, async (req, res, next) => {
-  try {
-    const input = setupAdminSchema.parse(req.body);
-    if (!adminSetupToken) throw httpError(503, "Setup admin non configurato");
-    if (input.setupToken !== adminSetupToken) throw httpError(403, "Token setup non valido");
-
-    const passwordHash = await hashPassword(input.password);
-    const user = await withWriteLock(async () => {
-      const users = await readJson(files.users, []);
-      if (users.some((existing) => existing.role === "admin")) {
-        throw httpError(409, "Admin gia creato");
-      }
-      if (users.some((existing) => existing.email === input.email)) {
-        throw httpError(409, "Email gia registrata");
-      }
-      if (users.some((existing) => existing.username === input.username)) {
-        throw httpError(409, "Username gia registrato");
-      }
-      const created = {
-        id: randomUUID(),
-        role: "admin",
-        name: input.name,
-        username: input.username,
-        email: input.email,
-        phone: "",
-        permissions: permissionsForRole("admin"),
-        passwordHash,
-        createdAt: nowIso(),
-        updatedAt: nowIso()
-      };
-      users.push(created);
-      await writeJson(files.users, users);
-      return created;
-    });
-
-    const token = await createSession(user.id);
-    res.setHeader("Set-Cookie", cookieHeader(token, sessionDays * 24 * 60 * 60));
-    res.status(201).json({ user: publicUser(user) });
-  } catch (error) {
-    next(error);
-  }
 });
 
 app.post("/api/portal/auth/register", authLimiter, async (req, res, next) => {

@@ -4,10 +4,8 @@
   const cfg = window.APP_CONFIG?.PORTAL_API || {};
   const apiBase = (cfg.API_BASE_URL || "https://api.aliperlaliberta.it/api/portal").replace(/\/+$/, "");
 
-  const setupPanel = document.getElementById("setupPanel");
   const authPanel = document.getElementById("authPanel");
   const dashboardPanel = document.getElementById("dashboardPanel");
-  const setupForm = document.getElementById("setupForm");
   const loginForm = document.getElementById("loginForm");
   const logoutButton = document.getElementById("logoutButton");
   const refreshButton = document.getElementById("refreshRequests");
@@ -19,7 +17,6 @@
   const statWorking = document.getElementById("adminStatWorking");
   const statDone = document.getElementById("adminStatDone");
 
-  const setupMessage = document.getElementById("setupMessage");
   const loginMessage = document.getElementById("loginMessage");
   let allRequests = [];
   let allUsers = [];
@@ -65,7 +62,6 @@
 
   function showDashboard() {
     authPanel.hidden = true;
-    setupPanel.hidden = true;
     dashboardPanel.hidden = false;
     switchView("adminPracticesView");
   }
@@ -231,11 +227,6 @@
     renderUsers();
   }
 
-  async function loadSetupStatus() {
-    const data = await api("/setup-status");
-    setupPanel.hidden = data.adminExists || !data.setupEnabled;
-  }
-
   async function loadMe() {
     try {
       const data = await api("/auth/me");
@@ -249,23 +240,6 @@
       showAuth();
     }
   }
-
-  setupForm?.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    setMessage(setupMessage, "Creazione admin...");
-    try {
-      await api("/setup-admin", {
-        method: "POST",
-        body: JSON.stringify(formData(setupForm))
-      });
-      setupForm.reset();
-      setMessage(setupMessage, "");
-      showDashboard();
-      await Promise.all([loadRequests(), loadUsers()]);
-    } catch (error) {
-      setMessage(setupMessage, error.message, "error");
-    }
-  });
 
   loginForm?.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -323,5 +297,5 @@
     button.addEventListener("click", () => switchView(button.dataset.adminView));
   });
 
-  Promise.all([loadSetupStatus(), loadMe()]).catch(() => showAuth());
+  loadMe().catch(() => showAuth());
 })();

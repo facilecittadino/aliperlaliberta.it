@@ -101,7 +101,7 @@
           <aside class="portal-side" aria-label="Sezioni area riservata">
             <button type="button" class="portal-side-link is-active" data-view="servicesView">Servizi</button>
             <button type="button" class="portal-side-link" data-view="myPracticesView">Le mie pratiche</button>
-            <button type="button" class="portal-side-link" data-view="newPracticeView">Nuova pratica</button>
+            <button type="button" class="portal-side-link" data-open-booking="Altro">Nuova pratica</button>
           </aside>
 
           <div class="portal-workspace">
@@ -157,47 +157,6 @@
               </section>
             </section>
 
-            <section id="newPracticeView" class="portal-view" hidden>
-              <form id="requestForm" class="portal-panel portal-form portal-wide-form">
-                <p class="portal-eyebrow">Nuova pratica</p>
-                <h2>Prenota un servizio</h2>
-                <label>
-                  Servizio
-                  <select name="service" required>
-                    <option value="CAF">CAF</option>
-                    <option value="Patronato">Patronato</option>
-                    <option value="Assistenza legale">Assistenza legale</option>
-                    <option value="Corso italiano">Corso italiano</option>
-                    <option value="Altro">Altro</option>
-                  </select>
-                </label>
-                <label>
-                  Oggetto pratica
-                  <input name="subject" type="text" maxlength="160" required />
-                </label>
-                <label>
-                  Cosa ti serve
-                  <textarea name="message" rows="6" maxlength="3000" required></textarea>
-                </label>
-                <div class="portal-two">
-                  <label>
-                    Data preferita
-                    <input name="preferredDate" type="date" />
-                  </label>
-                  <label>
-                    Ora preferita
-                    <input name="preferredTime" type="time" />
-                  </label>
-                </div>
-                <label>
-                  Telefono per questa pratica
-                  <input name="phone" type="tel" autocomplete="tel" />
-                </label>
-                <button class="btn btn-primary portal-submit" type="submit">Apri pratica</button>
-                <p id="requestMessage" class="portal-message" role="status"></p>
-              </form>
-            </section>
-
             <section id="myPracticesView" class="portal-view" hidden>
               <section class="portal-panel portal-list-panel" aria-labelledby="requestsTitle">
                 <div class="portal-list-head">
@@ -211,14 +170,70 @@
               </section>
             </section>
 
-            </div>
           </div>
         </div>
       </section>
     </main>
+
+    <div id="bookingOverlay" class="portal-booking-overlay" hidden>
+      <section class="portal-booking-dialog" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+        <button id="bookingClose" class="portal-booking-close" type="button" aria-label="Chiudi prenotazione">x</button>
+        <div class="portal-booking-head">
+          <p class="portal-eyebrow">Nuova prenotazione</p>
+          <h2 id="bookingTitle">Prenota un servizio</h2>
+          <p id="bookingSubtitle">Ti chiediamo solo le informazioni utili per aprire la pratica.</p>
+        </div>
+
+        <div class="portal-booking-steps" aria-label="Passaggi prenotazione">
+          <span class="is-active">1. Servizio</span>
+          <span>2. Preferenza</span>
+          <span>3. Conferma</span>
+        </div>
+
+        <form id="requestForm" class="portal-form portal-booking-form">
+          <label>
+            Servizio
+            <select name="service" required>
+              <option value="CAF">CAF</option>
+              <option value="Patronato">Patronato</option>
+              <option value="Assistenza legale">Assistenza legale</option>
+              <option value="Corso italiano">Corso italiano</option>
+              <option value="Altro">Altro</option>
+            </select>
+          </label>
+          <label>
+            Oggetto pratica
+            <input name="subject" type="text" maxlength="160" required />
+          </label>
+          <label>
+            Cosa ti serve
+            <textarea name="message" rows="5" maxlength="3000" required></textarea>
+          </label>
+          <div class="portal-two">
+            <label>
+              Data preferita
+              <input name="preferredDate" type="date" />
+            </label>
+            <label>
+              Ora preferita
+              <input name="preferredTime" type="time" />
+            </label>
+          </div>
+          <label>
+            Telefono per questa pratica
+            <input name="phone" type="tel" autocomplete="tel" />
+          </label>
+          <div class="portal-booking-actions">
+            <button id="bookingCancel" class="btn btn-outline" type="button">Annulla</button>
+            <button class="btn btn-primary" type="submit">Apri pratica</button>
+          </div>
+          <p id="requestMessage" class="portal-message" role="status"></p>
+        </form>
+      </section>
+    </div>
   </div>
 
-  <script src="/js/config.js?v=20260710-portal2"></script>
-  <script src="/js/portalClient.js?v=20260710-portal2" defer></script>
+  <script src="/js/config.js?v=20260710-portal4"></script>
+  <script src="/js/portalClient.js?v=20260710-portal4" defer></script>
 </body>
 </html>

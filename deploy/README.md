@@ -47,7 +47,7 @@ curl https://api.aliperlaliberta.it/api/portal/health
 
 1. Copia `backend/portal-api` in `/opt/apll/portal-api`.
 2. Crea `/etc/apll/portal-api.env` partendo da `backend/portal-api/.env.example`.
-3. Imposta un `ADMIN_SETUP_TOKEN` lungo e casuale.
+3. Verifica che l'account admin sia gia provisionato offline nel data store server.
 4. Avvia il container:
 
 ```bash
@@ -62,7 +62,7 @@ docker run -d --name apll-portal-api \
   apll-portal-api
 ```
 
-5. Apri `https://aliperlaliberta.it/admin/` e crea il primo admin usando il token di setup.
+5. Apri `https://aliperlaliberta.it/admin/` e accedi con l'account admin gia creato.
 
 ## Attivare prenotazione calendario
 

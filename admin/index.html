@@ -29,34 +29,6 @@
         <p>Accesso separato per controllare tutte le pratiche, gli stati e gli utenti.</p>
       </section>
 
-      <section id="setupPanel" class="portal-panel portal-form" hidden>
-        <h2>Crea primo admin</h2>
-        <form id="setupForm" autocomplete="off">
-          <label>
-            Token setup
-            <input name="setupToken" type="password" autocomplete="one-time-code" required />
-          </label>
-          <label>
-            Nome
-            <input name="name" type="text" value="Admin" required />
-          </label>
-          <label>
-            Username admin
-            <input name="username" type="text" value="admin" autocomplete="username" minlength="3" maxlength="40" pattern="[A-Za-z0-9._-]+" required />
-          </label>
-          <label>
-            Email admin
-            <input name="email" type="email" autocomplete="email" required />
-          </label>
-          <label>
-            Password admin
-            <input name="password" type="password" autocomplete="new-password" minlength="10" required />
-          </label>
-          <button class="btn btn-primary portal-submit" type="submit">Crea admin</button>
-          <p id="setupMessage" class="portal-message" role="status"></p>
-        </form>
-      </section>
-
       <section id="authPanel" class="portal-panel portal-form" aria-label="Login admin">
         <h2>Login admin</h2>
         <form id="loginForm" autocomplete="on">
@@ -148,7 +120,7 @@
     </main>
   </div>
 
-  <script src="/js/config.js?v=20260710-portal2"></script>
-  <script src="/js/portalAdmin.js?v=20260710-portal2" defer></script>
+  <script src="/js/config.js?v=20260710-portal4"></script>
+  <script src="/js/portalAdmin.js?v=20260710-portal4" defer></script>
 </body>
 </html>

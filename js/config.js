@@ -63,6 +63,16 @@ window.APP_CONFIG = Object.freeze({
   }),
 
   // ---------------------------
+  // Integrated customer portal.
+  // Booking buttons on the public site send users here with the selected
+  // service already attached to the request.
+  // ---------------------------
+  CLIENT_PORTAL: Object.freeze({
+    ENABLED: true,
+    URL: "/cliente/"
+  }),
+
+  // ---------------------------
   // Customer/admin portal API.
   // ---------------------------
   PORTAL_API: Object.freeze({

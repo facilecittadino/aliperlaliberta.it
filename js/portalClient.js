@@ -3,12 +3,18 @@
 
   const cfg = window.APP_CONFIG?.PORTAL_API || {};
   const apiBase = (cfg.API_BASE_URL || "https://api.aliperlaliberta.it/api/portal").replace(/\/+$/, "");
+  const initialParams = new URLSearchParams(window.location.search);
 
   const authPanel = document.getElementById("authPanel");
   const dashboardPanel = document.getElementById("dashboardPanel");
   const loginForm = document.getElementById("loginForm");
   const registerForm = document.getElementById("registerForm");
   const requestForm = document.getElementById("requestForm");
+  const bookingOverlay = document.getElementById("bookingOverlay");
+  const bookingClose = document.getElementById("bookingClose");
+  const bookingCancel = document.getElementById("bookingCancel");
+  const bookingTitle = document.getElementById("bookingTitle");
+  const bookingSubtitle = document.getElementById("bookingSubtitle");
   const logoutButton = document.getElementById("logoutButton");
   const refreshButton = document.getElementById("refreshRequests");
   const googleAccess = document.getElementById("googleAccess");
@@ -42,6 +48,12 @@
   const statusFlow = ["new", "in_progress", "waiting_client", "done"];
   let currentUser = null;
   let myRequests = [];
+  let lastFocused = null;
+  let pendingService = normalizeServiceName(initialParams.get("service"));
+
+  function normalizeServiceName(value) {
+    return (value || "").replace(/\s+/g, " ").trim().slice(0, 120);
+  }
 
   function formData(form) {
     return Object.fromEntries(new FormData(form).entries());
@@ -101,6 +113,10 @@
     currentUser = null;
     authPanel.hidden = false;
     dashboardPanel.hidden = true;
+    closeBooking();
+    if (pendingService) {
+      setMessage(messages.oauth, `Accedi o crea un account per prenotare: ${pendingService}.`, "");
+    }
   }
 
   function showDashboard(user) {
@@ -126,10 +142,73 @@
     });
   }
 
+  function openBooking(service = "Altro") {
+    if (!hasPermission("requests:create")) return;
+
+    const serviceName = normalizeServiceName(service) || "Altro";
+    lastFocused = document.activeElement;
+    requestForm.reset();
+    ensureServiceOption(serviceName);
+    requestForm.elements.service.value = serviceName;
+    requestForm.elements.subject.value = serviceName === "Altro"
+      ? "Nuova richiesta"
+      : `Prenotazione servizio ${serviceName}`;
+    requestForm.elements.message.value = serviceName === "Altro"
+      ? ""
+      : `Vorrei prenotare un appuntamento per ${serviceName}.`;
+    bookingTitle.textContent = serviceName === "Altro" ? "Apri una nuova pratica" : `Prenota ${serviceName}`;
+    bookingSubtitle.textContent = serviceName === "Altro"
+      ? "Descrivi cosa ti serve e scegli, se vuoi, una data preferita."
+      : "Completa i dettagli: la pratica comparira subito nella tua area.";
+    setMessage(messages.request, "");
+    bookingOverlay.hidden = false;
+    document.body.classList.add("overlay-lock");
+    requestForm.elements.message.focus({ preventScroll: true });
+  }
+
+  function ensureServiceOption(service) {
+    const select = requestForm?.elements?.service;
+    if (!select || !service) return;
+    const exists = Array.from(select.options).some((option) => option.value === service);
+    if (exists) return;
+
+    const option = document.createElement("option");
+    option.value = service;
+    option.textContent = service;
+    select.insertBefore(option, select.firstElementChild);
+  }
+
+  function closeBooking() {
+    if (!bookingOverlay || bookingOverlay.hidden) return;
+    bookingOverlay.hidden = true;
+    document.body.classList.remove("overlay-lock");
+    lastFocused?.focus?.({ preventScroll: true });
+  }
+
+  function buildReturnTo() {
+    const target = new URL("/cliente/", window.location.origin);
+    if (pendingService) target.searchParams.set("service", pendingService);
+    return `${target.pathname}${target.search}`;
+  }
+
+  function cleanClientUrl() {
+    const clean = `${window.location.pathname}${window.location.hash || ""}`;
+    window.history.replaceState({}, document.title, clean);
+  }
+
+  function maybeOpenPendingBooking() {
+    if (!pendingService || !hasPermission("requests:create")) return;
+
+    const service = pendingService;
+    pendingService = "";
+    cleanClientUrl();
+    openBooking(service);
+  }
+
   function setProviderLink(link, enabled, provider) {
     if (!link) return;
     if (enabled) {
-      link.href = `${apiBase}/oauth/${provider}/start?returnTo=${encodeURIComponent("/cliente/")}`;
+      link.href = `${apiBase}/oauth/${provider}/start?returnTo=${encodeURIComponent(buildReturnTo())}`;
       link.classList.remove("is-disabled");
       link.removeAttribute("aria-disabled");
     } else {
@@ -155,15 +234,14 @@
   }
 
   function showOAuthResult() {
-    const params = new URLSearchParams(window.location.search);
+    const params = initialParams;
     if (params.get("access") === "error") {
       setMessage(messages.oauth, params.get("reason") || "Accesso non completato.", "error");
     } else if (params.get("access") === "ok") {
       setMessage(messages.oauth, "Accesso completato.", "success");
     }
     if (params.has("access")) {
-      const clean = `${window.location.pathname}${window.location.hash || ""}`;
-      window.history.replaceState({}, document.title, clean);
+      cleanClientUrl();
     }
   }
 
@@ -253,6 +331,7 @@
       if (data.user?.role === "client") {
         showDashboard(data.user);
         await loadRequests();
+        maybeOpenPendingBooking();
       } else {
         showAuth();
       }
@@ -262,16 +341,7 @@
   }
 
   function startService(service) {
-    if (!hasPermission("requests:create")) return;
-    const serviceSelect = requestForm.elements.service;
-    const subjectInput = requestForm.elements.subject;
-    const messageInput = requestForm.elements.message;
-    serviceSelect.value = service;
-    subjectInput.value = `Prenotazione servizio ${service}`;
-    if (!messageInput.value) messageInput.value = `Vorrei prenotare un appuntamento per ${service}.`;
-    setMessage(messages.request, "");
-    switchView("newPracticeView");
-    messageInput.focus({ preventScroll: true });
+    openBooking(service);
   }
 
   document.querySelectorAll("[data-auth-tab]").forEach((button) => {
@@ -284,6 +354,10 @@
 
   document.querySelectorAll("[data-start-service]").forEach((button) => {
     button.addEventListener("click", () => startService(button.dataset.startService));
+  });
+
+  document.querySelectorAll("[data-open-booking]").forEach((button) => {
+    button.addEventListener("click", () => openBooking(button.dataset.openBooking));
   });
 
   loginForm?.addEventListener("submit", async (event) => {
@@ -303,6 +377,7 @@
       setMessage(messages.login, "");
       showDashboard(data.user);
       await loadRequests();
+      maybeOpenPendingBooking();
     } catch (error) {
       setMessage(messages.login, error.message, "error");
     }
@@ -320,6 +395,7 @@
       setMessage(messages.register, "");
       showDashboard(data.user);
       await loadRequests();
+      maybeOpenPendingBooking();
     } catch (error) {
       setMessage(messages.register, error.message, "error");
     }
@@ -336,6 +412,7 @@
       requestForm.reset();
       setMessage(messages.request, "Pratica aperta. Puoi seguirla nella sezione Le mie pratiche.", "success");
       await loadRequests();
+      closeBooking();
       switchView("myPracticesView");
     } catch (error) {
       setMessage(messages.request, error.message, "error");
@@ -351,7 +428,17 @@
     loadRequests().catch((error) => setMessage(messages.request, error.message, "error"));
   });
 
+  bookingClose?.addEventListener("click", closeBooking);
+  bookingCancel?.addEventListener("click", closeBooking);
+  bookingOverlay?.addEventListener("click", (event) => {
+    if (event.target === bookingOverlay) closeBooking();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeBooking();
+  });
+
   showOAuthResult();
-  loadProviders();
-  loadMe();
+  loadProviders().finally(() => {
+    loadMe();
+  });
 })();

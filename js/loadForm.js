@@ -101,6 +101,21 @@ function shouldUseSecureCalendarBackend() {
   );
 }
 
+function resolveClientPortalUrl(serviceName, calendarKind) {
+  const portal = window.APP_CONFIG?.CLIENT_PORTAL || {};
+  if (!portal.ENABLED || !portal.URL) return "";
+
+  try {
+    const target = new URL(portal.URL, window.location.origin);
+    target.searchParams.set("service", serviceName || "Servizio");
+    target.searchParams.set("source", "site");
+    if (calendarKind) target.searchParams.set("kind", calendarKind);
+    return target.toString();
+  } catch {
+    return "";
+  }
+}
+
 // Load script only once
 function loadExternalScriptOnce(url, type) {
   return new Promise((resolve, reject) => {
@@ -132,8 +147,16 @@ document.addEventListener("click", evt => {
   const btn = evt.target.closest(".js-reservation-btn");
   if (!btn) return;
 
+  evt.preventDefault();
+
   const serviceName = resolveServiceName(btn);
   const calendarKind = (btn.getAttribute("data-calendar-kind") || "practices").trim();
+  const clientPortalUrl = resolveClientPortalUrl(serviceName, calendarKind);
+
+  if (clientPortalUrl) {
+    window.location.href = clientPortalUrl;
+    return;
+  }
 
   if (shouldUseSecureCalendarBackend()) {
     window.apllCalendarBooking.open({ serviceName, calendarKind });
