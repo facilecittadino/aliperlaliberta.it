@@ -25,7 +25,7 @@
 <!-- App install is disabled until the app is available to users. -->
 <meta name="theme-color" content="#0b3c5d">
   <!-- Styles: main.css imports base / navbar / drawer / hero / welcome (+ footer.css already imported by you) -->
-  <link rel="stylesheet" href="/css/main.css?v=20260710-icons1" />
+  <link rel="stylesheet" href="/css/main.css?v=20260710-auth1" />
   <script src="/js/tailwindConfig.js?v=20260710-tw1"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest" defer></script>
@@ -100,7 +100,7 @@
     </li>
 
     <li>
-      <a class="nav-icon-link" href="/cliente/" aria-label="Area clienti" title="Area clienti" data-i18n-attr="aria-label:nav.client,title:nav.client">
+      <a class="nav-icon-link" href="/cliente/" aria-label="Area clienti" title="Area clienti" data-i18n-attr="aria-label:nav.client,title:nav.client" data-auth-link>
         <i data-lucide="user-round"></i>
         <span class="sr-only" data-i18n="nav.client">Area clienti</span>
       </a>
@@ -194,7 +194,7 @@
   </li>
 
   <li>
-    <a href="/cliente/" aria-label="Area clienti" title="Area clienti" data-i18n-attr="aria-label:nav.client,title:nav.client">
+    <a href="/cliente/" aria-label="Area clienti" title="Area clienti" data-i18n-attr="aria-label:nav.client,title:nav.client" data-auth-link>
       <i data-lucide="user-round"></i>
       <span class="sr-only" data-i18n="nav.client">Area clienti</span>
     </a>
@@ -571,6 +571,7 @@
 
 
 <script src="/js/config.js?v=20260710-portal4"></script>
+<script src="/js/siteAuth.js?v=20260710-auth1" defer></script>
 <script src="/js/i18n.js" defer></script>
 <script src="/js/navbar.js" defer></script>
 <script src="/js/footer.js" defer></script>

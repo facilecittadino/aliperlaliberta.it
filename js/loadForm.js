@@ -153,6 +153,11 @@ document.addEventListener("click", evt => {
   const calendarKind = (btn.getAttribute("data-calendar-kind") || "practices").trim();
   const clientPortalUrl = resolveClientPortalUrl(serviceName, calendarKind);
 
+  if (window.apllAuth && typeof window.apllAuth.openRequest === "function") {
+    window.apllAuth.openRequest({ serviceName, calendarKind });
+    return;
+  }
+
   if (clientPortalUrl) {
     window.location.href = clientPortalUrl;
     return;

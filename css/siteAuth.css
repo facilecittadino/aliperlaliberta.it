@@ -1,0 +1,241 @@
+/* Global client auth and public request modals */
+
+.apll-auth-overlay,
+.apll-request-overlay{
+  position:fixed;
+  inset:0;
+  z-index:150;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  background:rgba(11, 24, 42, .58);
+  backdrop-filter:blur(8px);
+}
+
+.apll-auth-overlay[hidden],
+.apll-request-overlay[hidden]{
+  display:none;
+}
+
+.apll-auth-dialog,
+.apll-request-dialog{
+  position:relative;
+  width:min(520px, 100%);
+  max-height:min(760px, calc(100vh - 36px));
+  overflow:auto;
+  border:1px solid rgba(10, 46, 92, .14);
+  border-radius:8px;
+  padding:24px;
+  color:var(--primary-ink);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,251,255,.98)),
+    #fff;
+  box-shadow:0 28px 84px rgba(5, 20, 42, .28);
+}
+
+.apll-request-dialog{
+  width:min(640px, 100%);
+}
+
+.apll-auth-close,
+.apll-request-close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  display:grid;
+  place-items:center;
+  width:36px;
+  height:36px;
+  border:1px solid rgba(10, 46, 92, .1);
+  border-radius:50%;
+  color:var(--primary-ink);
+  background:#fff;
+  cursor:pointer;
+  font-size:22px;
+  line-height:1;
+}
+
+.apll-auth-close:hover,
+.apll-request-close:hover{
+  background:#f2f7ff;
+}
+
+.apll-auth-head,
+.apll-request-head{
+  padding-right:38px;
+  margin-bottom:18px;
+}
+
+.apll-auth-kicker{
+  display:inline-flex;
+  align-items:center;
+  min-height:26px;
+  padding:4px 10px;
+  border-radius:999px;
+  color:#0b5ed7;
+  background:#edf5ff;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+.apll-auth-head h2,
+.apll-request-head h2{
+  margin:12px 0 8px;
+  color:var(--primary-ink);
+  font-size:clamp(26px, 5vw, 34px);
+  line-height:1.08;
+}
+
+.apll-auth-head p,
+.apll-request-head p{
+  margin:0;
+  color:#526278;
+  font-weight:650;
+}
+
+.apll-auth-providers{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.apll-auth-provider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  border:1px solid rgba(10, 46, 92, .16);
+  border-radius:8px;
+  color:#172033;
+  background:#fff;
+  font-weight:900;
+  text-decoration:none;
+  box-shadow:0 4px 14px rgba(10, 46, 92, .06);
+}
+
+.apll-auth-provider:hover,
+.apll-auth-provider:focus-visible{
+  border-color:rgba(11, 94, 215, .35);
+  outline:none;
+  text-decoration:none;
+}
+
+.apll-auth-tabs{
+  display:inline-flex;
+  gap:4px;
+  padding:4px;
+  margin:0 0 14px;
+  border:1px solid rgba(10, 46, 92, .12);
+  border-radius:8px;
+  background:#f6f9fd;
+}
+
+.apll-auth-tab{
+  min-height:38px;
+  padding:8px 12px;
+  border:0;
+  border-radius:6px;
+  color:var(--primary-ink);
+  background:transparent;
+  cursor:pointer;
+  font-weight:900;
+}
+
+.apll-auth-tab.is-active{
+  background:#fff;
+  box-shadow:0 1px 5px rgba(10, 46, 92, .14);
+}
+
+.apll-auth-form{
+  display:grid;
+  gap:13px;
+}
+
+.apll-auth-form label{
+  display:grid;
+  gap:7px;
+  color:#223044;
+  font-size:14px;
+  font-weight:850;
+}
+
+.apll-auth-form input,
+.apll-auth-form textarea{
+  width:100%;
+  min-height:46px;
+  border:1px solid rgba(10, 46, 92, .18);
+  border-radius:8px;
+  padding:10px 12px;
+  color:#172033;
+  background:#fff;
+}
+
+.apll-auth-form textarea{
+  resize:vertical;
+  line-height:1.5;
+}
+
+.apll-auth-form input:focus,
+.apll-auth-form textarea:focus{
+  border-color:transparent;
+  outline:3px solid rgba(11, 94, 215, .2);
+}
+
+.apll-auth-submit{
+  width:100%;
+  min-height:48px;
+}
+
+.apll-auth-message{
+  min-height:22px;
+  margin:0;
+  color:#526278;
+  font-weight:800;
+}
+
+.apll-auth-message[data-kind="error"]{
+  color:#b42318;
+}
+
+.apll-auth-message[data-kind="success"]{
+  color:#067647;
+}
+
+.apll-request-two{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:12px;
+}
+
+.apll-request-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+}
+
+.apll-request-area-link{
+  justify-self:start;
+  color:#0b5ed7;
+  font-weight:900;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+@media (max-width: 560px){
+  .apll-auth-dialog,
+  .apll-request-dialog{
+    padding:20px;
+  }
+
+  .apll-auth-providers,
+  .apll-request-two{
+    grid-template-columns:1fr;
+  }
+
+  .apll-request-actions{
+    display:grid;
+  }
+}

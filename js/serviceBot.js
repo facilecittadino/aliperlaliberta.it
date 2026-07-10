@@ -198,6 +198,19 @@ Message prepared by the website chatbot.`,
     showOptions("service");
   }
 
+  function openBot() {
+    const auth = window.apllAuth;
+    if (auth && typeof auth.requireClient === "function" && !auth.isClient?.()) {
+      auth.requireClient({
+        reason: "Accedi per usare l'assistente e collegare la richiesta alla tua area cliente.",
+        afterLogin: () => setOpen(true)
+      });
+      return;
+    }
+
+    setOpen(panelEl.hidden);
+  }
+
   formEl.addEventListener("submit", (event) => {
     event.preventDefault();
     const value = inputEl.value.trim();
@@ -215,7 +228,7 @@ Message prepared by the website chatbot.`,
   });
 
   restartEl.addEventListener("click", restart);
-  launcherEl.addEventListener("click", () => setOpen(panelEl.hidden));
+  launcherEl.addEventListener("click", openBot);
   closeEl.addEventListener("click", () => setOpen(false));
 
   document.addEventListener("keydown", (event) => {
