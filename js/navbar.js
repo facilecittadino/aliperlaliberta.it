@@ -158,23 +158,18 @@
     const links = document.querySelectorAll("[data-call-link]");
     if (!links.length) return;
 
-    links.forEach(link => {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        const now = new Date();
-        if (isWithinOpeningHours(now)) {
-          const phone = link.getAttribute("data-phone") || "+393513657045";
-          // Trigger real call
-          window.location.href = "tel:" + phone;
-        } else {
-          // Show info message
-          alert(getOutsideMessage());
+    links.forEach((link) => {
+      link.removeAttribute("data-phone");
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (window.apllAuth?.openSupportContact) {
+          window.apllAuth.openSupportContact();
+          return;
         }
+        window.location.href = "/cliente/";
       });
     });
   }
-
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", wireCallButtons);
   } else {

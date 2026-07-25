@@ -19,6 +19,7 @@
   let currentUser = null;
   let authOverlay = null;
   let requestOverlay = null;
+  let contactOverlay = null;
   let requestsOverlay = null;
   let usersOverlay = null;
   let adminRequestsOverlay = null;
@@ -99,7 +100,7 @@
   }
 
   function hasOpenOverlay() {
-    return [authOverlay, requestOverlay, requestsOverlay, usersOverlay, adminRequestsOverlay].some((overlay) => overlay && !overlay.hidden);
+    return [authOverlay, requestOverlay, contactOverlay, requestsOverlay, usersOverlay, adminRequestsOverlay].some((overlay) => overlay && !overlay.hidden);
   }
 
   function cleanOauthUrl() {
@@ -154,7 +155,7 @@
     window.Navbar?.closeDrawer?.();
     await api("/auth/logout", { method: "POST", body: "{}" }).catch(() => {});
     setUser(null);
-    [authOverlay, requestOverlay, requestsOverlay, usersOverlay, adminRequestsOverlay].forEach((overlay) => {
+    [authOverlay, requestOverlay, contactOverlay, requestsOverlay, usersOverlay, adminRequestsOverlay].forEach((overlay) => {
       if (overlay) overlay.hidden = true;
     });
     lockPage(false);
@@ -692,6 +693,109 @@
     lastFocused?.focus?.({ preventScroll: true });
   }
 
+  function ensureContactOverlay() {
+    if (contactOverlay) return contactOverlay;
+
+    contactOverlay = document.createElement("div");
+    contactOverlay.className = "apll-contact-overlay";
+    contactOverlay.hidden = true;
+    contactOverlay.innerHTML = `
+      <section class="apll-contact-dialog" role="dialog" aria-modal="true" aria-labelledby="apllContactTitle">
+        <button class="apll-contact-close" type="button" aria-label="Chiudi">&times;</button>
+        <div class="apll-contact-head">
+          <p class="apll-auth-kicker">Contatto riservato</p>
+          <h2 id="apllContactTitle">Numero dell'associazione</h2>
+          <p id="apllContactIntro"></p>
+        </div>
+        <div id="apllContactActions" class="apll-contact-actions"></div>
+      </section>
+    `;
+    document.body.appendChild(contactOverlay);
+
+    contactOverlay.querySelector(".apll-contact-close").addEventListener("click", closeSupportContact);
+    contactOverlay.addEventListener("click", (event) => {
+      if (event.target === contactOverlay) closeSupportContact();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && contactOverlay && !contactOverlay.hidden) closeSupportContact();
+    });
+    return contactOverlay;
+  }
+
+  function contactNodes() {
+    const overlay = ensureContactOverlay();
+    return {
+      overlay,
+      intro: overlay.querySelector("#apllContactIntro"),
+      actions: overlay.querySelector("#apllContactActions")
+    };
+  }
+
+  function renderContactMessage(text, kind = "") {
+    const { intro, actions } = contactNodes();
+    intro.textContent = text;
+    actions.replaceChildren();
+    actions.dataset.kind = kind;
+  }
+
+  function renderContactRequestRequired() {
+    const { intro, actions } = contactNodes();
+    intro.textContent = "Per vedere il numero, invia prima una richiesta dall'area cliente.";
+    actions.replaceChildren();
+
+    const requestButton = el("button", "btn btn-primary", "Invia una richiesta");
+    requestButton.type = "button";
+    requestButton.addEventListener("click", () => {
+      closeSupportContact();
+      openRequest({ serviceName: "Richiesta di contatto", calendarKind: "practices" });
+    });
+    actions.append(requestButton);
+  }
+
+  function renderContact(data) {
+    const { intro, actions } = contactNodes();
+    intro.textContent = "Hai una richiesta attiva. Puoi chiamare l'associazione negli orari di apertura.";
+    actions.replaceChildren();
+
+    const phone = el("p", "apll-contact-number", data.phone || "");
+    const call = el("a", "btn btn-primary", "Chiama ora");
+    call.href = data.tel || "#";
+    actions.append(phone, call);
+  }
+
+  async function openSupportContact() {
+    if (!isClient()) {
+      await requireClient({
+        reason: "Accedi o completa il primo accesso. Dopo l'invio della richiesta potrai vedere il numero dell'associazione.",
+        afterLogin: () => openSupportContact()
+      });
+      return;
+    }
+
+    const { overlay } = contactNodes();
+    lastFocused = document.activeElement;
+    overlay.hidden = false;
+    lockPage(true);
+    renderContactMessage("Verifica in corso...");
+
+    try {
+      const data = await api("/contact");
+      renderContact(data);
+    } catch (error) {
+      if (error.message === "Invia prima una richiesta per vedere il numero di contatto.") {
+        renderContactRequestRequired();
+      } else {
+        renderContactMessage(error.message || "Non riesco a verificare l'accesso al contatto.", "error");
+      }
+    }
+  }
+
+  function closeSupportContact() {
+    if (!contactOverlay || contactOverlay.hidden) return;
+    contactOverlay.hidden = true;
+    lockPage(hasOpenOverlay());
+    lastFocused?.focus?.({ preventScroll: true });
+  }
   async function submitRequest(event) {
     event.preventDefault();
     const form = event.currentTarget;
@@ -1229,6 +1333,7 @@
     close: closeAuth,
     openRequest,
     openRequestForm,
+    openSupportContact,
     openMyRequests,
     openAdminRequests,
     openUsersList,

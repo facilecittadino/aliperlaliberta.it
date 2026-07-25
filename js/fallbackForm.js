@@ -98,8 +98,6 @@ console.log("[fallbackForm] Loaded (OFFLINE PREMIUM VERSION)");
   `;
   document.body.appendChild(countrySheet);
 
-  const WHATSAPP = "393513657045";
-
   const TIME_SLOTS = [
     "09:00","09:30","10:00","10:30",
     "11:00","11:30","15:00","15:30",
@@ -326,7 +324,13 @@ console.log("[fallbackForm] Loaded (OFFLINE PREMIUM VERSION)");
 (Offline version)
 Thank you`;
 
-    window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
+    if (window.apllAuth?.openRequest) {
+      hideOverlay();
+      window.apllAuth.openRequest({ serviceName: s, calendarKind: "practices" });
+      return;
+    }
+
+    alert("Accedi all'area cliente per inviare una richiesta.");
   };
 
   window.apllOpenForm = function (serviceName) {

@@ -274,7 +274,7 @@
       pa: "ਸਾਡੇ ਨਾਲ ਗੱਲ ਕਰੋ", hi: "हमसे बात करें", "hi-Latn": "Humse baat karein"
     },
     "serviceBot.eyebrow": {
-      it: "Assistente WhatsApp", en: "WhatsApp assistant",
+      it: "Assistente servizi", en: "Service assistant",
       pa: "WhatsApp ਸਹਾਇਕ", hi: "WhatsApp सहायक", "hi-Latn": "WhatsApp assistant"
     },
     "serviceBot.launcher": {
@@ -304,12 +304,12 @@
       it: "Ricomincia", en: "Restart", pa: "ਮੁੜ ਸ਼ੁਰੂ ਕਰੋ", hi: "फिर से शुरू करें", "hi-Latn": "Dobara shuru karein"
     },
     "serviceBot.whatsapp": {
-      it: "Invia su WhatsApp", en: "Send on WhatsApp",
+      it: "Apri il contatto riservato", en: "Open private contact",
       pa: "WhatsApp ਤੇ ਭੇਜੋ", hi: "WhatsApp पर भेजें", "hi-Latn": "WhatsApp par bhejein"
     },
     "serviceBot.note": {
-      it: "Il sito non invia nulla automaticamente: WhatsApp si apre e sarai tu a premere “Invia”.",
-      en: "The site does not send anything automatically: WhatsApp opens and you press “Send”.",
+      it: "Dopo l'accesso e l'invio della richiesta puoi aprire il contatto riservato dell'associazione.",
+      en: "After signing in and submitting a request, you can open the association's private contact.",
       pa: "ਸਾਈਟ ਕੁਝ ਵੀ ਆਪਣੇ ਆਪ ਨਹੀਂ ਭੇਜਦੀ: WhatsApp ਖੁੱਲੇਗਾ ਅਤੇ ਤੁਸੀਂ “Send” ਦਬਾਓਗੇ।",
       hi: "साइट अपने आप कुछ नहीं भेजती: WhatsApp खुलेगा और आप “Send” दबाएँगे।",
       "hi-Latn": "Site automatic kuch nahi bhejti: WhatsApp khulega aur aap “Send” dabayenge."
@@ -997,15 +997,15 @@
     "home.contact.title": "Nuk di nga të fillosh?",
     "home.contact.text": "Na trego shkurt nevojën tënde. Do të të dëgjojmë dhe do të të tregojmë shërbimin ose rrugën më të përshtatshme.",
     "home.contact.cta": "Fol me ne",
-    "serviceBot.eyebrow": "Asistent WhatsApp",
+    "serviceBot.eyebrow": "Asistent sherbimesh",
     "serviceBot.launcher": "Ke nevojë?",
     "serviceBot.close": "Mbyll chat-in",
     "serviceBot.title": "Nuk di cilin shërbim të zgjedhësh?",
     "serviceBot.text": "Shkruaj pyetjen ose zgjidh nje sherbim: te udhezojme per dokumentet dhe mund te krijojme nje kerkese ne zonen tende.",
     "serviceBot.next": "Vazhdo",
     "serviceBot.restart": "Rifillo",
-    "serviceBot.whatsapp": "Dërgo në WhatsApp",
-    "serviceBot.note": "Faqja nuk dërgon asgjë automatikisht: WhatsApp hapet dhe ti shtyp “Dërgo”.",
+    "serviceBot.whatsapp": "Hap kontaktin e rezervuar",
+    "serviceBot.note": "Pas hyrjes dhe dërgimit të kërkesës mund të hapësh kontaktin e rezervuar të shoqatës.",
 
     "services.caf.title": "Shërbime CAF përmes qendrave partnere",
     "services.caf.desc": "Të orientojmë për deklaratën e të ardhurave, ISEE, Modelin 730 dhe praktika të tjera fiskale përmes qendrave partnere CAF.",

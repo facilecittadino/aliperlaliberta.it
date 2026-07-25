@@ -33,6 +33,7 @@ const cookieSecure = process.env.COOKIE_SECURE !== "false";
 const sessionDays = Number(process.env.SESSION_DAYS || 7);
 const siteOrigin = process.env.SITE_ORIGIN || "https://aliperlaliberta.it";
 const publicApiOrigin = process.env.PUBLIC_API_ORIGIN || "https://api.aliperlaliberta.it";
+const supportPhone = String(process.env.SUPPORT_PHONE || '').trim().replace(/[^\d+]/g, '');
 
 const oauthProviders = {
   google: {
@@ -299,6 +300,16 @@ function hasPermission(user, permission) {
   return permissionsForRole(user?.role, user?.permissions).includes(permission);
 }
 
+async function configuredSupportPhone() {
+  if (supportPhone) return supportPhone;
+  try {
+    return String(await readFile(path.join(dataDir, "support-phone"), "utf8"))
+      .trim()
+      .replace(/[^\d+]/g, "");
+  } catch {
+    return "";
+  }
+}
 function providerEnabled(provider) {
   const config = oauthProviders[provider];
   if (!config?.clientId) return false;
@@ -716,6 +727,30 @@ app.get("/api/portal/auth/me", async (req, res, next) => {
   }
 });
 
+app.get("/api/portal/contact", requireUser, async (req, res, next) => {
+  try {
+    if (!hasPermission(req.user, "requests:read:own")) {
+      throw httpError(403, "Il contatto riservato e disponibile solo ai clienti.");
+    }
+    const configuredPhone = await configuredSupportPhone();
+    if (!configuredPhone) {
+      throw httpError(503, "Contatto telefonico non configurato.");
+    }
+
+    const requests = await readJson(files.requests, []);
+    const hasSubmittedRequest = requests.some((request) => request.customerId === req.user.id);
+    if (!hasSubmittedRequest) {
+      throw httpError(403, "Invia prima una richiesta per vedere il numero di contatto.");
+    }
+
+    res.json({
+      phone: configuredPhone,
+      tel: `tel:${configuredPhone}`
+    });
+  } catch (error) {
+    next(error);
+  }
+});
 app.get("/api/portal/requests", requireUser, async (req, res, next) => {
   try {
     const [requests, users] = await Promise.all([

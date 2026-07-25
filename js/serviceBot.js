@@ -4,7 +4,6 @@
 
   const cfg = window.APP_CONFIG?.PORTAL_API || {};
   const apiBase = (cfg.API_BASE_URL || "https://api.aliperlaliberta.it/api/portal").replace(/\/+$/, "");
-  const WHATSAPP_NUMBER = "393513657045";
   const SERVICE_KEYS = ["caf", "patronato", "legal", "italianCourse", "orientation"];
   const SERVICE_KEYWORDS = {
     caf: ["isee", "730", "f24", "caf", "tasse", "tax", "bonus", "reddito", "dichiarazione", "cu", "imu", "dsu"],
@@ -154,7 +153,7 @@
       creatingRequest: "Creo la richiesta nella tua area cliente...",
       requestCreated: "Richiesta creata. La ritrovi in Le tue richieste.",
       requestError: "Non riesco a creare la richiesta",
-      whatsapp: "Invia su WhatsApp",
+      whatsapp: "Apri il contatto riservato",
       restart: "Ricomincia",
       whatsappText: ({ service, topic, urgency, name, details, documents }) =>
 `Ciao Ali Per La Liberta, ho bisogno di orientamento.
@@ -201,7 +200,7 @@ Messaggio preparato dall'assistente del sito.`
       creatingRequest: "Creating the request in your client area...",
       requestCreated: "Request created. You will find it in Your requests.",
       requestError: "I cannot create the request",
-      whatsapp: "Send on WhatsApp",
+      whatsapp: "Open private contact",
       restart: "Restart",
       whatsappText: ({ service, topic, urgency, name, details, documents }) =>
 `Hello Ali Per La Liberta, I need guidance.
@@ -248,7 +247,7 @@ Message prepared by the website assistant.`
       creatingRequest: "Po krijoj kerkesen ne zonen tende...",
       requestCreated: "Kerkesa u krijua. E gjen te kerkesat e tua.",
       requestError: "Nuk arrij te krijoj kerkesen",
-      whatsapp: "Dergo ne WhatsApp",
+      whatsapp: "Hap kontaktin e rezervuar",
       restart: "Rifillo",
       whatsappText: ({ service, topic, urgency, name, details, documents }) =>
 `Pershendetje Ali Per La Liberta, kam nevoje per orientim.
@@ -457,7 +456,6 @@ Mesazh i pergatitur nga asistenti i faqes.`
     const c = copy();
     const message = c.whatsappText(selectedMessageData());
     const status = statusText ? `${statusText}\n\n` : "";
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
     clearAnswers();
     formEl.hidden = true;
@@ -467,7 +465,7 @@ Mesazh i pergatitur nga asistenti i faqes.`
     createRequestEl.textContent = c.createRequest;
     restartEl.textContent = c.restart;
     whatsappEl.textContent = c.whatsapp;
-    whatsappEl.href = url;
+    whatsappEl.removeAttribute("href");
     setQuestion(`${status}${c.summaryTitle}\n\n${message}`);
   }
 
@@ -551,6 +549,11 @@ Mesazh i pergatitur nga asistenti i faqes.`
     state[step] = value;
     if (step === "name") return showInput("details");
     showSummary();
+  });
+
+  whatsappEl.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.apllAuth?.openSupportContact?.();
   });
 
   createRequestEl.addEventListener("click", createPortalRequest);

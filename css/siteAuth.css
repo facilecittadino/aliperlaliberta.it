@@ -642,3 +642,77 @@
     display:grid;
   }
 }
+
+.apll-contact-overlay{
+  position:fixed;
+  inset:0;
+  z-index:150;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  background:rgba(11, 24, 42, .58);
+  backdrop-filter:blur(8px);
+}
+
+.apll-contact-overlay[hidden]{
+  display:none;
+}
+
+.apll-contact-dialog{
+  position:relative;
+  width:min(460px, 100%);
+  border:1px solid rgba(10, 46, 92, .14);
+  border-radius:8px;
+  padding:24px;
+  color:var(--primary-ink);
+  background:#fff;
+  box-shadow:0 28px 84px rgba(5, 20, 42, .28);
+}
+
+.apll-contact-close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  display:grid;
+  place-items:center;
+  width:36px;
+  height:36px;
+  border:1px solid rgba(10, 46, 92, .1);
+  border-radius:50%;
+  color:var(--primary-ink);
+  background:#fff;
+  cursor:pointer;
+  font-size:22px;
+  line-height:1;
+}
+
+.apll-contact-head{
+  padding-right:38px;
+}
+
+.apll-contact-head h2{
+  margin:12px 0 8px;
+  color:var(--primary-ink);
+  font-size:28px;
+  line-height:1.12;
+}
+
+.apll-contact-head p{
+  margin:0;
+  color:#526278;
+  font-weight:650;
+}
+
+.apll-contact-actions{
+  display:grid;
+  gap:12px;
+  margin-top:22px;
+}
+
+.apll-contact-number{
+  margin:0;
+  color:var(--primary-ink);
+  font-size:23px;
+  font-weight:900;
+  letter-spacing:0;
+}
