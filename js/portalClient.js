@@ -112,7 +112,9 @@
   function showAuth() {
     currentUser = null;
     authPanel.hidden = false;
+    authPanel.removeAttribute("inert");
     dashboardPanel.hidden = true;
+    dashboardPanel.setAttribute("inert", "");
     closeBooking();
     if (pendingService) {
       setMessage(messages.oauth, `Accedi o crea un account per prenotare: ${pendingService}.`, "");
@@ -122,7 +124,14 @@
   function showDashboard(user) {
     currentUser = user;
     authPanel.hidden = true;
+    authPanel.setAttribute("inert", "");
     dashboardPanel.hidden = false;
+    dashboardPanel.removeAttribute("inert");
+    loginForm?.reset();
+    registerForm?.reset();
+    setMessage(messages.login, "");
+    setMessage(messages.register, "");
+    setMessage(messages.oauth, "");
 
     const username = user?.username ? ` (@${user.username})` : "";
     clientName.textContent = user?.name ? `Ciao, ${user.name}${username}` : "Area riservata";
@@ -421,7 +430,7 @@
 
   logoutButton?.addEventListener("click", async () => {
     await api("/auth/logout", { method: "POST", body: "{}" }).catch(() => {});
-    showAuth();
+    window.location.replace("/");
   });
 
   refreshButton?.addEventListener("click", () => {

@@ -1,5 +1,9 @@
 /* css/portal.css */
 
+[hidden]{
+  display:none !important;
+}
+
 .portal-page::before{
   opacity:.08;
 }

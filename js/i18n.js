@@ -138,11 +138,11 @@
       "hi-Latn": "Har vyakti sune jaane, sahi raasta paane aur azaad mehsoos karne ka haqdar hai."
     },
     "home.lead": {
-      it: "Ali Per La Libertà è un punto di riferimento per cittadini italiani e stranieri. Aiutiamo le persone a comprendere documenti, diritti e opportunità, offrendo un sostegno concreto e accessibile.",
-      en: "Ali Per La Libertà supports Italian and foreign citizens. We help people understand documents, rights and opportunities through practical, accessible guidance.",
-      pa: "Ali Per La Libertà ਇਤਾਲਵੀ ਅਤੇ ਵਿਦੇਸ਼ੀ ਨਾਗਰਿਕਾਂ ਲਈ ਇੱਕ ਸਹਾਰਾ ਹੈ। ਅਸੀਂ ਦਸਤਾਵੇਜ਼ਾਂ, ਹੱਕਾਂ ਅਤੇ ਮੌਕਿਆਂ ਨੂੰ ਸਮਝਣ ਵਿੱਚ ਸੌਖੀ ਅਤੇ ਅਮਲੀ ਮਦਦ ਕਰਦੇ ਹਾਂ।",
-      hi: "Ali Per La Libertà इतालवी और विदेशी नागरिकों के लिए एक सहारा है। हम दस्तावेज़, अधिकार और अवसर समझने में सरल और व्यावहारिक सहायता देते हैं।",
-      "hi-Latn": "Ali Per La Libertà Italian aur videshi nagrikon ke liye ek sahara hai. Hum documents, rights aur opportunities samajhne mein simple aur practical madad dete hain."
+      it: "Ali Per La Libertà è un’associazione per cittadini italiani e stranieri. Aiutiamo le persone a comprendere documenti, diritti e opportunità e collaboriamo con CAF e Patronato partner per offrire servizi fiscali e previdenziali.",
+      en: "Ali Per La Libertà is an association for Italian and foreign citizens. We help people understand documents, rights and opportunities and work with partner CAF and Patronato offices for tax and welfare services.",
+      pa: "Ali Per La Libertà ਇਤਾਲਵੀ ਅਤੇ ਵਿਦੇਸ਼ੀ ਨਾਗਰਿਕਾਂ ਲਈ ਇੱਕ ਸੰਸਥਾ ਹੈ। ਅਸੀਂ ਦਸਤਾਵੇਜ਼ਾਂ, ਹੱਕਾਂ ਅਤੇ ਮੌਕਿਆਂ ਨੂੰ ਸਮਝਣ ਵਿੱਚ ਮਦਦ ਕਰਦੇ ਹਾਂ ਅਤੇ ਟੈਕਸ ਤੇ ਸਮਾਜਿਕ ਸੁਰੱਖਿਆ ਸੇਵਾਵਾਂ ਲਈ ਭਾਈਵਾਲ CAF ਅਤੇ Patronato ਦਫ਼ਤਰਾਂ ਨਾਲ ਸਹਿਯੋਗ ਕਰਦੇ ਹਾਂ।",
+      hi: "Ali Per La Libertà इतालवी और विदेशी नागरिकों के लिए एक संस्था है। हम दस्तावेज़, अधिकार और अवसर समझने में मदद करते हैं और कर व सामाजिक सुरक्षा सेवाओं के लिए साझेदार CAF और Patronato कार्यालयों के साथ काम करते हैं।",
+      "hi-Latn": "Ali Per La Libertà Italian aur videshi nagrikon ke liye ek association hai. Hum documents, rights aur opportunities samajhne mein madad karte hain aur tax aur welfare services ke liye partner CAF aur Patronato offices ke saath kaam karte hain."
     },
     "home.cta.about": {
       it: "Conosci l’associazione", en: "Meet the organization",
@@ -229,11 +229,11 @@
       "hi-Latn": "Sahi samay par guidance aur assistance."
     },
     "home.services.text": {
-      it: "Il nostro lavoro comprende assistenza fiscale, previdenziale e legale. Ti aiutiamo a capire qual è il percorso più adatto alla tua situazione.",
-      en: "Our work includes tax, welfare and legal assistance. We help you understand the best path for your situation.",
-      pa: "ਸਾਡੇ ਕੰਮ ਵਿੱਚ ਟੈਕਸ, ਸਮਾਜਿਕ ਸੁਰੱਖਿਆ ਅਤੇ ਕਾਨੂੰਨੀ ਸਹਾਇਤਾ ਸ਼ਾਮਲ ਹੈ। ਅਸੀਂ ਤੁਹਾਡੀ ਸਥਿਤੀ ਲਈ ਸਹੀ ਰਾਹ ਸਮਝਣ ਵਿੱਚ ਮਦਦ ਕਰਦੇ ਹਾਂ।",
-      hi: "हमारा काम कर, सामाजिक सुरक्षा और कानूनी सहायता को शामिल करता है। हम आपकी स्थिति के लिए सही रास्ता समझने में मदद करते हैं।",
-      "hi-Latn": "Hamare kaam mein tax, welfare aur legal assistance shamil hai. Hum aapki situation ke liye sahi raasta samajhne mein madad karte hain."
+      it: "Come associazione offriamo orientamento e supporto. Per le pratiche fiscali e previdenziali collaboriamo con CAF e Patronato partner, indirizzandoti verso il percorso più adatto.",
+      en: "As an association, we provide guidance and support. For tax and welfare procedures, we work with partner CAF and Patronato offices and guide you to the most suitable route.",
+      pa: "ਇੱਕ ਸੰਸਥਾ ਵਜੋਂ ਅਸੀਂ ਮਾਰਗਦਰਸ਼ਨ ਅਤੇ ਸਹਾਇਤਾ ਦਿੰਦੇ ਹਾਂ। ਟੈਕਸ ਅਤੇ ਸਮਾਜਿਕ ਸੁਰੱਖਿਆ ਕਾਰਵਾਈਆਂ ਲਈ ਅਸੀਂ ਭਾਈਵਾਲ CAF ਅਤੇ Patronato ਦਫ਼ਤਰਾਂ ਨਾਲ ਕੰਮ ਕਰਦੇ ਹਾਂ।",
+      hi: "एक संस्था के रूप में हम मार्गदर्शन और सहायता देते हैं। कर और सामाजिक सुरक्षा प्रक्रियाओं के लिए हम साझेदार CAF और Patronato कार्यालयों के साथ काम करते हैं।",
+      "hi-Latn": "Association ke roop mein hum guidance aur support dete hain. Tax aur welfare procedures ke liye hum partner CAF aur Patronato offices ke saath kaam karte hain."
     },
     "home.services.link": {
       it: "Approfondisci →", en: "Learn more →",
@@ -302,42 +302,42 @@
     },
 
     "services.caf.desc": {
-  it: "Ti aiutiamo con tutte le pratiche fiscali come dichiarazione dei redditi, ISEE, Modello 730 e altre procedure tributarie, in modo semplice e veloce.",
-  en: "We help you with all tax procedures such as income tax returns, ISEE, Form 730 and other tax-related processes, in a simple and fast way.",
-  hi: "हम आयकर रिटर्न, ISEE, मॉडल 730 और अन्य कर संबंधी प्रक्रियाओं में सरल और तेज़ सहायता प्रदान करते हैं।",
-  pa: "ਅਸੀਂ ਆਮਦਨੀ ਕਰ ਰਿਟਰਨ, ISEE, ਮਾਡਲ 730 ਅਤੇ ਹੋਰ ਕਰ ਸੰਬੰਧੀ ਕਾਰਵਾਈਆਂ ਵਿੱਚ ਸੌਖੀ ਅਤੇ ਤੇਜ਼ ਮਦਦ ਕਰਦੇ ਹਾਂ।",
-  "hi-Latn": "Hum income tax return, ISEE, Model 730 aur anya tax related processes me simple aur fast madad karte hain."
+  it: "Ti orientiamo per dichiarazione dei redditi, ISEE, Modello 730 e altre pratiche fiscali, erogate tramite CAF partner.",
+  en: "We guide you through tax returns, ISEE, Form 730 and other tax procedures delivered through partner CAF centers.",
+  hi: "हम आयकर रिटर्न, ISEE, मॉडल 730 और अन्य कर प्रक्रियाओं के लिए मार्गदर्शन देते हैं, जो साझेदार CAF केंद्रों के माध्यम से दी जाती हैं।",
+  pa: "ਅਸੀਂ ਆਮਦਨੀ ਕਰ ਰਿਟਰਨ, ISEE, ਮਾਡਲ 730 ਅਤੇ ਹੋਰ ਟੈਕਸ ਕਾਰਵਾਈਆਂ ਲਈ ਮਾਰਗਦਰਸ਼ਨ ਦਿੰਦੇ ਹਾਂ, ਜੋ ਭਾਈਵਾਲ CAF ਕੇਂਦਰਾਂ ਰਾਹੀਂ ਪ੍ਰਦਾਨ ਕੀਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ।",
+  "hi-Latn": "Hum income tax return, ISEE, Model 730 aur anya tax procedures ke liye guidance dete hain, jo partner CAF centers ke through hoti hain."
 },
 
     // Services (6)
     "services.caf.title": {
-      it: "CAF (Centro di Assistenza Fiscale)",
-      en: "CAF (Tax Assistance Center)",
-      hi: "CAF (कर सहायता केंद्र)",
-      pa: "CAF (ਟੈਕਸ ਸਹਾਇਤਾ ਕੇਂਦਰ)",
-      "hi-Latn": "CAF (Tax Sahayata Kendra)"
+      it: "Servizi CAF tramite centri partner",
+      en: "CAF services through partner centers",
+      hi: "साझेदार केंद्रों के माध्यम से CAF सेवाएँ",
+      pa: "ਭਾਈਵਾਲ ਕੇਂਦਰਾਂ ਰਾਹੀਂ CAF ਸੇਵਾਵਾਂ",
+      "hi-Latn": "Partner centers ke through CAF services"
     },
     "caf.desc": {
-      it: "Il CAF Ali Per La Liberta offre assistenza fiscale online e in Italia per stranieri e cittadini italiani, inclusi ISEE, Modello 730, F24, RED e bonus, con supporto multilingua.",
-      en: "CAF Ali Per La Liberta provides online tax assistance in Italy for foreign and Italian citizens, including ISEE, Model 730, F24, RED, and tax bonuses, with multilingual support.",
-      hi: "CAF Ali Per La Liberta इटली में विदेशी और इतालवी नागरिकों के लिए ऑनलाइन कर सहायता प्रदान करता है, जिसमें ISEE, मॉडल 730, F24, RED और बोनस शामिल हैं, बहुभाषी समर्थन के साथ।",
-      pa: "CAF Ali Per La Liberta ਇਟਲੀ ਵਿੱਚ ਵਿਦੇਸ਼ੀ ਅਤੇ ਇਤਾਲਵੀ ਨਾਗਰਿਕਾਂ ਲਈ ਆਨਲਾਈਨ ਟੈਕਸ ਸਹਾਇਤਾ ਦਿੰਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ISEE, ਮਾਡਲ 730, F24, RED ਅਤੇ ਬੋਨਸ ਸ਼ਾਮਲ ਹਨ, ਬਹੁਭਾਸ਼ੀ ਸਹਾਇਤਾ ਨਾਲ।",
-      "hi-Latn": "CAF Ali Per La Liberta Italy me videshi aur Italian nagrikon ke liye online tax assistance deta hai, jisme ISEE, Model 730, F24, RED aur bonus shamil hain, multilingual support ke sath."
+      it: "Ali Per La Libertà è un’associazione che offre orientamento multilingua e collabora con CAF partner per ISEE, Modello 730, F24, RED, bonus e altre pratiche fiscali.",
+      en: "Ali Per La Libertà is an association providing multilingual guidance and working with partner CAF centers for ISEE, Form 730, F24, RED, bonuses and other tax procedures.",
+      hi: "Ali Per La Libertà एक संस्था है जो बहुभाषी मार्गदर्शन देती है और ISEE, मॉडल 730, F24, RED, बोनस व अन्य कर प्रक्रियाओं के लिए साझेदार CAF केंद्रों के साथ काम करती है।",
+      pa: "Ali Per La Libertà ਇੱਕ ਸੰਸਥਾ ਹੈ ਜੋ ਬਹੁਭਾਸ਼ੀ ਮਾਰਗਦਰਸ਼ਨ ਦਿੰਦੀ ਹੈ ਅਤੇ ISEE, ਮਾਡਲ 730, F24, RED, ਬੋਨਸ ਅਤੇ ਹੋਰ ਟੈਕਸ ਕਾਰਵਾਈਆਂ ਲਈ ਭਾਈਵਾਲ CAF ਕੇਂਦਰਾਂ ਨਾਲ ਕੰਮ ਕਰਦੀ ਹੈ।",
+      "hi-Latn": "Ali Per La Libertà ek association hai jo multilingual guidance deti hai aur ISEE, Model 730, F24, RED, bonus aur anya tax procedures ke liye partner CAF centers ke saath kaam karti hai."
     },
 
     "services.patronato.title": {
-      it: "Patronato",
-      en: "Patronato",
-      hi: "Patronato",
-      pa: "Patronato",
-      "hi-Latn": "Patronato"
+      it: "Servizi di Patronato tramite enti partner",
+      en: "Patronato services through partner offices",
+      hi: "साझेदार कार्यालयों के माध्यम से Patronato सेवाएँ",
+      pa: "ਭਾਈਵਾਲ ਦਫ਼ਤਰਾਂ ਰਾਹੀਂ Patronato ਸੇਵਾਵਾਂ",
+      "hi-Latn": "Partner offices ke through Patronato services"
     },
     "services.patronato.desc": {
-      it: "Offriamo supporto per pensioni, indennità, disoccupazione e altre pratiche previdenziali o assistenziali con consulenza personalizzata.",
-      en: "We offer support for pensions, allowances, unemployment, and other welfare procedures with personalized guidance.",
-      hi: "पेंशन, भत्ते, बेरोज़गारी और अन्य सामाजिक/प्रावधान संबंधी कार्यों में व्यक्तिगत मार्गदर्शन के साथ सहायता।",
-      pa: "ਪੈਂਸ਼ਨ, ਭੱਤੇ, ਬੇਰੁਜ਼ਗਾਰੀ ਅਤੇ ਹੋਰ ਭਲਾਈ ਪ੍ਰਕਿਰਿਆਵਾਂ ਲਈ ਨਿੱਜੀ ਸਲਾਹ ਨਾਲ ਸਹਾਇਤਾ।",
-      "hi-Latn": "Pension, bhatte, berozgaari aur anya samajik/pravidhan prakriyaon me personal guidance ke saath sahayata."
+      it: "Offriamo orientamento per pensioni, indennità, disoccupazione e altre pratiche previdenziali o assistenziali tramite Patronato partner.",
+      en: "We provide guidance for pensions, allowances, unemployment and other welfare procedures through partner Patronato offices.",
+      hi: "हम पेंशन, भत्ते, बेरोज़गारी और अन्य सामाजिक सुरक्षा प्रक्रियाओं के लिए साझेदार Patronato कार्यालयों के माध्यम से मार्गदर्शन देते हैं।",
+      pa: "ਅਸੀਂ ਪੈਂਸ਼ਨ, ਭੱਤੇ, ਬੇਰੁਜ਼ਗਾਰੀ ਅਤੇ ਹੋਰ ਸਮਾਜਿਕ ਸੁਰੱਖਿਆ ਕਾਰਵਾਈਆਂ ਲਈ ਭਾਈਵਾਲ Patronato ਦਫ਼ਤਰਾਂ ਰਾਹੀਂ ਮਾਰਗਦਰਸ਼ਨ ਦਿੰਦੇ ਹਾਂ।",
+      "hi-Latn": "Hum pension, bhatte, berozgaari aur anya welfare procedures ke liye partner Patronato offices ke through guidance dete hain."
     },
 
     "services.legal.title": {
@@ -576,11 +576,11 @@
 // CAF Page — i18n dictionary block
 // ================================
 "caf.title": {
-  it: "CAF (Centro di Assistenza Fiscale)",
-  en: "CAF (Tax Assistance Center)",
-  hi: "CAF (कर सहायता केंद्र)",
-  pa: "CAF (ਟੈਕਸ ਸਹਾਇਤਾ ਕੇਂਦਰ)",
-  "hi-Latn": "CAF (Kar Sahayata Kendra)"
+  it: "Servizi CAF tramite centri partner",
+  en: "CAF services through partner centers",
+  hi: "साझेदार केंद्रों के माध्यम से CAF सेवाएँ",
+  pa: "ਭਾਈਵਾਲ ਕੇਂਦਰਾਂ ਰਾਹੀਂ CAF ਸੇਵਾਵਾਂ",
+  "hi-Latn": "Partner centers ke through CAF services"
 },
 "caf.services.isee": {
   it: "Compilazione e invio della Dichiarazione Sostitutiva Unica.",
@@ -634,18 +634,18 @@
 
 // Patronato Section
 "patronato.title": {
-  it: "Patronato",
-  en: "Patronato",
-  hi: "Patronato",
-  pa: "Patronato",
-  "hi-Latn": "Patronato"
+  it: "Servizi di Patronato tramite enti partner",
+  en: "Patronato services through partner offices",
+  hi: "साझेदार कार्यालयों के माध्यम से Patronato सेवाएँ",
+  pa: "ਭਾਈਵਾਲ ਦਫ਼ਤਰਾਂ ਰਾਹੀਂ Patronato ਸੇਵਾਵਾਂ",
+  "hi-Latn": "Partner offices ke through Patronato services"
 },
 "patronato.subtitle": {
-  it: "Il Patronato Ali Per La Liberta a Lecce offre supporto per pensioni, NASpI, invalidità, maternità, infortuni sul lavoro e servizi di assistenza sociale, anche per cittadini stranieri.",
-  en: "Ali Per La Liberta Patronato in Lecce provides support for pensions, NASpI, disability, maternity, workplace injuries, and social assistance services, including for foreign citizens.",
-  hi: "लेच्चे में अली पर ला लिबर्टा पैट्रोनेटो पेंशन, NASpI, विकलांगता, मातृत्व, कार्यस्थल दुर्घटनाओं और सामाजिक सहायता सेवाओं के लिए सहायता प्रदान करता है, विदेशी नागरिकों के लिए भी।",
-  pa: "ਲੇੱਚੇ ਵਿੱਚ Ali Per La Liberta Patronato ਪੈਨਸ਼ਨ, NASpI, ਅਪਾਹਜਤਾ, ਮਾਤৃত্ব, ਕੰਮ ਦੌਰਾਨ ਹਾਦਸਿਆਂ ਅਤੇ ਸਮਾਜਿਕ ਸਹਾਇਤਾ ਸੇਵਾਵਾਂ ਲਈ ਸਹਾਇਤਾ ਦਿੰਦਾ ਹੈ, ਵਿਦੇਸ਼ੀ ਨਾਗਰਿਕਾਂ ਲਈ ਵੀ।",
-  "hi-Latn": "Lecce me Ali Per La Liberta Patronato pension, NASpI, disability, maternity, workplace injuries aur social assistance services ke liye support deta hai, foreign citizens ke liye bhi."
+  it: "Ali Per La Libertà è un’associazione che offre orientamento e collabora con Patronato partner per pensioni, NASpI, invalidità, maternità, infortuni sul lavoro e assistenza sociale.",
+  en: "Ali Per La Libertà is an association providing guidance and working with partner Patronato offices for pensions, NASpI, disability, maternity, workplace injuries and social assistance.",
+  hi: "Ali Per La Libertà एक संस्था है जो मार्गदर्शन देती है और पेंशन, NASpI, विकलांगता, मातृत्व, कार्यस्थल दुर्घटनाओं व सामाजिक सहायता के लिए साझेदार Patronato कार्यालयों के साथ काम करती है।",
+  pa: "Ali Per La Libertà ਇੱਕ ਸੰਸਥਾ ਹੈ ਜੋ ਮਾਰਗਦਰਸ਼ਨ ਦਿੰਦੀ ਹੈ ਅਤੇ ਪੈਂਸ਼ਨ, NASpI, ਅਪਾਹਜਤਾ, ਮਾਤৃত্ব, ਕੰਮ ਦੌਰਾਨ ਹਾਦਸਿਆਂ ਅਤੇ ਸਮਾਜਿਕ ਸਹਾਇਤਾ ਲਈ ਭਾਈਵਾਲ Patronato ਦਫ਼ਤਰਾਂ ਨਾਲ ਕੰਮ ਕਰਦੀ ਹੈ।",
+  "hi-Latn": "Ali Per La Libertà ek association hai jo guidance deti hai aur pension, NASpI, disability, maternity, workplace injuries aur social assistance ke liye partner Patronato offices ke saath kaam karti hai."
 },
 
 "patronato.service.pensione": {
@@ -809,16 +809,16 @@
 },
 
 "patronato.otherServices.part1": {
-  it: "Oltre ai servizi di Patronato a Lecce, offriamo anche",
-  en: "In addition to Patronato services in Lecce, we also offer",
+  it: "Oltre all’orientamento verso i servizi di Patronato tramite enti partner, offriamo anche",
+  en: "In addition to guidance toward services delivered by partner Patronato offices, we also offer",
   hi: "लेच्चे में Patronato सेवाओं के अलावा, हम यह भी प्रदान करते हैं",
   pa: "ਲੇੱਚੇ ਵਿੱਚ Patronato ਸੇਵਾਵਾਂ ਤੋਂ ਇਲਾਵਾ, ਅਸੀਂ ਇਹ ਵੀ ਪ੍ਰਦਾਨ ਕਰਦੇ ਹਾਂ",
   "hi-Latn": "Lecce me Patronato services ke alawa, hum ye bhi provide karte hain"
 },
 
 "patronato.otherServices.linkCaf": {
-  it: "assistenza CAF",
-  en: "CAF assistance",
+  it: "orientamento ai servizi CAF tramite centri partner",
+  en: "guidance to CAF services through partner centers",
   hi: "CAF सहायता",
   pa: "CAF ਸਹਾਇਤਾ",
   "hi-Latn": "CAF sahayata"
@@ -865,8 +865,8 @@
 },
 
 "legal.otherServices.linkCaf": {
-  it: "servizi CAF",
-  en: "CAF services",
+  it: "servizi CAF tramite centri partner",
+  en: "CAF services through partner centers",
   hi: "CAF सेवाएं",
   pa: "CAF ਸੇਵਾਵਾਂ",
   "hi-Latn": "CAF services"
@@ -881,8 +881,8 @@
 },
 
 "legal.otherServices.linkPatronato": {
-  it: "servizi di Patronato",
-  en: "Patronato services",
+  it: "servizi di Patronato tramite enti partner",
+  en: "Patronato services through partner offices",
   hi: "Patronato सेवाएं",
   pa: "Patronato ਸੇਵਾਵਾਂ",
   "hi-Latn": "Patronato services"
@@ -906,16 +906,16 @@
 },
 
 "caf.otherServices.part1": {
-  it: "Oltre ai servizi CAF online in Italia, Ali Per La Liberta offre anche",
-  en: "In addition to online CAF services in Italy, Ali Per La Liberta also offers",
+  it: "Oltre all’orientamento verso i servizi CAF tramite centri partner, Ali Per La Libertà offre anche",
+  en: "In addition to guidance toward services delivered by partner CAF centers, Ali Per La Libertà also offers",
   hi: "इटली में ऑनलाइन CAF सेवाओं के अलावा, Ali Per La Liberta प्रदान करता है",
   pa: "ਇਟਲੀ ਵਿੱਚ ਆਨਲਾਈਨ CAF ਸੇਵਾਵਾਂ ਤੋਂ ਇਲਾਵਾ, Ali Per La Liberta ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ",
   "hi-Latn": "Italy me online CAF services ke alawa, Ali Per La Liberta offer karta hai"
 },
 
 "caf.otherServices.linkPatronato": {
-  it: "servizi di Patronato",
-  en: "Patronato services",
+  it: "orientamento ai servizi di Patronato tramite enti partner",
+  en: "guidance to Patronato services through partner offices",
   hi: "Patronato सेवाएं",
   pa: "Patronato ਸੇਵਾਵਾਂ",
   "hi-Latn": "Patronato services"
@@ -959,7 +959,7 @@
 
     "home.eyebrow": "Shoqatë në Lecce",
     "home.title": "Çdo person meriton të ndihet i dëgjuar, i orientuar dhe i lirë.",
-    "home.lead": "Ali Per La Libertà është një pikë referimi për qytetarët italianë dhe të huaj. Ne i ndihmojmë njerëzit të kuptojnë dokumentet, të drejtat dhe mundësitë, duke ofruar mbështetje konkrete dhe të arritshme.",
+    "home.lead": "Ali Per La Libertà është një shoqatë për qytetarët italianë dhe të huaj. Ne ndihmojmë me dokumentet, të drejtat dhe mundësitë dhe bashkëpunojmë me zyra partnere CAF dhe Patronato për shërbimet fiskale dhe sociale.",
     "home.cta.about": "Njih shoqatën",
     "home.cta.services": "Shiko si mund të të ndihmojmë",
     "home.mission.eyebrow": "Misioni ynë",
@@ -975,7 +975,7 @@
     "home.story.text": "Ali Per La Libertà ka lindur për të krijuar autonomi, përfshirje dhe besim. Ne lidhim njerëzit me shërbime dhe kompetenca, që secili të marrë pjesë plotësisht në jetën shoqërore dhe të ndërtojë të ardhmen me më shumë qetësi.",
     "home.services.eyebrow": "Si të ndihmojmë",
     "home.services.title": "Orientim dhe asistencë kur duhen vërtet.",
-    "home.services.text": "Puna jonë përfshin asistencë fiskale, sociale dhe ligjore. Të ndihmojmë të kuptosh rrugën më të përshtatshme për situatën tënde.",
+    "home.services.text": "Si shoqatë ofrojmë orientim dhe mbështetje. Për praktikat fiskale dhe sociale bashkëpunojmë me zyra partnere CAF dhe Patronato.",
     "home.services.link": "Mëso më shumë →",
     "home.services.book": "Rezervo takim",
     "home.contact.title": "Nuk di nga të fillosh?",
@@ -991,11 +991,11 @@
     "serviceBot.whatsapp": "Dërgo në WhatsApp",
     "serviceBot.note": "Faqja nuk dërgon asgjë automatikisht: WhatsApp hapet dhe ti shtyp “Dërgo”.",
 
-    "services.caf.title": "CAF (Qendra e Asistencës Fiskale)",
-    "services.caf.desc": "Të ndihmojmë me praktikat fiskale si deklarata e të ardhurave, ISEE, Modeli 730 dhe procedura të tjera tatimore, në mënyrë të thjeshtë dhe të shpejtë.",
-    "caf.desc": "CAF Ali Per La Libertà ofron asistencë fiskale online dhe në Itali për qytetarë të huaj dhe italianë, përfshirë ISEE, Modelin 730, F24, RED dhe bonuse, me mbështetje shumëgjuhëshe.",
-    "services.patronato.title": "Patronato",
-    "services.patronato.desc": "Ofrojmë mbështetje për pensione, ndihma, papunësi dhe praktika të tjera sociale ose asistenciale me këshillim të personalizuar.",
+    "services.caf.title": "Shërbime CAF përmes qendrave partnere",
+    "services.caf.desc": "Të orientojmë për deklaratën e të ardhurave, ISEE, Modelin 730 dhe praktika të tjera fiskale përmes qendrave partnere CAF.",
+    "caf.desc": "Ali Per La Libertà është një shoqatë që ofron orientim shumëgjuhësh dhe bashkëpunon me qendra partnere CAF për ISEE, Modelin 730, F24, RED, bonuse dhe praktika të tjera fiskale.",
+    "services.patronato.title": "Shërbime Patronato përmes zyrave partnere",
+    "services.patronato.desc": "Ofrojmë orientim për pensione, ndihma, papunësi dhe praktika të tjera sociale përmes zyrave partnere Patronato.",
     "services.legal.title": "Asistencë ligjore / Mbështetje",
     "services.legal.desc": "Ndihmë ligjore e qartë dhe e arritshme për kontrata, dokumente, mosmarrëveshje ose probleme që lidhen me të drejtat e punës dhe civile.",
     "services.corsi.title": "Kurse formimi",
@@ -1032,7 +1032,7 @@
     "footer.copyright": "© 2026 Ali Per La Libertà — Të gjitha të drejtat të rezervuara.",
     "footer.piva": "Kodi fiskal: 93173080750",
 
-    "caf.title": "CAF (Qendra e Asistencës Fiskale)",
+    "caf.title": "Shërbime CAF përmes qendrave partnere",
     "caf.services.isee": "Përgatitja dhe dërgimi i deklaratës ISEE.",
     "caf.services.730": "Deklarata e të ardhurave me asistencë profesionale.",
     "caf.otherServices.part1": "Ofrojmë edhe",

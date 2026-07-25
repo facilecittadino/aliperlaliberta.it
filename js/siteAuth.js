@@ -158,6 +158,7 @@
       if (overlay) overlay.hidden = true;
     });
     lockPage(false);
+    window.location.replace("/");
   }
 
   function toggleAccountMenu(targetNode) {

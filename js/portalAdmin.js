@@ -57,12 +57,18 @@
 
   function showAuth() {
     authPanel.hidden = false;
+    authPanel.removeAttribute("inert");
     dashboardPanel.hidden = true;
+    dashboardPanel.setAttribute("inert", "");
   }
 
   function showDashboard() {
     authPanel.hidden = true;
+    authPanel.setAttribute("inert", "");
     dashboardPanel.hidden = false;
+    dashboardPanel.removeAttribute("inert");
+    loginForm?.reset();
+    setMessage(loginMessage, "");
     switchView("adminPracticesView");
   }
 
@@ -280,7 +286,7 @@
 
   logoutButton?.addEventListener("click", async () => {
     await api("/auth/logout", { method: "POST", body: "{}" }).catch(() => {});
-    showAuth();
+    window.location.replace("/");
   });
 
   refreshButton?.addEventListener("click", () => {
