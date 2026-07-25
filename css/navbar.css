@@ -133,6 +133,84 @@
   border-color: rgba(255,0,51,.38);
 }
 
+.nav-icon-link[href*="instagram.com"],
+.drawer-links a[href*="instagram.com"]{
+  color: #c13584;
+  border-color: rgba(193,53,132,.24);
+}
+
+.nav-icon-link[href*="instagram.com"]:hover,
+.nav-icon-link[href*="instagram.com"]:focus-visible,
+.drawer-links a[href*="instagram.com"]:hover,
+.drawer-links a[href*="instagram.com"]:focus-visible{
+  background: #fff4fa;
+  border-color: rgba(193,53,132,.42);
+}
+
+.nav-icon-link[href*="tiktok.com"],
+.drawer-links a[href*="tiktok.com"]{
+  color: #141414;
+  border-color: rgba(20,20,20,.2);
+}
+
+.nav-icon-link[href*="tiktok.com"]:hover,
+.nav-icon-link[href*="tiktok.com"]:focus-visible,
+.drawer-links a[href*="tiktok.com"]:hover,
+.drawer-links a[href*="tiktok.com"]:focus-visible{
+  background: #f1fffe;
+  border-color: rgba(37,244,238,.62);
+}
+
+.apll-instagram-icon{
+  position: relative;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border: 2px solid currentColor;
+  border-radius: 6px;
+}
+
+.apll-instagram-icon::before{
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.apll-instagram-icon::after{
+  content: "";
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.apll-tiktok-icon{
+  position: relative;
+  display: inline-grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+}
+
+.apll-tiktok-icon::before{
+  content: "\266a";
+  color: #111;
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: -2px -1px 0 #25f4ee, 2px 1px 0 #fe2c55;
+  transform: translateY(-1px);
+}
+
 .apll-youtube-fallback,
 i[data-lucide="youtube"]{
   position: relative;

@@ -115,6 +115,20 @@
       hi: "YouTube",
       "hi-Latn": "YouTube"
     },
+    "nav.instagram": {
+      it: "Instagram",
+      en: "Instagram",
+      pa: "Instagram",
+      hi: "Instagram",
+      "hi-Latn": "Instagram"
+    },
+    "nav.tiktok": {
+      it: "TikTok",
+      en: "TikTok",
+      pa: "TikTok",
+      hi: "TikTok",
+      "hi-Latn": "TikTok"
+    },
 
     "drawer.close": {
       it: "Chiudi menu",
@@ -955,6 +969,8 @@
     "nav.email": "Email",
     "nav.pec": "PEC",
     "nav.youtube": "YouTube",
+    "nav.instagram": "Instagram",
+    "nav.tiktok": "TikTok",
     "drawer.close": "Mbyll menunë",
 
     "home.eyebrow": "Shoqatë në Lecce",

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>APLL Social Video Renderer</title>
+<style>
+html,body{margin:0;min-height:100%;background:#eef5fb;color:#0a2e5c;font-family:Arial,sans-serif}body{display:grid;place-items:center;padding:24px;box-sizing:border-box}.panel{display:grid;grid-template-columns:minmax(220px,360px) minmax(260px,1fr);gap:28px;align-items:center;max-width:900px}.preview{width:min(360px,40vw);aspect-ratio:9/16;background:#0a2e5c;box-shadow:0 18px 48px rgba(10,46,92,.18)}canvas{display:block;width:100%;height:100%}.status{font-size:20px;font-weight:700;line-height:1.4}.meta{margin-top:12px;color:#496177}@media(max-width:680px){.panel{grid-template-columns:1fr}.preview{width:min(72vw,320px)}}
+</style>
+</head>
+<body>
+<div class="panel"><div class="preview"><canvas id="video" width="720" height="1280"></canvas></div><div><div class="status" id="status" data-state="starting">Preparazione video...</div><div class="meta" id="meta"></div></div></div>
+<script>
+const specs={
+  '01-chi-siamo':{label:'Chi siamo',scenes:[
+    ['Hai bisogno di orientamento?','Partiamo dalla tua situazione, con calma.','#0a2e5c','#1cb5d6'],
+    ["Siamo un'associazione.",'Ti ascoltiamo e ti aiutiamo a capire documenti, diritti e prossimi passi.','#ffffff','#0b5ed7'],
+    ['Collaboriamo con CAF e Patronato partner.','Per offrirti servizi fiscali e previdenziali con un percorso più semplice.','#eff6fc','#27aa74'],
+    ['Inizia dalla tua area cliente.','aliperlaliberta.it\n351 365 7045','#0b5ed7','#ffffff']]},
+  '02-documenti-pratica':{label:'Documenti per la pratica',scenes:[
+    ['Quali documenti servono?','Ogni pratica è diversa. Verifichiamo insieme ciò che serve davvero.','#112236','#1cb5d6'],
+    ['Porta con te','Documento di identità\nCodice fiscale\nDocumenti relativi alla richiesta','#ffffff','#0b5ed7'],
+    ["Prima dell'appuntamento","Controlla la lista nell'area cliente o chiedi al nostro assistente.",'#eff6fc','#e53673'],
+    ['Meno dubbi. Più chiarezza.','Prenota su aliperlaliberta.it\n351 365 7045','#27aa74','#ffffff']]},
+  '03-segui-richiesta':{label:'Segui la tua richiesta',scenes:[
+    ["La richiesta non finisce dopo l'invio.",'Puoi seguirla senza perdere informazioni.','#0a2e5c','#1cb5d6'],
+    ['Dalla tua area cliente puoi','Prenotare servizi\nVedere le tue richieste\nControllare lo stato','#ffffff','#0b5ed7'],
+    ['I tuoi dati restano nella tua area riservata.','Ogni persona vede soltanto le proprie richieste.','#eff6fc','#27aa74'],
+    ['Accedi. Invia. Segui.','aliperlaliberta.it\n351 365 7045','#0b5ed7','#ffffff']]}
+};
+const slug=new URLSearchParams(location.search).get('video')||'01-chi-siamo';
+const spec=specs[slug];
+const canvas=document.getElementById('video');const ctx=canvas.getContext('2d');
+const status=document.getElementById('status');const meta=document.getElementById('meta');
+const logo=new Image();logo.src='/logo.png';
+const sceneMs=3000,totalMs=spec.scenes.length*sceneMs;
+function ease(x){return 1-Math.pow(1-Math.max(0,Math.min(1,x)),3)}
+function colorIsDark(c){return ['#0a2e5c','#0b5ed7','#112236','#27aa74'].includes(c)}
+function wrap(text,maxWidth,font){ctx.font=font;const paragraphs=text.split('\n'),lines=[];for(const paragraph of paragraphs){const words=paragraph.split(' ');let line='';for(const word of words){const test=line?line+' '+word:word;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=word}else line=test}if(line)lines.push(line)}return lines}
+function textBlock(text,x,y,maxWidth,font,color,lineHeight,alpha){ctx.globalAlpha=alpha;ctx.font=font;ctx.fillStyle=color;ctx.textBaseline='top';for(const line of wrap(text,maxWidth,font)){ctx.fillText(line,x,y);y+=lineHeight}ctx.globalAlpha=1;return y}
+function roundedRect(x,y,w,h,r,color){ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fillStyle=color;ctx.fill()}
+function draw(t){const index=Math.min(spec.scenes.length-1,Math.floor(t/sceneMs));const local=(t%sceneMs)/sceneMs;const [headline,body,bg,accent]=spec.scenes[index];const dark=colorIsDark(bg);ctx.fillStyle=bg;ctx.fillRect(0,0,720,1280);
+  const drift=Math.sin(t/900)*18;ctx.globalAlpha=dark?.08:.05;ctx.fillStyle=accent;ctx.beginPath();ctx.arc(620+drift,260,220,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(80-drift,1080,170,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
+  roundedRect(52,45,100,100,18,'#ffffff');if(logo.complete&&logo.naturalWidth)ctx.drawImage(logo,62,55,80,80);
+  ctx.textAlign='right';ctx.font='700 17px Arial';ctx.fillStyle=dark?'#ffffff':'#0a2e5c';ctx.fillText('ALI PER LA LIBERTA',670,98);ctx.textAlign='left';
+  const enter=ease(Math.min(local/.18,1));const exit=local>.84?1-ease((local-.84)/.16):1;const alpha=enter*exit;const offset=(1-enter)*45;
+  ctx.fillStyle=accent;ctx.fillRect(58,245+offset,10,108);
+  textBlock(headline,92,220+offset,570,'700 50px Arial',dark?'#ffffff':'#112236',58,alpha);
+  textBlock(body,92,610+offset,550,'400 31px Arial',dark?'#e2eefa':'#3d4f63',43,alpha);
+  roundedRect(92,1068,340,66,15,accent);ctx.font='700 17px Arial';ctx.fillStyle=accent==='#ffffff'?'#0a2e5c':'#ffffff';ctx.fillText(spec.label.toUpperCase(),115,1109);
+  ctx.fillStyle=dark?'rgba(255,255,255,.28)':'#c9d8e8';ctx.fillRect(58,1205,604,6);ctx.fillStyle=accent;ctx.fillRect(58,1205,604*((index+local)/spec.scenes.length),6);
+}
+async function render(){try{if(!window.MediaRecorder||!canvas.captureStream)throw new Error('Registrazione video non supportata');const candidates=['video/mp4;codecs=avc1.42E01E','video/mp4','video/webm;codecs=vp9','video/webm;codecs=vp8'];const mime=candidates.find(x=>MediaRecorder.isTypeSupported(x));if(!mime)throw new Error('Nessun codec video disponibile');const ext=mime.startsWith('video/mp4')?'mp4':'webm';meta.textContent='Formato: '+mime+' · 720 × 1280 · 30 fps';status.textContent='Creazione di '+spec.label+'...';status.dataset.state='recording';const stream=canvas.captureStream(30);const recorder=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:5000000});const chunks=[];recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};const stopped=new Promise(resolve=>recorder.onstop=resolve);const start=performance.now();const timer=setInterval(()=>{const elapsed=Math.min(performance.now()-start,totalMs-1);draw(elapsed)},1000/30);draw(0);recorder.start(500);setTimeout(()=>{clearInterval(timer);draw(totalMs-1);recorder.stop()},totalMs);await stopped;const blob=new Blob(chunks,{type:mime});const response=await fetch('/save?name='+encodeURIComponent(slug+'.'+ext),{method:'POST',headers:{'Content-Type':mime},body:blob});if(!response.ok)throw new Error('Salvataggio non riuscito');status.textContent='Completato: '+slug+'.'+ext;status.dataset.state='done';status.dataset.file=slug+'.'+ext;status.dataset.bytes=String(blob.size)}catch(error){status.textContent='Errore: '+error.message;status.dataset.state='error'}}
+logo.onload=render;logo.onerror=render;
+</script>
+</body>
+</html>
