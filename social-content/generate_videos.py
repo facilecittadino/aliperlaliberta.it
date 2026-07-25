@@ -32,7 +32,7 @@ VIDEOS = [
             ("Hai bisogno di orientamento?", "Partiamo dalla tua situazione, con calma.", NAVY, CYAN),
             ("Siamo un'associazione.", "Ti ascoltiamo e ti aiutiamo a capire documenti, diritti e prossimi passi.", WHITE, BLUE),
             ("Collaboriamo con CAF e Patronato partner.", "Per offrirti servizi fiscali e previdenziali con un percorso più semplice.", MIST, GREEN),
-            ("Inizia dalla tua area cliente.", "aliperlaliberta.it\n351 365 7045", BLUE, WHITE),
+            ("Inizia dalla tua area cliente.", "aliperlaliberta.it", BLUE, WHITE),
         ],
     },
     {
@@ -43,7 +43,7 @@ VIDEOS = [
             ("Quali documenti servono?", "Ogni pratica è diversa. Verifichiamo insieme ciò che serve davvero.", INK, CYAN),
             ("Porta con te", "Documento di identità\nCodice fiscale\nDocumenti relativi alla richiesta", WHITE, BLUE),
             ("Prima dell'appuntamento", "Controlla la lista nell'area cliente o chiedi al nostro assistente.", MIST, PINK),
-            ("Meno dubbi. Più chiarezza.", "Prenota su aliperlaliberta.it\n351 365 7045", GREEN, WHITE),
+            ("Meno dubbi. Più chiarezza.", "Prenota su aliperlaliberta.it", GREEN, WHITE),
         ],
     },
     {
@@ -54,7 +54,7 @@ VIDEOS = [
             ("La richiesta non finisce dopo l'invio.", "Puoi seguirla senza perdere informazioni.", NAVY, CYAN),
             ("Dalla tua area cliente puoi", "Prenotare servizi\nVedere le tue richieste\nControllare lo stato", WHITE, BLUE),
             ("I tuoi dati restano nella tua area riservata.", "Ogni persona vede soltanto le proprie richieste.", MIST, GREEN),
-            ("Accedi. Invia. Segui.", "aliperlaliberta.it\n351 365 7045", BLUE, WHITE),
+            ("Accedi. Invia. Segui.", "aliperlaliberta.it", BLUE, WHITE),
         ],
     },
 ]
