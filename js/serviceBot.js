@@ -123,7 +123,7 @@
 
   const COPY = {
     it: {
-      start: "Ti aiuto io. Scegli il servizio e ti dico subito cosa preparare.",
+      start: "Ali Per La Libertà offre orientamento e supporto nei rapporti con CAF, Patronati e professionisti abilitati per l’assistenza legale. Scegli l’ambito e ti aiuto a preparare il primo passo.",
       questions: {
         service: "Che tipo di supporto ti serve?",
         topic: "Perfetto. Prima dell'appuntamento prepara questi documenti generali:",
@@ -132,7 +132,7 @@
         details: "Aggiungi qualche dettaglio utile per capire meglio la situazione."
       },
       options: {
-        service: ["CAF / tasse / ISEE", "Patronato / pensioni / disoccupazione", "Assistenza legale / documenti", "Corso italiano A1/A2", "Non lo so, ho bisogno di orientamento"],
+        service: ["CAF / tasse / ISEE", "Patronato / pensioni / disoccupazione", "Supporto per assistenza legale / documenti", "Corso italiano A1/A2", "Non lo so, ho bisogno di orientamento"],
         topic: ["Documenti o pratica da capire", "Appuntamento o richiesta urgente", "Controllare requisiti e possibilita", "Altro"],
         urgency: ["Oggi / appena possibile", "Questa settimana", "Non e urgente"]
       },
@@ -170,7 +170,7 @@ ${documents}
 Messaggio preparato dall'assistente del sito.`
     },
     en: {
-      start: "I can help. Choose the service and I will tell you what to prepare.",
+      start: "Ali Per La Libertà provides guidance and support in relations with partner CAF and Patronato offices and qualified legal professionals. Choose an area and I will help you prepare the first step.",
       questions: {
         service: "What kind of support do you need?",
         topic: "Good. Before the appointment, prepare these general documents:",
@@ -217,7 +217,7 @@ ${documents}
 Message prepared by the website assistant.`
     },
     sq: {
-      start: "Te ndihmoj une. Zgjidh sherbimin dhe te tregoj cfare te pergatitesh.",
+      start: "Ali Per La Libertà ofron orientim dhe mbeshtetje ne marredheniet me qendrat CAF, zyrat Patronato dhe profesionistet ligjore. Zgjidh fushen dhe te ndihmoj me hapin e pare.",
       questions: {
         service: "Cfare lloj mbeshtetjeje te duhet?",
         topic: "Mire. Para takimit pergatit keto dokumente te pergjithshme:",

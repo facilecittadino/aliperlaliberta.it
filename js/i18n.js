@@ -152,11 +152,11 @@
       "hi-Latn": "Har vyakti sune jaane, sahi raasta paane aur azaad mehsoos karne ka haqdar hai."
     },
     "home.lead": {
-      it: "Ali Per La Libertà è un’associazione per cittadini italiani e stranieri. Aiutiamo le persone a comprendere documenti, diritti e opportunità e collaboriamo con CAF e Patronato partner per offrire servizi fiscali e previdenziali.",
-      en: "Ali Per La Libertà is an association for Italian and foreign citizens. We help people understand documents, rights and opportunities and work with partner CAF and Patronato offices for tax and welfare services.",
-      pa: "Ali Per La Libertà ਇਤਾਲਵੀ ਅਤੇ ਵਿਦੇਸ਼ੀ ਨਾਗਰਿਕਾਂ ਲਈ ਇੱਕ ਸੰਸਥਾ ਹੈ। ਅਸੀਂ ਦਸਤਾਵੇਜ਼ਾਂ, ਹੱਕਾਂ ਅਤੇ ਮੌਕਿਆਂ ਨੂੰ ਸਮਝਣ ਵਿੱਚ ਮਦਦ ਕਰਦੇ ਹਾਂ ਅਤੇ ਟੈਕਸ ਤੇ ਸਮਾਜਿਕ ਸੁਰੱਖਿਆ ਸੇਵਾਵਾਂ ਲਈ ਭਾਈਵਾਲ CAF ਅਤੇ Patronato ਦਫ਼ਤਰਾਂ ਨਾਲ ਸਹਿਯੋਗ ਕਰਦੇ ਹਾਂ।",
-      hi: "Ali Per La Libertà इतालवी और विदेशी नागरिकों के लिए एक संस्था है। हम दस्तावेज़, अधिकार और अवसर समझने में मदद करते हैं और कर व सामाजिक सुरक्षा सेवाओं के लिए साझेदार CAF और Patronato कार्यालयों के साथ काम करते हैं।",
-      "hi-Latn": "Ali Per La Libertà Italian aur videshi nagrikon ke liye ek association hai. Hum documents, rights aur opportunities samajhne mein madad karte hain aur tax aur welfare services ke liye partner CAF aur Patronato offices ke saath kaam karte hain."
+      it: "Ali Per La Libertà è un’associazione per cittadini italiani e stranieri. Svolgiamo attività di orientamento e supporto nei rapporti con CAF, Patronati e professionisti partner per l’assistenza legale, aiutando le persone a comprendere documenti, diritti e opportunità.",
+      en: "Ali Per La Libertà is an association for Italian and foreign citizens. We provide guidance and support in relations with partner CAF and Patronato offices and qualified legal professionals, helping people understand documents, rights and opportunities.",
+      pa: "Ali Per La Libertà ਇਤਾਲਵੀ ਅਤੇ ਵਿਦੇਸ਼ੀ ਨਾਗਰਿਕਾਂ ਲਈ ਇੱਕ ਸੰਸਥਾ ਹੈ। ਅਸੀਂ CAF ਅਤੇ Patronato ਭਾਈਵਾਲਾਂ ਅਤੇ ਕਾਨੂੰਨੀ ਸਹਾਇਤਾ ਲਈ ਯੋਗ ਪੇਸ਼ੇਵਰਾਂ ਨਾਲ ਸੰਬੰਧਾਂ ਵਿੱਚ ਮਾਰਗਦਰਸ਼ਨ ਅਤੇ ਸਹਾਇਤਾ ਦਿੰਦੇ ਹਾਂ ਅਤੇ ਦਸਤਾਵੇਜ਼ਾਂ, ਹੱਕਾਂ ਅਤੇ ਮੌਕਿਆਂ ਨੂੰ ਸਮਝਣ ਵਿੱਚ ਮਦਦ ਕਰਦੇ ਹਾਂ।",
+      hi: "Ali Per La Libertà इतालवी और विदेशी नागरिकों के लिए एक संस्था है। हम CAF और Patronato साझेदारों तथा कानूनी सहायता के लिए योग्य पेशेवरों के साथ संबंधों में मार्गदर्शन और सहायता देते हैं और दस्तावेज़, अधिकार व अवसर समझने में मदद करते हैं।",
+      "hi-Latn": "Ali Per La Libertà Italian aur videshi nagrikon ke liye ek association hai. Hum partner CAF aur Patronato offices aur legal assistance ke liye qualified professionals ke saath sambandhon me guidance aur support dete hain, aur documents, rights aur opportunities samajhne me madad karte hain."
     },
     "home.cta.about": {
       it: "Conosci l’associazione", en: "Meet the organization",
@@ -243,11 +243,11 @@
       "hi-Latn": "Sahi samay par guidance aur assistance."
     },
     "home.services.text": {
-      it: "Come associazione offriamo orientamento e supporto. Per le pratiche fiscali e previdenziali collaboriamo con CAF e Patronato partner, indirizzandoti verso il percorso più adatto.",
-      en: "As an association, we provide guidance and support. For tax and welfare procedures, we work with partner CAF and Patronato offices and guide you to the most suitable route.",
-      pa: "ਇੱਕ ਸੰਸਥਾ ਵਜੋਂ ਅਸੀਂ ਮਾਰਗਦਰਸ਼ਨ ਅਤੇ ਸਹਾਇਤਾ ਦਿੰਦੇ ਹਾਂ। ਟੈਕਸ ਅਤੇ ਸਮਾਜਿਕ ਸੁਰੱਖਿਆ ਕਾਰਵਾਈਆਂ ਲਈ ਅਸੀਂ ਭਾਈਵਾਲ CAF ਅਤੇ Patronato ਦਫ਼ਤਰਾਂ ਨਾਲ ਕੰਮ ਕਰਦੇ ਹਾਂ।",
-      hi: "एक संस्था के रूप में हम मार्गदर्शन और सहायता देते हैं। कर और सामाजिक सुरक्षा प्रक्रियाओं के लिए हम साझेदार CAF और Patronato कार्यालयों के साथ काम करते हैं।",
-      "hi-Latn": "Association ke roop mein hum guidance aur support dete hain. Tax aur welfare procedures ke liye hum partner CAF aur Patronato offices ke saath kaam karte hain."
+      it: "Come associazione offriamo orientamento e supporto. Facilitiamo i rapporti con CAF e Patronati partner per le pratiche fiscali e previdenziali e con professionisti abilitati per l’assistenza legale.",
+      en: "As an association, we provide guidance and support. We facilitate relations with partner CAF and Patronato offices for tax and welfare procedures and with qualified professionals for legal assistance.",
+      pa: "ਇੱਕ ਸੰਸਥਾ ਵਜੋਂ ਅਸੀਂ CAF ਅਤੇ Patronato ਭਾਈਵਾਲਾਂ ਅਤੇ ਕਾਨੂੰਨੀ ਸਹਾਇਤਾ ਲਈ ਯੋਗ ਪੇਸ਼ੇਵਰਾਂ ਨਾਲ ਸੰਬੰਧਾਂ ਵਿੱਚ ਮਾਰਗਦਰਸ਼ਨ ਅਤੇ ਸਹਾਇਤਾ ਦਿੰਦੇ ਹਾਂ।",
+      hi: "एक संस्था के रूप में हम CAF और Patronato साझेदारों तथा कानूनी सहायता के लिए योग्य पेशेवरों के साथ संबंधों में मार्गदर्शन और सहायता देते हैं।",
+      "hi-Latn": "Association ke roop mein hum partner CAF aur Patronato offices aur legal assistance ke qualified professionals ke saath sambandhon me guidance aur support dete hain."
     },
     "home.services.link": {
       it: "Approfondisci →", en: "Learn more →",
@@ -332,11 +332,11 @@
       "hi-Latn": "Partner centers ke through CAF services"
     },
     "caf.desc": {
-      it: "Ali Per La Libertà è un’associazione che offre orientamento multilingua e collabora con CAF partner per ISEE, Modello 730, F24, RED, bonus e altre pratiche fiscali.",
-      en: "Ali Per La Libertà is an association providing multilingual guidance and working with partner CAF centers for ISEE, Form 730, F24, RED, bonuses and other tax procedures.",
-      hi: "Ali Per La Libertà एक संस्था है जो बहुभाषी मार्गदर्शन देती है और ISEE, मॉडल 730, F24, RED, बोनस व अन्य कर प्रक्रियाओं के लिए साझेदार CAF केंद्रों के साथ काम करती है।",
-      pa: "Ali Per La Libertà ਇੱਕ ਸੰਸਥਾ ਹੈ ਜੋ ਬਹੁਭਾਸ਼ੀ ਮਾਰਗਦਰਸ਼ਨ ਦਿੰਦੀ ਹੈ ਅਤੇ ISEE, ਮਾਡਲ 730, F24, RED, ਬੋਨਸ ਅਤੇ ਹੋਰ ਟੈਕਸ ਕਾਰਵਾਈਆਂ ਲਈ ਭਾਈਵਾਲ CAF ਕੇਂਦਰਾਂ ਨਾਲ ਕੰਮ ਕਰਦੀ ਹੈ।",
-      "hi-Latn": "Ali Per La Libertà ek association hai jo multilingual guidance deti hai aur ISEE, Model 730, F24, RED, bonus aur anya tax procedures ke liye partner CAF centers ke saath kaam karti hai."
+      it: "Ali Per La Libertà è un’associazione che svolge attività di orientamento e supporto nei rapporti con CAF partner per ISEE, Modello 730, F24, RED, bonus e altre pratiche fiscali e orienta anche verso Patronati e professionisti per l’assistenza legale.",
+      en: "Ali Per La Libertà is an association providing guidance and support in relations with partner CAF centers for ISEE, Form 730, F24, RED, bonuses and other tax procedures, with referrals to Patronato offices and qualified legal professionals when needed.",
+      hi: "Ali Per La Libertà एक संस्था है जो ISEE, मॉडल 730, F24, RED, बोनस और अन्य कर प्रक्रियाओं के लिए CAF साझेदारों के साथ संबंधों में मार्गदर्शन और सहायता देती है तथा जरूरत पर Patronato और योग्य कानूनी पेशेवरों की ओर निर्देशित करती है।",
+      pa: "Ali Per La Libertà ਇੱਕ ਸੰਸਥਾ ਹੈ ਜੋ ISEE, ਮਾਡਲ 730, F24, RED, ਬੋਨਸ ਅਤੇ ਹੋਰ ਟੈਕਸ ਕਾਰਵਾਈਆਂ ਲਈ CAF ਭਾਈਵਾਲਾਂ ਨਾਲ ਸੰਬੰਧਾਂ ਵਿੱਚ ਮਾਰਗਦਰਸ਼ਨ ਅਤੇ ਸਹਾਇਤਾ ਦਿੰਦੀ ਹੈ ਅਤੇ ਲੋੜ ਪੈਣ ਤੇ Patronato ਅਤੇ ਯੋਗ ਕਾਨੂੰਨੀ ਪੇਸ਼ੇਵਰਾਂ ਵੱਲ ਮਾਰਗਦਰਸ਼ਨ ਕਰਦੀ ਹੈ।",
+      "hi-Latn": "Ali Per La Libertà ek association hai jo ISEE, Model 730, F24, RED, bonus aur anya tax procedures ke liye CAF partners ke saath sambandhon me guidance aur support deti hai aur zarurat par Patronato aur qualified legal professionals tak guide karti hai."
     },
 
     "services.patronato.title": {
@@ -355,18 +355,18 @@
     },
 
     "services.legal.title": {
-      it: "Assistenza Legale / Supporto",
-      en: "Legal Assistance / Support",
-      hi: "कानूनी सहायता / सपोर्ट",
-      pa: "ਕਾਨੂੰਨੀ ਸਹਾਇਤਾ / ਸਮਰਥਨ",
-      "hi-Latn": "Kanooni Sahayata / Support"
+      it: "Supporto per l’assistenza legale",
+      en: "Support for legal assistance",
+      hi: "कानूनी सहायता के लिए समर्थन",
+      pa: "ਕਾਨੂੰਨੀ ਸਹਾਇਤਾ ਲਈ ਸਮਰਥਨ",
+      "hi-Latn": "Kanooni sahayata ke liye support"
     },
     "services.legal.desc": {
-      it: "Un aiuto legale chiaro e accessibile per contratti, documenti, vertenze o problemi legati ai diritti del lavoro e civili.",
-      en: "Clear, accessible legal help for contracts, documents, disputes, or issues related to labor and civil rights.",
-      hi: "कॉन्ट्रैक्ट, दस्तावेज़, विवाद या श्रम व नागरिक अधिकारों से जुड़े मुद्दों पर स्पष्ट और सुलभ कानूनी मदद।",
-      pa: "ਕਾਂਟ੍ਰੈਕਟ, ਦਸਤਾਵੇਜ਼, ਵਿਵਾਦ ਜਾਂ ਮਜ਼ਦੂਰੀ ਅਤੇ ਨਾਗਰਿਕ ਹੱਕਾਂ ਨਾਲ ਜੁੜੇ ਮਸਲਿਆਂ ਲਈ ਸਪਸ਼ਟ ਤੇ ਸੌਖੀ ਕਾਨੂੰਨੀ ਮਦਦ।",
-      "hi-Latn": "Contract, documents, vivad ya labour/civil rights se jude muddon par saaf aur accessible legal help."
+      it: "Orientamento e contatto con professionisti abilitati per contratti, documenti, vertenze e tutela dei diritti del lavoro e civili.",
+      en: "Guidance and contact with qualified professionals for contracts, documents, disputes, and labor or civil rights matters.",
+      hi: "कॉन्ट्रैक्ट, दस्तावेज़, विवाद और अधिकारों की सुरक्षा के लिए योग्य पेशेवरों तक मार्गदर्शन और संपर्क।",
+      pa: "ਕਾਂਟ੍ਰੈਕਟ, ਦਸਤਾਵੇਜ਼, ਵਿਵਾਦ ਅਤੇ ਹੱਕਾਂ ਦੀ ਰੱਖਿਆ ਲਈ ਯੋਗ ਪੇਸ਼ੇਵਰਾਂ ਤੱਕ ਮਾਰਗਦਰਸ਼ਨ ਅਤੇ ਸੰਪਰਕ।",
+      "hi-Latn": "Contracts, documents, vivad aur rights protection ke liye qualified professionals tak guidance aur contact."
     },
 
     "services.corsi.title": {
@@ -655,11 +655,11 @@
   "hi-Latn": "Partner offices ke through Patronato services"
 },
 "patronato.subtitle": {
-  it: "Ali Per La Libertà è un’associazione che offre orientamento e collabora con Patronato partner per pensioni, NASpI, invalidità, maternità, infortuni sul lavoro e assistenza sociale.",
-  en: "Ali Per La Libertà is an association providing guidance and working with partner Patronato offices for pensions, NASpI, disability, maternity, workplace injuries and social assistance.",
-  hi: "Ali Per La Libertà एक संस्था है जो मार्गदर्शन देती है और पेंशन, NASpI, विकलांगता, मातृत्व, कार्यस्थल दुर्घटनाओं व सामाजिक सहायता के लिए साझेदार Patronato कार्यालयों के साथ काम करती है।",
+  it: "Ali Per La Libertà è un’associazione che svolge attività di orientamento e supporto nei rapporti con Patronati partner per pensioni, NASpI, invalidità, maternità, infortuni sul lavoro e assistenza sociale e orienta anche verso CAF e professionisti per l’assistenza legale.",
+  en: "Ali Per La Libertà is an association providing guidance and support in relations with partner Patronato offices for pensions, NASpI, disability, maternity, workplace injuries and social assistance, with referrals to CAF centers and qualified legal professionals when needed.",
+  hi: "Ali Per La Libertà एक संस्था है जो पेंशन, NASpI, विकलांगता, मातृत्व, कार्यस्थल दुर्घटनाओं और सामाजिक सहायता के लिए Patronato साझेदारों के साथ संबंधों में मार्गदर्शन और सहायता देती है तथा जरूरत पर CAF और योग्य कानूनी पेशेवरों की ओर निर्देशित करती है।",
   pa: "Ali Per La Libertà ਇੱਕ ਸੰਸਥਾ ਹੈ ਜੋ ਮਾਰਗਦਰਸ਼ਨ ਦਿੰਦੀ ਹੈ ਅਤੇ ਪੈਂਸ਼ਨ, NASpI, ਅਪਾਹਜਤਾ, ਮਾਤৃত্ব, ਕੰਮ ਦੌਰਾਨ ਹਾਦਸਿਆਂ ਅਤੇ ਸਮਾਜਿਕ ਸਹਾਇਤਾ ਲਈ ਭਾਈਵਾਲ Patronato ਦਫ਼ਤਰਾਂ ਨਾਲ ਕੰਮ ਕਰਦੀ ਹੈ।",
-  "hi-Latn": "Ali Per La Libertà ek association hai jo guidance deti hai aur pension, NASpI, disability, maternity, workplace injuries aur social assistance ke liye partner Patronato offices ke saath kaam karti hai."
+  "hi-Latn": "Ali Per La Libertà ek association hai jo pension, NASpI, disability, maternity, workplace injuries aur social assistance ke liye Patronato partners ke saath sambandhon me guidance aur support deti hai aur zarurat par CAF aur qualified legal professionals tak guide karti hai."
 },
 
 "patronato.service.pensione": {
@@ -729,25 +729,25 @@
 // Legal Assistance Page — i18n dictionary block
 // ================================
 "legal.title": {
-  it: "Assistenza Legale",
-  en: "Legal Assistance",
+  it: "Supporto per l’assistenza legale",
+  en: "Support for legal assistance",
   hi: "कानूनी सहायता",
   pa: "ਕਾਨੂੰਨੀ ਸਹਾਇਤਾ",
   "hi-Latn": "Kanooni Sahayata"
 },
 "legal.desc": {
-  "it": "Assistenza legale per stranieri a Lecce: permesso di soggiorno, cittadinanza italiana, ricongiungimento familiare e pratiche Prefettura e Questura con supporto multilingua.",
-  "en": "Legal assistance for foreigners in Lecce: residence permits, Italian citizenship, family reunification, and Prefecture and Police Headquarters procedures with multilingual support.",
-  "hi": "लेच्चे में विदेशियों के लिए कानूनी सहायता: परमेसो दी सोजोर्नो, इतालवी नागरिकता, परिवार पुनर्मिलन और प्रीफेक्चुरा व क्वेस्टुरा से जुड़ी प्रक्रियाएँ, बहुभाषी सहायता के साथ।",
-  "pa": "ਲੇੱਚੇ ਵਿੱਚ ਵਿਦੇਸ਼ੀਆਂ ਲਈ ਕਾਨੂੰਨੀ ਸਹਾਇਤਾ: ਰਿਹਾਇਸ਼ ਪਰਮਿਟ, ਇਟਾਲੀਅਨ ਨਾਗਰਿਕਤਾ, ਪਰਿਵਾਰਕ ਮੁੜ ਮਿਲਾਪ ਅਤੇ ਪ੍ਰੀਫੈਕਚੁਰਾ ਤੇ ਕਵੇਸਟੂਰਾ ਦੀਆਂ ਪ੍ਰਕਿਰਿਆਵਾਂ, ਬਹੁਭਾਸ਼ੀ ਸਹਾਇਤਾ ਨਾਲ।",
-  "hi-Latn": "Lecce me videshiyon ke liye legal assistance: permesso di soggiorno, Italian citizenship, family reunification aur Prefettura aur Questura ki procedures, multilingual support ke saath."
+  "it": "Ali Per La Libertà svolge attività di orientamento e supporto nei rapporti con professionisti abilitati per permessi di soggiorno, cittadinanza, ricongiungimento familiare e pratiche presso Prefettura e Questura e orienta anche verso CAF e Patronati partner.",
+  "en": "Ali Per La Libertà provides guidance and support in relations with qualified professionals for residence permits, citizenship, family reunification, and Prefecture or Police Headquarters procedures, with referrals to partner CAF and Patronato offices.",
+  "hi": "Ali Per La Libertà परमेसो दी सोजोर्नो, नागरिकता, परिवार पुनर्मिलन तथा प्रीफेक्चुरा और क्वेस्टुरा प्रक्रियाओं के लिए योग्य पेशेवरों के साथ संबंधों में मार्गदर्शन और सहायता देता है तथा CAF और Patronato साझेदारों की ओर निर्देशित करता है।",
+  "pa": "Ali Per La Libertà ਰਿਹਾਇਸ਼ ਪਰਮਿਟ, ਨਾਗਰਿਕਤਾ, ਪਰਿਵਾਰਕ ਮੁੜ ਮਿਲਾਪ ਅਤੇ ਪ੍ਰੀਫੈਕਚੁਰਾ ਤੇ ਕਵੇਸਟੂਰਾ ਦੀਆਂ ਪ੍ਰਕਿਰਿਆਵਾਂ ਲਈ ਯੋਗ ਪੇਸ਼ੇਵਰਾਂ ਨਾਲ ਸੰਬੰਧਾਂ ਵਿੱਚ ਮਾਰਗਦਰਸ਼ਨ ਅਤੇ ਸਹਾਇਤਾ ਦਿੰਦਾ ਹੈ ਅਤੇ CAF ਤੇ Patronato ਭਾਈਵਾਲਾਂ ਵੱਲ ਮਾਰਗਦਰਸ਼ਨ ਕਰਦਾ ਹੈ।",
+  "hi-Latn": "Ali Per La Libertà permesso di soggiorno, citizenship, family reunification aur Prefettura aur Questura procedures ke liye qualified professionals ke saath sambandhon me guidance aur support deta hai aur CAF aur Patronato partners tak guide karta hai."
 },
 "legal.seo": {
-  "it": "L’Assistenza Legale Ali Per La Liberta a Lecce offre supporto per permesso di soggiorno, cittadinanza italiana, ricongiungimento familiare, invio PEC e pratiche legali dedicate anche ai cittadini stranieri.",
-  "en": "Ali Per La Liberta provides legal assistance in Lecce for residence permits, Italian citizenship, family reunification, PEC services and legal documentation.",
-  "hi": "अली पर ला लिबर्टा लेच्चे में निवास परमिट, नागरिकता, पारिवारिक पुनर्मिलन और कानूनी दस्तावेज़ों के लिए कानूनी सहायता प्रदान करता है।",
-  "pa": "ਅਲੀ ਪਰ ਲਾ ਲਿਬਰਤਾ ਲੇੱਚੇ ਵਿੱਚ ਰਿਹਾਇਸ਼ ਪਰਮਿਟ, ਨਾਗਰਿਕਤਾ, ਪਰਿਵਾਰਕ ਮਿਲਾਪ ਅਤੇ ਕਾਨੂੰਨੀ ਦਸਤਾਵੇਜ਼ਾਂ ਲਈ ਸਹਾਇਤਾ ਦਿੰਦਾ ਹੈ।",
-  "hi-Latn": "Ali Per La Liberta Lecce me residence permit, citizenship, family reunification aur legal documents ke liye legal support deta hai."
+  "it": "Ali Per La Libertà offre orientamento e supporto nei rapporti con professionisti abilitati per permessi di soggiorno, cittadinanza, ricongiungimento familiare, invio PEC e pratiche legali.",
+  "en": "Ali Per La Libertà provides guidance and support in relations with qualified professionals for residence permits, Italian citizenship, family reunification, PEC services and legal documentation.",
+  "hi": "अली पर ला लिबर्टा निवास परमिट, नागरिकता, परिवार पुनर्मिलन और कानूनी दस्तावेज़ों के लिए योग्य पेशेवरों के साथ संबंधों में मार्गदर्शन और सहायता देता है।",
+  "pa": "ਅਲੀ ਪਰ ਲਾ ਲਿਬਰਤਾ ਰਿਹਾਇਸ਼ ਪਰਮਿਟ, ਨਾਗਰਿਕਤਾ, ਪਰਿਵਾਰਕ ਮਿਲਾਪ ਅਤੇ ਕਾਨੂੰਨੀ ਦਸਤਾਵੇਜ਼ਾਂ ਲਈ ਯੋਗ ਪੇਸ਼ੇਵਰਾਂ ਨਾਲ ਸੰਬੰਧਾਂ ਵਿੱਚ ਮਾਰਗਦਰਸ਼ਨ ਅਤੇ ਸਹਾਇਤਾ ਦਿੰਦਾ ਹੈ।",
+  "hi-Latn": "Ali Per La Liberta residence permit, citizenship, family reunification aur legal documents ke liye qualified professionals ke saath sambandhon me guidance aur support deta hai."
 },
 
 "legal.services.ricongiungimento": {
@@ -847,7 +847,7 @@
 },
 
 "patronato.otherServices.linkLegal": {
-  it: "assistenza legale per stranieri",
+  it: "supporto nei rapporti per l’assistenza legale",
   en: "legal assistance for foreigners",
   hi: "विदेशियों के लिए कानूनी सहायता",
   pa: "ਵਿਦੇਸ਼ੀਆਂ ਲਈ ਕਾਨੂੰਨੀ ਸਹਾਇਤਾ",
@@ -871,7 +871,7 @@
 },
 
 "legal.otherServices.part1": {
-  it: "Oltre all’assistenza legale per stranieri a Lecce, Ali Per La Liberta offre",
+  it: "Oltre al supporto nei rapporti per l’assistenza legale a Lecce, Ali Per La Libertà offre",
   en: "In addition to legal assistance for foreigners in Lecce, Ali Per La Liberta offers",
   hi: "लेच्चे में विदेशियों के लिए कानूनी सहायता के अलावा, Ali Per La Liberta प्रदान करता है",
   pa: "ਲੇੱਚੇ ਵਿੱਚ ਵਿਦੇਸ਼ੀਆਂ ਲਈ ਕਾਨੂੰਨੀ ਸਹਾਇਤਾ ਤੋਂ ਇਲਾਵਾ, Ali Per La Liberta ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ",
@@ -944,7 +944,7 @@
 },
 
 "caf.otherServices.linkLegal": {
-  it: "assistenza legale per stranieri",
+  it: "supporto nei rapporti per l’assistenza legale",
   en: "legal assistance for foreigners",
   hi: "विदेशियों के लिए कानूनी सहायता",
   pa: "ਵਿਦੇਸ਼ੀਆਂ ਲਈ ਕਾਨੂੰਨੀ ਸਹਾਇਤਾ",
@@ -975,7 +975,7 @@
 
     "home.eyebrow": "Shoqatë në Lecce",
     "home.title": "Çdo person meriton të ndihet i dëgjuar, i orientuar dhe i lirë.",
-    "home.lead": "Ali Per La Libertà është një shoqatë për qytetarët italianë dhe të huaj. Ne ndihmojmë me dokumentet, të drejtat dhe mundësitë dhe bashkëpunojmë me zyra partnere CAF dhe Patronato për shërbimet fiskale dhe sociale.",
+    "home.lead": "Ali Per La Libertà është një shoqatë për qytetarët italianë dhe të huaj. Ne ofrojmë orientim dhe mbështetje në marrëdhëniet me qendrat partnere CAF, zyrat Patronato dhe profesionistët e kualifikuar për asistencë ligjore, duke ndihmuar me dokumentet, të drejtat dhe mundësitë.",
     "home.cta.about": "Njih shoqatën",
     "home.cta.services": "Shiko si mund të të ndihmojmë",
     "home.mission.eyebrow": "Misioni ynë",
@@ -991,7 +991,7 @@
     "home.story.text": "Ali Per La Libertà ka lindur për të krijuar autonomi, përfshirje dhe besim. Ne lidhim njerëzit me shërbime dhe kompetenca, që secili të marrë pjesë plotësisht në jetën shoqërore dhe të ndërtojë të ardhmen me më shumë qetësi.",
     "home.services.eyebrow": "Si të ndihmojmë",
     "home.services.title": "Orientim dhe asistencë kur duhen vërtet.",
-    "home.services.text": "Si shoqatë ofrojmë orientim dhe mbështetje. Për praktikat fiskale dhe sociale bashkëpunojmë me zyra partnere CAF dhe Patronato.",
+    "home.services.text": "Si shoqatë ofrojmë orientim dhe mbështetje në marrëdhëniet me qendrat partnere CAF, zyrat Patronato dhe profesionistët e kualifikuar për asistencë ligjore.",
     "home.services.link": "Mëso më shumë →",
     "home.services.book": "Rezervo takim",
     "home.contact.title": "Nuk di nga të fillosh?",
@@ -1009,11 +1009,11 @@
 
     "services.caf.title": "Shërbime CAF përmes qendrave partnere",
     "services.caf.desc": "Të orientojmë për deklaratën e të ardhurave, ISEE, Modelin 730 dhe praktika të tjera fiskale përmes qendrave partnere CAF.",
-    "caf.desc": "Ali Per La Libertà është një shoqatë që ofron orientim shumëgjuhësh dhe bashkëpunon me qendra partnere CAF për ISEE, Modelin 730, F24, RED, bonuse dhe praktika të tjera fiskale.",
-    "services.patronato.title": "Shërbime Patronato përmes zyrave partnere",
-    "services.patronato.desc": "Ofrojmë orientim për pensione, ndihma, papunësi dhe praktika të tjera sociale përmes zyrave partnere Patronato.",
-    "services.legal.title": "Asistencë ligjore / Mbështetje",
-    "services.legal.desc": "Ndihmë ligjore e qartë dhe e arritshme për kontrata, dokumente, mosmarrëveshje ose probleme që lidhen me të drejtat e punës dhe civile.",
+    "caf.desc": "Ali Per La Libertà është një shoqatë që ofron orientim dhe mbështetje në marrëdhëniet me qendrat partnere CAF për ISEE, Modelin 730, F24, RED, bonuse dhe praktika të tjera fiskale, si edhe orientim drejt Patronato-ve dhe profesionistëve ligjorë kur nevojitet.",
+    "services.patronato.title": "Mbështetje në marrëdhëniet me zyrat partnere Patronato",
+    "services.patronato.desc": "Ofrojmë orientim dhe mbështetje në marrëdhëniet me zyrat partnere Patronato për pensione, ndihma, papunësi dhe praktika të tjera sociale.",
+    "services.legal.title": "Mbështetje për asistencë ligjore",
+    "services.legal.desc": "Orientim dhe kontakt me profesionistë të kualifikuar për kontrata, dokumente, mosmarrëveshje dhe mbrojtjen e të drejtave.",
     "services.corsi.title": "Kurse formimi",
     "services.corsi.desc": "Kurse profesionale dhe përditësime formuese për të përmirësuar aftësitë dhe për të gjetur mundësi të reja pune.",
     "services.italianCourse.title": "Kurs i gjuhës italiane A1 dhe A2",
