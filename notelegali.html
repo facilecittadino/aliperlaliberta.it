@@ -1,78 +1,354 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8">
-  <title>Note Legali | Ali Per La Liberta</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="description"
-    content="Note legali del sito Ali Per La Liberta (APLL). Informazioni sul titolare del sito, responsabilità e diritti.">
+  <title>Note legali | Ali Per La Libertà</title>
+  <meta
+    name="description"
+    content="Note legali di Ali Per La Libertà: natura dell'associazione, collaborazione con CAF e Patronato partner, responsabilità e condizioni d'uso del sito."
+  />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://aliperlaliberta.it/notelegali.html" />
 
-  <link rel="canonical" href="https://aliperlaliberta.it/notelegali.html">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0b3c5d" />
 
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/main.css?v=20260725-association1" />
   <script src="/js/tailwindConfig.js?v=20260710-tw1"></script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="/js/icons.js?v=20260710-youtube1" defer></script>
+
+  <style>
+    .legal-shell {
+      width: min(100% - 32px, 960px);
+      margin-inline: auto;
+    }
+
+    .legal-header {
+      border-bottom: 1px solid #dbe3ec;
+      background: #ffffff;
+    }
+
+    .legal-header-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .legal-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: #12345b;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .legal-brand img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .legal-home {
+      width: 42px;
+      height: 42px;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      color: #12345b;
+      background: #ffffff;
+    }
+
+    .legal-home:hover,
+    .legal-home:focus-visible {
+      border-color: #12345b;
+      background: #f4f8fc;
+    }
+
+    .legal-main {
+      padding-block: 44px 64px;
+    }
+
+    .legal-intro {
+      max-width: 760px;
+      margin-bottom: 36px;
+    }
+
+    .legal-kicker {
+      margin: 0 0 8px;
+      color: #1d7a55;
+      font-size: 0.875rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .legal-main h1 {
+      margin: 0;
+      color: #12345b;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.08;
+    }
+
+    .legal-updated {
+      margin: 14px 0 0;
+      color: #5a6878;
+      font-size: 0.95rem;
+    }
+
+    .legal-notice {
+      margin: 0 0 36px;
+      padding: 20px 22px;
+      border: 1px solid #b9decf;
+      border-left: 5px solid #1d7a55;
+      border-radius: 8px;
+      background: #f2faf6;
+      color: #193c31;
+    }
+
+    .legal-notice strong {
+      color: #0f5d40;
+    }
+
+    .legal-section {
+      padding-block: 28px;
+      border-top: 1px solid #dbe3ec;
+    }
+
+    .legal-section h2 {
+      margin: 0 0 12px;
+      color: #12345b;
+      font-size: 1.35rem;
+      line-height: 1.3;
+    }
+
+    .legal-section p {
+      margin: 0 0 12px;
+      color: #334155;
+      line-height: 1.75;
+    }
+
+    .legal-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .legal-section ul {
+      margin: 12px 0 0;
+      padding-left: 22px;
+      color: #334155;
+    }
+
+    .legal-section li {
+      margin-bottom: 8px;
+      line-height: 1.65;
+    }
+
+    .legal-section a,
+    .legal-footer a {
+      color: #075ea8;
+      text-underline-offset: 3px;
+    }
+
+    .legal-footer {
+      border-top: 1px solid #dbe3ec;
+      background: #ffffff;
+    }
+
+    .legal-footer-inner {
+      min-height: 92px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      color: #526173;
+      font-size: 0.9rem;
+    }
+
+    .legal-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .legal-shell {
+        width: min(100% - 24px, 960px);
+      }
+
+      .legal-header-inner {
+        min-height: 64px;
+      }
+
+      .legal-main {
+        padding-block: 32px 48px;
+      }
+
+      .legal-notice {
+        padding: 18px;
+      }
+
+      .legal-footer-inner {
+        padding-block: 22px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 
 <body class="bg-[#f6f8fb] text-slate-900 antialiased">
+  <header class="legal-header">
+    <div class="legal-shell legal-header-inner">
+      <a class="legal-brand" href="/" aria-label="Ali Per La Libertà">
+        <img src="/logo.png" alt="" decoding="async" />
+        <span>Ali Per La Libertà</span>
+      </a>
 
-<main class="rounded-[8px] border border-slate-200 bg-white shadow-soft" style="max-width:900px;margin:40px auto;padding:28px;line-height:1.6;">
+      <a class="legal-home" href="/" aria-label="Torna alla pagina iniziale" title="Torna alla pagina iniziale">
+        <i data-lucide="home" aria-hidden="true"></i>
+      </a>
+    </div>
+  </header>
 
-  <h1>Note Legali</h1>
+  <main class="legal-shell legal-main">
+    <div class="legal-intro">
+      <p class="legal-kicker">Informazioni e trasparenza</p>
+      <h1>Note legali</h1>
+      <p class="legal-updated">Ultimo aggiornamento: 25 luglio 2026</p>
+    </div>
 
-  <p>
-    Questo sito web è gestito da:
-  </p>
+    <div class="legal-notice">
+      <strong>Ali Per La Libertà è un’associazione.</strong>
+      Offre orientamento, informazione e supporto ai cittadini e collabora con CAF e Patronato partner
+      per facilitare l’accesso ai servizi fiscali, previdenziali e assistenziali.
+    </div>
 
-  <p>
-    <strong>Ali Per La Liberta (APLL)</strong><br>
-    Lecce, Italia<br>
-    Email: <a href="mailto:info@aliperlaliberta.it">info@aliperlaliberta.it</a>
-  </p>
+    <section class="legal-section" aria-labelledby="gestore">
+      <h2 id="gestore">1. Gestore del sito</h2>
+      <p>
+        Il sito <strong>aliperlaliberta.it</strong> è gestito da
+        <strong>Ali Per La Libertà (APLL)</strong>, associazione con sede operativa a Lecce, Italia.
+      </p>
+      <p>
+        Per informazioni sul sito è possibile scrivere a
+        <a href="mailto:info@aliperlaliberta.it">info@aliperlaliberta.it</a>.
+      </p>
+    </section>
 
-  <h2>Finalità del sito</h2>
-  <p>
-    Il sito <strong>aliperlaliberta.it</strong> fornisce informazioni sui servizi
-    di CAF, Patronato e assistenza legale offerti da Ali Per La Liberta.
-    Le informazioni presenti hanno scopo informativo e non costituiscono
-    consulenza legale o fiscale vincolante.
-  </p>
+    <section class="legal-section" aria-labelledby="finalita">
+      <h2 id="finalita">2. Finalità del sito</h2>
+      <p>
+        Il sito presenta le attività dell’associazione, fornisce informazioni generali,
+        permette agli utenti registrati di inviare richieste e facilita il contatto con i soggetti
+        competenti per il servizio scelto.
+      </p>
+      <p>
+        I contenuti hanno finalità informative e di orientamento. Non costituiscono consulenza
+        fiscale, previdenziale o legale personalizzata e non sostituiscono la valutazione del
+        professionista o dell’ente competente.
+      </p>
+    </section>
 
-  <h2>Responsabilità</h2>
-  <p>
-    Ali Per La Liberta non è responsabile per eventuali errori, omissioni o
-    aggiornamenti mancanti nei contenuti del sito. L’uso delle informazioni
-    avviene sotto la responsabilità dell’utente.
-  </p>
+    <section class="legal-section" aria-labelledby="partner">
+      <h2 id="partner">3. Servizi CAF e Patronato tramite partner</h2>
+      <p>
+        Ali Per La Libertà <strong>non opera come CAF o Patronato autonomo</strong>. Le pratiche
+        fiscali, previdenziali e assistenziali che richiedono abilitazioni specifiche sono svolte
+        dai CAF, Patronati, professionisti o enti partner competenti.
+      </p>
+      <p>
+        L’associazione può aiutare l’utente a comprendere il percorso, raccogliere le informazioni
+        iniziali e metterlo in contatto con il partner appropriato. Il soggetto che prende in carico
+        la pratica resta responsabile delle proprie attività professionali, delle verifiche richieste
+        e degli atti eventualmente trasmessi.
+      </p>
+    </section>
 
-  <h2>Diritti d’autore</h2>
-  <p>
-    Tutti i contenuti presenti su questo sito (testi, loghi, immagini, grafica)
-    sono protetti da copyright e appartengono ad Ali Per La Liberta,
-    salvo diversa indicazione.
-  </p>
+    <section class="legal-section" aria-labelledby="legale">
+      <h2 id="legale">4. Assistenza legale</h2>
+      <p>
+        Le informazioni di carattere giuridico pubblicate sul sito sono generali. Quando una richiesta
+        necessita di consulenza o rappresentanza legale, l’attività viene affidata a un avvocato o
+        altro professionista abilitato, che opera sotto la propria responsabilità professionale.
+      </p>
+    </section>
 
-  <p>
-    È vietata la riproduzione non autorizzata dei contenuti.
-  </p>
+    <section class="legal-section" aria-labelledby="informazioni">
+      <h2 id="informazioni">5. Accuratezza delle informazioni</h2>
+      <p>
+        L’associazione cura i contenuti con attenzione, ma norme, procedure, scadenze e documenti
+        richiesti possono cambiare. L’elenco dei documenti indicato sul sito è quindi orientativo:
+        i requisiti definitivi devono essere confermati dal partner o dall’ente competente in base
+        alla situazione personale dell’utente.
+      </p>
+      <p>
+        L’invio di una richiesta o la prenotazione di un appuntamento non garantiscono l’accoglimento
+        di una pratica, l’ottenimento di un beneficio o il rispetto di una determinata tempistica.
+      </p>
+    </section>
 
-  <h2>Documento completo</h2>
-  <p>
-    Il documento legale completo è attualmente in fase di preparazione.
-    Una versione PDF sarà resa disponibile prossimamente.
-  </p>
+    <section class="legal-section" aria-labelledby="account">
+      <h2 id="account">6. Area riservata e credenziali</h2>
+      <p>
+        L’utente è responsabile della correttezza dei dati comunicati e della custodia delle proprie
+        credenziali. In caso di accesso sospetto o perdita della password, deve contattare
+        tempestivamente l’associazione e modificare le credenziali disponibili.
+      </p>
+    </section>
 
-  <hr>
+    <section class="legal-section" aria-labelledby="esterni">
+      <h2 id="esterni">7. Collegamenti e servizi esterni</h2>
+      <p>
+        Il sito può contenere collegamenti o integrazioni con servizi gestiti da terzi, come WhatsApp,
+        Google Calendar e altri fornitori. L’utilizzo di tali servizi è soggetto alle rispettive
+        condizioni e informative. Ali Per La Libertà non controlla il funzionamento o i contenuti dei
+        siti esterni.
+      </p>
+    </section>
 
-  <p style="font-size:14px;color:#666;">
-    © 2025 Ali Per La Liberta — Tutti i diritti riservati.
-  </p>
+    <section class="legal-section" aria-labelledby="copyright">
+      <h2 id="copyright">8. Proprietà intellettuale</h2>
+      <p>
+        Testi, logo, elementi grafici e contenuti originali del sito appartengono ad Ali Per La Libertà
+        o sono utilizzati con autorizzazione, salvo diversa indicazione. Non è consentita la
+        riproduzione o diffusione non autorizzata.
+      </p>
+    </section>
 
-</main>
+    <section class="legal-section" aria-labelledby="privacy">
+      <h2 id="privacy">9. Privacy e cookie</h2>
+      <p>
+        Il trattamento dei dati personali e le informazioni sull’utilizzo di eventuali cookie sono
+        descritti nella <a href="/privacy.html">Privacy Policy</a>.
+      </p>
+    </section>
 
+    <section class="legal-section" aria-labelledby="modifiche">
+      <h2 id="modifiche">10. Modifiche alle note legali</h2>
+      <p>
+        Questa pagina può essere aggiornata per riflettere cambiamenti nelle attività
+        dell’associazione, nei servizi del sito o nella normativa applicabile. La versione più recente
+        è quella pubblicata a questo indirizzo.
+      </p>
+    </section>
+  </main>
+
+  <footer class="legal-footer">
+    <div class="legal-shell legal-footer-inner">
+      <span>© 2026 Ali Per La Libertà. Tutti i diritti riservati.</span>
+      <nav class="legal-footer-links" aria-label="Informazioni legali">
+        <a href="/">Pagina iniziale</a>
+        <a href="/privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>
