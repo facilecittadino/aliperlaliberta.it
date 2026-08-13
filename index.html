@@ -71,7 +71,7 @@
   <link rel="preconnect" href="https://maps.gstatic.com" crossorigin />
 
   <!-- STYLES -->
-  <link rel="stylesheet" href="/css/main.css?v=20260725-association1" />
+  <link rel="stylesheet" href="/css/main.css?v=20260814-restyle1" />
   <script src="/js/tailwindConfig.js?v=20260710-tw1"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest" defer></script>
@@ -125,7 +125,10 @@
           <a class="brand-logo" href="/" aria-label="AliPerLaLiberta Home">
             <img src="logo.png" alt="AliPerLaLiberta logo" decoding="async" />
           </a>
-          <span class="brand-name">Ali Per La Liberta</span>
+          <span class="brand-text">
+            <span class="brand-name">Ali Per La Liberta</span>
+            <small class="brand-tagline">Il mondo è una sola famiglia</small>
+          </span>
         </div>
 
         <!-- Center: Desktop links (with desktop language selector inside the list for alignment) -->
@@ -347,6 +350,11 @@
       <div class="home-shell">
         <section class="home-intro" aria-labelledby="homeTitle">
           <div>
+            <p class="home-motto">
+              <span class="home-motto-script" lang="sa">वसुधैव कुटुम्बकम्</span>
+              <span class="home-motto-translit">Vasudhaiva Kutumbakam</span>
+              <span class="home-motto-it">Il mondo è una sola famiglia.</span>
+            </p>
             <span class="home-eyebrow" data-i18n="home.eyebrow">Associazione a Lecce</span>
             <h1 id="homeTitle" data-i18n="home.title">Ogni persona merita di sentirsi ascoltata, orientata e libera.</h1>
             <p class="home-lead" data-i18n="home.lead">
@@ -363,7 +371,7 @@
         </section>
 
         <section class="home-section" id="chi-siamo" aria-labelledby="missionTitle">
-          <div class="home-section-heading">
+          <div class="home-section-heading" data-reveal>
             <span class="home-eyebrow" data-i18n="home.mission.eyebrow">La nostra missione</span>
             <h2 id="missionTitle" data-i18n="home.mission.title">Ridurre le distanze tra le persone e i loro diritti.</h2>
             <p data-i18n="home.mission.text">
@@ -372,17 +380,17 @@
           </div>
 
           <div class="home-values">
-            <article class="home-value">
+            <article class="home-value" data-reveal>
               <span class="home-value-number">01</span>
               <h3 data-i18n="home.value.listen.title">Ascolto</h3>
               <p data-i18n="home.value.listen.text">Partiamo dalla storia e dalle necessità reali di ogni persona, senza giudizio e con rispetto.</p>
             </article>
-            <article class="home-value">
+            <article class="home-value" data-reveal>
               <span class="home-value-number">02</span>
               <h3 data-i18n="home.value.clarity.title">Chiarezza</h3>
               <p data-i18n="home.value.clarity.text">Spieghiamo procedure e possibilità con parole comprensibili, anche in più lingue.</p>
             </article>
-            <article class="home-value">
+            <article class="home-value" data-reveal>
               <span class="home-value-number">03</span>
               <h3 data-i18n="home.value.action.title">Sostegno concreto</h3>
               <p data-i18n="home.value.action.text">Accompagniamo le persone nei passaggi necessari, dalla prima domanda fino alla soluzione.</p>
@@ -391,7 +399,7 @@
         </section>
 
         <section class="home-section" aria-labelledby="storyTitle">
-          <div class="home-story">
+          <div class="home-story" data-reveal>
             <h2 id="storyTitle" data-i18n="home.story.title">Un luogo vicino alle persone, aperto alle differenze.</h2>
             <p data-i18n="home.story.text">
               Ali Per La Libertà nasce per creare autonomia, inclusione e fiducia. Mettiamo in relazione persone, servizi e competenze, affinché ciascuno possa partecipare pienamente alla vita sociale e costruire il proprio futuro con maggiore serenità.
@@ -400,7 +408,7 @@
         </section>
 
         <section class="home-section" id="servizi" aria-labelledby="servicesTitle">
-          <div class="home-section-heading">
+          <div class="home-section-heading" data-reveal>
             <span class="home-eyebrow" data-i18n="home.services.eyebrow">Come ti aiutiamo</span>
             <h2 id="servicesTitle" data-i18n="home.services.title">Orientamento e assistenza, quando servono davvero.</h2>
             <p data-i18n="home.services.text">
@@ -409,7 +417,7 @@
           </div>
 
           <div class="home-services">
-            <article class="home-service">
+            <article class="home-service" data-reveal>
               <h3 data-i18n="services.caf.title">Servizi CAF tramite centri partner</h3>
               <p data-i18n="services.caf.desc">Orientamento e accesso a ISEE, dichiarazioni dei redditi e pratiche fiscali tramite CAF partner.</p>
               <div class="home-service-actions">
@@ -423,7 +431,7 @@
                 >Prenota appuntamento</button>
               </div>
             </article>
-            <article class="home-service">
+            <article class="home-service" data-reveal>
               <h3 data-i18n="services.patronato.title">Servizi di Patronato tramite enti partner</h3>
               <p data-i18n="services.patronato.desc">Orientamento per pensioni, indennità, disoccupazione e pratiche assistenziali tramite Patronato partner.</p>
               <div class="home-service-actions">
@@ -437,7 +445,7 @@
                 >Prenota appuntamento</button>
               </div>
             </article>
-            <article class="home-service">
+            <article class="home-service" data-reveal>
               <h3 data-i18n="services.legal.title">Supporto per l’assistenza legale</h3>
               <p data-i18n="services.legal.desc">Orientamento e contatto con professionisti abilitati per documenti, immigrazione e tutela dei diritti.</p>
               <div class="home-service-actions">
@@ -451,7 +459,7 @@
                 >Prenota appuntamento</button>
               </div>
             </article>
-            <article class="home-service">
+            <article class="home-service" data-reveal>
               <h3 data-i18n="services.italianCourse.title">Corso di lingua italiana A1 e A2</h3>
               <p data-i18n="services.italianCourse.desc">Percorsi base di italiano per comunicare meglio, prepararsi ai documenti e vivere con più autonomia.</p>
               <div class="home-service-actions">
@@ -468,7 +476,7 @@
         </section>
 
         <section class="home-section" aria-labelledby="contactTitle">
-          <div class="home-contact">
+          <div class="home-contact" data-reveal>
             <div>
               <h2 id="contactTitle" data-i18n="home.contact.title">Non sai da dove iniziare?</h2>
               <p data-i18n="home.contact.text">Raccontaci brevemente la tua necessità. Ti ascolteremo e ti indicheremo il servizio o il percorso più adatto.</p>
@@ -771,6 +779,7 @@
 <script src="/js/calendarBooking.js?v=20260710-portal4" defer></script>
 <script src="/js/serviceBot.js?v=20260725-contact1" defer></script>
 <script src="/js/share.js" defer></script>
+<script src="/js/reveal.js?v=20260814-restyle1" defer></script>
 <script src="/js/reload.js" defer></script>
 
 </body>

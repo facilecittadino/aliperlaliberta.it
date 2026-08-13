@@ -5,9 +5,9 @@
 .site-footer{
   /* fallback + your gradient */
   background:#000000;
-  background: linear-gradient(180deg, #f5f8ff 0%, #dbe4f6 40%, #bfcde8 100%);
-  border-top:1px solid rgba(0,0,0,.06);
-  box-shadow: 0 -2px 18px rgba(0,0,0,.04);
+  background: linear-gradient(180deg, #f5f8ff 0%, #e2edf7 45%, #d3e6e2 100%);
+  border-top:1px solid var(--line);
+  box-shadow: 0 -2px 18px rgba(10,46,92,.05);
   padding: 16px 16px calc(20px + var(--safe-bottom));
   color: var(--ink);
 }
@@ -250,7 +250,7 @@
   margin: 0 auto;
   padding: 16px 16px calc(20px + var(--safe-bottom));
   /* inherits page background/gradient */
-    background: linear-gradient(180deg, #f5f8ff 0%, #dbe4f6 40%, #bfcde8 100%);
+    background: linear-gradient(180deg, #f5f8ff 0%, #e2edf7 45%, #d3e6e2 100%);
 }
 
 .site-footer-desktop .desk-footer__grid{

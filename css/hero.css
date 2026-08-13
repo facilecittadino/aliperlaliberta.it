@@ -20,14 +20,12 @@
 
 /* Card (original look; merged + tiny stability tweaks) */
 .hero-card{
-  background: rgba(255,255,255,0.5);
-  border: 1px solid rgba(255,255,255,0.45);
-  border-radius: var(--radius);
-  box-shadow:
-    0 8px 28px rgba(0,0,0,0.12),
-    0 2px 6px  rgba(0,0,0,0.08);
-  -webkit-backdrop-filter: blur(4px) saturate(130%); /* add for Safari */
-          backdrop-filter: blur(4px) saturate(130%);
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  -webkit-backdrop-filter: blur(10px) saturate(150%); /* add for Safari */
+          backdrop-filter: blur(10px) saturate(150%);
   padding: clamp(20px, 3vw, 36px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
@@ -42,9 +40,7 @@
 /* Hover (keep your original lift) */
 .hero-card:hover{
   transform: translateY(-4px);
-  box-shadow:
-    0 12px 34px rgba(0,0,0,0.16),
-    0 3px 10px  rgba(0,0,0,0.10);
+  box-shadow: var(--shadow-lg), 0 3px 10px rgba(10,46,92,.10);
 }
 
 /* Headings & text (unchanged) */

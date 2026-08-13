@@ -1,15 +1,25 @@
 /* ===============================
    base.css — globals, reset, utils
    =============================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 :root{
   --primary:#0B5ED7;
   --primary-ink:#0A2E5C;
-  --ink:#1a1d20;
-  --muted:#5f6673;
-  --bg:#ffffff;
+  --accent:#178477;
+  --accent-ink:#0f5a51;
+  --ink:#1a2230;
+  --muted:#5f6b7a;
+  --bg:#f5f8fc;
+  --surface:#ffffff;
+  --line:rgba(10,46,92,.10);
   --ring:rgba(11,94,215,0.35);
-  --shadow:0 2px 10px rgba(0,0,0,0.08);
-  --radius:16px;
+  --shadow-sm:0 3px 12px rgba(10,46,92,.06);
+  --shadow:0 16px 40px rgba(10,46,92,.10);
+  --shadow-lg:0 26px 64px rgba(10,46,92,.16);
+  --radius-sm:14px;
+  --radius:22px;
+  --radius-lg:30px;
 
   --nav-h:68px;
   --safe-top: env(safe-area-inset-top, 0px);
@@ -28,18 +38,18 @@ html{
 
 body{
   margin:0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
   color:var(--ink);
   background:var(--bg);
   line-height:1.5;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
   -webkit-tap-highlight-color: transparent; /* nicer on iOS */
-  
+
 }
 
 /* Typography tweaks */
-h1,h2,h3{ letter-spacing:.2px; }
+h1,h2,h3{ letter-spacing:-.01em; font-weight:800; }
 h1,h2,h3,p{ margin-block: 0 0.6em; }
 small{ font-size: 87.5%; color: var(--muted); }
 
@@ -59,17 +69,19 @@ img,svg,video{ display:block; max-width:100%; height:auto; }
 .page::before{
   content:"";
   position:fixed; inset:0;
-  background: url('../logo.jpeg') center / max(58vw, 460px) no-repeat;
-  opacity:.25;
-  filter: grayscale(20%) contrast(100%);
+  background: url('../logo.jpeg') center / max(46vw, 380px) no-repeat;
+  opacity:.045;
+  filter: grayscale(35%) contrast(100%);
   pointer-events:none;
   z-index:-1;
 }
-/* Subtle radial glow behind watermark */
+/* Ambient gradient wash behind the watermark */
 .page::after{
   content:"";
   position:fixed; inset:0;
-  background: radial-gradient(1200px 600px at 50% -10%, rgba(11,94,215,.06), transparent 60%);
+  background:
+    radial-gradient(1100px 560px at 12% -8%, rgba(11,94,215,.09), transparent 58%),
+    radial-gradient(900px 520px at 105% 10%, rgba(23,132,119,.08), transparent 55%);
   pointer-events:none;
   z-index:-1;
 }
@@ -93,26 +105,26 @@ body.overlay-lock{
 .btn{
   display:inline-block;
   text-decoration:none;
-  padding:10px 14px;
-  border-radius:10px;
+  padding:12px 20px;
+  border-radius:999px;
   font-weight:700;
   border:1px solid transparent;
-  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease, filter 120ms ease;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease, filter 160ms ease;
   will-change: transform;
 }
 .btn:focus-visible{ outline:2px solid var(--ring); outline-offset:2px; }
 .btn:active{ transform: translateY(1px); }
 .btn-primary{
-  background:var(--primary);
+  background: linear-gradient(135deg, var(--primary), #083f96);
   color:#fff;
-  box-shadow:0 2px 8px rgba(11,94,215,.25);
+  box-shadow:0 10px 26px rgba(11,94,215,.28);
 }
-.btn-primary:hover{ filter:brightness(.96); }
+.btn-primary:hover{ transform: translateY(-2px); box-shadow:0 14px 32px rgba(11,94,215,.34); }
 .btn-outline{
   background:#fff; color:var(--primary-ink);
-  border-color: rgba(0,0,0,.10);
+  border-color: rgba(10,46,92,.14);
 }
-.btn-outline:hover{ background: rgba(0,0,0,.03); }
+.btn-outline:hover{ background: rgba(11,94,215,.06); border-color: rgba(11,94,215,.3); transform: translateY(-2px); }
 
 /* Forms (light base, in case needed later) */
 input, select, textarea, button{
@@ -138,30 +150,32 @@ select{ background:#fff; }
 /* SEO internal links section */
 .seo-links {
   margin: 60px auto 40px;
-  padding: 28px 22px;
+  padding: 32px 24px;
   max-width: 1100px;
-  background: #f8fafc;
-  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
   text-align: center;
 }
 
 .seo-links h2 {
   font-size: 22px;
-  font-weight: 700;
-  color: #0f2a44;
+  font-weight: 800;
+  color: var(--primary-ink);
   margin-bottom: 14px;
 }
 
 .seo-links p {
   font-size: 16px;
   line-height: 1.6;
-  color: #334155;
+  color: var(--muted);
   margin: 0;
 }
 
 .seo-links a {
-  color: #0b5ed7;
-  font-weight: 600;
+  color: var(--primary);
+  font-weight: 700;
   text-decoration: none;
 }
 
