@@ -20,6 +20,9 @@ import {
   timingSafeEqual
 } from "node:crypto";
 import { promisify } from "node:util";
+import nodemailer from "nodemailer";
+import { courseA1Lessons } from "./course-a1-lessons.js";
+import { courseA2Lessons } from "./course-a2-lessons.js";
 
 const scrypt = promisify(scryptCallback);
 const app = express();
@@ -34,6 +37,14 @@ const sessionDays = Number(process.env.SESSION_DAYS || 7);
 const siteOrigin = process.env.SITE_ORIGIN || "https://aliperlaliberta.it";
 const publicApiOrigin = process.env.PUBLIC_API_ORIGIN || "https://api.aliperlaliberta.it";
 const supportPhone = String(process.env.SUPPORT_PHONE || '').trim().replace(/[^\d+]/g, '');
+const courseA1Dir = process.env.COURSE_A1_DIR || path.join(dataDir, "course-a1");
+const courseA2Dir = process.env.COURSE_A2_DIR || path.join(dataDir, "course-a2");
+const smtpHost = String(process.env.SMTP_HOST || "").trim();
+const smtpPort = Number(process.env.SMTP_PORT || 587);
+const smtpSecure = process.env.SMTP_SECURE === "true";
+const smtpUser = String(process.env.SMTP_USER || "").trim();
+const smtpPass = String(process.env.SMTP_PASS || "");
+const mailFrom = String(process.env.MAIL_FROM || smtpUser || "").trim();
 
 const oauthProviders = {
   google: {
@@ -65,7 +76,9 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS || "https://aliperlaliberta.
 const files = {
   users: path.join(dataDir, "users.json"),
   requests: path.join(dataDir, "requests.json"),
-  sessions: path.join(dataDir, "sessions.json")
+  sessions: path.join(dataDir, "sessions.json"),
+  quizResults: path.join(dataDir, "quiz-results.json"),
+  courseProgress: path.join(dataDir, "course-progress.json")
 };
 
 let writeLock = Promise.resolve();
@@ -81,9 +94,43 @@ const passwordSchema = z.string().min(10).max(128);
 const safeText = (max) => z.string().trim().min(1).max(max);
 
 const rolePermissions = Object.freeze({
-  admin: Object.freeze(["requests:read:all", "requests:update", "users:read"]),
+  admin: Object.freeze(["requests:read:all", "requests:update", "users:read", "quiz-results:read", "courses:a1:read"]),
+  student: Object.freeze(["courses:a1:read"]),
   client: Object.freeze(["requests:create", "requests:read:own"])
 });
+
+const courseA1Units = Object.freeze([
+  [1, "Saluti e presentazioni"],
+  [2, "Dati personali, alfabeto e moduli"],
+  [3, "Famiglia e persone"],
+  [4, "La casa e gli oggetti"],
+  [5, "La giornata e gli orari"],
+  [6, "La città, i servizi e i trasporti"],
+  [7, "Cibo, bar e ristorante"],
+  [8, "Fare la spesa e i negozi"],
+  [9, "Il corpo e la salute"],
+  [10, "Tempo libero e weekend"],
+  [11, "Persone, vestiti e meteo"],
+  [12, "Ripasso e simulazione CELI A1"]
+].map(([number, title]) => ({
+  number,
+  title,
+  reviewPages: Array.from({ length: 4 }, (_, offset) => `page-${String(3 + ((number - 1) * 4) + offset).padStart(2, "0")}.png`),
+  audio: [
+    `U${String(number).padStart(2, "0")}_Audio_1_dialogo_o_monologo.mp3`,
+    `U${String(number).padStart(2, "0")}_Audio_2_annunci_e_informazioni.mp3`
+  ]
+})));
+
+const courseA1AudioFiles = new Set(courseA1Units.flatMap((unit) => unit.audio));
+const courseA1PageFiles = new Set(Array.from({ length: 51 }, (_, index) => `page-${String(index + 1).padStart(2, "0")}.png`));
+const courseLevels = ["", "A1", "A2", "B1"];
+const courseA2Units = Object.freeze(courseA2Lessons.map((unit) => ({
+  number: unit.number,
+  title: unit.title,
+  audio: unit.listening.map((track) => track.file)
+})));
+const courseA2AudioFiles = new Set(courseA2Units.flatMap((unit) => unit.audio));
 
 const registerSchema = z.object({
   name: safeText(120),
@@ -119,6 +166,129 @@ const adminUpdateSchema = z.object({
   adminNote: z.string().trim().max(3000).optional()
 });
 
+const studentRegisterSchema = z.object({
+  name: safeText(120),
+  username: usernameSchema,
+  email: emailSchema,
+  nationality: z.enum(["Albanese", "Indiana"]),
+  password: passwordSchema
+});
+
+const studentAssignmentSchema = z.object({
+  courseLevel: z.enum(courseLevels),
+  nationality: z.enum(["Albanese", "Indiana"])
+});
+
+const courseProgressSchema = z.object({
+  answers: z.record(z.string().max(1200)).default({}),
+  completed: z.boolean().default(false)
+});
+
+const quizSubmissionSchema = z.object({
+  level: z.enum(["A1", "A2"]),
+  firstName: safeText(80),
+  lastName: safeText(80),
+  email: emailSchema,
+  answers: z.record(z.string().max(240)).default({}),
+  writing: z.string().trim().max(3000).optional().default("")
+});
+
+const quizDefinitions = Object.freeze({
+  A1: [
+    ["q1", "Il corso comincia lunedi 7 settembre.", "Si"],
+    ["q2", "Le lezioni finiscono alle ore 17:00.", "No"],
+    ["q3", "Il corso costa 60 euro al mese.", "Si"],
+    ["q4", "La segreteria e aperta anche la domenica.", "No"],
+    ["q5", "Che cosa bisogna portare per iscriversi?", "Un documento e una fotografia"],
+    ["q6", "Qual e la frase corretta?", "Io sono Maria."],
+    ["q7", "Completa: Tu ___ albanese.", "sei"],
+    ["q8", "Completa: Noi ___ studenti.", "siamo"],
+    ["q9", "Quale domanda si usa in una situazione formale?", "Come si chiama?"],
+    ["q10", "Completa: Abito ___ Lecce.", "a"],
+    ["q11", "Qual e il plurale di ragazza?", "ragazze"],
+    ["q12", "Scegli l'articolo corretto: ___ studente.", "Lo"],
+    ["q13", "Completa: In cucina ___ un tavolo.", "c'e"],
+    ["q14", "Completa: Sul tavolo ___ due bicchieri.", "ci sono"],
+    ["q15", "Quale frase indica un saluto formale?", "Buongiorno, signora."],
+    ["q16", "Come si chiama la ragazza?", "Sofia"],
+    ["q17", "Dove vive Sofia?", "A Perugia"],
+    ["q18", "Dove lavora?", "In un bar"],
+    ["q19", "Quando frequenta il corso di italiano?", "Il lunedi e il mercoledi"],
+    ["q20", "Che cosa le piace fare la domenica?", "Andare al parco e parlare con gli amici"]
+  ],
+  A2: [
+    ["q1", "Da quanto tempo Amir lavora in albergo?", "Da tre mesi"],
+    ["q2", "Dove lavorava prima?", "In un ristorante"],
+    ["q3", "A che ora finisce di lavorare?", "Alle quindici"],
+    ["q4", "Quale attivita NON fa Amir?", "Cucina per i clienti"],
+    ["q5", "Perche ad Amir piace il suo lavoro?", "Perche parla con persone di Paesi diversi"],
+    ["q6", "Quando non lavora?", "La domenica"],
+    ["q7", "Completa: Ieri Amir ___ alle sette.", "ha iniziato"],
+    ["q8", "Completa: La settimana scorsa noi ___ a Roma.", "siamo andati"],
+    ["q9", "Qual e la frase corretta?", "Maria e tornata a casa."],
+    ["q10", "Completa: Quando ero piccolo, ___ al parco ogni giorno.", "andavo"],
+    ["q11", "Chi telefona?", "Elena"],
+    ["q12", "Per quando era fissato l'appuntamento iniziale?", "Mercoledi pomeriggio"],
+    ["q13", "Perche Elena vuole cambiare giorno?", "Ha una visita medica"],
+    ["q14", "Quando hanno deciso di incontrarsi?", "Venerdi alle 18:30"],
+    ["q15", "Dove si incontrano?", "Davanti alla biblioteca"],
+    ["q16", "Completa: Ho comprato ___ regalo per mia sorella.", "un"],
+    ["q17", "Non trovo le chiavi. ___ hai viste?", "Le"],
+    ["q18", "Questo esercizio e ___ facile del precedente.", "piu"],
+    ["q19", "Completa: Domani ___ a trovare mia zia.", "vado"],
+    ["q20", "Qual e la frase corretta?", "Vorrei un caffe, per favore."]
+  ]
+});
+
+const normalizeQuizAnswer = (value) => String(value || "")
+  .normalize("NFD")
+  .replace(/[\u0300-\u036f]/g, "")
+  .replace(/[’‘]/g, "'")
+  .trim()
+  .toLowerCase();
+
+function evaluateQuiz(level, submittedAnswers) {
+  const definition = quizDefinitions[level];
+  const answers = {};
+  const errors = [];
+  let score = 0;
+  definition.forEach(([id, question, correctAnswer]) => {
+    const submittedAnswer = String(submittedAnswers[id] || "").trim();
+    answers[id] = submittedAnswer;
+    if (normalizeQuizAnswer(submittedAnswer) === normalizeQuizAnswer(correctAnswer)) {
+      score += 1;
+    } else {
+      errors.push({ id, question, submittedAnswer, correctAnswer });
+    }
+  });
+  return { answers, errors, score, total: definition.length, percentage: Math.round((score / definition.length) * 100) };
+}
+
+function mailTransport() {
+  if (!smtpHost || !smtpUser || !smtpPass || !mailFrom) return null;
+  return nodemailer.createTransport({
+    host: smtpHost,
+    port: smtpPort,
+    secure: smtpSecure,
+    auth: { user: smtpUser, pass: smtpPass }
+  });
+}
+
+async function emailQuizResult(result) {
+  const transport = mailTransport();
+  if (!transport) return false;
+  const errorLines = result.errors.length
+    ? result.errors.map((item, index) => `${index + 1}. ${item.question}\nRisposta data: ${item.submittedAnswer || "Nessuna risposta"}\nRisposta corretta: ${item.correctAnswer}`).join("\n\n")
+    : "Nessun errore.";
+  await transport.sendMail({
+    from: mailFrom,
+    to: result.email,
+    subject: `Risultato quiz di italiano ${result.level} - Ali per la Liberta`,
+    text: `Ciao ${result.firstName},\n\nhai completato il quiz di italiano ${result.level}.\n\nPunteggio: ${result.score}/${result.total} (${result.percentage}%)\n\nErrori e correzioni:\n${errorLines}\n\nAli per la Liberta`
+  });
+  return true;
+}
+
 app.disable("x-powered-by");
 app.set("trust proxy", 1);
 app.use(helmet({
@@ -149,6 +319,14 @@ const authLimiter = rateLimit({
   message: { error: "Troppi tentativi di accesso. Riprova tra poco." }
 });
 
+const quizLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: Number(process.env.RATE_LIMIT_QUIZ || 12),
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Hai inviato troppi quiz. Riprova tra poco." }
+});
+
 app.use(generalLimiter);
 app.use(cors({
   origin(origin, callback) {
@@ -156,7 +334,7 @@ app.use(cors({
     if (allowedOrigins.includes(origin)) return callback(null, true);
     return callback(new Error("Origin non consentita"));
   },
-  methods: ["GET", "POST", "PATCH", "OPTIONS"],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Accept"],
   credentials: true
 }));
@@ -280,10 +458,19 @@ function publicUser(user) {
     email: user.email,
     phone: user.phone || "",
     role: user.role,
+    nationality: user.nationality || "",
+    courseLevel: user.courseLevel || "",
+    courseLanguage: user.courseLanguage || languageForNationality(user.nationality),
     permissions: permissionsForRole(user.role, user.permissions),
     providers: (user.authProviders || []).map((provider) => provider.provider),
     createdAt: user.createdAt
   };
+}
+
+function languageForNationality(nationality = "") {
+  if (nationality === "Albanese") return "albanese";
+  if (nationality === "Indiana") return "hindi";
+  return "italiano";
 }
 
 function usernameFromEmail(email = "") {
@@ -382,7 +569,7 @@ async function createSession(userId) {
   await withWriteLock(async () => {
     const sessions = await readJson(files.sessions, []);
     const cutoff = nowIso();
-    const activeSessions = sessions.filter((session) => session.expiresAt > cutoff);
+    const activeSessions = sessions.filter((session) => session.expiresAt > cutoff && session.userId !== userId);
     activeSessions.push({
       id: hashToken(token),
       userId,
@@ -428,6 +615,21 @@ async function requireUser(req, res, next) {
 
 function requireAdmin(req, res, next) {
   if (!hasPermission(req.user, "requests:read:all")) return next(httpError(403, "Permesso admin richiesto"));
+  return next();
+}
+
+function requireCourseA1(req, res, next) {
+  if (!hasPermission(req.user, "courses:a1:read")) return next(httpError(403, "Accesso al corso A1 non autorizzato"));
+  if (req.user.role !== "admin" && req.user.courseLevel !== "A1") {
+    return next(httpError(403, "Il livello A1 non è ancora stato assegnato dall'insegnante"));
+  }
+  return next();
+}
+
+function requireCourseA2(req, res, next) {
+  if (req.user.role !== "admin" && req.user.courseLevel !== "A2") {
+    return next(httpError(403, "Il livello A2 non è ancora stato assegnato dall'insegnante"));
+  }
   return next();
 }
 
@@ -597,6 +799,261 @@ async function finishOAuthCallback(provider, req, res, next) {
 
 app.get("/api/portal/health", (req, res) => {
   res.json({ ok: true });
+});
+
+app.post("/api/portal/students/register", authLimiter, async (req, res, next) => {
+  try {
+    const input = studentRegisterSchema.parse(req.body);
+    const passwordHash = await hashPassword(input.password);
+    const user = await withWriteLock(async () => {
+      const users = await readJson(files.users, []);
+      if (users.some((item) => item.email === input.email)) throw httpError(409, "Email già registrata");
+      if (users.some((item) => item.username === input.username)) throw httpError(409, "Username già registrato");
+      const now = nowIso();
+      const created = {
+        id: randomUUID(),
+        role: "student",
+        name: input.name,
+        username: input.username,
+        email: input.email,
+        phone: "",
+        nationality: input.nationality,
+        courseLanguage: languageForNationality(input.nationality),
+        courseLevel: "",
+        permissions: permissionsForRole("student"),
+        passwordHash,
+        createdAt: now,
+        updatedAt: now
+      };
+      users.push(created);
+      await writeJson(files.users, users);
+      return created;
+    });
+    const token = await createSession(user.id);
+    res.setHeader("Set-Cookie", cookieHeader(token, sessionDays * 24 * 60 * 60));
+    res.status(201).json({ user: publicUser(user) });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get("/api/portal/courses/a1", requireUser, requireCourseA1, (req, res) => {
+  const language = req.user.role === "admin" && ["hindi", "albanese"].includes(req.query.language)
+    ? req.query.language
+    : languageForNationality(req.user.nationality);
+  res.json({
+    course: {
+      id: `a1-${language}`,
+      level: "A1",
+      title: "Parla Italiano - Corso intensivo A1",
+      language,
+      unitCount: courseA1Units.length,
+      units: courseA1Units.map((unit) => ({
+        ...unit,
+        reviewPages: undefined,
+        content: courseA1Lessons.find((lesson) => lesson.number === unit.number)
+      }))
+    }
+  });
+});
+
+app.get("/api/portal/courses/a2", requireUser, requireCourseA2, (req, res) => {
+  const language = req.user.role === "admin" && ["hindi", "albanese"].includes(req.query.language)
+    ? req.query.language
+    : languageForNationality(req.user.nationality);
+  res.json({
+    course: {
+      id: `a2-${language}`,
+      level: "A2",
+      title: "Parla Italiano - Corso intensivo A2",
+      language,
+      unitCount: courseA2Units.length,
+      units: courseA2Units.map((unit) => ({
+        ...unit,
+        content: courseA2Lessons.find((lesson) => lesson.number === unit.number)
+      }))
+    }
+  });
+});
+
+app.get("/api/portal/courses/a2/materials/audio/:filename", requireUser, requireCourseA2, (req, res, next) => {
+  const filename = String(req.params.filename || "");
+  if (!courseA2AudioFiles.has(filename)) return next(httpError(404, "Materiale non trovato"));
+  res.type("audio/mpeg");
+  res.setHeader("Content-Disposition", "inline");
+  return res.sendFile(filename, { root: path.join(courseA2Dir, "audio") }, (error) => {
+    if (error && !res.headersSent) next(error.status === 404 ? httpError(404, "Materiale non trovato") : error);
+  });
+});
+
+app.get("/api/portal/courses/a2/progress", requireUser, requireCourseA2, async (req, res, next) => {
+  try {
+    const all = await readJson(files.courseProgress, []);
+    res.json({ progress: all.filter((item) => item.userId === req.user.id && item.level === "A2") });
+  } catch (error) { next(error); }
+});
+
+app.put("/api/portal/courses/a2/progress/:unit", requireUser, requireCourseA2, async (req, res, next) => {
+  try {
+    const unit = Number(req.params.unit);
+    if (!Number.isInteger(unit) || unit < 1 || unit > courseA2Units.length) throw httpError(400, "Unità non valida");
+    const input = courseProgressSchema.parse(req.body);
+    const saved = await withWriteLock(async () => {
+      const all = await readJson(files.courseProgress, []);
+      const index = all.findIndex((item) => item.userId === req.user.id && item.level === "A2" && item.unit === unit);
+      if (index !== -1 && all[index].completed) {
+        throw httpError(403, "Questa unità è già stata completata: le risposte non sono più modificabili.");
+      }
+      const record = { id: index === -1 ? randomUUID() : all[index].id, userId: req.user.id, level: "A2", unit, answers: input.answers, completed: input.completed, updatedAt: nowIso() };
+      if (index === -1) all.push(record); else all[index] = record;
+      await writeJson(files.courseProgress, all);
+      return record;
+    });
+    res.json({ progress: saved });
+  } catch (error) { next(error); }
+});
+
+app.get("/api/portal/courses/a1/materials/pages/:language/:filename", requireUser, requireCourseA1, (req, res, next) => {
+  const language = String(req.params.language || "");
+  const filename = String(req.params.filename || "");
+  const assignedLanguage = languageForNationality(req.user.nationality);
+  if (!courseA1PageFiles.has(filename) || !["hindi", "albanese"].includes(language)) return next(httpError(404, "Materiale non trovato"));
+  if (req.user.role !== "admin" && language !== assignedLanguage) return next(httpError(403, "Lingua del materiale non autorizzata"));
+  res.type("image/png");
+  res.setHeader("Content-Disposition", "inline");
+  return res.sendFile(filename, { root: path.join(courseA1Dir, language) }, (error) => {
+    if (error && !res.headersSent) next(error.status === 404 ? httpError(404, "Materiale non trovato") : error);
+  });
+});
+
+app.get("/api/portal/courses/a1/materials/audio/:filename", requireUser, requireCourseA1, (req, res, next) => {
+  const filename = String(req.params.filename || "");
+  if (!courseA1AudioFiles.has(filename)) return next(httpError(404, "Materiale non trovato"));
+  res.type("audio/mpeg");
+  res.setHeader("Content-Disposition", "inline");
+  return res.sendFile(filename, { root: path.join(courseA1Dir, "audio") }, (error) => {
+    if (error && !res.headersSent) next(error.status === 404 ? httpError(404, "Materiale non trovato") : error);
+  });
+});
+
+app.get("/api/portal/courses/a1/progress", requireUser, requireCourseA1, async (req, res, next) => {
+  try {
+    const all = await readJson(files.courseProgress, []);
+    res.json({ progress: all.filter((item) => item.userId === req.user.id && (!item.level || item.level === "A1")) });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.put("/api/portal/courses/a1/progress/:unit", requireUser, requireCourseA1, async (req, res, next) => {
+  try {
+    const unit = Number(req.params.unit);
+    if (!Number.isInteger(unit) || unit < 1 || unit > 12) throw httpError(400, "Unità non valida");
+    const input = courseProgressSchema.parse(req.body);
+    const saved = await withWriteLock(async () => {
+      const all = await readJson(files.courseProgress, []);
+      const index = all.findIndex((item) => item.userId === req.user.id && (!item.level || item.level === "A1") && item.unit === unit);
+      if (index !== -1 && all[index].completed) {
+        throw httpError(403, "Questa unità è già stata completata: le risposte non sono più modificabili.");
+      }
+      const record = {
+        id: index === -1 ? randomUUID() : all[index].id,
+        userId: req.user.id,
+        level: "A1",
+        unit,
+        answers: input.answers,
+        completed: input.completed,
+        updatedAt: nowIso()
+      };
+      if (index === -1) all.push(record); else all[index] = record;
+      await writeJson(files.courseProgress, all);
+      return record;
+    });
+    res.json({ progress: saved });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.post("/api/portal/quiz-results", quizLimiter, async (req, res, next) => {
+  try {
+    const input = quizSubmissionSchema.parse(req.body);
+    const currentUser = await getCurrentUser(req);
+    const student = currentUser?.role === "student" ? currentUser : null;
+    if (student?.courseLevel && student.courseLevel !== input.level) {
+      throw httpError(403, `Il test assegnato al tuo profilo è ${student.courseLevel}`);
+    }
+    const accountNames = String(student?.name || "").trim().split(/\s+/).filter(Boolean);
+    const evaluation = evaluateQuiz(input.level, input.answers);
+    const created = {
+      id: randomUUID(),
+      studentId: student?.id || "",
+      level: input.level,
+      firstName: student ? (accountNames.shift() || input.firstName) : input.firstName,
+      lastName: student ? (accountNames.join(" ") || input.lastName) : input.lastName,
+      email: student?.email || input.email,
+      writing: input.writing,
+      ...evaluation,
+      emailSent: false,
+      emailError: "",
+      createdAt: nowIso()
+    };
+
+    await withWriteLock(async () => {
+      const results = await readJson(files.quizResults, []);
+      results.push(created);
+      await writeJson(files.quizResults, results);
+    });
+
+    try {
+      created.emailSent = await emailQuizResult(created);
+    } catch (error) {
+      created.emailError = "Invio email non riuscito";
+      console.error(JSON.stringify({ requestId: req.id, message: "Quiz email failed", error: error.message }));
+    }
+
+    if (created.emailSent || created.emailError) {
+      await withWriteLock(async () => {
+        const results = await readJson(files.quizResults, []);
+        const index = results.findIndex((item) => item.id === created.id);
+        if (index !== -1) {
+          results[index] = created;
+          await writeJson(files.quizResults, results);
+        }
+      });
+    }
+
+    res.status(201).json({
+      result: {
+        id: created.id,
+        level: created.level,
+        score: created.score,
+        total: created.total,
+        percentage: created.percentage,
+        errors: created.errors,
+        emailSent: created.emailSent
+      }
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get("/api/portal/quiz-results", requireUser, async (req, res, next) => {
+  try {
+    if (!hasPermission(req.user, "quiz-results:read")) {
+      throw httpError(403, "Permesso risultati quiz richiesto");
+    }
+    const level = String(req.query.level || "").toUpperCase();
+    const results = await readJson(files.quizResults, []);
+    const visible = level === "A1" || level === "A2"
+      ? results.filter((item) => item.level === level)
+      : results;
+    visible.sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+    res.json({ results: visible.slice(0, 1000) });
+  } catch (error) {
+    next(error);
+  }
 });
 
 app.get("/api/portal/auth/providers", (req, res) => {
@@ -772,6 +1229,76 @@ app.get("/api/portal/users", requireUser, requireAdmin, async (req, res, next) =
     const users = await readJson(files.users, []);
     users.sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
     res.json({ users: users.map(publicUser) });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get("/api/portal/students", requireUser, requireAdmin, async (req, res, next) => {
+  try {
+    const [users, progress] = await Promise.all([
+      readJson(files.users, []),
+      readJson(files.courseProgress, [])
+    ]);
+    const students = users
+      .filter((user) => user.role === "student")
+      .map((user) => {
+        const studentProgress = progress
+          .filter((item) => item.userId === user.id)
+          .map(({ id, level, unit, answers, completed, updatedAt }) => ({ id, level: level || "A1", unit, answers, completed, updatedAt }))
+          .sort((a, b) => String(a.level).localeCompare(String(b.level)) || a.unit - b.unit);
+        return {
+          ...publicUser(user),
+          completedUnits: studentProgress.filter((item) => item.completed && item.level === user.courseLevel).length,
+          progress: studentProgress
+        };
+      })
+      .sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+    res.json({ students });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.patch("/api/portal/students/:id", requireUser, requireAdmin, async (req, res, next) => {
+  try {
+    const input = studentAssignmentSchema.parse(req.body);
+    const updated = await withWriteLock(async () => {
+      const users = await readJson(files.users, []);
+      const index = users.findIndex((user) => user.id === req.params.id && user.role === "student");
+      if (index === -1) throw httpError(404, "Studente non trovato");
+      users[index] = {
+        ...users[index],
+        nationality: input.nationality,
+        courseLanguage: languageForNationality(input.nationality),
+        courseLevel: input.courseLevel,
+        updatedAt: nowIso()
+      };
+      await writeJson(files.users, users);
+      return users[index];
+    });
+    res.json({ student: publicUser(updated) });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.delete("/api/portal/students/:id", requireUser, requireAdmin, async (req, res, next) => {
+  try {
+    await withWriteLock(async () => {
+      const users = await readJson(files.users, []);
+      const index = users.findIndex((user) => user.id === req.params.id && user.role === "student");
+      if (index === -1) throw httpError(404, "Studente non trovato");
+      users.splice(index, 1);
+      await writeJson(files.users, users);
+
+      const progress = await readJson(files.courseProgress, []);
+      await writeJson(files.courseProgress, progress.filter((item) => item.userId !== req.params.id));
+
+      const sessions = await readJson(files.sessions, []);
+      await writeJson(files.sessions, sessions.filter((session) => session.userId !== req.params.id));
+    });
+    res.json({ ok: true });
   } catch (error) {
     next(error);
   }

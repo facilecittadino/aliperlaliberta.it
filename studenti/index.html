@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#0b2d4d">
+  <title>Area studenti | Ali per la Libertà</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><img src="/logo.png" alt="Logo Ali per la Libertà"><span>Ali per la Libertà</span></a>
+    <button class="install-button" type="button" data-install hidden>Installa l’app</button>
+  </header>
+
+  <main>
+    <section class="welcome"><div class="welcome-inner"><p class="eyebrow">Parla Italiano</p><h1>Area studenti</h1><p>Lezioni bilingui, esercizi e ascolti del tuo livello.</p></div></section>
+
+    <section class="page auth-wrap" data-auth-panel>
+      <div class="auth-card">
+        <div class="auth-tabs" role="tablist">
+          <button class="tab is-active" type="button" data-auth-tab="login">Accedi</button>
+          <button class="tab" type="button" data-auth-tab="register">Registrati</button>
+        </div>
+        <section data-login-section>
+          <h2>Accedi al tuo corso</h2><p>Inserisci username e password.</p>
+          <form data-login-form>
+            <label>Username<input name="identifier" type="text" autocomplete="username" required></label>
+            <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+            <button class="primary-button" type="submit">Accedi</button>
+            <p class="message" data-login-message aria-live="polite"></p>
+          </form>
+        </section>
+        <section data-register-section hidden>
+          <h2>Crea un account studente</h2><p>Dopo la registrazione, l’insegnante assegnerà il tuo livello.</p>
+          <form data-register-form>
+            <label>Nome e cognome<input name="name" type="text" autocomplete="name" maxlength="120" required></label>
+            <label>Username<input name="username" type="text" autocomplete="username" minlength="3" maxlength="40" pattern="[A-Za-z0-9._-]+" required></label>
+            <label>E-mail<input name="email" type="email" autocomplete="email" maxlength="160" required></label>
+            <label>Nazionalità<select name="nationality" required><option value="">Seleziona</option><option value="Albanese">Albanese</option><option value="Indiana">Indiana</option></select></label>
+            <label>Password<input name="password" type="password" autocomplete="new-password" minlength="10" maxlength="128" required><small>Almeno 10 caratteri.</small></label>
+            <button class="primary-button" type="submit">Registrati</button>
+            <p class="message" data-register-message aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+    </section>
+
+    <section class="page dashboard" data-dashboard hidden>
+      <div class="dashboard-head"><div><p class="eyebrow">Corso personale</p><h2 data-greeting>Benvenuto</h2><p data-course-status></p></div><button class="outline-button" type="button" data-logout>Esci</button></div>
+      <section class="waiting-card" data-waiting hidden><span>Profilo registrato</span><h3 data-waiting-title>Il tuo livello deve essere assegnato</h3><p data-waiting-text>L’insegnante controllerà la registrazione e abiliterà il materiale corretto.</p><button class="outline-button" type="button" data-recheck>Controlla di nuovo</button></section>
+      <section data-course hidden>
+        <div class="course-banner"><div><span class="course-level" data-course-level>A1</span><h3 data-course-title>Parla Italiano - Corso intensivo</h3><p data-language-label></p></div><div class="course-format"><strong data-course-units>Unità interattive</strong><span>Lezioni, audio ed esercizi direttamente online</span></div></div>
+        <div class="progress-panel"><div><span>Avanzamento del corso</span><strong data-progress-count>0/12 unità</strong></div><div class="progress-track"><span data-progress-bar></span></div></div>
+        <p class="message dashboard-message" data-dashboard-message aria-live="polite"></p>
+        <div class="units-list" data-units></div>
+        <section class="final-test-card" data-final-test>
+          <div><span class="final-test-badge">Test finale</span><h3 data-final-test-title>Test finale del corso</h3><p>Completa il quiz con ascolto. Il risultato, gli errori e la produzione scritta saranno visibili all’insegnante.</p></div>
+          <a class="primary-button final-test-link" data-final-test-link href="/quiz-italiano/a1/">Inizia il test finale</a>
+        </section>
+      </section>
+    </section>
+  </main>
+  <footer>Materiale riservato agli studenti di Ali per la Libertà.</footer>
+  <script src="studenti.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "Ali per la Libertà - Area studenti",
+  "short_name": "Ali Studenti",
+  "description": "Lezioni, esercizi e ascolti di italiano per gli studenti di Ali per la Libertà.",
+  "start_url": "/studenti/",
+  "scope": "/studenti/",
+  "display": "standalone",
+  "background_color": "#f3f7f9",
+  "theme_color": "#0b2d4d",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
